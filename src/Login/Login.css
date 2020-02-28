@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #272829;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*font-size: calc(10px + 2vmin);*/
+  font-size: 15px;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+.Center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.half-wide{
+  width: 40vw;
+}
+button{
+  font-family: 'Manjari', sans-serif ;
+}
+#Fonter{
+  font-family: 'Manjari', sans-serif;
+}
+#Bottom{
+  position: absolute;
+  bottom: 2vh;
+}
+#Bottom span{
+  font-family: 'Manjari', sans-serif ;
+}
+#Bottom a{
+  font-family: 'Manjari', sans-serif ;
+  color:#6FFFB0;
+}

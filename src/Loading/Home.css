@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
+.App-header {
+  background-color: #272829;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*font-size: calc(10px + 2vmin);*/
+  font-size: 15px;
+}
+#Time {
+  font-family: 'Manjari', sans-serif ;
+}

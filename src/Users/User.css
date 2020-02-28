@@ -1,0 +1,15 @@
+.avatar{
+    width: 170px;
+    margin-left: 10px;
+}
+.avatar-image {
+    width: 170px;
+    border-radius: 100%;
+    box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
+}
+.App {
+  background-color: #929292;
+}
+.Note{
+  background-color: black;
+}

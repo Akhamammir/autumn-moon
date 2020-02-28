@@ -1,0 +1,9 @@
+.DecorBox{
+  margin-right:15px!important;
+  background-color: #F2F3F4;
+}
+@-moz-document url-prefix() {
+  .DecorBox{
+    margin-bottom: 10px!important;
+  }
+}
