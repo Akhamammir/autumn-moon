@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+.rs-btn-toggle{
+  background-color: #80c1ab;
+}
+.rs-btn-toggle:hover{
+  background-color: #54B393;
+}
+.rs-btn-toggle-checked{
+  background-color: #00C2AE;
+}
+.rs-btn-toggle-checked:hover{
+  background-color: #00ab9b;
+}
+.PushDown{
+  margin-top: 10px;
+}
+.GreenLetter {
+  font-family: 'Quicksand';
+  color: #6FFFB0;
+}
+.ListColor .rs-list-item{
+  background-color: #C0C0C0;
+}
+.rs-steps-item-icon-wrapper{
+  background-color: #AFDFFF;
+  color: #434343;
+  border-color: #AFDFFF;
+}
+.rs-steps-item-title{
+  font-family: 'Quicksand';
+  color: #6FFFB0;
+}
+.rs-steps-item-icon-wrapper:not(.rs-steps-item-custom-icon){
+  border-color: #AFDFFF;
+}
+.rs-steps-item-status-process .rs-steps-item-icon-wrapper:not(.rs-steps-item-custom-icon){
+  background-color: #6FFFB0;
+  border-color: #6FFFB0;
+  color: #434343;
+}
+.Pad {
+  padding: 7px;
+}
+.ListInput {
+  width: 24%;
+  margin-right: 10px;
+}
