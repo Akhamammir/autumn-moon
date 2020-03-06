@@ -89,6 +89,9 @@ class ClientReg extends React.Component {
   forward = () =>{
     this.setState({Step:this.state.Step+1})
   }
+  forwardback = () =>{
+    this.setState({Step:this.state.Step-1})
+  }
   render() {
     return (
       <Grommet plain className="App">
@@ -350,10 +353,72 @@ class ClientReg extends React.Component {
   }
   StepTwo = () =>{
     return(
-      //
-      <span></span>
+      <Box gridArea="info">
+        <Box direction="row">
+          <Heading
+            margin="small"
+            level={5}
+            className = "GreenLetter"
+            >
+            Contacto empresa
+          </Heading>
+        </Box>
+        <Box direction = "row">
+          <List hover className = 'ListColor'>
+            {this.state.BranchAdd.map((item,index)=>
+              <List.Item key={index} index={index} className="Pad">
+                <Box direction="row">
+                  <Input className="ListInput" placeholder="Numero Tel."/>
+                  <Input className="ListInput" placeholder="Email"/>
+                </Box>
+              </List.Item>
+            )}
+          </List>
+        </Box>
+        <br/>
+        <br/>
+        <Box direction="row">
+          <Heading
+            margin="small"
+            level={5}
+            className = "GreenLetter"
+            >
+            Datos del representante legal
+          </Heading>
+        </Box>
+        <br/>
+        <Box direction = "row">
+          <List hover className = 'ListColor'>
+            {this.state.BranchAdd.map((item,index)=>
+              <List.Item key={index} index={index} className="Pad">
+                <Box direction="row">
+                  <Input className="ListInput" placeholder="Nombre"/>
+                  <Input className="ListInput" placeholder="RFC"/>
+                  <Input className="ListInput" placeholder="Curp"/>
+                  <Input className="ListInput" placeholder="Email"/>
+                  <Input className="ListInput" placeholder="NUmero Tel."/>
+                </Box>
+              </List.Item>
+            )}
+          </List>
+        </Box>
+        <br/><br/>
+
+        <Button
+          style={{
+            backgroundColor:"#6FFFB0",
+            width:"120px",
+            fontFamily:"'Manjari', sans-serif",
+            boxShadow: "0px 2px 4px rgba(0,0,0,0.20)"
+          }}
+          onClick = { () => this.forwardback() }
+        >
+          Atras&nbsp;&nbsp;<Icon icon="hand-o-right"  />
+        </Button>
+
+      </Box>
     );
   }
 }
 export default ClientReg;
-//
+//jj
