@@ -7,7 +7,7 @@ import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import DecoratedSelect from './../Components/DecoratedSelect/DecoratedSelect';
 import DecoratedCalendar from './../Components/DecoratedCalendar/DecoratedCalendar';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Table, Toggle, Icon, Button, Modal, Input, IconButton, 
+import { Table, Toggle, Icon, Button, Modal, Input, IconButton,
   Alert, Progress, List, Steps } from 'rsuite';
 import axios from 'axios';
 const { Line } = Progress;
@@ -19,7 +19,7 @@ class ClientReg extends React.Component {
     console.log(props)
     this.state = {usr:this.props.location.state, usrlist:[],
       name:'', nameFather:'', nameMother:'', birthday:'', gender:'',
-      curp:'', rfc:'', Pphys: false, Branch:false, Step:0, Extran:false, 
+      curp:'', rfc:'', Pphys: false, Branch:false, Step:0, Extran:false,
       dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'',
       password:'', "_id":'', show:false,
       BranchAdd:[
@@ -41,7 +41,7 @@ class ClientReg extends React.Component {
       });
       this.setState({usrlist:users})
       console.log(this.state.usrlist);
-      
+
     });
   }
   handleChange = (value, field) => {
@@ -49,7 +49,7 @@ class ClientReg extends React.Component {
     this.setState( {[field]:value}, ()=>{
       console.log(this.state);
     } )
-    
+
   }
   handleUpload = () => {
     console.log("Hi");
@@ -168,7 +168,7 @@ class ClientReg extends React.Component {
                   className = "GreenLetter"
                   textAlign="center"
                 >
-                  { this.state.name[0] ? (this.state.name + ' ' + this.state.nameFather + ' ' + this.state.nameMother) 
+                  { this.state.name[0] ? (this.state.name + ' ' + this.state.nameFather + ' ' + this.state.nameMother)
                   : 'Ingrese un nombre o seleccione a un usuario' }
                   </Heading>
                 <br/>
@@ -196,7 +196,7 @@ class ClientReg extends React.Component {
             textw = "medium"
             icon = "id-mapping"
           />
-          <Toggle 
+          <Toggle
             size="lg"
             checkedChildren="P. Moral"
             unCheckedChildren="P. Fisica"
@@ -229,7 +229,7 @@ class ClientReg extends React.Component {
         </Box>
         <br/>
         <Box direction="row">
-        { !this.state.Pphys ? 
+        { !this.state.Pphys ?
         <DecoratedInput
             area="Curp"
             value={this.state.curp}
@@ -238,7 +238,7 @@ class ClientReg extends React.Component {
             icon = "id-card"
             display = { this.state.Pphys }
           />
-          : 
+          :
           <DecoratedInput
             area="RINE"
             value={this.state.position}
@@ -257,7 +257,7 @@ class ClientReg extends React.Component {
         </Box>
         <br/>
         <Box direction="row">
-          
+
           <DecoratedInput
             area="Numero Tel."
             value={this.state.phoneNum}
@@ -286,7 +286,7 @@ class ClientReg extends React.Component {
                 onChange = { () => { this.setState({Branch:!this.state.Branch}) } }
               />
             </Box>
-            {this.state.Branch ? 
+            {this.state.Branch ?
               <Box>
                 <List hover className = 'ListColor'>
                   {this.state.BranchAdd.map((item,index)=>
@@ -302,14 +302,14 @@ class ClientReg extends React.Component {
                 </List>
                 <br/>
                 <IconButton icon={<Icon icon="plus" />} circle size="md" className="" />
-              </Box> 
-            : 
+              </Box>
+            :
               <span></span>
             }
             <br/>
             <br/>
           </Box>
-        { !this.state.Pphys ? 
+        { !this.state.Pphys ?
           <span></span>
           :
           <Box>
@@ -356,3 +356,4 @@ class ClientReg extends React.Component {
   }
 }
 export default ClientReg;
+//
