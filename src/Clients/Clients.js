@@ -180,6 +180,7 @@ class ClientReg extends React.Component {
               </Box>
               { this.state.Step === 0 ? <this.StepOne/> : <span></span> }
               { this.state.Step === 1 ? <this.StepTwo/> : <span></span> }
+              { this.state.Step === 2 ? <this.StepTree/> : <span></span> }
             </Grid>
           </Box>
         </Grid>
@@ -403,19 +404,87 @@ class ClientReg extends React.Component {
           </List>
         </Box>
         <br/><br/>
-
-        <Button
-          style={{
-            backgroundColor:"#6FFFB0",
-            width:"120px",
-            fontFamily:"'Manjari', sans-serif",
-            boxShadow: "0px 2px 4px rgba(0,0,0,0.20)"
-          }}
-          onClick = { () => this.forwardback() }
-        >
-          Atras&nbsp;&nbsp;<Icon icon="hand-o-right"  />
-        </Button>
-
+        <Box direction="row">
+          <Heading
+            margin="small"
+            level={5}
+            className = "GreenLetter"
+            >
+            Responsables
+          </Heading>
+        </Box>
+        <br/>
+        <Box direction="row">
+          <DecoratedInput
+            area="Nombre del Equipo"
+            value={this.state.nameMother}
+            onChange={ (e) => {this.handleChange(e, 'nameMother') } }
+            width = "100%"
+            boxw = "170px"
+            textw = "medium"
+            icon = "id-mapping"
+          />
+        </Box>
+        <br/>
+        <Box direction = "row">
+          <List hover className = 'ListColor'>
+            {this.state.BranchAdd.map((item,index)=>
+              <List.Item key={index} index={index} className="Pad">
+                <Box direction="row">
+                  <Input className="ListInput" placeholder="Asesor"/>
+                  <Input className="ListInput" placeholder="Grado academico"/>
+                  <Input className="ListInput" placeholder="Email"/>
+                  <Input className="ListInput" placeholder="Cntador Asignado"/>
+                  <Input className="ListInput" placeholder="Grado academico"/>
+                  <Input className="ListInput" placeholder="Email"/>
+                  <Input className="ListInput" placeholder="Numero Tel."/>
+                </Box>
+              </List.Item>
+            )}
+          </List>
+        </Box>
+        <br/>
+        <Box direction= "row" alinSelf= "stretch">
+          <Button
+            style={{
+              backgroundColor:"#6FFFB0",
+              width:"120px",
+              fontFamily:"'Manjari', sans-serif",
+              boxShadow: "0px 2px 4px rgba(0,0,0,0.20)"
+            }}
+            onClick = { () => this.forwardback() }
+          >
+            Atras&nbsp;&nbsp;<Icon icon="hand-o-right"  />
+          </Button>
+          <Button
+            style={{
+              backgroundColor:"#6FFFB0",
+              width:"120px",
+              fontFamily:"'Manjari', sans-serif",
+              boxShadow: "0px 2px 4px rgba(0,0,0,0.20)"
+            }}
+            onClick = { () => this.forward() }
+          >
+            Siguiente&nbsp;&nbsp;<Icon icon="hand-o-right"  />
+          </Button>
+        </Box>
+      </Box>
+    );
+  }
+  StepTree = () =>{
+    return(
+      <Box gridArea="info">
+      <Button
+        style={{
+          backgroundColor:"#6FFFB0",
+          width:"120px",
+          fontFamily:"'Manjari', sans-serif",
+          boxShadow: "0px 2px 4px rgba(0,0,0,0.20)"
+        }}
+        onClick = { () => this.forwardback() }
+      >
+      <Icon icon="hand-o-left"  />  Atras&nbsp;&nbsp;
+      </Button>
       </Box>
     );
   }
