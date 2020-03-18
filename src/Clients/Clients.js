@@ -6,32 +6,35 @@ import './Clients.css'
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import DecoratedSelect from './../Components/DecoratedSelect/DecoratedSelect';
 import DecoratedCalendar from './../Components/DecoratedCalendar/DecoratedCalendar';
-import { Grommet, Box, Grid, Heading } from 'grommet';
+import { Grommet, Box, Grid, Heading, Text } from 'grommet';
 import { Table, Toggle, Icon, Button, Modal, Input, IconButton,
-  Alert, Progress, List, Steps } from 'rsuite';
+  Alert, Progress, List, Steps, CheckPicker, Dropdown, SelectPicker } from 'rsuite';
 import axios from 'axios';
 const { Line } = Progress;
 const { Column, HeaderCell, Cell, Pagination } = Table;
 const miliPerYear = 31536000000;
 class ClientReg extends React.Component {
   constructor(props) {
+
     super(props);
     console.log(props)
     this.state = {usr:this.props.location.state, usrlist:[],
       name:'', nameFather:'', nameMother:'', birthday:'', gender:'',
       curp:'', rfc:'', Pphys: false, Branch:false, Step:0, Extran:false,
       dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'',
-      password:'', "_id":'', show:false,
+      password:'', "_id":'', show:false, Resultado:'',
       BranchAdd:[
         'Roses are red',
         'Violets are blue',
         'Sugar is sweet',
         'And so are you',
-       ]
+      ],ArrayCon:['Roses are red','Violets are blue',], ArrayDatos:['Roses are red','Violets are blue',],
+      ArrayActF:['Roses are red',], valuecheck:[],ISN:"", RTP:"",Cedular:"",ISH:""
     }
+
   }
   componentDidMount() {
-    axios.post('http://35.232.231.98:3001/userslist', {team:this.state.usr.Team}).then(res => {
+    axios.post('/userslist', {team:this.state.usr.Team}).then(res => {
       console.log(res)
       //this.setState({clients:res.data.User})
       let users = [];
@@ -43,6 +46,7 @@ class ClientReg extends React.Component {
       console.log(this.state.usrlist);
 
     });
+      this.handleChange= this.handleChange.bind(this);
   }
   handleChange = (value, field) => {
     console.log(value, field)
@@ -92,6 +96,22 @@ class ClientReg extends React.Component {
   forwardback = () =>{
     this.setState({Step:this.state.Step-1})
   }
+  MetodoPush = (VariableX) =>{
+    let valorA;
+    valorA=this.state[VariableX];
+    valorA.push([""]);
+    this.setState({[VariableX]:valorA});
+  }
+  CAMBIOS = (VALORche)=>{
+    this.setState({
+      valuecheck:VALORche
+    },()=>{
+      this.setState({
+        Resultado: this.state.valuecheck.join(", ")
+      });
+      console.log(this.state.valuecheck);
+    });
+  }
   render() {
     return (
       <Grommet plain className="App">
@@ -116,8 +136,6 @@ class ClientReg extends React.Component {
           </Modal.Footer>
         </Modal>
 
-
-
         <Modal show={this.state.show2}>
           <Modal.Header>
             <Modal.Title>Realizando Operacion</Modal.Title>
@@ -127,8 +145,6 @@ class ClientReg extends React.Component {
             <Line percent={30} status='active' showInfo={false} />
           </Modal.Body>
         </Modal>
-
-
 
         <Grid
           rows={[process.env.REACT_APP_SCREEN_WIDTH]}
@@ -145,7 +161,7 @@ class ClientReg extends React.Component {
           <Box gridArea="main">
             <br/>
             <Grid
-              rows={['small', 'large']}
+              rows={['small', 'xlarge']}
               columns={['small', '70%']}
               gap="3px"
               areas={[
@@ -363,10 +379,11 @@ class ClientReg extends React.Component {
             >
             Contacto empresa
           </Heading>
+          <br/>
         </Box>
         <Box direction = "row">
           <List hover className = 'ListColor'>
-            {this.state.BranchAdd.map((item,index)=>
+            {this.state.ArrayCon.map((item,index)=>
               <List.Item key={index} index={index} className="Pad">
                 <Box direction="row">
                   <Input className="ListInput" placeholder="Numero Tel."/>
@@ -375,6 +392,11 @@ class ClientReg extends React.Component {
               </List.Item>
             )}
           </List>
+        </Box>
+        <br/>
+        <Box>
+        <IconButton icon={<Icon icon="plus" />} circle size="md" className=""
+        onClick={()=>{this.MetodoPush("ArrayCon")}}/>
         </Box>
         <br/>
         <br/>
@@ -390,7 +412,7 @@ class ClientReg extends React.Component {
         <br/>
         <Box direction = "row">
           <List hover className = 'ListColor'>
-            {this.state.BranchAdd.map((item,index)=>
+            {this.state.ArrayDatos.map((item,index)=>
               <List.Item key={index} index={index} className="Pad">
                 <Box direction="row">
                   <Input className="ListInput" placeholder="Nombre"/>
@@ -403,7 +425,11 @@ class ClientReg extends React.Component {
             )}
           </List>
         </Box>
-        <br/><br/>
+         <br/>
+        <IconButton icon={<Icon icon="plus" />} circle size="md"
+        lassName="" onClick={()=>{this.MetodoPush("ArrayDatos")}}/>
+        <br/>
+        <br/>
         <Box direction="row">
           <Heading
             margin="small"
@@ -414,37 +440,66 @@ class ClientReg extends React.Component {
           </Heading>
         </Box>
         <br/>
-        <Box direction="row">
-          <DecoratedInput
-            area="Nombre del Equipo"
-            value={this.state.nameMother}
-            onChange={ (e) => {this.handleChange(e, 'nameMother') } }
-            width = "100%"
-            boxw = "170px"
-            textw = "medium"
-            icon = "id-mapping"
-          />
-        </Box>
+        <Table
+          height={300}
+          data={this.state.usrlist}
+          style={{zIndex:0}}
+          onRowClick={data => {
+            console.log(data);
+            this.state._idDel = data._id
+          }}
+        >
+          <Column width={50} align="center" fixed>
+            <HeaderCell>Usuario</HeaderCell>
+            <Cell dataKey="place"/>
+          </Column>
+          <Column flexGrow={2} align="center" fixed>
+            <HeaderCell>Nombre</HeaderCell>
+            <Cell dataKey="Name.First" />
+          </Column>
+          <Column flexGrow={2} fixed>
+            <HeaderCell>Apellido Paterno</HeaderCell>
+            <Cell dataKey="Name.Last" />
+          </Column>
+          <Column flexGrow={2}>
+            <HeaderCell>Apellido Materno</HeaderCell>
+            <Cell dataKey="Name.Last2" />
+          </Column>
+          <Column flexGrow={1}>
+            <HeaderCell>Puesto</HeaderCell>
+            <Cell dataKey="Pos" />
+          </Column>
+          <Column flexGrow={1}>
+            <HeaderCell>Rol</HeaderCell>
+            <Cell dataKey="Role" />
+          </Column>
+          <Column flexGrow={2} fixed="right">
+            <HeaderCell>Action</HeaderCell>
+            <Cell>
+              {rowData => {
+                this.showUser = () => {
+                  this.setState({name:rowData.Name.First,
+                   nameFather:rowData.Name.Last, nameMother:rowData.Name.Last2,
+                   birthday:new Date(rowData.Birth), gender:rowData.Gender, curp:rowData.Curp,
+                   rfc:rowData.RFC, dateHire:rowData.DateH, position:rowData.Pos,
+                   phoneNum:rowData.Phone, emergencyNum: rowData.Emergency, academic:rowData.Academic,
+                   password:rowData.Pwd,_id:rowData._id} )
+                }
+                this.removeUser = () => {
+                  //
+                }
+                return (
+                  <span>
+                    <a onClick={this.showUser}> Selecionar </a>
+                  </span>
+                );
+              }}
+            </Cell>
+          </Column>
+        </Table>
         <br/>
-        <Box direction = "row">
-          <List hover className = 'ListColor'>
-            {this.state.BranchAdd.map((item,index)=>
-              <List.Item key={index} index={index} className="Pad">
-                <Box direction="row">
-                  <Input className="ListInput" placeholder="Asesor"/>
-                  <Input className="ListInput" placeholder="Grado academico"/>
-                  <Input className="ListInput" placeholder="Email"/>
-                  <Input className="ListInput" placeholder="Cntador Asignado"/>
-                  <Input className="ListInput" placeholder="Grado academico"/>
-                  <Input className="ListInput" placeholder="Email"/>
-                  <Input className="ListInput" placeholder="Numero Tel."/>
-                </Box>
-              </List.Item>
-            )}
-          </List>
-        </Box>
         <br/>
-        <Box direction= "row" alinSelf= "stretch">
+        <Box direction="row" >
           <Button
             style={{
               backgroundColor:"#6FFFB0",
@@ -454,10 +509,12 @@ class ClientReg extends React.Component {
             }}
             onClick = { () => this.forwardback() }
           >
-            Atras&nbsp;&nbsp;<Icon icon="hand-o-right"  />
+            <Icon icon="hand-o-left"  /> Atras&nbsp;&nbsp;
           </Button>
-          <Button
+            <Button
             style={{
+              position:"absolute",
+              left:"75vw",
               backgroundColor:"#6FFFB0",
               width:"120px",
               fontFamily:"'Manjari', sans-serif",
@@ -467,13 +524,160 @@ class ClientReg extends React.Component {
           >
             Siguiente&nbsp;&nbsp;<Icon icon="hand-o-right"  />
           </Button>
+
         </Box>
       </Box>
     );
   }
   StepTree = () =>{
+  let RegFis=[
+      {"label":"Asalariados",
+      "value":"Asalariados",
+      "role":"Master"},
+      {"label":"Honorarios",
+      "value": "Honorarios",
+      "role" : "Master"},
+      {"label":"Arrendamiento de inmuebles",
+      "value":"Arrendamiento de inmuebles",
+      "role" :"Master"},
+      {"label":"Actividades empresariales",
+      "value":"Actividades empresariales",
+      "role":"Master"},
+      {"label":"Incorporación fiscal",
+      "value":"Incorporación fiscal",
+      "role":"Master"},
+      {"label":"Régimen general",
+      "value":"Régimen general",
+      "role":"Master"},
+      {"label":"Régimen con fines no lucrativos",
+      "value":"Régimen con fines no lucrativos",
+      "role":"Master"}];
+      let nomina = [
+       {"label":"Semanal",
+       "value":"Semanal",
+       "role":"Master"},
+       {"label":"Catorcenal",
+       "value": "Catorcenal",
+       "role":"Master"},
+       {"label":"Quincenal",
+       "value": "Quincenal",
+       "role" : "Master"}];
     return(
       <Box gridArea="info">
+        <Box direction="row">
+          <Heading
+            margin="small"
+            level={5}
+            className = "GreenLetter"
+            >
+            Regímen Fiscal:
+          </Heading>
+          <CheckPicker
+            value={this.state.valuecheck}
+            onChange={this.CAMBIOS}
+            data={RegFis}
+            style={{ width: 224 }} />
+        </Box>
+        <br/>
+        <Box direction="row">
+        <Text className="GreenLetter">{this.state.Resultado}</Text>
+        </Box>
+      <br/>
+      <br/>
+      <Box>
+        <Box direction="row">
+          <Heading
+            margin="small"
+            level={5}
+            className = "GreenLetter"
+            >
+              Cuenta con trabajadores?
+          </Heading>
+          <Toggle
+            size="lg"
+            checkedChildren="Si"
+            unCheckedChildren="No"
+            className = "PushDown"
+            checked= {this.state.Branch}
+            onChange = { () => { this.setState({Branch:!this.state.Branch}) } }
+          />
+        </Box>
+        <br/>
+        {this.state.Branch ?
+        <Box>
+          <Box direction="row">
+            <Heading
+              margin="small"
+              level={5}
+              className = "GreenLetter"
+              >
+              Periocidad de nómina
+            </Heading>
+            <SelectPicker data={nomina} style={{ width: 224 }} />
+          </Box>
+        </Box>
+          :
+            <span></span>
+          }
+          <br/>
+      </Box>
+      <Box>
+        <Grid
+          rows={['xxsmall', 'xxsmall']}
+          columns={['medium', 'medium']}
+          gap="small"
+          areas={[
+            { name: 'ArrIz', start: [0, 0], end: [0,0 ] },
+            { name: 'AbaiZ', start: [0, 1], end: [0, 1] },
+            { name: 'ArrDer', start: [1, 0], end: [1, 0] },
+            { name: 'AbaDer', start: [1, 1], end: [1, 1] },
+        ]}
+      >
+        <Box gridArea="ArrIz">
+        <DecoratedInput
+          area="ISN"
+          value={this.state.Isn}
+          onChange={ (e) => {this.handleChange(e, 'Isn') } }
+          width = "100%"
+          type=""
+          icon = "percent"
+        />
+        </Box>
+        <Box gridArea="AbaiZ">
+        <DecoratedInput
+          area="Cedular"
+          value={this.state.phoneNum}
+          onChange={ (e) => {this.handleChange(e, 'Cedular') } }
+          width = "100%"
+          type=""
+          icon = "percent"
+        />
+        </Box>
+        <Box gridArea="ArrDer">
+        <DecoratedInput
+          area="RTP"
+          value={this.state.phoneNum}
+          onChange={ (e) => {this.handleChange(e, 'phoneNum') } }
+          width = "100%"
+          type=""
+          icon = "percent"
+        />
+        </Box>
+        <Box gridArea="AbaDer">
+        <DecoratedInput
+          area="ISH"
+          value={this.state.phoneNum}
+          onChange={ (e) => {this.handleChange(e, 'ISH') } }
+          width = "100%"
+          type=""
+          icon = "percent"
+        />
+        </Box>
+
+      </Grid>
+      </Box>
+      <br/>
+      <br/>
       <Button
         style={{
           backgroundColor:"#6FFFB0",

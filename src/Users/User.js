@@ -30,7 +30,7 @@ class User extends React.Component {
       });
       this.setState({usrlist:users})
       console.log(this.state.usrlist);
-      
+
     });
   }
   handleChange = (value, field) => {
@@ -38,7 +38,7 @@ class User extends React.Component {
     this.setState( {[field]:value}, ()=>{
       console.log(this.state);
     } )
-    
+
   }
   handleUpload = () => {
     console.log("Hi");
@@ -168,7 +168,7 @@ class User extends React.Component {
                       this.setState({name:rowData.Name.First,
                        nameFather:rowData.Name.Last, nameMother:rowData.Name.Last2,
                        birthday:new Date(rowData.Birth), gender:rowData.Gender, curp:rowData.Curp,
-                       rfc:rowData.RFC, dateHire:rowData.DateH, position:rowData.Pos, 
+                       rfc:rowData.RFC, dateHire:rowData.DateH, position:rowData.Pos,
                        phoneNum:rowData.Phone, emergencyNum: rowData.Emergency, academic:rowData.Academic,
                        password:rowData.Pwd,_id:rowData._id} )
                     }
@@ -209,13 +209,13 @@ class User extends React.Component {
                   }}
                   textAlign="center"
                 >
-                  { this.state.name[0] ? (this.state.name + ' ' + this.state.nameFather + ' ' + this.state.nameMother) 
+                  { this.state.name[0] ? (this.state.name + ' ' + this.state.nameFather + ' ' + this.state.nameMother)
                   : 'Ingrese un nombre o seleccione a un empleado' }
                   </Heading>
                 <br/>
                 <Heading level="3" margin="none" style = {{left:"60%", marginLeft:"20px"}} textAlign="center">{this.state.curPos}</Heading>
                 <br/>
-                
+
               </Box>
               <Box gridArea="info">
               <Box direction="row">

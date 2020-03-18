@@ -11,11 +11,11 @@ class Login extends React.Component {
     console.log(this.props)
   }
   Login = () => {
-    axios.post('http://35.232.231.98:3001/users', {usr:this.state.usr}).then(res => {
+    axios.post('/users', {usr:this.state.usr}).then(res => {
       if(this.state.usr == res.data.User.Usr && this.state.pwd == res.data.User.Pwd){
         this.props.history.push("/home/"+res.data.User.Usr, {...res.data.User})
       } else {
-        Alert.error('Error en Usuario y/o contraseña.', 3000)
+        Alert.error('/users', 3000)
       }
     })
   }
