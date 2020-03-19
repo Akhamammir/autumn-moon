@@ -28,10 +28,14 @@ class ClientReg extends React.Component {
         'Violets are blue',
         'Sugar is sweet',
         'And so are you',
-      ],ArrayCon:['Roses are red','Violets are blue',], ArrayDatos:['Roses are red','Violets are blue',],
-      ArrayActF:['Roses are red',], valuecheck:[],ISN:"", RTP:"",Cedular:"",ISH:""
+      ],ArrayCon:['Roses are red','Violets are blue',],
+      ArrayDatos:['Roses are red','Violets are blue',],
+      ArrayActF:['Roses are red',],
+      valuecheck:[],ISN:"", RTP:"",Cedular:"",ISH:"",CEstep2Email:"",CEstep2Telefono:"",
+      DRstep2Nombre:"",DERstep2RFC:"",DERstep2Curp:"",DERstep2Email:"",DERstep2Tel:"",
+      DERstepNombre:"",
+      step1list = {listcolonia: "", calle:"", cp:"", estado:"" }
     }
-
   }
   componentDidMount() {
     axios.post('/userslist', {team:this.state.usr.Team}).then(res => {
@@ -209,7 +213,7 @@ class ClientReg extends React.Component {
       <Box direction="row">
           <DecoratedInput
             area="Razon"
-            value={this.state.name}
+            value={this.state.arr}
             onChange={ (e) => {this.handleChange(e, 'name') } }
             width = "85%"
             boxw = "90px"
@@ -312,10 +316,42 @@ class ClientReg extends React.Component {
                   {this.state.BranchAdd.map((item,index)=>
                     <List.Item key={index} index={index} className="Pad">
                       <Box direction="row">
-                        <Input className="ListInput" placeholder="Col." />
-                        <Input className="ListInput" placeholder="Calle y Numero" />
-                        <Input className="ListInput" placeholder="C.P." />
-                        <Input className="ListInput" placeholder="Estado" />
+                      <DecoratedInput
+                        area="Col."
+                        value={this.state.step1list}
+                        onChange={ (e) => {this.handleChange(e, 'listcolonia') } }
+                        width = "300px"
+                        boxw = "65px"
+                        textw = "medium"
+                        icon = "id-mapping"
+                      />
+                      <DecoratedInput
+                        area="Calle y N."
+                        value={this.state.step1list}
+                        onChange={ (e) => {this.handleChange(e, 'calle') } }
+                        width = "550px"
+                        boxw = "100px"
+                        textw = "medium"
+                        icon = "id-mapping"
+                      />
+                      <DecoratedInput
+                        area="C.P."
+                        value={this.state.DERstep2Nombre}
+                        onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                        width = "200px"
+                        boxw = "60px"
+                        textw = "medium"
+                        icon = "id-mapping"
+                      />
+                      <DecoratedInput
+                        area="Estado"
+                        value={this.state.DERstep2Nombre}
+                        onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                        width = "250px"
+                        boxw = "80px"
+                        textw = "medium"
+                        icon = "id-mapping"
+                      />
                       </Box>
                     </List.Item>
                   )}
@@ -386,8 +422,24 @@ class ClientReg extends React.Component {
             {this.state.ArrayCon.map((item,index)=>
               <List.Item key={index} index={index} className="Pad">
                 <Box direction="row">
-                  <Input className="ListInput" placeholder="Numero Tel."/>
-                  <Input className="ListInput" placeholder="Email"/>
+                <DecoratedInput
+                  area="Email"
+                  value={this.state.CEstep2Email}
+                  onChange={ (e) => {this.handleChange(e, 'CEstep2Email') } }
+                  width = "340px"
+                  boxw = "80px"
+                  textw = "medium"
+                  icon = "user-o"
+                />
+                <DecoratedInput
+                  area="Telefono"
+                  value={this.state.CEstep2Telefono}
+                  onChange={ (e) => {this.handleChange(e, 'CEstep2Telefono') } }
+                  width = "200px"
+                  boxw = "90px"
+                  textw = "medium"
+                  icon = "mobile"
+                />
                 </Box>
               </List.Item>
             )}
@@ -415,11 +467,51 @@ class ClientReg extends React.Component {
             {this.state.ArrayDatos.map((item,index)=>
               <List.Item key={index} index={index} className="Pad">
                 <Box direction="row">
-                  <Input className="ListInput" placeholder="Nombre"/>
-                  <Input className="ListInput" placeholder="RFC"/>
-                  <Input className="ListInput" placeholder="Curp"/>
-                  <Input className="ListInput" placeholder="Email"/>
-                  <Input className="ListInput" placeholder="NUmero Tel."/>
+                  <DecoratedInput
+                    area="Nombre"
+                    value={this.state.DERstep2Nombre}
+                    onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                    width = "150vh"
+                    boxw = "100px"
+                    textw = "medium"
+                    icon = "id-mapping"
+                  />
+                  <DecoratedInput
+                    area="RFC"
+                    value={this.state.DERstep2RFC}
+                    onChange={ (e) => {this.handleChange(e, 'DERstep2RFC') } }
+                    width = "100vh"
+                    boxw = "70px"
+                    textw = "medium"
+                    icon = "id-card"
+                  />
+                  <DecoratedInput
+                    area="Curp"
+                    value={this.state.name}
+                    onChange={ (e) => {this.handleChange(e, 'DERstep2Curp') } }
+                    width = "80vh"
+                    boxw = "70px"
+                    textw = "medium"
+                    icon = "id-card"
+                  />
+                  <DecoratedInput
+                    area="Email"
+                    value={this.state.DERstep2Email}
+                    onChange={ (e) => {this.handleChange(e, 'DERstep2Email') } }
+                    width = "100vh"
+                    boxw = "90px"
+                    textw = "medium"
+                    icon = "user-o"
+                  />
+                  <DecoratedInput
+                    area="Telefono"
+                    value={this.state.DERstep2Tel}
+                    onChange={ (e) => {this.handleChange(e, 'DERstep2Tel') } }
+                    width = "80vh"
+                    boxw = "90px"
+                    textw = "medium"
+                    icon = "mobile"
+                  />
                 </Box>
               </List.Item>
             )}
@@ -441,6 +533,7 @@ class ClientReg extends React.Component {
         </Box>
         <br/>
         <Table
+          className="TableColor"
           height={300}
           data={this.state.usrlist}
           style={{zIndex:0}}
@@ -694,4 +787,3 @@ class ClientReg extends React.Component {
   }
 }
 export default ClientReg;
-//jj

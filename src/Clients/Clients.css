@@ -19,7 +19,16 @@
   color: #6FFFB0;
 }
 .ListColor .rs-list-item{
-  background-color: #C0C0C0;
+  background-color: #434343;
+  border: none;
+  boxShadow:none;
+}
+.ListColor .rs-list-item:hover{
+  background-color:#515151;
+
+}
+.TableColor{
+  background-color: #434343;
 }
 .rs-steps-item-icon-wrapper{
   background-color: #AFDFFF;
