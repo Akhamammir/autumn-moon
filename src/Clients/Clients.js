@@ -26,15 +26,16 @@ class ClientReg extends React.Component {
       BranchAdd:[
         'Roses are red',
         'Violets are blue',
-        'Sugar is sweet',
-        'And so are you',
-      ],ArrayCon:['Roses are red','Violets are blue',],
+      ],
+      ArrayCon:['Roses are red','Violets are blue',],
       ArrayDatos:['Roses are red','Violets are blue',],
       ArrayActF:['Roses are red',],
       valuecheck:[],ISN:"", RTP:"",Cedular:"",ISH:"",CEstep2Email:"",CEstep2Telefono:"",
       DRstep2Nombre:"",DERstep2RFC:"",DERstep2Curp:"",DERstep2Email:"",DERstep2Tel:"",
       DERstepNombre:"",
-      step1list = {listcolonia: "", calle:"", cp:"", estado:"" }
+      step0list1 : [ {col:'', calle: "", cp:'', estado:''}, {col:'', calle: "", cp:'', estado:''} ],
+      step1list1 : [ {nombre:'', email: "", telefono:''}, {nombre:'', email: "", telefono:''} ],
+      step1list2 : [ {nombre:'', rfc: "", curp:'', email:'', telefono:''}, {nombre:'', rfc: "", curp:'', email:'', telefono:''} ]
     }
   }
   componentDidMount() {
@@ -56,6 +57,15 @@ class ClientReg extends React.Component {
     console.log(value, field)
     this.setState( {[field]:value}, ()=>{
       console.log(this.state);
+    } )
+
+  }
+  handleChangeList = (value, collection, index, name) => {
+    //console.log(value, collection, index, name);
+    this.state[collection][index][name] = value;
+    //console.log( this.state[collection][index][name] );
+    this.setState( { step1list : this.state.step1list1 }, ()=>{
+      //console.log(this.state);
     } )
 
   }
@@ -100,11 +110,15 @@ class ClientReg extends React.Component {
   forwardback = () =>{
     this.setState({Step:this.state.Step-1})
   }
-  MetodoPush = (VariableX) =>{
+  MetodoPush = (VariableX, VariableY, push) =>{
     let valorA;
-    valorA=this.state[VariableX];
-    valorA.push([""]);
-    this.setState({[VariableX]:valorA});
+    valorA=this.state[VariableY];
+    valorA.push(push);
+    this.setState({[VariableY]:valorA}, ()=>{
+      valorA=this.state[VariableX];
+      valorA.push([""]);
+      this.setState({[VariableX]:valorA});
+    });
   }
   CAMBIOS = (VALORche)=>{
     this.setState({
@@ -318,8 +332,8 @@ class ClientReg extends React.Component {
                       <Box direction="row">
                       <DecoratedInput
                         area="Col."
-                        value={this.state.step1list}
-                        onChange={ (e) => {this.handleChange(e, 'listcolonia') } }
+                        value={ this.state.step0list1[index].col }
+                        onChange={ (e) => {this.handleChangeList(e, 'step0list1', index, 'col') } }
                         width = "300px"
                         boxw = "65px"
                         textw = "medium"
@@ -327,8 +341,8 @@ class ClientReg extends React.Component {
                       />
                       <DecoratedInput
                         area="Calle y N."
-                        value={this.state.step1list}
-                        onChange={ (e) => {this.handleChange(e, 'calle') } }
+                        value={ this.state.step0list1[index].calle }
+                        onChange={ (e) => {this.handleChangeList(e, 'step0list1', index, 'calle') } }
                         width = "550px"
                         boxw = "100px"
                         textw = "medium"
@@ -336,8 +350,8 @@ class ClientReg extends React.Component {
                       />
                       <DecoratedInput
                         area="C.P."
-                        value={this.state.DERstep2Nombre}
-                        onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                        value={ this.state.step0list1[index].cp }
+                        onChange={ (e) => {this.handleChangeList(e, 'step0list1', index, 'cp') } }
                         width = "200px"
                         boxw = "60px"
                         textw = "medium"
@@ -345,8 +359,8 @@ class ClientReg extends React.Component {
                       />
                       <DecoratedInput
                         area="Estado"
-                        value={this.state.DERstep2Nombre}
-                        onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                        value={ this.state.step0list1[index].estado }
+                        onChange={ (e) => {this.handleChangeList(e, 'step0list1', index, 'estado') } }
                         width = "250px"
                         boxw = "80px"
                         textw = "medium"
@@ -357,7 +371,15 @@ class ClientReg extends React.Component {
                   )}
                 </List>
                 <br/>
-                <IconButton icon={<Icon icon="plus" />} circle size="md" className="" />
+                <IconButton
+                  icon={<Icon icon="plus" />}
+                  circle size="md"
+                  onClick={ ()=>{
+                    this.MetodoPush("BranchAdd", 'step0list1', 
+                      {col:'', calle: "", cp:'', estado:''} )
+                    }
+                  }
+                />
               </Box>
             :
               <span></span>
@@ -423,9 +445,18 @@ class ClientReg extends React.Component {
               <List.Item key={index} index={index} className="Pad">
                 <Box direction="row">
                 <DecoratedInput
+                  area="Nombre"
+                  value={ this.state.step1list1[index].nombre }
+                  onChange={ (e) => {this.handleChangeList(e, 'step1list1', index, 'nombre') } }
+                  width = "340px"
+                  boxw = "80px"
+                  textw = "medium"
+                  icon = "user-o"
+                />
+                <DecoratedInput
                   area="Email"
-                  value={this.state.CEstep2Email}
-                  onChange={ (e) => {this.handleChange(e, 'CEstep2Email') } }
+                  value={this.state.step1list1[index].email}
+                  onChange={ (e) => {this.handleChangeList(e, 'step1list1', index, 'email') } }
                   width = "340px"
                   boxw = "80px"
                   textw = "medium"
@@ -433,8 +464,8 @@ class ClientReg extends React.Component {
                 />
                 <DecoratedInput
                   area="Telefono"
-                  value={this.state.CEstep2Telefono}
-                  onChange={ (e) => {this.handleChange(e, 'CEstep2Telefono') } }
+                  value={this.state.step1list1[index].telefono}
+                  onChange={ (e) => {this.handleChangeList(e, 'step1list1', index, 'telefono') } }
                   width = "200px"
                   boxw = "90px"
                   textw = "medium"
@@ -448,7 +479,7 @@ class ClientReg extends React.Component {
         <br/>
         <Box>
         <IconButton icon={<Icon icon="plus" />} circle size="md" className=""
-        onClick={()=>{this.MetodoPush("ArrayCon")}}/>
+        onClick={()=>{this.MetodoPush("ArrayCon", 'step1list1', {nombre:'', email: "", telefono:''})}}/>
         </Box>
         <br/>
         <br/>
@@ -469,8 +500,8 @@ class ClientReg extends React.Component {
                 <Box direction="row">
                   <DecoratedInput
                     area="Nombre"
-                    value={this.state.DERstep2Nombre}
-                    onChange={ (e) => {this.handleChange(e, 'DERstep2Nombre') } }
+                    value={this.state.step1list2[index].nombre}
+                    onChange={ (e) => {this.handleChangeList(e, 'step1list2', index, 'nombre') } }
                     width = "150vh"
                     boxw = "100px"
                     textw = "medium"
@@ -478,8 +509,8 @@ class ClientReg extends React.Component {
                   />
                   <DecoratedInput
                     area="RFC"
-                    value={this.state.DERstep2RFC}
-                    onChange={ (e) => {this.handleChange(e, 'DERstep2RFC') } }
+                    value={this.state.step1list2[index].rfc}
+                    onChange={ (e) => {this.handleChangeList(e, 'step1list2', index, 'rfc') } }
                     width = "100vh"
                     boxw = "70px"
                     textw = "medium"
@@ -487,8 +518,8 @@ class ClientReg extends React.Component {
                   />
                   <DecoratedInput
                     area="Curp"
-                    value={this.state.name}
-                    onChange={ (e) => {this.handleChange(e, 'DERstep2Curp') } }
+                    value={this.state.step1list2[index].curp}
+                    onChange={ (e) => {this.handleChangeList(e, 'step1list2', index, 'curp') } }
                     width = "80vh"
                     boxw = "70px"
                     textw = "medium"
@@ -496,17 +527,16 @@ class ClientReg extends React.Component {
                   />
                   <DecoratedInput
                     area="Email"
-                    value={this.state.DERstep2Email}
-                    onChange={ (e) => {this.handleChange(e, 'DERstep2Email') } }
-                    width = "100vh"
+                    value={this.state.step1list2[index].email}
+                    onChange={ (e) => {this.handleChangeList(e, 'step1list2', index, 'email') } }
                     boxw = "90px"
                     textw = "medium"
                     icon = "user-o"
                   />
                   <DecoratedInput
                     area="Telefono"
-                    value={this.state.DERstep2Tel}
-                    onChange={ (e) => {this.handleChange(e, 'DERstep2Tel') } }
+                    value={this.state.step1list2[index].telefono}
+                    onChange={ (e) => {this.handleChangeList(e, 'step1list2', index, 'telefono') } }
                     width = "80vh"
                     boxw = "90px"
                     textw = "medium"
@@ -519,7 +549,9 @@ class ClientReg extends React.Component {
         </Box>
          <br/>
         <IconButton icon={<Icon icon="plus" />} circle size="md"
-        lassName="" onClick={()=>{this.MetodoPush("ArrayDatos")}}/>
+        onClick={()=>{this.MetodoPush("ArrayDatos", 'step1list2', 
+          {nombre:'', rfc: "", curp:'', email:'', telefono:''})}}
+        />
         <br/>
         <br/>
         <Box direction="row">
