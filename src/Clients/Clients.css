@@ -54,3 +54,8 @@
   width: 24%;
   margin-right: 10px;
 }
+.leftie{
+  position: absolute;
+  bottom: 0px;
+  right: 20vw;
+}

@@ -20,7 +20,7 @@ class User extends React.Component {
     dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false}
   }
   componentDidMount() {
-    axios.post('http://35.232.231.98:3001/userslist', {team:this.state.usr.Team}).then(res => {
+    axios.post('/userslist', {team:this.state.usr.Team}).then(res => {
       console.log(res)
       //this.setState({clients:res.data.User})
       let users = [];

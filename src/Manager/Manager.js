@@ -21,7 +21,7 @@ class Manager extends React.Component {
     this.state = {usr:this.props, m_clients:[], f_clients:[]}
   }
   componentDidMount() {
-    axios.post('http://35.232.231.98:3001/clients', {team:this.state.usr.Team}).then(res => {
+    axios.post('/clients', {team:this.state.usr.Team}).then(res => {
       console.log(res)
       //this.setState({clients:res.data.User})
       let Place = '', moral = [], fisico = [];
