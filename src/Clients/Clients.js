@@ -722,7 +722,7 @@ class ClientReg extends React.Component {
             unCheckedChildren="No"
             className = "PushDown"
             checked= {this.state.workers}
-            onChange = { () => { this.setState({Workers:!this.state.workers}) } }
+            onChange = { () => { this.setState({workers:!this.state.workers}) } }
           />
         </Box>
         <br/>
