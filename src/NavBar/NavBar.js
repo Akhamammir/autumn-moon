@@ -40,6 +40,9 @@ class NavBar extends React.Component {
                     <Dropdown.Item eventKey="2" icon={<Icon icon="group" />} onClick={() => this.Users('clientreg')} >
                       Registro de clientes
                     </Dropdown.Item>
+                    <Dropdown.Item eventKey="2" icon={<Icon icon="group" />} onClick={() => this.Users('clients')} >
+                      Listado de clientes
+                    </Dropdown.Item>
                   </Dropdown>
                   <Dropdown
                     placement="rightStart"
