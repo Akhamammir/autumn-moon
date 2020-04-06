@@ -10,6 +10,8 @@ import Login from './Login/Login';
 import Home from './Home/Home';
 import User from './Users/User';
 import ClientReg from './Clients/Clients';
+import ClientsList from './Clients/ClientsList';
+
 
 class Main extends React.Component {
   render() {
@@ -23,6 +25,8 @@ class Main extends React.Component {
           <Route path="/users/:Usr" render = {(props) => <User {...props}/>} >
           </Route>
           <Route path="/clientreg/:Usr" render = {(props) => <ClientReg {...props}/>} >
+          </Route>
+          <Route path="/clients/:Usr" render = {(props) => <ClientsList {...props}/>} >
           </Route>
         </Switch>
       </Router>

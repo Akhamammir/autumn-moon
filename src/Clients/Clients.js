@@ -262,6 +262,8 @@ class ClientReg extends React.Component {
             boxw = "140px"
             textw = "medium"
             icon = "hourglass-2"
+            onChange={ (e) => {this.handleChange(e, 'Fiscal') } }
+
           />
         </Box>
         <br/>
