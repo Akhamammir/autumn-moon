@@ -100,54 +100,6 @@ class ClientReg extends React.Component {
     });
   };
   handleUpload = () => {
-    console.log('Hi');
-    this.setState({
-      show2: true,
-    });
-    axios
-      .post('http://35.232.231.98:3001/upUsr', {
-        state: {
-          name: this.state.name,
-          nameFather: this.state.nameFather,
-          nameMother: this.state.nameMother,
-          birthday: this.state.birthday,
-          gender: this.state.gender,
-          curp: this.state.curp,
-          rfc: this.state.rfc,
-          dateHire: this.state.dateHire,
-          position: this.state.position,
-          phoneNum: this.state.phoneNum,
-          emergencyNum: this.state.emergencyNum,
-          academic: this.state.academic,
-          password: this.state.password,
-          _id: this.state._id ? this.state._id : '0',
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        Alert.success('Registro actualizado exitosamente.');
-        this.setState({
-          name: '',
-          nameFather: '',
-          nameMother: '',
-          birthday: '',
-          gender: '',
-          curp: '',
-          rfc: '',
-          dateHire: '',
-          position: '',
-          phoneNum: '',
-          emergencyNum: '',
-          academic: '',
-          password: '',
-          _id: '',
-          show: false,
-        });
-        this.componentDidMount();
-        this.setState({
-          show2: false,
-        });
-      });
   };
   delete = () => {
     axios
