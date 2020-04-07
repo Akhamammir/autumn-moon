@@ -60,6 +60,10 @@ class ClientsList extends React.Component {
   }
   componentDidMount() {
     //Fetching Clients List
+    axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
+      console.log(res);
+    });
+
     this.setState({
       //simulated data
       clientsList: List,
