@@ -11,14 +11,12 @@ import {
   Icon,
   Button,
   Modal,
-  Input,
   IconButton,
   Alert,
   Progress,
   List,
   Steps,
   CheckPicker,
-  Dropdown,
   SelectPicker,
 } from 'rsuite';
 import axios from 'axios';
@@ -47,7 +45,7 @@ class ClientReg extends React.Component {
       phoneNum: '',
       show: false,
       Resultado: '',
-      assigned: {},
+      assigned: {_id:""},
       branchAdd: ['Roses are red', 'Violets are blue'],
       arrayCon: ['Roses are red', 'Violets are blue'],
       arrayDatos: ['Roses are red', 'Violets are blue'],
@@ -69,6 +67,7 @@ class ClientReg extends React.Component {
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
       ],
+      rowSelected:""
     };
   }
   componentDidMount() {
@@ -522,8 +521,8 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'contactlist', index, 'nombre');
                     }}
-                    width='340px'
-                    boxw='80px'
+                    width='380px'
+                    boxw='100px'
                     textw='medium'
                     icon='user-o'
                   />
@@ -533,8 +532,8 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'contactlist', index, 'email');
                     }}
-                    width='340px'
-                    boxw='80px'
+                    width='380px'
+                    boxw='100px'
                     textw='medium'
                     icon='user-o'
                   />
@@ -549,10 +548,11 @@ class ClientReg extends React.Component {
                         'telefono'
                       );
                     }}
-                    width='200px'
-                    boxw='90px'
+                    width='250px'
+                    boxw='100px'
                     textw='medium'
                     icon='mobile'
+                    type='number'
                   />
                 </Box>
               </List.Item>
@@ -594,32 +594,10 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'nombre');
                     }}
-                    width='150vh'
+                    width='380px'
                     boxw='100px'
                     textw='medium'
                     icon='id-mapping'
-                  />
-                  <DecoratedInput
-                    area='RFC'
-                    value={this.state.repList[index].rfc}
-                    onChange={(e) => {
-                      this.handleChangeList(e, 'repList', index, 'rfc');
-                    }}
-                    width='100vh'
-                    boxw='70px'
-                    textw='medium'
-                    icon='id-card'
-                  />
-                  <DecoratedInput
-                    area='Curp'
-                    value={this.state.repList[index].curp}
-                    onChange={(e) => {
-                      this.handleChangeList(e, 'repList', index, 'curp');
-                    }}
-                    width='80vh'
-                    boxw='70px'
-                    textw='medium'
-                    icon='id-card'
                   />
                   <DecoratedInput
                     area='Email'
@@ -627,7 +605,8 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'email');
                     }}
-                    boxw='90px'
+                    boxw='100px'
+                    width='380px'
                     textw='medium'
                     icon='user-o'
                   />
@@ -637,10 +616,37 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'telefono');
                     }}
-                    width='80vh'
-                    boxw='90px'
+                    width='250px'
+                    boxw='100px'
                     textw='medium'
                     icon='mobile'
+                    type='number'
+                  />
+                  <br/>
+                  <br/>
+                  </Box>
+                  <Box direction='row'>
+                  <DecoratedInput
+                    area='RFC'
+                    value={this.state.repList[index].rfc}
+                    onChange={(e) => {
+                      this.handleChangeList(e, 'repList', index, 'rfc');
+                    }}
+                    width='380px'
+                    boxw='100px'
+                    textw='medium'
+                    icon='id-card'
+                  />
+                  <DecoratedInput
+                    area='Curp'
+                    value={this.state.repList[index].curp}
+                    onChange={(e) => {
+                      this.handleChangeList(e, 'repList', index, 'curp');
+                    }}
+                    width='380px'
+                    boxw='100px'
+                    textw='medium'
+                    icon='id-card'
                   />
                 </Box>
               </List.Item>
@@ -678,6 +684,13 @@ class ClientReg extends React.Component {
           onRowClick={(data) => {
             console.log(data);
             this.state._idDel = data._id;
+            this.setState({
+              rowSelected:data._id
+            }) 
+          }}
+          rowClassName={(rowData)=>{
+            console.log({rowData})
+            return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected':''):'')
           }}
         >
           <Column width={50} align='center' fixed>
@@ -725,7 +738,7 @@ class ClientReg extends React.Component {
                 };
                 return (
                   <span>
-                    <a onClick={this.showUser}> Selecionar </a>
+                    <a className='actionLink' onClick={this.showUser}> Seleccionar </a>
                   </span>
                 );
               }}
@@ -744,29 +757,30 @@ class ClientReg extends React.Component {
               <DecoratedInput
                 area='Nombre'
                 value={`${this.state.assigned.name} ${this.state.assigned.nameFather} ${this.state.assigned.nameMother}`}
-                width='550px'
-                boxw='80px'
+                width='380px'
+                boxw='100px'
                 textw='medium'
                 icon='user-o'
+                display
               />
-            </Box>
-            <br />
-            <Box direction='row'>
+            
               <DecoratedInput
                 area='Puesto'
                 value={this.state.assigned.pos}
-                width='340px'
-                boxw='80px'
+                width='380px'
+                boxw='100px'
                 textw='medium'
                 icon='user-o'
+                display
               />
               <DecoratedInput
                 area='Equipo'
                 value={this.state.assigned.team}
-                width='195px'
-                boxw='90px'
+                width='250px'
+                boxw='100px'
                 textw='medium'
                 icon='group'
+                display
               />
             </Box>
           </>
@@ -947,6 +961,7 @@ class ClientReg extends React.Component {
         </Box>
         <br />
         <br />
+        <Box direction='row' className="actionButtons">
         <Button
           style={{
             backgroundColor: '#6FFFB0',
@@ -971,6 +986,7 @@ class ClientReg extends React.Component {
           Siguiente&nbsp;&nbsp;
           <Icon icon='hand-o-right' />
         </Button>
+      </Box>
       </Box>
     );
   };

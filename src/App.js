@@ -10,7 +10,7 @@ import Login from './Login/Login';
 import Home from './Home/Home';
 import User from './Users/User';
 import ClientReg from './Clients/Clients';
-import ClientsList from './Clients/ClientsList';
+import ClientsList from './ClientsList/ClientsList';
 
 
 class Main extends React.Component {
