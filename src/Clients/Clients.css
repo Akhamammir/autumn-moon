@@ -21,7 +21,7 @@
 .ListColor .rs-list-item{
   background-color: #434343;
   border: none;
-  boxShadow:none;
+  box-shadow:none;
 }
 .ListColor .rs-list-item:hover{
   background-color:#515151;
@@ -55,7 +55,22 @@
   margin-right: 10px;
 }
 .leftie{
-  position: absolute;
-  bottom: 0px;
-  right: 20vw;
+  /* position: absolute; */
+  /* bottom: 0px; */
+  /* align-self: flex-end; */
+}
+.rowSelected div{
+  background-color:#00C781;
+}
+
+.rowSelected a{
+  color:#575757;
+  cursor:default;
+}
+
+.actionLink{
+  cursor: pointer;;
+}
+.actionButtons{
+  justify-content: space-between;
 }
