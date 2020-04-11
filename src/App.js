@@ -26,6 +26,8 @@ class Main extends React.Component {
           </Route>
           <Route path="/clientreg/:Usr" render = {(props) => <ClientReg {...props}/>} >
           </Route>
+          <Route path="/clientedit/:Usr/:id" render = {(props) => <ClientReg {...props}/>} >
+          </Route>
           <Route path="/clients/:Usr" render = {(props) => <ClientsList {...props}/>} >
           </Route>
         </Switch>

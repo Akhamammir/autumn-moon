@@ -25,7 +25,7 @@ class Manager extends React.Component {
       console.log(res)
       //this.setState({clients:res.data.User})
       let Place = '', moral = [], fisico = [];
-      res.data.User.forEach(I=>{
+      res.data.Clients.forEach(I=>{
         I.Type=="Moral" ? moral.push(I) : fisico.push(I)
       });
       this.setState({m_clients:moral, f_clients:fisico})
@@ -117,7 +117,7 @@ class Manager extends React.Component {
         >
           <Heading alignSelf="center" style={{ fontFamily: "'Manjari', sans-serif"}}>Equipo {this.state.usr.Team}</Heading>
         </Box>
-          <Accordion>
+          {/* <Accordion>
             <this.clients 
               type={0}
             />
@@ -125,6 +125,7 @@ class Manager extends React.Component {
               type={1}
             />
           </Accordion>
+             */}
       </Grommet>
     );
   }
