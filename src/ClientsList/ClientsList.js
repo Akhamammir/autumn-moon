@@ -13,38 +13,38 @@ const List = [
   {
     _id: '5e85889915eb07e4706978fb',
     razon: 'Hilary Duke',
-    nComercial: 'MICRONAUT',
-    domFiscal: '790 Arion Place, Wells, Georgia, 5157',
+    cName: 'MICRONAUT',
+    fiscal: '790 Arion Place, Wells, Georgia, 5157',
     curp: 'XAXX010101000',
     rfc: 'XAXX010101000',
-    phone: '+52 (859) 463-3020',
+    phoneNum: '+52 (859) 463-3020',
   },
   {
     _id: '5e858899767235f939e25ce3',
     razon: 'Conway French',
-    nComercial: 'TINGLES',
-    domFiscal: '117 Chester Street, Allamuchy, North Carolina, 6558',
+    cName: 'TINGLES',
+    fiscal: '117 Chester Street, Allamuchy, North Carolina, 6558',
     curp: 'CFR910412ARF',
     rfc: 'XAXX010101000',
-    phone: '+52 (857) 575-3036',
+    phoneNum: '+52 (857) 575-3036',
   },
   {
     _id: '5e8588996e702d0522ba68a0',
     razon: 'Rosella Kemp',
-    nComercial: 'ICOLOGY',
-    domFiscal: '335 Maple Street, Gila, Mississippi, 7308',
+    cName: 'ICOLOGY',
+    fiscal: '335 Maple Street, Gila, Mississippi, 7308',
     curp: 'RKR123456ASD',
     rfc: 'XAXX010101000',
-    phone: '+52 (945) 506-2665',
+    phoneNum: '+52 (945) 506-2665',
   },
   {
     _id: '5e8588995a59260b88b2b966',
     razon: 'Reed Crane',
-    nComercial: 'OBLIQ',
-    domFiscal: '196 Orient Avenue, Tioga, Delaware, 9763',
+    cName: 'OBLIQ',
+    fiscal: '196 Orient Avenue, Tioga, Delaware, 9763',
     curp: 'EXP134233EDS',
     rfc: 'XAXX010101000',
-    phone: '+52 (831) 534-3381',
+    phoneNum: '+52 (831) 534-3381',
   },
 ];
 
@@ -60,13 +60,10 @@ class ClientsList extends React.Component {
   }
   componentDidMount() {
     //Fetching Clients List
+console.log(this.props.location)
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
-      console.log(res);
-    });
-
-    this.setState({
-      //simulated data
-      clientsList: List,
+      console.log(res.data)
+      this.setState({clientsList:res.data.Clients})
     });
     // axios
     //   .post('http://35.232.231.98:3001/clients', {
@@ -119,11 +116,11 @@ class ClientsList extends React.Component {
               </Column>
               <Column flexGrow={1} fixed>
                 <HeaderCell>Nombre Comercial</HeaderCell>
-                <Cell dataKey='nComercial' />
+                <Cell dataKey='cName' />
               </Column>
               <Column flexGrow={2}>
                 <HeaderCell>Domicilio Fiscal</HeaderCell>
-                <Cell dataKey='domFiscal' />
+                <Cell dataKey='fiscal' />
               </Column>
               <Column flexGrow={1}>
                 <HeaderCell>RFC</HeaderCell>
@@ -131,7 +128,7 @@ class ClientsList extends React.Component {
               </Column>
               <Column flexGrow={1}>
                 <HeaderCell>Telefono</HeaderCell>
-                <Cell dataKey='phone' />
+                <Cell dataKey='phoneNum' />
               </Column>
             </Table>
             <br />
@@ -182,7 +179,7 @@ class ClientsList extends React.Component {
                 <Box direction='row'>
                   <DecoratedInput
                     area='Nombre Comercial'
-                    value={this.state.current.nComercial || ''}
+                    value={this.state.current.cName || ''}
                     width='100%'
                     boxw='170px'
                     textw='medium'
@@ -194,7 +191,7 @@ class ClientsList extends React.Component {
                 <Box direction='row'>
                   <DecoratedInput
                     area='Domicilio Fiscal'
-                    value={this.state.current.domFiscal || ''}
+                    value={this.state.current.fiscal || ''}
                     width='100%'
                     boxw='140px'
                     textw='medium'
@@ -215,7 +212,7 @@ class ClientsList extends React.Component {
                 <Box direction='row'>
                   <DecoratedInput
                     area='Numero Tel.'
-                    value={this.state.current.phone || ''}
+                    value={this.state.current.phoneNum || ''}
                     width='100%'
                     icon='mobile'
                   />
@@ -229,8 +226,15 @@ class ClientsList extends React.Component {
                     boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
                   }}
                   onClick={() => {
-                    /* Go to edit page */
-                  }}
+                    this.props.history.push(`/clientedit/${this.state.usr.Usr}/${this.state.current._id}`, {...this.state.usr})
+                    // this.props.history.push(`/clientreg/${this.state.usr.Usr}`,
+                    //   {
+                    //       usr:this.state.usr,
+                    //       client:this.state.current,
+                          
+                    //   })
+                    }
+                  }
                 >
                   <Icon icon='edit' />
                   &nbsp;&nbsp;Edit

@@ -18,6 +18,7 @@ import {
   Steps,
   CheckPicker,
   SelectPicker,
+  Divider
 } from 'rsuite';
 import axios from 'axios';
 const { Line } = Progress;
@@ -71,8 +72,9 @@ class ClientReg extends React.Component {
     };
   }
   componentDidMount() {
+    console.log(this.props)
     axios.post('/userslist', { team: this.state.usr.Team }).then((res) => {
-      console.log(res);
+      
       //this.setState({clients:res.data.User})
       let users = [];
       res.data.Users.forEach((I, J) => {
@@ -82,6 +84,17 @@ class ClientReg extends React.Component {
       this.setState({ usrlist: users });
       console.log(this.state.usrlist);
     });
+
+    if (this.props.match.params.id ) {
+      try {
+        axios.post(`/clients/${this.props.match.params.id}`, { team: this.state.usr.Team }).then((res) => {
+          this.setState(res.data.Client)
+          this.setState({step:0})
+        })
+      } catch (err) {
+        alert(err)
+        }
+      }
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange = (value, field) => {
@@ -594,7 +607,7 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'nombre');
                     }}
-                    width='380px'
+                    width='350px'
                     boxw='100px'
                     textw='medium'
                     icon='id-mapping'
@@ -606,7 +619,7 @@ class ClientReg extends React.Component {
                       this.handleChangeList(e, 'repList', index, 'email');
                     }}
                     boxw='100px'
-                    width='380px'
+                    width='350px'
                     textw='medium'
                     icon='user-o'
                   />
@@ -632,7 +645,7 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'rfc');
                     }}
-                    width='380px'
+                    width='350px'
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
@@ -643,7 +656,7 @@ class ClientReg extends React.Component {
                     onChange={(e) => {
                       this.handleChangeList(e, 'repList', index, 'curp');
                     }}
-                    width='380px'
+                    width='350px'
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
@@ -766,7 +779,7 @@ class ClientReg extends React.Component {
             
               <DecoratedInput
                 area='Puesto'
-                value={this.state.assigned.pos}
+                value={this.state.assigned.pos == null ? "NA":this.state.assigned.pos}
                 width='380px'
                 boxw='100px'
                 textw='medium'
@@ -775,7 +788,7 @@ class ClientReg extends React.Component {
               />
               <DecoratedInput
                 area='Equipo'
-                value={this.state.assigned.team}
+                value={this.state.assigned.team == null ? "NA": this.state.assigned.team}
                 width='250px'
                 boxw='100px'
                 textw='medium'
