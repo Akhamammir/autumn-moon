@@ -60,7 +60,7 @@ class ClientReg extends React.Component {
         { col: '', calle: '', cp: '', estado: '' },
         { col: '', calle: '', cp: '', estado: '' },
       ],
-      contactlist: [
+      contactList: [
         { nombre: '', email: '', telefono: '' },
         { nombre: '', email: '', telefono: '' },
       ],
@@ -68,7 +68,8 @@ class ClientReg extends React.Component {
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
       ],
-      rowSelected:""
+      rowSelected:"",
+      team:""
     };
   }
   componentDidMount() {
@@ -87,13 +88,16 @@ class ClientReg extends React.Component {
 
     if (this.props.match.params.id ) {
       try {
-        axios.post(`/clients/${this.props.match.params.id}`, { team: this.state.usr.Team }).then((res) => {
+        axios.post(`/clients/client`, { team: this.state.usr.Team,id:this.props.match.params.id }).then((res) => {
           this.setState(res.data.Client)
           this.setState({step:0})
         })
       } catch (err) {
-        alert(err)
+        console.log(err.message)
         }
+      }else{
+        console.log('No hay id en los params')
+
       }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -530,9 +534,9 @@ class ClientReg extends React.Component {
                 <Box direction='row'>
                   <DecoratedInput
                     area='Nombre'
-                    value={this.state.contactlist[index].nombre}
+                    value={this.state.contactList[index].nombre}
                     onChange={(e) => {
-                      this.handleChangeList(e, 'contactlist', index, 'nombre');
+                      this.handleChangeList(e, 'contactList', index, 'nombre');
                     }}
                     width='380px'
                     boxw='100px'
@@ -541,9 +545,9 @@ class ClientReg extends React.Component {
                   />
                   <DecoratedInput
                     area='Email'
-                    value={this.state.contactlist[index].email}
+                    value={this.state.contactList[index].email}
                     onChange={(e) => {
-                      this.handleChangeList(e, 'contactlist', index, 'email');
+                      this.handleChangeList(e, 'contactList', index, 'email');
                     }}
                     width='380px'
                     boxw='100px'
@@ -552,11 +556,11 @@ class ClientReg extends React.Component {
                   />
                   <DecoratedInput
                     area='Telefono'
-                    value={this.state.contactlist[index].telefono}
+                    value={this.state.contactList[index].telefono}
                     onChange={(e) => {
                       this.handleChangeList(
                         e,
-                        'contactlist',
+                        'contactList',
                         index,
                         'telefono'
                       );
@@ -580,7 +584,7 @@ class ClientReg extends React.Component {
             size='md'
             className=''
             onClick={() => {
-              this.MetodoPush('arrayCon', 'contactlist', {
+              this.MetodoPush('arrayCon', 'contactList', {
                 nombre: '',
                 email: '',
                 telefono: '',
@@ -698,11 +702,11 @@ class ClientReg extends React.Component {
             console.log(data);
             this.state._idDel = data._id;
             this.setState({
-              rowSelected:data._id
+              rowSelected:data._id,
+              team:data.Team
             }) 
           }}
           rowClassName={(rowData)=>{
-            console.log({rowData})
             return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected':''):'')
           }}
         >
