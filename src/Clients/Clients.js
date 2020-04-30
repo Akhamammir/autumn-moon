@@ -69,13 +69,14 @@ class ClientReg extends React.Component {
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
       ],
       rowSelected:"",
-      team:""
+      team:"",
+      Nominas:[]
     };
   }
   componentDidMount() {
     console.log(this.props)
     axios.post('/userslist', { team: this.state.usr.Team }).then((res) => {
-      
+
       //this.setState({clients:res.data.User})
       let users = [];
       res.data.Users.forEach((I, J) => {
@@ -181,6 +182,21 @@ class ClientReg extends React.Component {
       }
     );
   };
+  metNomina = (nominavalue) => {
+    this.setState(
+      {
+        Nominas: nominavalue,
+      },
+      () => {
+        this.setState({
+          Resultado2: this.state.Nominas.join(', '),
+        });
+        console.log(this.state.Nominas);
+      }
+    );
+  };
+
+
   render() {
     return (
       <Grommet plain className='App'>
@@ -704,7 +720,7 @@ class ClientReg extends React.Component {
             this.setState({
               rowSelected:data._id,
               team:data.Team
-            }) 
+            })
           }}
           rowClassName={(rowData)=>{
             return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected':''):'')
@@ -780,7 +796,7 @@ class ClientReg extends React.Component {
                 icon='user-o'
                 display
               />
-            
+
               <DecoratedInput
                 area='Puesto'
                 value={this.state.assigned.pos == null ? "NA":this.state.assigned.pos}
@@ -906,8 +922,19 @@ class ClientReg extends React.Component {
                 <Heading margin='small' level={5} className='GreenLetter'>
                   Periocidad de nómina
                 </Heading>
-                <SelectPicker data={nomina} style={{ width: 224 }} />
+                <CheckPicker
+                  value={this.state.Nominas}
+                  onChange={this.metNomina}
+                  data={nomina}
+                  style={{ width: 224 }}
+                />
               </Box>
+              <br />
+              <Box direction='row'>
+                <Text className='GreenLetter'>{this.state.Resultado2}</Text>
+              </Box>
+              <br />
+              <br />
             </Box>
           ) : (
             <span></span>
