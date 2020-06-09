@@ -8,7 +8,8 @@
 }
 
 .App-header {
-  background-color: #272829;
+  background-image: url(./back.jpg);
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,33 +18,31 @@
   /*font-size: calc(10px + 2vmin);*/
   font-size: 15px;
 }
-
-.App-link {
-  color: #09d3ac;
+.inputLog{
+  font-family: 'Montserrat', sans-serif ;
+  padding-top: 9px!important; padding-bottom: 7px!important;
+  border: none!important;
+  border-radius: 17px!important;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.11), 
+              0 4px 4px rgba(0,0,0,0.11), 
+              0 6px 8px rgba(0,0,0,0.11),
+              0 8px 16px rgba(0,0,0,0.11);
 }
-.Center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.rs-btn-primary{
+  font-family: 'Montserrat', sans-serif ;
+  padding-top: 7px!important; padding-bottom: 9px!important;
+  background-color: #00ab9b!important;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.11), 
+              0 4px 4px rgba(0,0,0,0.11), 
+              0 6px 8px rgba(0,0,0,0.11),
+              0 8px 16px rgba(0,0,0,0.11);
 }
-.half-wide{
-  width: 40vw;
-}
-button{
+p{
   font-family: 'Manjari', sans-serif ;
+  font-weight: 500;
 }
-#Fonter{
-  font-family: 'Manjari', sans-serif;
-}
-#Bottom{
-  position: absolute;
-  bottom: 2vh;
-}
-#Bottom span{
-  font-family: 'Manjari', sans-serif ;
-}
-#Bottom a{
-  font-family: 'Manjari', sans-serif ;
-  color:#6FFFB0;
+h3{
+  font-family: 'Montserrat', sans-serif ;
 }
