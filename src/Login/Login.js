@@ -11,6 +11,7 @@ class Login extends React.Component {
     console.log(this.props)
   }
   Login = () => {
+    console.log(this.state)
     axios.post('/users', { usr: this.state.usr }).then(res => {
       if (this.state.usr == res.data.User.Usr && this.state.pwd == res.data.User.Pwd) {
         this.props.history.push("/home/" + res.data.User.Usr, { ...res.data.User })
@@ -31,7 +32,7 @@ class Login extends React.Component {
           placeholder="Usuario"
           className="inputLog"
           value={this.state.usr}
-          onChange={(e) => this.setState({ usr: e.value })}
+          onChange={(e) => this.setState({ usr: e }) }
         />
         <br/>
         <Input
@@ -39,7 +40,7 @@ class Login extends React.Component {
           placeholder="Contraseña"
           className="inputLog"
           value={this.state.pwd}
-          onChange={(e) => this.setState({ pwd: e.value })}
+          onChange={(e) => this.setState({ pwd: e })}
         />
         <br/>
         <Button appearance="primary" onClick={this.Login} >Entrar</Button>
