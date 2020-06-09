@@ -31,7 +31,7 @@ class Login extends React.Component {
           placeholder="Usuario"
           className="inputLog"
           value={this.state.usr}
-          onChange={(e) => this.setState({ usr: e.target.value })}
+          onChange={(e) => this.setState({ usr: e.value })}
         />
         <br/>
         <Input
@@ -39,7 +39,7 @@ class Login extends React.Component {
           placeholder="Contraseña"
           className="inputLog"
           value={this.state.pwd}
-          onChange={(e) => this.setState({ pwd: e.target.value })}
+          onChange={(e) => this.setState({ pwd: e.value })}
         />
         <br/>
         <Button appearance="primary" onClick={this.Login} >Entrar</Button>
