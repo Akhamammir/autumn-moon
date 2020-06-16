@@ -276,6 +276,7 @@ class ClientReg extends React.Component {
                   margin='none'
                   style={{
                     left: '50%',
+                    color: '#515253',
                   }}
                   className='GreenLetter'
                   textAlign='center'
@@ -407,7 +408,11 @@ class ClientReg extends React.Component {
         <br />
         <Box>
           <Box direction='row'>
-            <Heading margin='small' level={5} className='GreenLetter'>
+            <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
               El cliente cuenta con sucursales?
             </Heading>
             <Toggle
@@ -501,7 +506,11 @@ class ClientReg extends React.Component {
         ) : (
           <Box>
             <Box direction='row'>
-              <Heading margin='small' level={5} className='GreenLetter'>
+              <Heading margin='small' level={5} className='GreenLetter'
+                style={{
+                  color: '#515253',
+                }}
+              >
                 El cliente cuenta con socios en el extranejro?
               </Heading>
               <Toggle
@@ -1008,7 +1017,8 @@ class ClientReg extends React.Component {
         <Box direction='row' className="actionButtons">
         <Button
           style={{
-            backgroundColor: '#6FFFB0',
+            backgroundColor:"#06554C",
+            color: '#F5F0F6',
             width: '120px',
             fontFamily: "'Manjari', sans-serif",
             boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
@@ -1019,7 +1029,8 @@ class ClientReg extends React.Component {
         </Button>
         <Button
           style={{
-            backgroundColor: '#6FFFB0',
+            backgroundColor:"#06554C",
+            color: '#F5F0F6',
             width: '120px',
             fontFamily: "'Manjari', sans-serif",
             boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',

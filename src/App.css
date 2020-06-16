@@ -4,12 +4,15 @@
   text-align: center;
 }
 
+.rs-nav-item > .rs-nav-item-content{
+  color: #F2F3F4!important;
+}
 .App-logo {
   height: 40vmin;
 }
 
 .App-header {
-  background-color: #272829;
+  background-color: #F2F3F4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

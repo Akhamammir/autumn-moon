@@ -1,0 +1,18 @@
+.rs-sidenav-default{
+    background-color: #00AB9B!important;
+  }
+  .rs-nav-default .rs-nav-item:not(.rs-nav-item-active):not(.rs-nav-item-disabled) > .rs-nav-item-content:hover, .rs-nav-default .rs-nav-item:not(.rs-nav-item-active):not(.rs-nav-item-disabled) > .rs-nav-item-content:focus{
+    background-color: #00BDAA!important;
+  }
+  .rs-btn-subtle{
+    color: #F5F0F6!important;
+  }
+  .rs-btn-subtle:hover{
+    background-color: #00BDAA!important;
+  }
+  .rs-btn-subtle:active{
+    background-color: #00BDAA!important;
+  }
+  .rs-btn-subtle:focus{
+    background-color: #00BDAA!important;
+  }

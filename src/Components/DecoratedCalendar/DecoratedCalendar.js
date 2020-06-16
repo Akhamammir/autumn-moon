@@ -18,7 +18,7 @@ class DecoratedCalendar extends React.Component {
                 style={{
                   transform: "translate(0%, 12%)",
                   marginLeft:"7%", marginRight:"10px",
-                  height:50, color:"#6C6C70"
+                  height:50, color:"#F5F0F6"
                 }}
               />
             );
@@ -51,13 +51,13 @@ class DecoratedCalendar extends React.Component {
           direction="row"
           alignContent="start"
           width={{min:"118px"}}
-          background="#AFDFFF"
+          background="#00AB9B"
         >
           <this.state.Doodle/>
           <Text
             size="small"
             style={{transform: "translate(0%, -5%)", marginTop:"6px"}}
-            color="#6C6C70"
+            color="#F5F0F6"
           >
             {this.props.area}
           </Text>

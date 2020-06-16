@@ -33,7 +33,7 @@ class DecoratedSelect extends React.Component {
           direction="row"
           alignContent="start"
           width={{min:"118px"}}
-          background="#AFDFFF"
+          background="#00AB9B"
           style={{borderRadius:"11px 0px 0px 11px"}}
         >
           <Icon
@@ -42,13 +42,13 @@ class DecoratedSelect extends React.Component {
                 style={{
                   transform: "translate(0%, 12%)",
                   marginLeft:"7%", marginRight:"10px",
-                  height:50, color:"#6C6C70"
+                  height:50, color:"#F5F0F6"
                 }}
               />
           <Text
             size="small"
             style={{marginTop:"6px"}}
-            color="#6C6C70"
+            color="#F5F0F6"
           >
             {this.props.area}
           </Text>

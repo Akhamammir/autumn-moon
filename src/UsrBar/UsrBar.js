@@ -15,7 +15,7 @@ class UsrBar extends React.Component {
             <span>
               <Box
               direction="row"
-              background = "accent-1"
+              background = "#263D4F"
               height="2.5rem"
               elevation="small"
               pad="xsmall"
@@ -26,7 +26,7 @@ class UsrBar extends React.Component {
                 pad="xsmall"
               >
                 <Text
-                  style={{ color: "#424344",fontFamily: "'Manjari', sans-serif", fontWeight:600 }}
+                  style={{ color: "#F5F0F6",fontFamily: "'Manjari', sans-serif", fontWeight:600 }}
                 >
                   Hola {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last}!
                 </Text>

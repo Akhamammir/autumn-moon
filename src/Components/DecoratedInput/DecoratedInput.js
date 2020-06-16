@@ -29,7 +29,7 @@ class DecoratedInput extends React.Component {
           direction='row'
           alignContent='start'
           width={{ min: this.props.boxw ? this.props.boxw : '118px' }}
-          background='#AFDFFF'
+          background='#00AB9B'
           style={{ borderRadius: '11px 0px 0px 11px' }}
         >
           <Icon
@@ -40,10 +40,10 @@ class DecoratedInput extends React.Component {
               marginLeft: '7%',
               marginRight: '10px',
               height: 50,
-              color: '#6C6C70',
+              color: '#F5F0F6',
             }}
           />
-          <Text size='small' style={{ marginTop: '6px' }} color='#414141'>
+          <Text size='small' style={{ marginTop: '6px' }} color='#F5F0F6'>
             {this.props.area}
           </Text>
         </Box>
