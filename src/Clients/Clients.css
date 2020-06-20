@@ -16,19 +16,18 @@
 }
 .GreenLetter {
   font-family: 'Quicksand';
-  color: #6FFFB0;
+  color: #06554C;
 }
 .ListColor .rs-list-item{
-  background-color: #434343;
-  border: none;
+  background-color: #F2F3F4;
   box-shadow:none;
 }
 .ListColor .rs-list-item:hover{
-  background-color:#515151;
+  background-color:#D2D3D4;
 
 }
 .TableColor{
-  background-color: #434343;
+  background-color: #F2F3F4;
 }
 .rs-steps-item-icon-wrapper{
   background-color: #AFDFFF;
@@ -40,13 +39,18 @@
   color: #515253;
 }
 .rs-steps-item-icon-wrapper:not(.rs-steps-item-custom-icon){
-  border-color: #AFDFFF;
+  border: none;
+  background-color: #00AB9B;
+  color: #D2D3D4;
 }
 .rs-steps-item-status-process .rs-steps-item-icon-wrapper:not(.rs-steps-item-custom-icon){
-  background-color: #6FFFB0;
-  border-color: #6FFFB0;
-  color: #434343;
+  background-color: #00AB9B;
+  border-color: #00AB9B;
+  color: #F5F0F6;
 }
+/*.rs-steps-item-status-finish{
+  background-color: #00AB9B;
+}*/
 .Pad {
   padding: 7px;
 }
@@ -55,9 +59,9 @@
   margin-right: 10px;
 }
 .leftie{
-  /* position: absolute; */
-  /* bottom: 0px; */
-  /* align-self: flex-end; */
+  /* position: absolute;
+   bottom: 0px; 
+  align-self: flex-end; */
 }
 .rowSelected div{
   background-color:#00C781;
