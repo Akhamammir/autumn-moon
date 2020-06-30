@@ -24,7 +24,7 @@ class Login extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-        <h3>Heza Consultorias SC</h3>
+        <h3>Heza Consultoria Integral S.C.</h3>
         <br/>
         <Input
           style={{ width: 300 }}
@@ -39,6 +39,7 @@ class Login extends React.Component {
           placeholder="Contraseña"
           className="inputLog"
           value={this.state.pwd}
+          type="password"
           onChange={(e) => this.setState({ pwd: e })}
         />
         <br/>

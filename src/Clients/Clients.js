@@ -267,7 +267,7 @@ class ClientReg extends React.Component {
                 <Steps current={this.state.step}>
                   <Steps.Item title='Datos Generales' />
                   <Steps.Item title='Datos de Contacto' />
-                  <Steps.Item title='Car. Fiscales' />
+                  <Steps.Item title='Caracteristicas Fiscales' />
                   <Steps.Item title='Documentacion' />
                 </Steps>
                 <br />
@@ -536,6 +536,12 @@ class ClientReg extends React.Component {
             fontFamily: "'Manjari', sans-serif",
             boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
           }}
+          disabled = {
+            !(this.state.razon.length != 0 &&
+            this.state.fiscal.length != 0 &&
+            this.state.rfc.length != 0 &&
+            this.state.phoneNum.length != 0)
+          }
           onClick={() => this.forward()}
         >
           Siguiente&nbsp;&nbsp;
@@ -850,6 +856,11 @@ class ClientReg extends React.Component {
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
+            disabled = {
+              !(this.state.assigned.pos == null &&
+                this.state.assigned.team[0].nombre.length != 0 &&
+                this.state.assigned.team[0].telefono.length != 0 )
+            }
             onClick={() => this.forward()}
           >
             Siguiente&nbsp;&nbsp;
