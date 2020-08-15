@@ -5,6 +5,7 @@ import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
+import { Button as Btn} from 'primereact/button';
 import {
   Table,
   Toggle,
@@ -547,6 +548,7 @@ class ClientReg extends React.Component {
           Siguiente&nbsp;&nbsp;
           <Icon icon='hand-o-right' />
         </Button>
+        <Btn label="Save" />
       </Box>
     );
   };

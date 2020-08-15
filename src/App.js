@@ -11,7 +11,9 @@ import Home from './Home/Home';
 import User from './Users/User';
 import ClientReg from './Clients/Clients';
 import ClientsList from './ClientsList/ClientsList';
-
+import 'primereact/resources/themes/nova-colored/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 class Main extends React.Component {
   render() {
