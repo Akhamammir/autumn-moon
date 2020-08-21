@@ -2,15 +2,13 @@ import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column as _Column } from 'primereact/column';
 import { Button as _Button } from 'primereact/button';
-
 import './ClientsList.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Table, Avatar, Icon } from 'rsuite';
+import { Avatar, Icon } from 'rsuite';
 import axios from 'axios';
-const { Column, HeaderCell, Cell } = Table;
 const miliPerYear = 31536000000;
 
 const List = [
@@ -116,37 +114,6 @@ class ClientsList extends React.Component {
               <_Column field='phoneNum' header='Teléfono' />
             </DataTable>
             <br/>
-            <Table
-              height={300}
-              data={this.state.clientsList}
-              style={{ zIndex: 0 }}
-              onRowClick={(data) => {
-                this.setState({ current: data });
-              }}
-            >
-              <Column flexGrow={1} align='center' fixed>
-                <HeaderCell>Razon Social</HeaderCell>
-                <Cell dataKey='razon' />
-              </Column>
-              <Column flexGrow={1} fixed>
-                <HeaderCell>Nombre Comercial</HeaderCell>
-                <Cell dataKey='cName' />
-              </Column>
-              <Column flexGrow={2}>
-                <HeaderCell>Domicilio Fiscal</HeaderCell>
-                <Cell dataKey='fiscal' />
-              </Column>
-              <Column flexGrow={1}>
-                <HeaderCell>RFC</HeaderCell>
-                <Cell dataKey='rfc' />
-              </Column>
-              <Column flexGrow={1}>
-                <HeaderCell>Telefono</HeaderCell>
-                <Cell dataKey='phoneNum' />
-              </Column>
-            </Table>
-
-            <br />
             <Grid
               rows={['small', 'large']}
               columns={['small', '70%']}
