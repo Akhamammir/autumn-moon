@@ -1,4 +1,6 @@
 import React from 'react';
+import { DataTable } from 'primereact/datatable';
+import { Column as _Column } from 'primereact/column';
 import './ClientsList.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
@@ -60,10 +62,10 @@ class ClientsList extends React.Component {
   }
   componentDidMount() {
     //Fetching Clients List
-console.log(this.props.location)
+    console.log(this.props.location);
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
-      console.log(res.data)
-      this.setState({clientsList:res.data.Clients})
+      console.log(res.data);
+      this.setState({ clientsList: res.data.Clients });
     });
     // axios
     //   .post('http://35.232.231.98:3001/clients', {
@@ -102,6 +104,16 @@ console.log(this.props.location)
           </Box>
           <Box gridArea='main'>
             <br />
+            <DataTable value={this.state.clientsList} rowHover selectionMode="single" onRowSelect={({data}) => {
+                this.setState({ current: data });
+              }}>
+              <_Column field='razon' header='Razon Social' />
+              <_Column field='cName' header='Nombre Comercial' />
+              <_Column field='fiscal' header='Domicilio Fiscal' />
+              <_Column field='rfc' header='RFC' />
+              <_Column field='phoneNum' header='Teléfono' />
+            </DataTable>
+            <br/>
             <Table
               height={300}
               data={this.state.clientsList}
@@ -131,6 +143,7 @@ console.log(this.props.location)
                 <Cell dataKey='phoneNum' />
               </Column>
             </Table>
+
             <br />
             <Grid
               rows={['small', 'large']}
@@ -220,22 +233,24 @@ console.log(this.props.location)
                 <br />
                 <Button
                   style={{
-                    backgroundColor:"#06554C",
+                    backgroundColor: '#06554C',
                     color: '#F5F0F6',
                     width: '120px',
                     fontFamily: "'Manjari', sans-serif",
                     boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
                   }}
                   onClick={() => {
-                    this.props.history.push(`/clientedit/${this.state.usr.Usr}/${this.state.current._id}`, {...this.state.usr})
+                    this.props.history.push(
+                      `/clientedit/${this.state.usr.Usr}/${this.state.current._id}`,
+                      { ...this.state.usr }
+                    );
                     // this.props.history.push(`/clientreg/${this.state.usr.Usr}`,
                     //   {
                     //       usr:this.state.usr,
                     //       client:this.state.current,
-                          
+
                     //   })
-                    }
-                  }
+                  }}
                 >
                   <Icon icon='edit' />
                   &nbsp;&nbsp;Edit

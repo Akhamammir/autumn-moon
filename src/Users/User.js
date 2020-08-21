@@ -8,6 +8,9 @@ import DecoratedCalendar from './../Components/DecoratedCalendar/DecoratedCalend
 import { Grommet, Box, Grid, Heading } from 'grommet';
 import { Table, Avatar, Icon, Button, Modal, Alert, Progress  } from 'rsuite';
 import axios from 'axios';
+import { DataTable } from 'primereact/datatable';
+import { Column as _Column } from 'primereact/column';
+
 const { Line } = Progress;
 const { Column, HeaderCell, Cell, Pagination } = Table;
 const miliPerYear = 31536000000;
@@ -126,7 +129,23 @@ class User extends React.Component {
             <NavBar usr={this.state.usr} history = {this.props.history}/>
           </Box>
           <Box gridArea="main">
-            <br/>
+          <br />
+            <DataTable value={this.state.usrlist} rowHover={true}>
+              <_Column field='place' header='Usuario' />
+              <_Column field='Name.First' header='Nombre' />
+              <_Column field='Name.Last' header='Apellido Paterno' />
+              <_Column field='Name.Last2' header='Apellido Materno' />
+              <_Column field='Pos' header='Puesto' />
+              <_Column field='Role' header='Rol' />
+              <_Column header='Action' body={()=>(
+                <span>  
+                <a onClick={this.showUser}> Edit </a> | {' '}
+                <a onClick={ this.swap }> Delete </a>
+              </span>)
+              }>                
+              </_Column>
+            </DataTable>
+            <br />
             <Table
               height={300}
               data={this.state.usrlist}
