@@ -1,12 +1,14 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column as _Column } from 'primereact/column';
+import { Button as _Button } from 'primereact/button';
+
 import './ClientsList.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Table, Avatar, Icon, Button } from 'rsuite';
+import { Table, Avatar, Icon } from 'rsuite';
 import axios from 'axios';
 const { Column, HeaderCell, Cell } = Table;
 const miliPerYear = 31536000000;
@@ -231,7 +233,7 @@ class ClientsList extends React.Component {
                   />
                 </Box>
                 <br />
-                <Button
+                <_Button
                   style={{
                     backgroundColor: '#06554C',
                     color: '#F5F0F6',
@@ -252,9 +254,9 @@ class ClientsList extends React.Component {
                     //   })
                   }}
                 >
-                  <Icon icon='edit' />
-                  &nbsp;&nbsp;Edit
-                </Button>
+                <Icon icon='edit' /> 
+                  Edit
+                </_Button>
               </Box>
             </Grid>
           </Box>

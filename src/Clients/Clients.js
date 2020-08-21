@@ -47,7 +47,7 @@ class ClientReg extends React.Component {
       phoneNum: '',
       show: false,
       Resultado: '',
-      assigned: {_id:""},
+      assigned: {_id:"",team:''},
       branchAdd: ['Roses are red', 'Violets are blue'],
       arrayCon: ['Roses are red', 'Violets are blue'],
       arrayDatos: ['Roses are red', 'Violets are blue'],
@@ -859,11 +859,14 @@ class ClientReg extends React.Component {
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
             disabled = {
-              !(this.state.assigned.pos == null &&
-                this.state.assigned.team[0].nombre.length != 0 &&
-                this.state.assigned.team[0].telefono.length != 0 )
+              !(this.state.assigned.pos != null &&
+                // this.state.assigned.team[0].nombre.length != 0 &&
+                this.state.assigned.team != '' )
             }
-            onClick={() => this.forward()}
+            onClick={
+
+              () => this.forward()
+            }
           >
             Siguiente&nbsp;&nbsp;
             <Icon icon='hand-o-right' />
