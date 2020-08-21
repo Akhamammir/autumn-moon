@@ -548,7 +548,6 @@ class ClientReg extends React.Component {
           Siguiente&nbsp;&nbsp;
           <Icon icon='hand-o-right' />
         </Button>
-        <Btn label="Save" />
       </Box>
     );
   };
