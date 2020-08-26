@@ -146,7 +146,7 @@ class User extends React.Component {
               </_Column>
             </DataTable>
             <br />
-            <Table
+            {/* <Table
               height={300}
               data={this.state.usrlist}
               style={{zIndex:0}}
@@ -203,7 +203,7 @@ class User extends React.Component {
                   }}
                 </Cell>
               </Column>
-            </Table>
+            </Table> */}
             <br/>
             <Grid
               rows={['small', 'large']}
