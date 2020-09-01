@@ -50,7 +50,7 @@ class NavBar extends React.Component {
                     title="Advanced"
                     icon={<Icon icon="magic" />}
                   >
-                    <Dropdown.Item eventKey="3-1">Geo</Dropdown.Item>
+                    <Dropdown.Item eventKey="3-1" onClick={() => this.Users('auditoria')}>Auditoria</Dropdown.Item>
                     <Dropdown.Item eventKey="3-2">Devices</Dropdown.Item>
                     <Dropdown.Item eventKey="3-3">Loyalty</Dropdown.Item>
                     <Dropdown.Item eventKey="3-4">Visit Depth</Dropdown.Item>

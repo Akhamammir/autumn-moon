@@ -887,7 +887,8 @@ class ClientReg extends React.Component {
         <Box direction='row'>
           <Button
             style={{
-              backgroundColor: '#6FFFB0',
+              backgroundColor: '#06554C',
+              color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
@@ -900,7 +901,8 @@ class ClientReg extends React.Component {
             style={{
               position: 'absolute',
               left: '75vw',
-              backgroundColor: '#6FFFB0',
+              color: '#F5F0F6',
+              backgroundColor: '#06554C',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
