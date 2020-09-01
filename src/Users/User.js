@@ -48,7 +48,7 @@ class User extends React.Component {
     this.setState({
       show2:true
     })
-    axios.post('http://35.232.231.98:3001/upUsr', {state: { name:this.state.name, nameFather:this.state.nameFather, nameMother:this.state.nameMother,
+    axios.post('/upUsr', {state: { name:this.state.name, nameFather:this.state.nameFather, nameMother:this.state.nameMother,
        birthday:this.state.birthday, gender:this.state.gender, curp:this.state.curp, rfc:this.state.rfc, dateHire:this.state.dateHire,
        position:this.state.position, phoneNum:this.state.phoneNum, emergencyNum:this.state.emergencyNum, academic:this.state.academic,
        password:this.state.password, "_id":this.state._id ? this.state._id : '0' } }).then(res => {
@@ -65,7 +65,7 @@ class User extends React.Component {
     });
   }
   delete = () => {
-    axios.post('http://35.232.231.98:3001/rmUsr', {_id:this.state._idDel}).then( res => {
+    axios.post('/rmUsr', {_id:this.state._idDel}).then( res => {
       console.log(res)
       Alert.success('Registro eliminado exitosamente.')
       this.setState({
@@ -145,65 +145,6 @@ class User extends React.Component {
               }>                
               </_Column>
             </DataTable>
-            <br />
-            {/* <Table
-              height={300}
-              data={this.state.usrlist}
-              style={{zIndex:0}}
-              onRowClick={data => {
-                console.log(data);
-                this.state._idDel = data._id
-              }}
-            >
-              <Column width={50} align="center" fixed>
-                <HeaderCell>Usuario</HeaderCell>
-                <Cell dataKey="place"/>
-              </Column>
-              <Column flexGrow={2} align="center" fixed>
-                <HeaderCell>Nombre</HeaderCell>
-                <Cell dataKey="Name.First" />
-              </Column>
-              <Column flexGrow={2} fixed>
-                <HeaderCell>Apellido Paterno</HeaderCell>
-                <Cell dataKey="Name.Last" />
-              </Column>
-              <Column flexGrow={2}>
-                <HeaderCell>Apellido Materno</HeaderCell>
-                <Cell dataKey="Name.Last2" />
-              </Column>
-              <Column flexGrow={1}>
-                <HeaderCell>Puesto</HeaderCell>
-                <Cell dataKey="Pos" />
-              </Column>
-              <Column flexGrow={1}>
-                <HeaderCell>Rol</HeaderCell>
-                <Cell dataKey="Role" />
-              </Column>
-              <Column flexGrow={2} fixed="right">
-                <HeaderCell>Action</HeaderCell>
-                <Cell>
-                  {rowData => {
-                    this.showUser = () => {
-                      this.setState({name:rowData.Name.First,
-                       nameFather:rowData.Name.Last, nameMother:rowData.Name.Last2,
-                       birthday:new Date(rowData.Birth), gender:rowData.Gender, curp:rowData.Curp,
-                       rfc:rowData.RFC, dateHire:rowData.DateH, position:rowData.Pos,
-                       phoneNum:rowData.Phone, emergencyNum: rowData.Emergency, academic:rowData.Academic,
-                       password:rowData.Pwd,_id:rowData._id} )
-                    }
-                    this.removeUser = () => {
-                      //
-                    }
-                    return (
-                      <span>
-                        <a onClick={this.showUser}> Edit </a> | {' '}
-                        <a onClick={ this.swap }> Delete </a>
-                      </span>
-                    );
-                  }}
-                </Cell>
-              </Column>
-            </Table> */}
             <br/>
             <Grid
               rows={['small', 'large']}
@@ -356,6 +297,22 @@ class User extends React.Component {
                     width = "60%"
                     icon = "key"
                     type = "password"
+                  />
+                </Box>
+                <br/>
+                <Box direction="row">
+                  <DecoratedInput
+                    area="Puesto"
+                    value={this.state.academic}
+                    onChange={ (e) => {this.handleChange(e, 'academic') } }
+                    width = "60%"
+                    icon = "black-tie"
+                  />
+                  <DecoratedInput
+                    area="E-Mail"
+                    onChange={ (e) => {this.handleChange(e, 'password') } }
+                    width = "60%"
+                    icon = "envelope-open-o"
                   />
                 </Box>
                 <br/>

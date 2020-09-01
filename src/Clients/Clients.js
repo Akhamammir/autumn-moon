@@ -5,7 +5,7 @@ import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
-import { Button as Btn} from 'primereact/button';
+import { Input, InputGroup } from 'rsuite';
 import {
   Table,
   Toggle,
@@ -33,6 +33,7 @@ class ClientReg extends React.Component {
       _id: undefined,
       usr: this.props.location.state,
       usrlist: [],
+      usrlistStore: [],
       razon: '',
       cName: '',
       fiscal: '',
@@ -71,7 +72,8 @@ class ClientReg extends React.Component {
       ],
       rowSelected:"",
       team:"",
-      Nominas:[]
+      Nominas:[],
+      searchT:''
     };
   }
   componentDidMount() {
@@ -84,7 +86,7 @@ class ClientReg extends React.Component {
         I.place = J;
         users.push(I);
       });
-      this.setState({ usrlist: users });
+      this.setState({ usrlist: users, usrlistStore:users });
       console.log(this.state.usrlist);
     });
 
@@ -121,7 +123,7 @@ class ClientReg extends React.Component {
   };
   delete = () => {
     axios
-      .post('http://35.232.231.98:3001/rmUsr', { _id: this.state._idDel })
+      .post('/rmUsr', { _id: this.state._idDel })
       .then((res) => {
         console.log(res);
         Alert.success('Registro eliminado exitosamente.');
@@ -196,6 +198,19 @@ class ClientReg extends React.Component {
       }
     );
   };
+  filteruser = () => {
+    console.log(this.state.searchT);
+    console.log(this.state.usrlist);
+    this.setState({
+      //
+      usrlist: this.state.searchT.length == 0 ? this.state.usrlistStore : this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
+      S.Team.includes(this.state.searchT) || 
+      S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) )
+    })
+    console.log(this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
+     S.Team.includes(this.state.searchT) || 
+     S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) ) )
+  }
 
 
   render() {
@@ -374,7 +389,7 @@ class ClientReg extends React.Component {
             />
           ) : (
             <DecoratedInput
-              area='RINE'
+              area='RNIE'
               value={this.state.rine}
               onChange={(e) => {
                 this.handleChange(e, 'rine');
@@ -512,7 +527,7 @@ class ClientReg extends React.Component {
                   color: '#515253',
                 }}
               >
-                El cliente cuenta con socios en el extranejro?
+                El cliente cuenta con socios en el extranjero?
               </Heading>
               <Toggle
                 size='lg'
@@ -725,6 +740,39 @@ class ClientReg extends React.Component {
             Responsables
           </Heading>
         </Box>
+        <br />
+        <InputGroup
+          style={{
+            width: 270,
+            overflow:'visible',
+            border:'none',
+            borderRadius: '90px'
+          }} >
+        <Input
+          style= {{ boxShadow: 'none', width:240, paddingRight:'11px' }}
+          placeholder="Usuario"
+          className="inputLog"
+          value={this.state.searchT}
+          onChange={(e) => { 
+            this.setState({ searchT: e } );
+          } }
+        />
+        <InputGroup.Button
+          style={{ 
+            paddingLeft:'25px',
+            paddingRight:'11px',
+            top:'0.2px',
+            backgroundColor:'#00AB9B',
+            color:'#F2F3F4',
+            borderRadius:'0px 100px 100px 0px',
+            right: '20px'
+          }}
+          onClick = { this.filteruser }
+          >
+        <Icon icon="search" />
+      </InputGroup.Button>
+        </InputGroup>
+        <br />
         <br />
         <Table
           className='TableColor'
