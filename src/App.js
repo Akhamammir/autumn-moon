@@ -6,11 +6,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+//Pages
 import Login from './Login/Login';
 import Home from './Home/Home';
 import User from './Users/User';
 import ClientReg from './Clients/Clients';
 import ClientsList from './ClientsList/ClientsList';
+import Auditoria from './Auditoria/Auditoria';
+
 import 'primereact/resources/themes/nova-colored/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -30,7 +34,9 @@ class Main extends React.Component {
           </Route>
           <Route path="/clientedit/:Usr/:id" render = {(props) => <ClientReg {...props}/>} >
           </Route>
-          <Route path="/clients/:Usr" render = {(props) => <ClientsList {...props}/>} >
+          <Route path="/clients/:Usr" render = {(props) => <ClientsList {...props}/>} >         
+          </Route>
+          <Route path="/auditoria/:Usr" render = {(props) => <Auditoria {...props}/>} >         
           </Route>
         </Switch>
       </Router>
