@@ -1,7 +1,7 @@
 import React from 'react';
 import './DecoratedInput.css';
 import { Box, TextInput, Text } from 'grommet';
-import { Icon } from 'rsuite';
+import { Icon, Whisper, Tooltip } from 'rsuite';
 class DecoratedInput extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +25,16 @@ class DecoratedInput extends React.Component {
         elevation='small'
         overflow='hidden'
       >
+        {this.props.tooltip ? 
+        <Whisper
+        trigger="hover"
+        placement="bottom"
+        speaker={
+          <Tooltip>
+            {this.props.tooltiptxt ? this.props.tooltiptxt : "Olvidaste el tooltip!" }
+          </Tooltip>
+        }
+      >
         <Box
           direction='row'
           alignContent='start'
@@ -47,6 +57,31 @@ class DecoratedInput extends React.Component {
             {this.props.area}
           </Text>
         </Box>
+      </Whisper> : 
+      <Box
+      direction='row'
+      alignContent='start'
+      width={{ min: this.props.boxw ? this.props.boxw : '118px' }}
+      background='#00AB9B'
+      style={{ borderRadius: '11px 0px 0px 11px' }}
+    >
+      <Icon
+        icon={this.props.icon}
+        size='lg'
+        style={{
+          transform: 'translate(0%, 18%)',
+          marginLeft: '7%',
+          marginRight: '10px',
+          height: 50,
+          color: '#F5F0F6',
+        }}
+      />
+      <Text size='small' style={{ marginTop: '6px' }} color='#F5F0F6'>
+        {this.props.area}
+      </Text>
+    </Box>
+    }
+
         <Box width={this.props.textw ? this.props.textw : 'small'}>
           <TextInput
             plain
@@ -55,8 +90,8 @@ class DecoratedInput extends React.Component {
             onChange={
               this.props.onChange
                 ? (e) => {
-                    this.handleChange(e);
-                  }
+                  this.handleChange(e);
+                }
                 : null //return null to fix expected function
             }
             type={this.props.type ? this.props.type : 'text'}

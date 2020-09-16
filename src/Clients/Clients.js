@@ -204,15 +204,59 @@ class ClientReg extends React.Component {
     this.setState({
       //
       usrlist: this.state.searchT.length == 0 ? this.state.usrlistStore : this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
-      S.Team.includes(this.state.searchT) || 
+      S.Team.includes(this.state.searchT) ||
       S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) )
     })
     console.log(this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
-     S.Team.includes(this.state.searchT) || 
+     S.Team.includes(this.state.searchT) ||
      S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) ) )
   }
-
-
+  nomBox = (props) =>{
+    return(
+      <Box>
+          <Box direction='row'>
+            <Heading margin='small' level={5} className='GreenLetter'>
+              {props.mark}
+            </Heading>
+            <Toggle
+              size='lg'
+              checkedChildren='Si'
+              unCheckedChildren='No'
+              className='PushDown'
+              checked={this.state.workers}
+              onChange={() => {
+                this.setState({ workers: !this.state.workers });
+              }}
+            />
+          </Box>
+          <br />
+          {this.state.workers ? (
+            <Box>
+              <Box direction='row'>
+                <Heading margin='small' level={5} className='GreenLetter'>
+                  Periocidad de nómina
+                </Heading>
+                <CheckPicker
+                  value={this.state.Nominas}
+                  onChange={this.metNomina}
+                  data={this.nomina}
+                  style={{ width: 224 }}
+                />
+              </Box>
+              <br />
+              <Box direction='row'>
+                <Text className='GreenLetter'>{this.state.Resultado2}</Text>
+              </Box>
+              <br />
+              <br />
+            </Box>
+          ) : (
+            <span></span>
+          )}
+          <br />
+        </Box>
+    );
+  }
   render() {
     return (
       <Grommet plain className='App'>
@@ -527,7 +571,7 @@ class ClientReg extends React.Component {
                   color: '#515253',
                 }}
               >
-                El cliente cuenta con socios en el extranjero?
+                ¿El cliente cuenta con socios extranjeros?
               </Heading>
               <Toggle
                 size='lg'
@@ -541,6 +585,10 @@ class ClientReg extends React.Component {
               />
             </Box>
             <br />
+            {this.state.extran ?
+              <Box>Hihi</Box>
+            : <span></span>
+          }
             <br />
           </Box>
         )}
@@ -753,12 +801,12 @@ class ClientReg extends React.Component {
           placeholder="Usuario"
           className="inputLog"
           value={this.state.searchT}
-          onChange={(e) => { 
+          onChange={(e) => {
             this.setState({ searchT: e } );
           } }
         />
         <InputGroup.Button
-          style={{ 
+          style={{
             paddingLeft:'25px',
             paddingRight:'11px',
             top:'0.2px',
@@ -887,7 +935,8 @@ class ClientReg extends React.Component {
         <Box direction='row'>
           <Button
             style={{
-              backgroundColor: '#6FFFB0',
+              backgroundColor:"#06554C",
+              color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
@@ -900,7 +949,8 @@ class ClientReg extends React.Component {
             style={{
               position: 'absolute',
               left: '75vw',
-              backgroundColor: '#6FFFB0',
+              backgroundColor:"#06554C",
+              color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
@@ -956,8 +1006,10 @@ class ClientReg extends React.Component {
     return (
       <Box gridArea='info'>
         <Box direction='row'>
+        {this.state.pPhys ?
+          <span>
           <Heading margin='small' level={5} className='GreenLetter'>
-            Regímen Fiscal:
+            Regímen Fiscal(P. Morales):
           </Heading>
           <CheckPicker
             value={this.state.regFiscal}
@@ -965,6 +1017,22 @@ class ClientReg extends React.Component {
             data={RegFis}
             style={{ width: 224 }}
           />
+          </span>
+          :
+          <span>
+            <Heading margin='small' level={5} className='GreenLetter'>
+              Regímen Fiscal(P. Fisicas):
+            </Heading>
+            <CheckPicker
+              value={this.state.regFiscal}
+              onChange={this.CAMBIOS}
+              data={RegFis}
+              style={{ width: 224 }}
+            />
+          </span>
+        }
+
+
         </Box>
         <br />
         <Box direction='row'>
@@ -972,48 +1040,8 @@ class ClientReg extends React.Component {
         </Box>
         <br />
         <br />
-        <Box>
-          <Box direction='row'>
-            <Heading margin='small' level={5} className='GreenLetter'>
-              Cuenta con trabajadores?
-            </Heading>
-            <Toggle
-              size='lg'
-              checkedChildren='Si'
-              unCheckedChildren='No'
-              className='PushDown'
-              checked={this.state.workers}
-              onChange={() => {
-                this.setState({ workers: !this.state.workers });
-              }}
-            />
-          </Box>
-          <br />
-          {this.state.workers ? (
-            <Box>
-              <Box direction='row'>
-                <Heading margin='small' level={5} className='GreenLetter'>
-                  Periocidad de nómina
-                </Heading>
-                <CheckPicker
-                  value={this.state.Nominas}
-                  onChange={this.metNomina}
-                  data={nomina}
-                  style={{ width: 224 }}
-                />
-              </Box>
-              <br />
-              <Box direction='row'>
-                <Text className='GreenLetter'>{this.state.Resultado2}</Text>
-              </Box>
-              <br />
-              <br />
-            </Box>
-          ) : (
-            <span></span>
-          )}
-          <br />
-        </Box>
+        <this.nomBox mark="¿Cuenta con Trabajadores?"/>
+        <this.nomBox mark="¿Cuenta con Asimilados a Salarios?"/>
         <Box>
           <Grid
             rows={['xxsmall', 'xxsmall']}
@@ -1036,6 +1064,8 @@ class ClientReg extends React.Component {
                 width='100%'
                 type=''
                 icon='percent'
+                tooltip={true}
+                tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
               />
             </Box>
             <Box gridArea='AbaiZ'>
