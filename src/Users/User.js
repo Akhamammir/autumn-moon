@@ -18,9 +18,10 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
-    this.state = {usr:this.props.location.state, usrlist:[],
-      name:'', nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', rfc:'',
-    dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false}
+    this.state = {usr:this.props.location.state, usrlist:[], name:'',
+     nameFather:'', nameMother:'', birthday:'', gender:'', curp:'',
+       rfc:'', dateHire:'', position:'', phoneNum:'', emergencyNum:'', 
+        academic:'', password:'', "_id":'', show:false, Team:''}
   }
   componentDidMount() {
     axios.post('/userslist', {team:this.state.usr.Team}).then(res => {
@@ -310,9 +311,19 @@ class User extends React.Component {
                   />
                   <DecoratedInput
                     area="E-Mail"
-                    onChange={ (e) => {this.handleChange(e, 'password') } }
+                    onChange={ (e) => {this.handleChange(e, 'email') } }
                     width = "60%"
                     icon = "envelope-open-o"
+                  />
+                </Box>
+                <br/>
+                <Box direction="row">
+                  <DecoratedInput
+                    area="Equipo"
+                    value={this.state.Team}
+                    onChange={ (e) => {this.handleChange(e, 'Team') } }
+                    width = "60%"
+                    icon = "black-tie"
                   />
                 </Box>
                 <br/>

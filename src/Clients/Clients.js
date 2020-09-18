@@ -39,6 +39,7 @@ class ClientReg extends React.Component {
       fiscal: '',
       rine: '',
       workers: false,
+      assimWorkers: false,
       curp: '',
       rfc: '',
       pPhys: false,
@@ -49,9 +50,10 @@ class ClientReg extends React.Component {
       show: false,
       Resultado: '',
       assigned: {_id:"",team:''},
-      branchAdd: ['Roses are red', 'Violets are blue'],
-      arrayCon: ['Roses are red', 'Violets are blue'],
-      arrayDatos: ['Roses are red', 'Violets are blue'],
+      branchAdd: ['Roses are red',],
+      foreignPartner: ['Roses are red',],
+      arrayCon: ['Roses are red',],
+      arrayDatos: ['Roses are red',],
       arrayActF: ['Roses are red'],
       regFiscal: [],
       isn: '',
@@ -61,6 +63,9 @@ class ClientReg extends React.Component {
       succList: [
         { col: '', calle: '', cp: '', estado: '' },
         { col: '', calle: '', cp: '', estado: '' },
+      ],
+      foreignList: [
+        { name:'', rfc:'' },
       ],
       contactList: [
         { nombre: '', email: '', telefono: '' },
@@ -212,6 +217,17 @@ class ClientReg extends React.Component {
      S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) ) )
   }
   nomBox = (props) =>{
+    let nomina = [
+      { label: 'Semanal', value: 'Semanal', role: 'Master' },
+      { label: 'Catorcenal', value: 'Catorcenal', role: 'Master' },
+      { label: 'Quincenal', value: 'Quincenal', role: 'Master' },
+    ];
+    let nominaAsalariados = [
+      { label: 'Quincenal', value: 'Quincenal', role: 'Master' },
+      { label: 'Mensual', value: 'Mensual', role: 'Master' },
+    ];
+    let datum = props.assim ? nominaAsalariados : nomina;
+    let key = props.assim ? 'assimWorkers' : 'workers';
     return(
       <Box>
           <Box direction='row'>
@@ -223,14 +239,14 @@ class ClientReg extends React.Component {
               checkedChildren='Si'
               unCheckedChildren='No'
               className='PushDown'
-              checked={this.state.workers}
+              checked={this.state[key]}
               onChange={() => {
-                this.setState({ workers: !this.state.workers });
+                this.setState({ [key]: !this.state[key] });
               }}
             />
           </Box>
           <br />
-          {this.state.workers ? (
+          {this.state[key] ? (
             <Box>
               <Box direction='row'>
                 <Heading margin='small' level={5} className='GreenLetter'>
@@ -239,7 +255,7 @@ class ClientReg extends React.Component {
                 <CheckPicker
                   value={this.state.Nominas}
                   onChange={this.metNomina}
-                  data={this.nomina}
+                  data={datum}
                   style={{ width: 224 }}
                 />
               </Box>
@@ -586,7 +602,50 @@ class ClientReg extends React.Component {
             </Box>
             <br />
             {this.state.extran ?
-              <Box>Hihi</Box>
+              <Box>
+                <List hover className='ListColor'>
+                {this.state.foreignPartner.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Nombre'
+                        value={this.state.foreignList[index].name}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'foreignList', index, 'name');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                      <DecoratedInput
+                        area='RFC'
+                        value={this.state.foreignList[index].rfc}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'foreignList', index, 'rfc');
+                        }}
+                        width='250px'
+                        boxw='80px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br />
+              <IconButton
+                icon={<Icon icon='plus' />}
+                circle
+                size='md'
+                onClick={() => {
+                  this.MetodoPush('foreignPartner', 'foreignList', {
+                    name: '',
+                    rfc:''
+                  });
+                }}
+              />
+              </Box>
             : <span></span>
           }
             <br />
@@ -974,34 +1033,32 @@ class ClientReg extends React.Component {
   };
   StepTree = () => {
     let RegFis = [
-      { label: 'Asalariados', value: 'Asalariados', role: 'Master' },
-      { label: 'Honorarios', value: 'Honorarios', role: 'Master' },
-      {
-        label: 'Arrendamiento de inmuebles',
-        value: 'Arrendamiento de inmuebles',
-        role: 'Master',
-      },
-      {
-        label: 'Actividades empresariales',
-        value: 'Actividades empresariales',
-        role: 'Master',
-      },
-      {
-        label: 'Incorporación fiscal',
-        value: 'Incorporación fiscal',
-        role: 'Master',
-      },
-      { label: 'Régimen general', value: 'Régimen general', role: 'Master' },
-      {
-        label: 'Régimen con fines no lucrativos',
-        value: 'Régimen con fines no lucrativos',
-        role: 'Master',
-      },
+      { label: 'Régimen de Sueldos y Salarios e Ingresos Asimilados a Salarios',
+       value: 'RSySIAS', role: 'Master' },
+       { label: 'Régimen de las Personas Físicas con Actividades Empresariales y Profesionales',
+       value: 'RPFAEP', role: 'Master' },
+       { label: 'Régimen de Incorporación Fiscal',
+       value: 'RIF', role: 'Master' },
+       { label: 'Regimen de Ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, mediante plataformas tecnológicas, aplicaciones informáticas y similares',
+       value: 'RIEBPSI', role: 'Master' },
+       { label: 'Régimen de Arrendamiento',
+       value: 'RDA', role: 'Master' },
+       { label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+       value: 'RAAGSP', role: 'Master' },
+       { label: 'Régimen de Enajenación de bienes Regimen General',
+       value: 'RG', role: 'Master' },
+       { label: 'Régimen de Ingresos por Dividendos (socios y accionistas)',
+       value: 'RID', role: 'Master' },
+       { label: 'Régimen de los demás ingresos',
+       value: 'RDI', role: 'Master' },
     ];
-    let nomina = [
-      { label: 'Semanal', value: 'Semanal', role: 'Master' },
-      { label: 'Catorcenal', value: 'Catorcenal', role: 'Master' },
-      { label: 'Quincenal', value: 'Quincenal', role: 'Master' },
+    let RegMor = [
+      { label: 'Régimen General de Ley Personas Morales',
+       value: 'RGLPM', role: 'Master' },
+       { label: 'Régimen de Personas Morales con Fines no Lucrativos',
+       value: 'RPMFL', role: 'Master' },
+       { label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+       value: 'RAAGSP', role: 'Master' },
     ];
     return (
       <Box gridArea='info'>
@@ -1014,7 +1071,7 @@ class ClientReg extends React.Component {
           <CheckPicker
             value={this.state.regFiscal}
             onChange={this.CAMBIOS}
-            data={RegFis}
+            data={RegMor}
             style={{ width: 224 }}
           />
           </span>
@@ -1040,8 +1097,8 @@ class ClientReg extends React.Component {
         </Box>
         <br />
         <br />
-        <this.nomBox mark="¿Cuenta con Trabajadores?"/>
-        <this.nomBox mark="¿Cuenta con Asimilados a Salarios?"/>
+        <this.nomBox mark="¿Cuenta con Trabajadores?" />
+        <this.nomBox mark="¿Cuenta con Asimilados a Salarios?" assim = {true} />
         <Box>
           <Grid
             rows={['xxsmall', 'xxsmall']}
@@ -1090,6 +1147,8 @@ class ClientReg extends React.Component {
                 width='100%'
                 type=''
                 icon='percent'
+                tooltip={true}
+                tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
               />
             </Box>
             <Box gridArea='AbaDer'>
@@ -1102,6 +1161,8 @@ class ClientReg extends React.Component {
                 width='100%'
                 type=''
                 icon='percent'
+                tooltip={true}
+                tooltiptxt="Impuesto Sobre Hospedaje"
               />
             </Box>
           </Grid>
