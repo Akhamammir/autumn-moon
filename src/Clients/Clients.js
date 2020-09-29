@@ -5,31 +5,20 @@ import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
-import { Input, InputGroup } from 'rsuite';
-import {
-  Table,
-  Toggle,
-  Icon,
-  Button,
-  Modal,
-  IconButton,
-  Alert,
-  Progress,
-  List,
-  Steps,
-  CheckPicker,
-  SelectPicker,
-  Divider
-} from 'rsuite';
+import { Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
+  CheckPicker, Input, InputGroup } from 'rsuite';
+import { Dialog } from 'primereact/dialog';
+import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
 const { Line } = Progress;
-const { Column, HeaderCell, Cell, Pagination } = Table;
-const miliPerYear = 31536000000;
+const { Column, HeaderCell, Cell } = Table;
+//const miliPerYear = 31536000000;
 class ClientReg extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
     this.state = {
+      triggetCtaIsh:false,
       _id: undefined,
       usr: this.props.location.state,
       usrlist: [],
@@ -55,11 +44,16 @@ class ClientReg extends React.Component {
       arrayCon: ['Roses are red',],
       arrayDatos: ['Roses are red',],
       arrayActF: ['Roses are red'],
+      arrayCtaIsn: ['Roses are red',], arrayCtaRtp: ['Roses are red',],
+      arrayCtaCed: ['Roses are red',], arrayCtaIsh: ['Roses are red',],
+      arrayIshUsr:['Roses are red'], arrayIsnUsr:['Roses are red'], 
+      arrayCedUsr:['Roses are red'], arrayRtpUsr:['Roses are red'], 
       regFiscal: [],
       isn: '',
       rtp: '',
       cedular: '',
       ish: '',
+      currentArray:'arrayIshUsr', currentList:'usrIshList',
       succList: [
         { col: '', calle: '', cp: '', estado: '' },
         { col: '', calle: '', cp: '', estado: '' },
@@ -75,6 +69,10 @@ class ClientReg extends React.Component {
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
       ],
+      ctaIsnList:[ {cuenta:''} ], ctaRtpList:[ {cuenta:''} ],
+      ctaCedList:[ {cuenta:''} ], ctaIshList:[ {cuenta:''} ],
+      usrIshList:[{user:'', pwd:'' }], usrIsnList:[{user:'', pwd:'' }],
+      usrCedList:[{user:'', pwd:'' }], usrRtpList:[{user:'', pwd:'' }],
       rowSelected:"",
       team:"",
       Nominas:[],
@@ -381,6 +379,42 @@ class ClientReg extends React.Component {
       </Grommet>
     );
   }
+  onClick(name, position, array, list) {
+    let state = {
+        [`${name}`]: true,
+        currentArray: array,
+        currentList: list
+    };
+
+    if (position) {
+        state = {
+            ...state,
+            position
+        }
+    }
+
+    this.setState(state);
+}
+onHide(name) {
+  this.setState({
+      [`${name}`]: false
+  });
+}
+
+renderFooter(name, array, list) {
+  return (
+      <div>
+          <ButtonPrime 
+            icon="pi pi-plus"
+            className="p-button-rounded p-button-success p-button-outlined adder"
+            onClick={() => this.MetodoPush(array, list, {
+              user: '', pwd:''
+            }) }
+            autoFocus
+          />
+      </div>
+  );
+}
   StepOne = () => {
     return (
       <Box gridArea='info'>
@@ -1097,11 +1131,52 @@ class ClientReg extends React.Component {
         </Box>
         <br />
         <br />
+        <Dialog 
+          header="Lista de Cuentas" 
+          visible={this.state.displayPosition} 
+          position={this.state.position} 
+          modal 
+          style={{ width: '50vw' }} 
+          footer={this.renderFooter('displayPosition', this.state.currentArray, this.state.currentList)} 
+          onHide={() => this.onHide('displayPosition')}
+          dismissableMask={true}
+        >
+          <List hover className='ListColor'>
+                {this.state[this.state.currentArray].map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Usuario'
+                        value={this.state[this.state.currentList][index].user}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaIshList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='100px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                      <DecoratedInput
+                        area='Contraseña'
+                        value={this.state[this.state.currentList][index].pwd}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaIshList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='120px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+        </Dialog>
         <this.nomBox mark="¿Cuenta con Trabajadores?" />
         <this.nomBox mark="¿Cuenta con Asimilados a Salarios?" assim = {true} />
         <Box>
           <Grid
-            rows={['xxsmall', 'xxsmall']}
+            rows={['small', 'small']}
             columns={['medium', 'medium']}
             gap='small'
             areas={[
@@ -1111,59 +1186,179 @@ class ClientReg extends React.Component {
               { name: 'AbaDer', start: [1, 1], end: [1, 1] },
             ]}
           >
-            <Box gridArea='ArrIz'>
-              <DecoratedInput
-                area='ISN'
-                value={this.state.isn}
-                onChange={(e) => {
-                  this.handleChange(e, 'isn');
+            <Box gridArea='ArrIz' >
+              <List hover className='ListColor'>
+                {this.state.arrayCtaIsn.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Cta. Isn'
+                        value={this.state.ctaIsnList[index].name}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaIsnList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br/>
+              <Box direction='row' align="stretch" style={{position:"relative"}}>
+              <IconButton
+                icon={<Icon icon='plus' />}
+                circle
+                size='md'
+                onClick={() => {
+                  this.MetodoPush('arrayCtaIsn', 'ctaIsnList', {
+                    cta: '',
+                  });
                 }}
-                width='100%'
-                type=''
-                icon='percent'
-                tooltip={true}
-                tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
               />
+              <ButtonPrime
+                icon="pi pi-angle-right"
+                style={{position:"absolute", right:0}}
+                onClick={() => 
+                  this.onClick('displayPosition', 'left', 'arrayIsnUsr', 'usrIsnList')
+                }
+                className="p-button-rounded p-button-text p-button-plain" 
+              />
+              </Box>
             </Box>
             <Box gridArea='AbaiZ'>
-              <DecoratedInput
-                area='Cedular'
-                value={this.state.cedular}
-                onChange={(e) => {
-                  this.handleChange(e, 'cedular');
+            <List hover className='ListColor'>
+                {this.state.arrayCtaCed.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Cedular'
+                        value={this.state.ctaCedList[index].name}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaCedList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br/>
+              <Box direction='row' align="stretch" style={{position:"relative"}}>
+              <IconButton
+                icon={<Icon icon='plus' />}
+                circle
+                size='md'
+                onClick={() => {
+                  this.MetodoPush('arrayCtaCed', 'ctaCedList', {
+                    cta: '',
+                  });
                 }}
-                width='100%'
-                type=''
-                icon='percent'
               />
+              <ButtonPrime
+                icon="pi pi-angle-right"
+                style={{position:"absolute", right:0}}
+                onClick={() => 
+                  this.onClick('displayPosition', 'left', 'arrayCedUsr', 'usrCedList')
+                }
+                className="p-button-rounded p-button-text p-button-plain" 
+              />
+              </Box>
             </Box>
             <Box gridArea='ArrDer'>
-              <DecoratedInput
-                area='RTP'
-                value={this.state.rtp}
-                onChange={(e) => {
-                  this.handleChange(e, 'rtp');
+            <List hover className='ListColor'>
+                {this.state.arrayCtaRtp.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='RTP'
+                        value={this.state.ctaRtpList[index].name}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaRtpList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br/>
+              <Box direction='row' align="stretch" style={{position:"relative"}}>
+              <IconButton
+                icon={<Icon icon='plus' />}
+                circle
+                size='md'
+                onClick={() => {
+                  this.MetodoPush('arrayCtaRtp', 'ctaRtpList', {
+                    cta: '',
+                  });
                 }}
-                width='100%'
-                type=''
-                icon='percent'
-                tooltip={true}
-                tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
               />
+              <ButtonPrime
+                icon="pi pi-angle-right"
+                style={{position:"absolute", right:0}}
+                onClick={() => 
+                  this.onClick('displayPosition', 'left', 'arrayRtpUsr', 'usrRtpList')
+                }
+                className="p-button-rounded p-button-text p-button-plain" 
+              />
+              </Box>
             </Box>
             <Box gridArea='AbaDer'>
-              <DecoratedInput
-                area='ISH'
-                value={this.state.ish}
-                onChange={(e) => {
-                  this.handleChange(e, 'ish');
+            <List hover className='ListColor'>
+                {this.state.arrayCtaIsh.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='ISH'
+                        value={this.state.ctaIshList[index].name}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'ctaIshList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Impuesto Sobre Hospedaje"
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br/>
+              <Box direction='row' align="stretch" style={{position:"relative"}}>
+              <IconButton
+                icon={<Icon icon='plus' />}
+                circle
+                size='md'
+                onClick={() => {
+                  this.MetodoPush('arrayCtaIsh', 'ctaIshList', {
+                    cta: '',
+                  });
                 }}
-                width='100%'
-                type=''
-                icon='percent'
-                tooltip={true}
-                tooltiptxt="Impuesto Sobre Hospedaje"
               />
+              <ButtonPrime
+                icon="pi pi-angle-right"
+                style={{position:"absolute", right:0}}
+                onClick={() => 
+                  this.onClick('displayPosition', 'left', 'arrayIshUsr', 'usrIshList')
+                }
+                className="p-button-rounded p-button-text p-button-plain" 
+              />
+              </Box>
             </Box>
           </Grid>
         </Box>

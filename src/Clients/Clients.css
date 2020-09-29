@@ -85,3 +85,32 @@
   0 6px 8px rgba(0,0,0,0.11),
   0 8px 16px rgba(0,0,0,0.11);
 }
+.rs-popover-full{
+  opacity: 0.9;
+  background-color: #434343;
+  color: #F2F3F4;
+}
+.p-dialog-titlebar{
+  background-color: #00AB9B!important;
+  border: none!important;
+}
+.p-dialog-footer{
+  text-align: center!important;
+}
+/*.p-button-raised{
+  background-color: #00AB9B!important;
+  border: none!important;
+} */
+.p-button-text{
+  background: none!important;
+  border: none!important;
+  color: #434343!important;
+}
+.adder .p-button-text {
+  background: none!important;
+  color: #34A835!important;
+}
+.adder.p-button-success{
+  background: none!important;
+  color: #34A835!important;
+}
