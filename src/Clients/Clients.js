@@ -5,8 +5,10 @@ import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
-import { Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
-  CheckPicker, Input, InputGroup } from 'rsuite';
+import {
+  Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
+  CheckPicker, Input, InputGroup
+} from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
@@ -18,7 +20,7 @@ class ClientReg extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      triggetCtaIsh:false,
+      triggetCtaIsh: false,
       _id: undefined,
       usr: this.props.location.state,
       usrlist: [],
@@ -37,29 +39,43 @@ class ClientReg extends React.Component {
       extran: false,
       phoneNum: '',
       show: false,
+      Deep: false,
+      RNIEUsr: { user: '', pwd: '' },
+      RFCUsr: { user: '', pwd: '' },
       Resultado: '',
-      assigned: {_id:"",team:''},
+      assigned: { _id: "", team: '' },
       branchAdd: ['Roses are red',],
       foreignPartner: ['Roses are red',],
       arrayCon: ['Roses are red',],
       arrayDatos: ['Roses are red',],
       arrayActF: ['Roses are red'],
+      arrayFona: ['Roses are red'],
+      arrayFonaUsr: ['Roses are red'],
+      arrayRegPa: ['Roses are red'],
       arrayCtaIsn: ['Roses are red',], arrayCtaRtp: ['Roses are red',],
       arrayCtaCed: ['Roses are red',], arrayCtaIsh: ['Roses are red',],
-      arrayIshUsr:['Roses are red'], arrayIsnUsr:['Roses are red'], 
-      arrayCedUsr:['Roses are red'], arrayRtpUsr:['Roses are red'], 
+      arrayIshUsr: ['Roses are red'], arrayIsnUsr: ['Roses are red'],
+      arrayCedUsr: ['Roses are red'], arrayRtpUsr: ['Roses are red'],
       regFiscal: [],
       isn: '',
       rtp: '',
       cedular: '',
       ish: '',
-      currentArray:'arrayIshUsr', currentList:'usrIshList',
+      currentArray: 'arrayIshUsr', currentList: 'usrIshList',
+      regPaList: [
+        {
+          Registro: '',
+          IDSE: { user: '', pwd: '' },
+          SIPAR: { user: '', pwd: '' },
+          INFO: { user: '', pwd: '' },
+        },
+      ],
       succList: [
         { col: '', calle: '', cp: '', estado: '' },
         { col: '', calle: '', cp: '', estado: '' },
       ],
       foreignList: [
-        { name:'', rfc:'' },
+        { name: '', rfc: '' },
       ],
       contactList: [
         { nombre: '', email: '', telefono: '' },
@@ -69,14 +85,15 @@ class ClientReg extends React.Component {
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
         { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
       ],
-      ctaIsnList:[ {cuenta:''} ], ctaRtpList:[ {cuenta:''} ],
-      ctaCedList:[ {cuenta:''} ], ctaIshList:[ {cuenta:''} ],
-      usrIshList:[{user:'', pwd:'' }], usrIsnList:[{user:'', pwd:'' }],
-      usrCedList:[{user:'', pwd:'' }], usrRtpList:[{user:'', pwd:'' }],
-      rowSelected:"",
-      team:"",
-      Nominas:[],
-      searchT:''
+      ctaIsnList: [{ cta: '' }], ctaRtpList: [{ cta: '' }],
+      ctaCedList: [{ cta: '' }], ctaIshList: [{ cta: '' }],
+      usrIshList: [{ user: '', pwd: '' }], usrIsnList: [{ user: '', pwd: '' }],
+      usrCedList: [{ user: '', pwd: '' }], usrRtpList: [{ user: '', pwd: '' }],
+      fonaList: [{ cta: '' }], fonaUsrList: [{ user: '', pwd: '' }],
+      rowSelected: "",
+      team: "",
+      Nominas: [],
+      searchT: ''
     };
   }
   componentDidMount() {
@@ -89,23 +106,23 @@ class ClientReg extends React.Component {
         I.place = J;
         users.push(I);
       });
-      this.setState({ usrlist: users, usrlistStore:users });
+      this.setState({ usrlist: users, usrlistStore: users });
       console.log(this.state.usrlist);
     });
 
-    if (this.props.match.params.id ) {
+    if (this.props.match.params.id) {
       try {
-        axios.post(`/clients/client`, { team: this.state.usr.Team,id:this.props.match.params.id }).then((res) => {
+        axios.post(`/clients/client`, { team: this.state.usr.Team, id: this.props.match.params.id }).then((res) => {
           this.setState(res.data.Client)
-          this.setState({step:0})
+          this.setState({ step: 0 })
         })
       } catch (err) {
         console.log(err.message)
-        }
-      }else{
-        console.log('No hay id en los params')
-
       }
+    } else {
+      console.log('No hay id en los params')
+
+    }
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange = (value, field) => {
@@ -114,13 +131,20 @@ class ClientReg extends React.Component {
       console.log(this.state);
     });
   };
-  handleChangeList = (value, collection, index, name) => {
-    //console.log(value, collection, index, name);
-    this.state[collection][index][name] = value;
-    //console.log( this.state[collection][index][name] );
-    this.setState({ step: this.state.step }, () => {
-      //console.log(this.state);
-    });
+  handleChangeList = (value, collection, index, name, depth1) => {
+    if (depth1) {
+      this.state[collection][index][depth1][name] = value;
+      this.setState({ step: this.state.step }, () => {
+        //console.log(this.state);
+      });
+    } else {
+      //console.log(value, collection, index, name);
+      this.state[collection][index][name] = value;
+      //console.log( this.state[collection][index][name] );
+      this.setState({ step: this.state.step }, () => {
+        //console.log(this.state);
+      });
+    }
   };
   handleUpload = () => {
   };
@@ -206,15 +230,15 @@ class ClientReg extends React.Component {
     console.log(this.state.usrlist);
     this.setState({
       //
-      usrlist: this.state.searchT.length == 0 ? this.state.usrlistStore : this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
-      S.Team.includes(this.state.searchT) ||
-      S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) )
+      usrlist: this.state.searchT.length == 0 ? this.state.usrlistStore : this.state.usrlistStore.filter(S => S.Name.First.includes(this.state.searchT) ||
+        S.Team.includes(this.state.searchT) ||
+        S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT))
     })
-    console.log(this.state.usrlistStore.filter( S => S.Name.First.includes(this.state.searchT) ||
-     S.Team.includes(this.state.searchT) ||
-     S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT) ) )
+    console.log(this.state.usrlistStore.filter(S => S.Name.First.includes(this.state.searchT) ||
+      S.Team.includes(this.state.searchT) ||
+      S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT)))
   }
-  nomBox = (props) =>{
+  nomBox = (props) => {
     let nomina = [
       { label: 'Semanal', value: 'Semanal', role: 'Master' },
       { label: 'Catorcenal', value: 'Catorcenal', role: 'Master' },
@@ -226,49 +250,49 @@ class ClientReg extends React.Component {
     ];
     let datum = props.assim ? nominaAsalariados : nomina;
     let key = props.assim ? 'assimWorkers' : 'workers';
-    return(
+    return (
       <Box>
-          <Box direction='row'>
-            <Heading margin='small' level={5} className='GreenLetter'>
-              {props.mark}
-            </Heading>
-            <Toggle
-              size='lg'
-              checkedChildren='Si'
-              unCheckedChildren='No'
-              className='PushDown'
-              checked={this.state[key]}
-              onChange={() => {
-                this.setState({ [key]: !this.state[key] });
-              }}
-            />
-          </Box>
-          <br />
-          {this.state[key] ? (
-            <Box>
-              <Box direction='row'>
-                <Heading margin='small' level={5} className='GreenLetter'>
-                  Periocidad de nómina
+        <Box direction='row'>
+          <Heading margin='small' level={5} className='GreenLetter'>
+            {props.mark}
+          </Heading>
+          <Toggle
+            size='lg'
+            checkedChildren='Si'
+            unCheckedChildren='No'
+            className='PushDown'
+            checked={this.state[key]}
+            onChange={() => {
+              this.setState({ [key]: !this.state[key] });
+            }}
+          />
+        </Box>
+        <br />
+        {this.state[key] ? (
+          <Box>
+            <Box direction='row'>
+              <Heading margin='small' level={5} className='GreenLetter'>
+                Periocidad de nómina
                 </Heading>
-                <CheckPicker
-                  value={this.state.Nominas}
-                  onChange={this.metNomina}
-                  data={datum}
-                  style={{ width: 224 }}
-                />
-              </Box>
-              <br />
-              <Box direction='row'>
-                <Text className='GreenLetter'>{this.state.Resultado2}</Text>
-              </Box>
-              <br />
-              <br />
+              <CheckPicker
+                value={this.state.Nominas}
+                onChange={this.metNomina}
+                data={datum}
+                style={{ width: 224 }}
+              />
             </Box>
-          ) : (
+            <br />
+            <Box direction='row'>
+              <Text className='GreenLetter'>{this.state.Resultado2}</Text>
+            </Box>
+            <br />
+            <br />
+          </Box>
+        ) : (
             <span></span>
           )}
-          <br />
-        </Box>
+        <br />
+      </Box>
     );
   }
   render() {
@@ -379,42 +403,49 @@ class ClientReg extends React.Component {
       </Grommet>
     );
   }
-  onClick(name, position, array, list) {
+  onClick(name, position, array, list, deep) {
     let state = {
-        [`${name}`]: true,
-        currentArray: array,
-        currentList: list
+      [`${name}`]: true,
+      currentArray: array,
+      currentList: list,
+      Deep: deep ? deep : false
     };
 
     if (position) {
-        state = {
-            ...state,
-            position
-        }
+      state = {
+        ...state,
+        position
+      }
     }
 
-    this.setState(state);
-}
-onHide(name) {
-  this.setState({
+    this.setState(state, () => {
+      console.log(this.state.Deep)
+    });
+  }
+  onHide(name) {
+    this.setState({
       [`${name}`]: false
-  });
-}
+    });
+  }
 
-renderFooter(name, array, list) {
-  return (
+  renderFooter(name, array, list) {
+    return (
       <div>
-          <ButtonPrime 
+        { this.state.Deep ?
+          <span></span>
+          :
+          <ButtonPrime
             icon="pi pi-plus"
             className="p-button-rounded p-button-success p-button-outlined adder"
             onClick={() => this.MetodoPush(array, list, {
-              user: '', pwd:''
-            }) }
+              user: '', pwd: ''
+            })}
             autoFocus
           />
+        }
       </div>
-  );
-}
+    );
+  }
   StepOne = () => {
     return (
       <Box gridArea='info'>
@@ -482,16 +513,16 @@ renderFooter(name, array, list) {
               display={this.state.pPhys}
             />
           ) : (
-            <DecoratedInput
-              area='RNIE'
-              value={this.state.rine}
-              onChange={(e) => {
-                this.handleChange(e, 'rine');
-              }}
-              width='60%'
-              icon='peoples-map'
-            />
-          )}
+              <DecoratedInput
+                area='RNIE'
+                value={this.state.rine}
+                onChange={(e) => {
+                  this.handleChange(e, 'rine');
+                }}
+                width='60%'
+                icon='peoples-map'
+              />
+            )}
           <DecoratedInput
             area='RFC'
             value={this.state.rfc}
@@ -606,98 +637,98 @@ renderFooter(name, array, list) {
               />
             </Box>
           ) : (
-            <span></span>
-          )}
+              <span></span>
+            )}
           <br />
           <br />
         </Box>
         {!this.state.pPhys ? (
           <span></span>
         ) : (
-          <Box>
-            <Box direction='row'>
-              <Heading margin='small' level={5} className='GreenLetter'
-                style={{
-                  color: '#515253',
-                }}
-              >
-                ¿El cliente cuenta con socios extranjeros?
+            <Box>
+              <Box direction='row'>
+                <Heading margin='small' level={5} className='GreenLetter'
+                  style={{
+                    color: '#515253',
+                  }}
+                >
+                  ¿El cliente cuenta con socios extranjeros?
               </Heading>
-              <Toggle
-                size='lg'
-                checkedChildren='Si'
-                unCheckedChildren='No'
-                className='PushDown'
-                checked={this.state.extran}
-                onChange={() => {
-                  this.setState({ extran: !this.state.extran });
-                }}
-              />
-            </Box>
-            <br />
-            {this.state.extran ?
-              <Box>
-                <List hover className='ListColor'>
-                {this.state.foreignPartner.map((item, index) => (
-                  <List.Item key={index} index={index} className='Pad'>
-                    <Box direction='row'>
-                      <DecoratedInput
-                        area='Nombre'
-                        value={this.state.foreignList[index].name}
-                        onChange={(e) => {
-                          this.handleChangeList(e, 'foreignList', index, 'name');
-                        }}
-                        width='300px'
-                        boxw='90px'
-                        textw='medium'
-                        icon='id-mapping'
-                      />
-                      <DecoratedInput
-                        area='RFC'
-                        value={this.state.foreignList[index].rfc}
-                        onChange={(e) => {
-                          this.handleChangeList(e, 'foreignList', index, 'rfc');
-                        }}
-                        width='250px'
-                        boxw='80px'
-                        textw='medium'
-                        icon='id-mapping'
-                      />
-                    </Box>
-                  </List.Item>
-                ))}
-              </List>
-              <br />
-              <IconButton
-                icon={<Icon icon='plus' />}
-                circle
-                size='md'
-                onClick={() => {
-                  this.MetodoPush('foreignPartner', 'foreignList', {
-                    name: '',
-                    rfc:''
-                  });
-                }}
-              />
+                <Toggle
+                  size='lg'
+                  checkedChildren='Si'
+                  unCheckedChildren='No'
+                  className='PushDown'
+                  checked={this.state.extran}
+                  onChange={() => {
+                    this.setState({ extran: !this.state.extran });
+                  }}
+                />
               </Box>
-            : <span></span>
-          }
-            <br />
-          </Box>
-        )}
+              <br />
+              {this.state.extran ?
+                <Box>
+                  <List hover className='ListColor'>
+                    {this.state.foreignPartner.map((item, index) => (
+                      <List.Item key={index} index={index} className='Pad'>
+                        <Box direction='row'>
+                          <DecoratedInput
+                            area='Nombre'
+                            value={this.state.foreignList[index].name}
+                            onChange={(e) => {
+                              this.handleChangeList(e, 'foreignList', index, 'name');
+                            }}
+                            width='300px'
+                            boxw='90px'
+                            textw='medium'
+                            icon='id-mapping'
+                          />
+                          <DecoratedInput
+                            area='RFC'
+                            value={this.state.foreignList[index].rfc}
+                            onChange={(e) => {
+                              this.handleChangeList(e, 'foreignList', index, 'rfc');
+                            }}
+                            width='250px'
+                            boxw='80px'
+                            textw='medium'
+                            icon='id-mapping'
+                          />
+                        </Box>
+                      </List.Item>
+                    ))}
+                  </List>
+                  <br />
+                  <IconButton
+                    icon={<Icon icon='plus' />}
+                    circle
+                    size='md'
+                    onClick={() => {
+                      this.MetodoPush('foreignPartner', 'foreignList', {
+                        name: '',
+                        rfc: ''
+                      });
+                    }}
+                  />
+                </Box>
+                : <span></span>
+              }
+              <br />
+            </Box>
+          )}
         <Button
           style={{
-            backgroundColor:"#06554C",
+            backgroundColor: "#06554C",
             color: '#F5F0F6',
             width: '120px',
             fontFamily: "'Manjari', sans-serif",
             boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
           }}
-          disabled = {
+          disabled={
             !(this.state.razon.length != 0 &&
-            this.state.fiscal.length != 0 &&
-            this.state.rfc.length != 0 &&
-            this.state.phoneNum.length != 0)
+              this.state.fiscal.length != 0 &&
+              this.state.rfc.length != 0 &&
+              this.state.phoneNum.length != 0)
           }
           onClick={() => this.forward()}
         >
@@ -828,10 +859,10 @@ renderFooter(name, array, list) {
                     icon='mobile'
                     type='number'
                   />
-                  <br/>
-                  <br/>
-                  </Box>
-                  <Box direction='row'>
+                  <br />
+                  <br />
+                </Box>
+                <Box direction='row'>
                   <DecoratedInput
                     area='RFC'
                     value={this.state.repList[index].rfc}
@@ -885,33 +916,33 @@ renderFooter(name, array, list) {
         <InputGroup
           style={{
             width: 270,
-            overflow:'visible',
-            border:'none',
+            overflow: 'visible',
+            border: 'none',
             borderRadius: '90px'
           }} >
-        <Input
-          style= {{ boxShadow: 'none', width:240, paddingRight:'11px' }}
-          placeholder="Usuario"
-          className="inputLog"
-          value={this.state.searchT}
-          onChange={(e) => {
-            this.setState({ searchT: e } );
-          } }
-        />
-        <InputGroup.Button
-          style={{
-            paddingLeft:'25px',
-            paddingRight:'11px',
-            top:'0.2px',
-            backgroundColor:'#00AB9B',
-            color:'#F2F3F4',
-            borderRadius:'0px 100px 100px 0px',
-            right: '20px'
-          }}
-          onClick = { this.filteruser }
+          <Input
+            style={{ boxShadow: 'none', width: 240, paddingRight: '11px' }}
+            placeholder="Usuario"
+            className="inputLog"
+            value={this.state.searchT}
+            onChange={(e) => {
+              this.setState({ searchT: e });
+            }}
+          />
+          <InputGroup.Button
+            style={{
+              paddingLeft: '25px',
+              paddingRight: '11px',
+              top: '0.2px',
+              backgroundColor: '#00AB9B',
+              color: '#F2F3F4',
+              borderRadius: '0px 100px 100px 0px',
+              right: '20px'
+            }}
+            onClick={this.filteruser}
           >
-        <Icon icon="search" />
-      </InputGroup.Button>
+            <Icon icon="search" />
+          </InputGroup.Button>
         </InputGroup>
         <br />
         <br />
@@ -924,12 +955,12 @@ renderFooter(name, array, list) {
             console.log(data);
             this.state._idDel = data._id;
             this.setState({
-              rowSelected:data._id,
-              team:data.Team
+              rowSelected: data._id,
+              team: data.Team
             })
           }}
-          rowClassName={(rowData)=>{
-            return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected':''):'')
+          rowClassName={(rowData) => {
+            return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected' : '') : '')
           }}
         >
           <Column width={50} align='center' fixed>
@@ -1005,7 +1036,7 @@ renderFooter(name, array, list) {
 
               <DecoratedInput
                 area='Puesto'
-                value={this.state.assigned.pos == null ? "NA":this.state.assigned.pos}
+                value={this.state.assigned.pos == null ? "NA" : this.state.assigned.pos}
                 width='380px'
                 boxw='100px'
                 textw='medium'
@@ -1014,7 +1045,7 @@ renderFooter(name, array, list) {
               />
               <DecoratedInput
                 area='Equipo'
-                value={this.state.assigned.team == null ? "NA": this.state.assigned.team}
+                value={this.state.assigned.team == null ? "NA" : this.state.assigned.team}
                 width='250px'
                 boxw='100px'
                 textw='medium'
@@ -1028,7 +1059,7 @@ renderFooter(name, array, list) {
         <Box direction='row'>
           <Button
             style={{
-              backgroundColor:"#06554C",
+              backgroundColor: "#06554C",
               color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
@@ -1042,16 +1073,16 @@ renderFooter(name, array, list) {
             style={{
               position: 'absolute',
               left: '75vw',
-              backgroundColor:"#06554C",
+              backgroundColor: "#06554C",
               color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
-            disabled = {
+            disabled={
               !(this.state.assigned.pos != null &&
                 // this.state.assigned.team[0].nombre.length != 0 &&
-                this.state.assigned.team != '' )
+                this.state.assigned.team != '')
             }
             onClick={
 
@@ -1067,61 +1098,85 @@ renderFooter(name, array, list) {
   };
   StepTree = () => {
     let RegFis = [
-      { label: 'Régimen de Sueldos y Salarios e Ingresos Asimilados a Salarios',
-       value: 'RSySIAS', role: 'Master' },
-       { label: 'Régimen de las Personas Físicas con Actividades Empresariales y Profesionales',
-       value: 'RPFAEP', role: 'Master' },
-       { label: 'Régimen de Incorporación Fiscal',
-       value: 'RIF', role: 'Master' },
-       { label: 'Regimen de Ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, mediante plataformas tecnológicas, aplicaciones informáticas y similares',
-       value: 'RIEBPSI', role: 'Master' },
-       { label: 'Régimen de Arrendamiento',
-       value: 'RDA', role: 'Master' },
-       { label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
-       value: 'RAAGSP', role: 'Master' },
-       { label: 'Régimen de Enajenación de bienes Regimen General',
-       value: 'RG', role: 'Master' },
-       { label: 'Régimen de Ingresos por Dividendos (socios y accionistas)',
-       value: 'RID', role: 'Master' },
-       { label: 'Régimen de los demás ingresos',
-       value: 'RDI', role: 'Master' },
+      {
+        label: 'Régimen de Sueldos y Salarios e Ingresos Asimilados a Salarios',
+        value: 'RSySIAS', role: 'Master'
+      },
+      {
+        label: 'Régimen de las Personas Físicas con Actividades Empresariales y Profesionales',
+        value: 'RPFAEP', role: 'Master'
+      },
+      {
+        label: 'Régimen de Incorporación Fiscal',
+        value: 'RIF', role: 'Master'
+      },
+      {
+        label: 'Regimen de Ingresos por la enajenación de bienes o la prestación de servicios a través de Internet, mediante plataformas tecnológicas, aplicaciones informáticas y similares',
+        value: 'RIEBPSI', role: 'Master'
+      },
+      {
+        label: 'Régimen de Arrendamiento',
+        value: 'RDA', role: 'Master'
+      },
+      {
+        label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+        value: 'RAAGSP', role: 'Master'
+      },
+      {
+        label: 'Régimen de Enajenación de bienes Regimen General',
+        value: 'RG', role: 'Master'
+      },
+      {
+        label: 'Régimen de Ingresos por Dividendos (socios y accionistas)',
+        value: 'RID', role: 'Master'
+      },
+      {
+        label: 'Régimen de los demás ingresos',
+        value: 'RDI', role: 'Master'
+      },
     ];
     let RegMor = [
-      { label: 'Régimen General de Ley Personas Morales',
-       value: 'RGLPM', role: 'Master' },
-       { label: 'Régimen de Personas Morales con Fines no Lucrativos',
-       value: 'RPMFL', role: 'Master' },
-       { label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
-       value: 'RAAGSP', role: 'Master' },
+      {
+        label: 'Régimen General de Ley Personas Morales',
+        value: 'RGLPM', role: 'Master'
+      },
+      {
+        label: 'Régimen de Personas Morales con Fines no Lucrativos',
+        value: 'RPMFL', role: 'Master'
+      },
+      {
+        label: 'Régimen de Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras',
+        value: 'RAAGSP', role: 'Master'
+      },
     ];
     return (
       <Box gridArea='info'>
         <Box direction='row'>
-        {this.state.pPhys ?
-          <span>
-          <Heading margin='small' level={5} className='GreenLetter'>
-            Regímen Fiscal(P. Morales):
+          {this.state.pPhys ?
+            <span>
+              <Heading margin='small' level={5} className='GreenLetter'>
+                Regímen Fiscal(P. Morales):
           </Heading>
-          <CheckPicker
-            value={this.state.regFiscal}
-            onChange={this.CAMBIOS}
-            data={RegMor}
-            style={{ width: 224 }}
-          />
-          </span>
-          :
-          <span>
-            <Heading margin='small' level={5} className='GreenLetter'>
-              Regímen Fiscal(P. Fisicas):
+              <CheckPicker
+                value={this.state.regFiscal}
+                onChange={this.CAMBIOS}
+                data={RegMor}
+                style={{ width: 224 }}
+              />
+            </span>
+            :
+            <span>
+              <Heading margin='small' level={5} className='GreenLetter'>
+                Regímen Fiscal(P. Fisicas):
             </Heading>
-            <CheckPicker
-              value={this.state.regFiscal}
-              onChange={this.CAMBIOS}
-              data={RegFis}
-              style={{ width: 224 }}
-            />
-          </span>
-        }
+              <CheckPicker
+                value={this.state.regFiscal}
+                onChange={this.CAMBIOS}
+                data={RegFis}
+                style={{ width: 224 }}
+              />
+            </span>
+          }
 
 
         </Box>
@@ -1131,25 +1186,27 @@ renderFooter(name, array, list) {
         </Box>
         <br />
         <br />
-        <Dialog 
-          header="Lista de Cuentas" 
-          visible={this.state.displayPosition} 
-          position={this.state.position} 
-          modal 
-          style={{ width: '50vw' }} 
-          footer={this.renderFooter('displayPosition', this.state.currentArray, this.state.currentList)} 
+        <Dialog
+          header="Lista de Cuentas"
+          visible={this.state.displayPosition}
+          position={this.state.position}
+          modal
+          style={{ width: '50vw' }}
+          footer={this.renderFooter('displayPosition', this.state.currentArray, this.state.currentList)}
           onHide={() => this.onHide('displayPosition')}
           dismissableMask={true}
         >
           <List hover className='ListColor'>
-                {this.state[this.state.currentArray].map((item, index) => (
-                  <List.Item key={index} index={index} className='Pad'>
+            {this.state[this.state.currentArray].map((item, index) => (
+              <List.Item key={index} index={index} className='Pad'>
+                { this.state.Deep ?
+                  <span>
                     <Box direction='row'>
                       <DecoratedInput
-                        area='Usuario'
-                        value={this.state[this.state.currentList][index].user}
+                        area='IDSE'
+                        value={this.state.regPaList[index].IDSE.user}
                         onChange={(e) => {
-                          this.handleChangeList(e, 'ctaIshList', index, 'cta');
+                          this.handleChangeList(e, 'regPaList', index, 'user', 'IDSE');
                         }}
                         width='300px'
                         boxw='100px'
@@ -1158,9 +1215,9 @@ renderFooter(name, array, list) {
                       />
                       <DecoratedInput
                         area='Contraseña'
-                        value={this.state[this.state.currentList][index].pwd}
+                        value={this.state.regPaList[index].IDSE.pwd}
                         onChange={(e) => {
-                          this.handleChangeList(e, 'ctaIshList', index, 'cta');
+                          this.handleChangeList(e, 'regPaList', index, 'pwd', 'IDSE');
                         }}
                         width='300px'
                         boxw='120px'
@@ -1168,24 +1225,195 @@ renderFooter(name, array, list) {
                         icon='id-mapping'
                       />
                     </Box>
+                    <br />
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='SIPAR'
+                        value={this.state.regPaList[index].SIPAR.user}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'regPaList', index, 'user', 'SIPAR');
+                        }}
+                        width='300px'
+                        boxw='100px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                      <DecoratedInput
+                        area='Contraseña'
+                        value={this.state.regPaList[index].SIPAR.pwd}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'regPaList', index, 'pwd', 'SIPAR');
+                        }}
+                        width='300px'
+                        boxw='120px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                    </Box>
+                    <br />
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='INFO'
+                        value={this.state.regPaList[index].INFO.user}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'regPaList', index, 'user', 'INFO');
+                        }}
+                        width='300px'
+                        boxw='100px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                      <DecoratedInput
+                        area='Contraseña'
+                        value={this.state.regPaList[index].INFO.pwd}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'regPaList', index, 'pwd', 'INFO');
+                        }}
+                        width='300px'
+                        boxw='120px'
+                        textw='medium'
+                        icon='id-mapping'
+                      />
+                    </Box>
+                  </span>
+                  :
+                  <Box direction='row'>
+                    <DecoratedInput
+                      area='Usuario'
+                      value={this.state[this.state.currentList][index].user}
+                      onChange={(e) => {
+                        this.handleChangeList(e, 'ctaIshList', index, 'user');
+                      }}
+                      width='300px'
+                      boxw='100px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                    <DecoratedInput
+                      area='Contraseña'
+                      value={this.state[this.state.currentList][index].pwd}
+                      onChange={(e) => {
+                        this.handleChangeList(e, 'ctaIshList', index, 'pwd');
+                      }}
+                      width='300px'
+                      boxw='120px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                  </Box>}
+              </List.Item>
+            ))}
+          </List>
+        </Dialog>
+        <this.nomBox mark="¿Cuenta con Trabajadores?" />
+        <this.nomBox mark="¿Cuenta con Asimilados a Salarios?" assim={true} />
+        <Box>
+          <Grid
+            rows={['small', 'small', 'small', 'small']}
+            columns={['30vw', '30vw']}
+            gap='small'
+            areas={[
+              { name: 'topIz', start: [0, 0], end: [0, 0] },
+              { name: 'topDer', start: [1, 0], end: [1, 0] },
+              { name: 'ArrIz', start: [0, 1], end: [0, 1] },
+              { name: 'AbaiZ', start: [0, 2], end: [0, 2] },
+              { name: 'ArrDer', start: [1, 1], end: [1, 1] },
+              { name: 'AbaDer', start: [1, 2], end: [1, 2] },
+              { name: 'botIz', start: [0, 3], end: [0, 3] },
+              { name: 'botDer', start: [1, 3], end: [1, 3] },
+            ]}
+          >
+            <Box gridArea='topIz' >
+              <List hover className='ListColor'>
+                {this.state.arrayRegPa.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='R. Pat.'
+                        value={this.state.regPaList[index].Registro}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'regPaList', index, 'Registro');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Registro Patronal"
+                      />
+                    </Box>
                   </List.Item>
                 ))}
               </List>
-        </Dialog>
-        <this.nomBox mark="¿Cuenta con Trabajadores?" />
-        <this.nomBox mark="¿Cuenta con Asimilados a Salarios?" assim = {true} />
-        <Box>
-          <Grid
-            rows={['small', 'small']}
-            columns={['medium', 'medium']}
-            gap='small'
-            areas={[
-              { name: 'ArrIz', start: [0, 0], end: [0, 0] },
-              { name: 'AbaiZ', start: [0, 1], end: [0, 1] },
-              { name: 'ArrDer', start: [1, 0], end: [1, 0] },
-              { name: 'AbaDer', start: [1, 1], end: [1, 1] },
-            ]}
-          >
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayRegPa', 'regPaList', {
+                      Registro: '',
+                      IDSE: { user: '', pwd: '' },
+                      SIPAR: { user: '', pwd: '' },
+                      INFO: { user: '', pwd: '' },
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayRegPa', 'usrIsnList', true)
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
+              </Box>
+            </Box>
+            <Box gridArea='topDer' >
+              <List hover className='ListColor'>
+                {this.state.arrayFona.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Fonacot'
+                        value={this.state.fonaList[index].cta}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'fonaList', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='90px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayFona', 'fonaList', {
+                      cta: '',
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayFonaUsr', 'fonaUsrList')
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
+              </Box>
+            </Box>
             <Box gridArea='ArrIz' >
               <List hover className='ListColor'>
                 {this.state.arrayCtaIsn.map((item, index) => (
@@ -1193,7 +1421,7 @@ renderFooter(name, array, list) {
                     <Box direction='row'>
                       <DecoratedInput
                         area='Cta. Isn'
-                        value={this.state.ctaIsnList[index].name}
+                        value={this.state.ctaIsnList[index].cta}
                         onChange={(e) => {
                           this.handleChangeList(e, 'ctaIsnList', index, 'cta');
                         }}
@@ -1208,36 +1436,36 @@ renderFooter(name, array, list) {
                   </List.Item>
                 ))}
               </List>
-              <br/>
-              <Box direction='row' align="stretch" style={{position:"relative"}}>
-              <IconButton
-                icon={<Icon icon='plus' />}
-                circle
-                size='md'
-                onClick={() => {
-                  this.MetodoPush('arrayCtaIsn', 'ctaIsnList', {
-                    cta: '',
-                  });
-                }}
-              />
-              <ButtonPrime
-                icon="pi pi-angle-right"
-                style={{position:"absolute", right:0}}
-                onClick={() => 
-                  this.onClick('displayPosition', 'left', 'arrayIsnUsr', 'usrIsnList')
-                }
-                className="p-button-rounded p-button-text p-button-plain" 
-              />
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayCtaIsn', 'ctaIsnList', {
+                      cta: '',
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayIsnUsr', 'usrIsnList')
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
               </Box>
             </Box>
             <Box gridArea='AbaiZ'>
-            <List hover className='ListColor'>
+              <List hover className='ListColor'>
                 {this.state.arrayCtaCed.map((item, index) => (
                   <List.Item key={index} index={index} className='Pad'>
                     <Box direction='row'>
                       <DecoratedInput
                         area='Cedular'
-                        value={this.state.ctaCedList[index].name}
+                        value={this.state.ctaCedList[index].cta}
                         onChange={(e) => {
                           this.handleChangeList(e, 'ctaCedList', index, 'cta');
                         }}
@@ -1250,36 +1478,36 @@ renderFooter(name, array, list) {
                   </List.Item>
                 ))}
               </List>
-              <br/>
-              <Box direction='row' align="stretch" style={{position:"relative"}}>
-              <IconButton
-                icon={<Icon icon='plus' />}
-                circle
-                size='md'
-                onClick={() => {
-                  this.MetodoPush('arrayCtaCed', 'ctaCedList', {
-                    cta: '',
-                  });
-                }}
-              />
-              <ButtonPrime
-                icon="pi pi-angle-right"
-                style={{position:"absolute", right:0}}
-                onClick={() => 
-                  this.onClick('displayPosition', 'left', 'arrayCedUsr', 'usrCedList')
-                }
-                className="p-button-rounded p-button-text p-button-plain" 
-              />
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayCtaCed', 'ctaCedList', {
+                      cta: '',
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayCedUsr', 'usrCedList')
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
               </Box>
             </Box>
             <Box gridArea='ArrDer'>
-            <List hover className='ListColor'>
+              <List hover className='ListColor'>
                 {this.state.arrayCtaRtp.map((item, index) => (
                   <List.Item key={index} index={index} className='Pad'>
                     <Box direction='row'>
                       <DecoratedInput
                         area='RTP'
-                        value={this.state.ctaRtpList[index].name}
+                        value={this.state.ctaRtpList[index].cta}
                         onChange={(e) => {
                           this.handleChangeList(e, 'ctaRtpList', index, 'cta');
                         }}
@@ -1294,36 +1522,36 @@ renderFooter(name, array, list) {
                   </List.Item>
                 ))}
               </List>
-              <br/>
-              <Box direction='row' align="stretch" style={{position:"relative"}}>
-              <IconButton
-                icon={<Icon icon='plus' />}
-                circle
-                size='md'
-                onClick={() => {
-                  this.MetodoPush('arrayCtaRtp', 'ctaRtpList', {
-                    cta: '',
-                  });
-                }}
-              />
-              <ButtonPrime
-                icon="pi pi-angle-right"
-                style={{position:"absolute", right:0}}
-                onClick={() => 
-                  this.onClick('displayPosition', 'left', 'arrayRtpUsr', 'usrRtpList')
-                }
-                className="p-button-rounded p-button-text p-button-plain" 
-              />
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayCtaRtp', 'ctaRtpList', {
+                      cta: '',
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayRtpUsr', 'usrRtpList')
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
               </Box>
             </Box>
             <Box gridArea='AbaDer'>
-            <List hover className='ListColor'>
+              <List hover className='ListColor'>
                 {this.state.arrayCtaIsh.map((item, index) => (
                   <List.Item key={index} index={index} className='Pad'>
                     <Box direction='row'>
                       <DecoratedInput
                         area='ISH'
-                        value={this.state.ctaIshList[index].name}
+                        value={this.state.ctaIshList[index].cta}
                         onChange={(e) => {
                           this.handleChangeList(e, 'ctaIshList', index, 'cta');
                         }}
@@ -1338,60 +1566,132 @@ renderFooter(name, array, list) {
                   </List.Item>
                 ))}
               </List>
-              <br/>
-              <Box direction='row' align="stretch" style={{position:"relative"}}>
-              <IconButton
-                icon={<Icon icon='plus' />}
-                circle
-                size='md'
-                onClick={() => {
-                  this.MetodoPush('arrayCtaIsh', 'ctaIshList', {
-                    cta: '',
-                  });
-                }}
-              />
-              <ButtonPrime
-                icon="pi pi-angle-right"
-                style={{position:"absolute", right:0}}
-                onClick={() => 
-                  this.onClick('displayPosition', 'left', 'arrayIshUsr', 'usrIshList')
-                }
-                className="p-button-rounded p-button-text p-button-plain" 
-              />
+              <br />
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('arrayCtaIsh', 'ctaIshList', {
+                      cta: '',
+                    });
+                  }}
+                />
+                <ButtonPrime
+                  icon="pi pi-angle-right"
+                  style={{ position: "absolute", right: 0 }}
+                  onClick={() =>
+                    this.onClick('displayPosition', 'left', 'arrayIshUsr', 'usrIshList')
+                  }
+                  className="p-button-rounded p-button-text p-button-plain"
+                />
               </Box>
+            </Box>
+            <Box gridArea='botDer'>
+              {this.state.rine.length !== 0 ?
+                <span>
+                  <Box direction='row'>
+                    <Heading margin="none" level="4">RNIE: {this.state.rine}</Heading>
+                  </Box>
+                  <Box direction='row'>
+                    <DecoratedInput
+                      area='Usr'
+                      value={this.state.RNIEUsr.user}
+                      onChange={(e) => {
+                        this.setState({ RNIEUsr: { user: e, pwd: this.state.RNIEUsr.pwd } }, () => {
+                          console.log(this.state);
+                        });
+                      }}
+                      width='85%'
+                      boxw='60px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                    <DecoratedInput
+                      area='Contraseña'
+                      value={this.state.RNIEUsr.pwd}
+                      onChange={(e) => {
+                        this.setState({ RNIEUsr: { pwd: e, user: this.state.RNIEUsr.user } }, () => {
+                          console.log(this.state);
+                        });
+                      }}
+                      width='85%'
+                      boxw='95px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                  </Box>
+                </span> 
+                : 
+                <span></span>
+              }
+            </Box>
+            <Box gridArea='botIz'>
+            <Box direction='row'>
+                    <Heading margin="none" level="4">RFC: {this.state.rfc}</Heading>
+                  </Box>
+                  <Box direction='row'>
+                    <DecoratedInput
+                      area='Usr'
+                      value={this.state.RFCUsr.user}
+                      onChange={(e) => {
+                        this.setState({ RFCUsr: { user: e, pwd: this.state.RFCUsr.pwd } }, () => {
+                          console.log(this.state);
+                        });
+                      }}
+                      width='85%'
+                      boxw='65px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                    <DecoratedInput
+                      area='Contraseña'
+                      value={this.state.RFCUsr.pwd}
+                      onChange={(e) => {
+                        this.setState({ RFCUsr: { pwd: e, user: this.state.RFCUsr.user } }, () => {
+                          console.log(this.state);
+                        });
+                      }}
+                      width='85%'
+                      boxw='110px'
+                      textw='medium'
+                      icon='id-mapping'
+                    />
+                  </Box>
             </Box>
           </Grid>
         </Box>
         <br />
         <br />
         <Box direction='row' className="actionButtons">
-        <Button
-          style={{
-            backgroundColor:"#06554C",
-            color: '#F5F0F6',
-            width: '120px',
-            fontFamily: "'Manjari', sans-serif",
-            boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
-          }}
-          onClick={() => this.forwardback()}
-        >
-          <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
+          <Button
+            style={{
+              backgroundColor: "#06554C",
+              color: '#F5F0F6',
+              width: '120px',
+              fontFamily: "'Manjari', sans-serif",
+              boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+            }}
+            onClick={() => this.forwardback()}
+          >
+            <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
         </Button>
-        <Button
-          style={{
-            backgroundColor:"#06554C",
-            color: '#F5F0F6',
-            width: '120px',
-            fontFamily: "'Manjari', sans-serif",
-            boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
-          }}
-          className='leftie'
-          onClick={() => this.Register()}
-        >
-          Siguiente&nbsp;&nbsp;
+          <Button
+            style={{
+              backgroundColor: "#06554C",
+              color: '#F5F0F6',
+              width: '120px',
+              fontFamily: "'Manjari', sans-serif",
+              boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+            }}
+            className='leftie'
+            onClick={() => this.Register()}
+          >
+            Siguiente&nbsp;&nbsp;
           <Icon icon='hand-o-right' />
-        </Button>
-      </Box>
+          </Button>
+        </Box>
       </Box>
     );
   };
