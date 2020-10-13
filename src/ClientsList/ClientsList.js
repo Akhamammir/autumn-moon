@@ -6,48 +6,10 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Avatar, Icon, Button } from 'rsuite';
+import { Avatar, Icon, Button, InputGroup, Input } from 'rsuite';
 import axios from 'axios';
 const miliPerYear = 31536000000;
 
-const List = [
-  {
-    _id: '5e85889915eb07e4706978fb',
-    razon: 'Hilary Duke',
-    cName: 'MICRONAUT',
-    fiscal: '790 Arion Place, Wells, Georgia, 5157',
-    curp: 'XAXX010101000',
-    rfc: 'XAXX010101000',
-    phoneNum: '+52 (859) 463-3020',
-  },
-  {
-    _id: '5e858899767235f939e25ce3',
-    razon: 'Conway French',
-    cName: 'TINGLES',
-    fiscal: '117 Chester Street, Allamuchy, North Carolina, 6558',
-    curp: 'CFR910412ARF',
-    rfc: 'XAXX010101000',
-    phoneNum: '+52 (857) 575-3036',
-  },
-  {
-    _id: '5e8588996e702d0522ba68a0',
-    razon: 'Rosella Kemp',
-    cName: 'ICOLOGY',
-    fiscal: '335 Maple Street, Gila, Mississippi, 7308',
-    curp: 'RKR123456ASD',
-    rfc: 'XAXX010101000',
-    phoneNum: '+52 (945) 506-2665',
-  },
-  {
-    _id: '5e8588995a59260b88b2b966',
-    razon: 'Reed Crane',
-    cName: 'OBLIQ',
-    fiscal: '196 Orient Avenue, Tioga, Delaware, 9763',
-    curp: 'EXP134233EDS',
-    rfc: 'XAXX010101000',
-    phoneNum: '+52 (831) 534-3381',
-  },
-];
 
 class ClientsList extends React.Component {
   constructor(props) {
@@ -55,16 +17,17 @@ class ClientsList extends React.Component {
     console.log(props);
     this.state = {
       usr: this.props.location.state,
-      clientsList: [],
+      clientsList: [], clientsListStore: [],
       current: {},
+      searchT:''
     };
   }
   componentDidMount() {
     //Fetching Clients List
-    console.log(this.props.location);
+    console.log(this.state.usr.Team);
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
       console.log(res.data);
-      this.setState({ clientsList: res.data.Clients });
+      this.setState({ clientsList: res.data.Clients, clientsListStore: res.data.Clients  });
     });
     // axios
     //   .post('http://35.232.231.98:3001/clients', {
@@ -74,6 +37,19 @@ class ClientsList extends React.Component {
     //     console.log(res);
     //     //this.setState({clientsList:res.data})
     //   });
+  }
+  filteruser = () => {
+    console.log(this.state.searchT);
+    console.log(this.state.clientsList);
+    this.setState({
+      //
+      clientsList: this.state.searchT.length == 0 ? this.state.clientsListStore : this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
+        S.RFC.includes(this.state.searchT) ||
+        S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT))
+    })
+    console.log(this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
+    S.RFC.includes(this.state.searchT) ||
+    S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT)))
   }
   render() {
     return (
@@ -103,16 +79,47 @@ class ClientsList extends React.Component {
           </Box>
           <Box gridArea='main'>
             <br />
-            <DataTable value={this.state.clientsList} rowHover selectionMode="single" onRowSelect={({data}) => {
-                this.setState({ current: data });
-              }}>
+            <InputGroup
+              style={{
+                width: 270,
+                overflow: 'visible',
+                border: 'none',
+                borderRadius: '90px',
+                backgroundColor: '#00AB9B'
+              }} >
+              <Input
+                style={{ boxShadow: 'none', width: 270, paddingRight: '11px' }}
+                placeholder="Usuario"
+                className="inputLog"
+                value={this.state.searchT}
+                onChange={(e) => {
+                  this.setState({ searchT: e });
+                }}
+              />
+              <InputGroup.Button
+                style={{
+                  paddingRight: '11px',
+                  top: '0.2px',
+                  backgroundColor: '#00AB9B',
+                  color: '#F2F3F4',
+                  borderRadius: '0px 100px 100px 0px',
+                }}
+                onClick={this.filteruser}
+              >
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+            <br/>
+            <DataTable value={this.state.clientsList} rowHover selectionMode="single" onRowSelect={({ data }) => {
+              this.setState({ current: data });
+            }}>
               <_Column field='razon' header='Razon Social' />
               <_Column field='cName' header='Nombre Comercial' />
               <_Column field='fiscal' header='Domicilio Fiscal' />
               <_Column field='rfc' header='RFC' />
               <_Column field='phoneNum' header='Teléfono' />
             </DataTable>
-            <br/>
+            <br />
             <Grid
               rows={['small', 'large']}
               columns={['small', '70%']}
@@ -214,7 +221,7 @@ class ClientsList extends React.Component {
                     );
                   }}
                 >
-                <Icon icon='edit' /> 
+                  <Icon icon='edit' />
                   &nbsp;&nbsp;Edit
                 </Button>
               </Box>

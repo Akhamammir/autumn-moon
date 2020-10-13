@@ -1,5 +1,4 @@
 import React from 'react';
-//import './User.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import './Clients.css';
@@ -14,11 +13,11 @@ import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
 const { Line } = Progress;
 const { Column, HeaderCell, Cell } = Table;
-//const miliPerYear = 31536000000;
 class ClientReg extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
+    console.log(this.uuidShort())
     this.state = {
       triggetCtaIsh: false,
       _id: undefined,
@@ -64,32 +63,29 @@ class ClientReg extends React.Component {
       currentArray: 'arrayIshUsr', currentList: 'usrIshList',
       regPaList: [
         {
-          Registro: '',
+          Registro: '', _id: this.uuidShort(),
           IDSE: { user: '', pwd: '' },
           SIPAR: { user: '', pwd: '' },
           INFO: { user: '', pwd: '' },
         },
       ],
       succList: [
-        { col: '', calle: '', cp: '', estado: '' },
-        { col: '', calle: '', cp: '', estado: '' },
+        { col: '', calle: '', cp: '', estado: '', _id: this.uuidShort() },
       ],
       foreignList: [
-        { name: '', rfc: '' },
+        { name: '', rfc: '', _id: this.uuidShort() },
       ],
       contactList: [
-        { nombre: '', email: '', telefono: '' },
-        { nombre: '', email: '', telefono: '' },
+        { nombre: '', email: '', telefono: '', _id: this.uuidShort() }
       ],
       repList: [
-        { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
-        { nombre: '', rfc: '', curp: '', email: '', telefono: '' },
+        { nombre: '', rfc: '', curp: '', email: '', telefono: '', _id: this.uuidShort() },
       ],
-      ctaIsnList: [{ cta: '' }], ctaRtpList: [{ cta: '' }],
-      ctaCedList: [{ cta: '' }], ctaIshList: [{ cta: '' }],
-      usrIshList: [{ user: '', pwd: '' }], usrIsnList: [{ user: '', pwd: '' }],
-      usrCedList: [{ user: '', pwd: '' }], usrRtpList: [{ user: '', pwd: '' }],
-      fonaList: [{ cta: '' }], fonaUsrList: [{ user: '', pwd: '' }],
+      ctaIsnList: [{ cta: '', _id: this.uuidShort() }], ctaRtpList: [{ cta: '', _id: this.uuidShort() }],
+      ctaCedList: [{ cta: '', _id: this.uuidShort() }], ctaIshList: [{ cta: '', _id: this.uuidShort() }],
+      usrIshList: [{ user: '', pwd: '', _id: this.uuidShort() }], usrIsnList: [{ user: '', pwd: '', _id: this.uuidShort() }],
+      usrCedList: [{ user: '', pwd: '', _id: this.uuidShort() }], usrRtpList: [{ user: '', pwd: '', _id: this.uuidShort() }],
+      fonaList: [{ cta: '', _id: this.uuidShort() }], fonaUsrList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       rowSelected: "",
       team: "",
       Nominas: [],
@@ -124,6 +120,16 @@ class ClientReg extends React.Component {
 
     }
     this.handleChange = this.handleChange.bind(this);
+  }
+  uuid = () => {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
+  }
+  uuidShort = () => {
+    return ([1e7] + -1e3 + -4e3).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
   }
   handleChange = (value, field) => {
     console.log(value, field);
@@ -192,7 +198,19 @@ class ClientReg extends React.Component {
       this.setState({ [VariableX]: valorA });
     });
   };
+  MetodoPop = (VariableX, VariableY, _uuid) => {
+    let valorA = this.state[VariableX];
+    valorA.pop();
+    this.setState({ [VariableX]: valorA }, () => {
+      valorA = this.state[VariableY];
+      valorA = valorA.filter(v => v._id != _uuid);
+      console.log(_uuid)
+      console.log(valorA)
+      this.setState({ [VariableY]: valorA });
+    });
+  }
   Register = () => {
+    console.log(this.state)
     axios.post('/clients/upload', { state: this.state }).then((res) => {
       console.log(res);
       const { status } = res;
@@ -427,7 +445,6 @@ class ClientReg extends React.Component {
       [`${name}`]: false
     });
   }
-
   renderFooter(name, array, list) {
     return (
       <div>
@@ -438,7 +455,7 @@ class ClientReg extends React.Component {
             icon="pi pi-plus"
             className="p-button-rounded p-button-success p-button-outlined adder"
             onClick={() => this.MetodoPush(array, list, {
-              user: '', pwd: ''
+              user: '', pwd: '', _id: this.uuidShort()
             })}
             autoFocus
           />
@@ -617,6 +634,14 @@ class ClientReg extends React.Component {
                         textw='medium'
                         icon='id-mapping'
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('branchAdd', 'succList', this.state.succList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -631,7 +656,7 @@ class ClientReg extends React.Component {
                     col: '',
                     calle: '',
                     cp: '',
-                    estado: '',
+                    estado: '', _id: this.uuidShort()
                   });
                 }}
               />
@@ -694,6 +719,14 @@ class ClientReg extends React.Component {
                             textw='medium'
                             icon='id-mapping'
                           />
+                          <IconButton
+                            icon={<Icon icon='close' />}
+                            circle
+                            size='md'
+                            onClick={() => {
+                              this.MetodoPop('foreignPartner', 'foreignList', this.state.foreignList[index]._id);
+                            }}
+                          />
                         </Box>
                       </List.Item>
                     ))}
@@ -706,7 +739,7 @@ class ClientReg extends React.Component {
                     onClick={() => {
                       this.MetodoPush('foreignPartner', 'foreignList', {
                         name: '',
-                        rfc: ''
+                        rfc: '', _id: this.uuidShort()
                       });
                     }}
                   />
@@ -791,6 +824,14 @@ class ClientReg extends React.Component {
                     icon='mobile'
                     type='number'
                   />
+                  <IconButton
+                    icon={<Icon icon='close' />}
+                    circle
+                    size='md'
+                    onClick={() => {
+                      this.MetodoPop('arrayCon', 'contactList', this.state.contactList[index]._id);
+                    }}
+                  />
                 </Box>
               </List.Item>
             ))}
@@ -807,7 +848,7 @@ class ClientReg extends React.Component {
               this.MetodoPush('arrayCon', 'contactList', {
                 nombre: '',
                 email: '',
-                telefono: '',
+                telefono: '', _id: this.uuidShort()
               });
             }}
           />
@@ -885,6 +926,14 @@ class ClientReg extends React.Component {
                     textw='medium'
                     icon='id-card'
                   />
+                  <IconButton
+                    icon={<Icon icon='close' />}
+                    circle
+                    size='md'
+                    onClick={() => {
+                      this.MetodoPop('arrayDatos', 'repList', this.state.repList[index]._id);
+                    }}
+                  />
                 </Box>
               </List.Item>
             ))}
@@ -901,7 +950,7 @@ class ClientReg extends React.Component {
               rfc: '',
               curp: '',
               email: '',
-              telefono: '',
+              telefono: '', _id: this.uuidShort()
             });
           }}
         />
@@ -1185,6 +1234,80 @@ class ClientReg extends React.Component {
           <Text className='GreenLetter'>{this.state.Resultado}</Text>
         </Box>
         <br />
+        <Box direction='row'>
+          <Box>
+            <Box direction='row'>
+              <Heading margin="none" level="4">RFC: {this.state.rfc}</Heading>
+            </Box>
+            <Box direction='row'>
+              <DecoratedInput
+                area='Usr'
+                value={this.state.RFCUsr.user}
+                onChange={(e) => {
+                  this.setState({ RFCUsr: { user: e, pwd: this.state.RFCUsr.pwd } }, () => {
+                    console.log(this.state);
+                  });
+                }}
+                width='85%'
+                boxw='65px'
+                textw='medium'
+                icon='id-mapping'
+              />
+              <DecoratedInput
+                area='Contraseña'
+                value={this.state.RFCUsr.pwd}
+                onChange={(e) => {
+                  this.setState({ RFCUsr: { pwd: e, user: this.state.RFCUsr.user } }, () => {
+                    console.log(this.state);
+                  });
+                }}
+                width='85%'
+                boxw='110px'
+                textw='medium'
+                icon='id-mapping'
+              />
+            </Box>
+          </Box>
+          <Box>
+            {this.state.rine.length !== 0 ?
+              <span>
+                <Box direction='row'>
+                  <Heading margin="none" level="4">RNIE: {this.state.rine}</Heading>
+                </Box>
+                <Box direction='row'>
+                  <DecoratedInput
+                    area='Usr'
+                    value={this.state.RNIEUsr.user}
+                    onChange={(e) => {
+                      this.setState({ RNIEUsr: { user: e, pwd: this.state.RNIEUsr.pwd } }, () => {
+                        console.log(this.state);
+                      });
+                    }}
+                    width='85%'
+                    boxw='60px'
+                    textw='medium'
+                    icon='id-mapping'
+                  />  
+                  <DecoratedInput
+                    area='Contraseña'
+                    value={this.state.RNIEUsr.pwd}
+                    onChange={(e) => {
+                      this.setState({ RNIEUsr: { pwd: e, user: this.state.RNIEUsr.user } }, () => {
+                        console.log(this.state);
+                      });
+                    }}
+                    width='85%'
+                    boxw='95px'
+                    textw='medium'
+                    icon='id-mapping'
+                  />
+                </Box>
+              </span>
+              :
+              <span></span>
+            }
+          </Box>
+        </Box>
         <br />
         <Dialog
           header="Lista de Cuentas"
@@ -1228,7 +1351,7 @@ class ClientReg extends React.Component {
                     <br />
                     <Box direction='row'>
                       <DecoratedInput
-                        area='SIPAR'
+                        area='SIPARE'
                         value={this.state.regPaList[index].SIPAR.user}
                         onChange={(e) => {
                           this.handleChangeList(e, 'regPaList', index, 'user', 'SIPAR');
@@ -1300,6 +1423,14 @@ class ClientReg extends React.Component {
                       textw='medium'
                       icon='id-mapping'
                     />
+                    <IconButton
+                      icon={<Icon icon='close' />}
+                      circle
+                      size='md'
+                      onClick={() => {
+                        this.MetodoPop(this.state.currentArray, this.state.currentList, this.state[this.state.currentList][index]._id);
+                      }}
+                    />
                   </Box>}
               </List.Item>
             ))}
@@ -1341,6 +1472,14 @@ class ClientReg extends React.Component {
                         tooltip={true}
                         tooltiptxt="Registro Patronal"
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayRegPa', 'regPaList', this.state.regPaList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1355,8 +1494,8 @@ class ClientReg extends React.Component {
                     this.MetodoPush('arrayRegPa', 'regPaList', {
                       Registro: '',
                       IDSE: { user: '', pwd: '' },
-                      SIPAR: { user: '', pwd: '' },
-                      INFO: { user: '', pwd: '' },
+                      SIPARE: { user: '', pwd: '' },
+                      INFO: { user: '', pwd: '' }, _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1388,6 +1527,14 @@ class ClientReg extends React.Component {
                         tooltip={true}
                         tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayFona', 'fonaList', this.state.fonaList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1400,7 +1547,7 @@ class ClientReg extends React.Component {
                   size='md'
                   onClick={() => {
                     this.MetodoPush('arrayFona', 'fonaList', {
-                      cta: '',
+                      cta: '', _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1432,6 +1579,14 @@ class ClientReg extends React.Component {
                         tooltip={true}
                         tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayCtaIsn', 'ctaIsnList', this.state.ctaIsnList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1444,7 +1599,7 @@ class ClientReg extends React.Component {
                   size='md'
                   onClick={() => {
                     this.MetodoPush('arrayCtaIsn', 'ctaIsnList', {
-                      cta: '',
+                      cta: '', _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1474,6 +1629,14 @@ class ClientReg extends React.Component {
                         textw='medium'
                         icon='id-mapping'
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayCtaCed', 'ctaCedList', this.state.ctaCedList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1486,7 +1649,7 @@ class ClientReg extends React.Component {
                   size='md'
                   onClick={() => {
                     this.MetodoPush('arrayCtaCed', 'ctaCedList', {
-                      cta: '',
+                      cta: '', _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1518,6 +1681,14 @@ class ClientReg extends React.Component {
                         tooltip={true}
                         tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayCtaRtp', 'ctaRtpList', this.state.ctaRtpList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1530,7 +1701,7 @@ class ClientReg extends React.Component {
                   size='md'
                   onClick={() => {
                     this.MetodoPush('arrayCtaRtp', 'ctaRtpList', {
-                      cta: '',
+                      cta: '', _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1562,6 +1733,14 @@ class ClientReg extends React.Component {
                         tooltip={true}
                         tooltiptxt="Impuesto Sobre Hospedaje"
                       />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                          this.MetodoPop('arrayCtaIsh', 'ctaIshList', this.state.ctaIshList[index]._id);
+                        }}
+                      />
                     </Box>
                   </List.Item>
                 ))}
@@ -1574,7 +1753,7 @@ class ClientReg extends React.Component {
                   size='md'
                   onClick={() => {
                     this.MetodoPush('arrayCtaIsh', 'ctaIshList', {
-                      cta: '',
+                      cta: '', _id: this.uuidShort()
                     });
                   }}
                 />
@@ -1589,76 +1768,10 @@ class ClientReg extends React.Component {
               </Box>
             </Box>
             <Box gridArea='botDer'>
-              {this.state.rine.length !== 0 ?
-                <span>
-                  <Box direction='row'>
-                    <Heading margin="none" level="4">RNIE: {this.state.rine}</Heading>
-                  </Box>
-                  <Box direction='row'>
-                    <DecoratedInput
-                      area='Usr'
-                      value={this.state.RNIEUsr.user}
-                      onChange={(e) => {
-                        this.setState({ RNIEUsr: { user: e, pwd: this.state.RNIEUsr.pwd } }, () => {
-                          console.log(this.state);
-                        });
-                      }}
-                      width='85%'
-                      boxw='60px'
-                      textw='medium'
-                      icon='id-mapping'
-                    />
-                    <DecoratedInput
-                      area='Contraseña'
-                      value={this.state.RNIEUsr.pwd}
-                      onChange={(e) => {
-                        this.setState({ RNIEUsr: { pwd: e, user: this.state.RNIEUsr.user } }, () => {
-                          console.log(this.state);
-                        });
-                      }}
-                      width='85%'
-                      boxw='95px'
-                      textw='medium'
-                      icon='id-mapping'
-                    />
-                  </Box>
-                </span> 
-                : 
-                <span></span>
-              }
+
             </Box>
             <Box gridArea='botIz'>
-            <Box direction='row'>
-                    <Heading margin="none" level="4">RFC: {this.state.rfc}</Heading>
-                  </Box>
-                  <Box direction='row'>
-                    <DecoratedInput
-                      area='Usr'
-                      value={this.state.RFCUsr.user}
-                      onChange={(e) => {
-                        this.setState({ RFCUsr: { user: e, pwd: this.state.RFCUsr.pwd } }, () => {
-                          console.log(this.state);
-                        });
-                      }}
-                      width='85%'
-                      boxw='65px'
-                      textw='medium'
-                      icon='id-mapping'
-                    />
-                    <DecoratedInput
-                      area='Contraseña'
-                      value={this.state.RFCUsr.pwd}
-                      onChange={(e) => {
-                        this.setState({ RFCUsr: { pwd: e, user: this.state.RFCUsr.user } }, () => {
-                          console.log(this.state);
-                        });
-                      }}
-                      width='85%'
-                      boxw='110px'
-                      textw='medium'
-                      icon='id-mapping'
-                    />
-                  </Box>
+
             </Box>
           </Grid>
         </Box>
