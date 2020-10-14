@@ -1,15 +1,14 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
-import { Column as _Column } from 'primereact/column';
+import { Column } from 'primereact/column';
+import { ContextMenu } from 'primereact/contextmenu';
 import './ClientsList.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Avatar, Icon, Button, InputGroup, Input } from 'rsuite';
+import { Avatar, Icon, InputGroup, Input } from 'rsuite';
 import axios from 'axios';
-const miliPerYear = 31536000000;
-
 
 class ClientsList extends React.Component {
   constructor(props) {
@@ -19,15 +18,32 @@ class ClientsList extends React.Component {
       usr: this.props.location.state,
       clientsList: [], clientsListStore: [],
       current: {},
-      searchT:''
+      searchT: ''
     };
+    this.menuModel = [
+      { 
+        label: 'View', 
+        icon: 'pi pi-fw pi-search',
+        command: () => {
+          this.props.history.push(
+            `/clientedit/${this.state.usr.Usr}/${this.state.current._id}`,
+            { ...this.state.usr }
+          );
+        }
+      }, { 
+        label: 'Delete',
+        icon: 'pi pi-fw pi-times',
+        command: () => this.kill(this.state.current._id)
+      }
+    ];
   }
   componentDidMount() {
+    this.setState({ clientsList: [] });
     //Fetching Clients List
     console.log(this.state.usr.Team);
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
       console.log(res.data);
-      this.setState({ clientsList: res.data.Clients, clientsListStore: res.data.Clients  });
+      this.setState({ clientsList: res.data.Clients, clientsListStore: res.data.Clients });
     });
     // axios
     //   .post('http://35.232.231.98:3001/clients', {
@@ -38,24 +54,33 @@ class ClientsList extends React.Component {
     //     //this.setState({clientsList:res.data})
     //   });
   }
+  kill = (_id) => {
+    axios
+      .post('/clients/delete', { '_id': _id })
+      .then((res) => {
+        console.log(res);
+        //Alert.success('Registro eliminado exitosamente.');
+        this.componentDidMount();
+      });
+  }
   filteruser = () => {
     console.log(this.state.searchT);
     console.log(this.state.clientsList);
     this.setState({
       //
-      clientsList: this.state.searchT.length == 0 ? this.state.clientsListStore : this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
+      clientsList: this.state.searchT.length === 0 ? this.state.clientsListStore : this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
         S.RFC.includes(this.state.searchT) ||
         S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT))
     })
     console.log(this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
-    S.RFC.includes(this.state.searchT) ||
-    S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT)))
+      S.RFC.includes(this.state.searchT) ||
+      S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT)))
   }
   render() {
     return (
       <Grommet plain className='App'>
         <UsrBar usr={this.state.usr} />
-
+        <ContextMenu model={this.menuModel} ref={el => this.cm = el} onHide={() => this.setState({ selectedProduct: null })} />
         <Grid
           rows={[process.env.REACT_APP_SCREEN_WIDTH]}
           columns={[
@@ -109,15 +134,20 @@ class ClientsList extends React.Component {
                 <Icon icon="search" />
               </InputGroup.Button>
             </InputGroup>
-            <br/>
-            <DataTable value={this.state.clientsList} rowHover selectionMode="single" onRowSelect={({ data }) => {
-              this.setState({ current: data });
-            }}>
-              <_Column field='razon' header='Razon Social' />
-              <_Column field='cName' header='Nombre Comercial' />
-              <_Column field='fiscal' header='Domicilio Fiscal' />
-              <_Column field='rfc' header='RFC' />
-              <_Column field='phoneNum' header='Teléfono' />
+            <br />
+            <DataTable value={this.state.clientsList} rowHover selectionMode="single"
+              onRowSelect={({ data }) => {
+                this.setState({ current: data });
+
+              }}
+              contextMenuSelection={this.state.current}
+              onContextMenuSelectionChange={e => this.setState({ current: e.value })}
+              onContextMenu={e => this.cm.show(e.originalEvent)}>
+              <Column field='razon' header='Razon Social' />
+              <Column field='cName' header='Nombre Comercial' />
+              <Column field='fiscal' header='Domicilio Fiscal' />
+              <Column field='rfc' header='RFC' />
+              <Column field='phoneNum' header='Teléfono' />
             </DataTable>
             <br />
             <Grid
@@ -206,24 +236,6 @@ class ClientsList extends React.Component {
                   />
                 </Box>
                 <br />
-                <Button
-                  style={{
-                    backgroundColor: '#06554C',
-                    color: '#F5F0F6',
-                    width: '120px',
-                    fontFamily: "'Manjari', sans-serif",
-                    boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
-                  }}
-                  onClick={() => {
-                    this.props.history.push(
-                      `/clientedit/${this.state.usr.Usr}/${this.state.current._id}`,
-                      { ...this.state.usr }
-                    );
-                  }}
-                >
-                  <Icon icon='edit' />
-                  &nbsp;&nbsp;Edit
-                </Button>
               </Box>
             </Grid>
           </Box>

@@ -58,11 +58,6 @@
   width: 24%;
   margin-right: 10px;
 }
-.leftie{
-  /* position: absolute;
-   bottom: 0px; 
-  align-self: flex-end; */
-}
 .rowSelected div{
   background-color:#00C781;
 }

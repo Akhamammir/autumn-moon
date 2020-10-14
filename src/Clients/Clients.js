@@ -137,6 +137,15 @@ class ClientReg extends React.Component {
       console.log(this.state);
     });
   };
+  handleChangeLimit = (value, field) => {
+    console.log(value, field);
+    if( value.length < ( this.state.pPhys ? 13 : 14 ) ){
+      console.log(value.length)
+      this.setState({ [field]: value }, () => {
+        console.log(this.state);
+      });
+    }
+  };
   handleChangeList = (value, collection, index, name, depth1) => {
     if (depth1) {
       this.state[collection][index][depth1][name] = value;
@@ -544,7 +553,7 @@ class ClientReg extends React.Component {
             area='RFC'
             value={this.state.rfc}
             onChange={(e) => {
-              this.handleChange(e, 'rfc');
+              this.handleChangeLimit(e, 'rfc');
             }}
             width='60%'
             icon='id-card'

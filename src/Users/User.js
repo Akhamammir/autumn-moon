@@ -9,10 +9,9 @@ import { Grommet, Box, Grid, Heading } from 'grommet';
 import { Table, Avatar, Icon, Button, Modal, Alert, Progress  } from 'rsuite';
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable';
-import { Column as _Column } from 'primereact/column';
+import { Column  } from 'primereact/column';
 
 const { Line } = Progress;
-const { Column, HeaderCell, Cell, Pagination } = Table;
 const miliPerYear = 31536000000;
 class User extends React.Component {
   constructor(props) {
@@ -132,19 +131,19 @@ class User extends React.Component {
           <Box gridArea="main">
           <br />
             <DataTable value={this.state.usrlist} rowHover={true}>
-              <_Column field='place' header='Usuario' />
-              <_Column field='Name.First' header='Nombre' />
-              <_Column field='Name.Last' header='Apellido Paterno' />
-              <_Column field='Name.Last2' header='Apellido Materno' />
-              <_Column field='Pos' header='Puesto' />
-              <_Column field='Role' header='Rol' />
-              <_Column header='Action' body={()=>(
+              <Column field='place' header='Usuario' />
+              <Column field='Name.First' header='Nombre' />
+              <Column field='Name.Last' header='Apellido Paterno' />
+              <Column field='Name.Last2' header='Apellido Materno' />
+              <Column field='Pos' header='Puesto' />
+              <Column field='Role' header='Rol' />
+              <Column header='Action' body={()=>(
                 <span>  
                 <a onClick={this.showUser}> Edit </a> | {' '}
                 <a onClick={ this.swap }> Delete </a>
               </span>)
               }>                
-              </_Column>
+              </Column>
             </DataTable>
             <br/>
             <Grid
@@ -256,12 +255,13 @@ class User extends React.Component {
                     width = "60%"
                     icon = "Gift"
                   />
-                  <DecoratedInput
+                  <DecoratedSelect
                     area="Puesto"
                     value={this.state.position}
                     onChange={ (e) => {this.handleChange(e, 'position') } }
                     width = "60%"
                     icon = "peoples-map"
+                    options={['Asesor Sr', 'Asesor Jr', 'C. Aux.', 'Pract.', 'Direccion', 'Admin.']}
                   />
                 </Box>
                 <br/>
@@ -302,12 +302,13 @@ class User extends React.Component {
                 </Box>
                 <br/>
                 <Box direction="row">
-                  <DecoratedInput
-                    area="Puesto"
-                    value={this.state.academic}
-                    onChange={ (e) => {this.handleChange(e, 'academic') } }
+                  <DecoratedSelect
+                    area="Equipo"
+                    value={this.state.Team}
+                    onChange={ (e) => {this.handleChange(e, 'Team') } }
                     width = "60%"
                     icon = "black-tie"
+                    options={['Admin', 'A', 'B', 'C', 'D', 'E']}
                   />
                   <DecoratedInput
                     area="E-Mail"
@@ -318,13 +319,7 @@ class User extends React.Component {
                 </Box>
                 <br/>
                 <Box direction="row">
-                  <DecoratedInput
-                    area="Equipo"
-                    value={this.state.Team}
-                    onChange={ (e) => {this.handleChange(e, 'Team') } }
-                    width = "60%"
-                    icon = "black-tie"
-                  />
+                  
                 </Box>
                 <br/>
                 <Button

@@ -28,9 +28,6 @@
   color: #8e8e93 !important;
 }
 
-.p-datatable .p-datatable-tbody > tr:nth-child(even) {
-  background-color: #efefef !important;
-}
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):not(.p-highlight-contextmenu):hover {
   background: rgba(​0, 171, 155,0.4) !important;
@@ -38,4 +35,7 @@
 
 .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):not(.p-highlight-contextmenu):hover {
   background: #84C4BF !important;
+}
+tr.p-highlight-contextmenu{
+  background-color: #84C4BF!important;
 }
