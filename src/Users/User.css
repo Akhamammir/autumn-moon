@@ -10,3 +10,6 @@
 .Note{
   background-color: black;
 }
+tr.p-highlight{
+  background-color: #00AB9B!important;
+}

@@ -6,11 +6,11 @@ import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import DecoratedSelect from './../Components/DecoratedSelect/DecoratedSelect';
 import DecoratedCalendar from './../Components/DecoratedCalendar/DecoratedCalendar';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Table, Avatar, Icon, Button, Modal, Alert, Progress  } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress  } from 'rsuite';
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable';
 import { Column  } from 'primereact/column';
-
+import { Button as Pbutton } from 'primereact/button';
 const { Line } = Progress;
 const miliPerYear = 31536000000;
 class User extends React.Component {
@@ -18,9 +18,9 @@ class User extends React.Component {
     super(props);
     console.log(props)
     this.state = {usr:this.props.location.state, usrlist:[], name:'',
-     nameFather:'', nameMother:'', birthday:'', gender:'', curp:'',
+     nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', email:'',
        rfc:'', dateHire:'', position:'', phoneNum:'', emergencyNum:'', 
-        academic:'', password:'', "_id":'', show:false, Team:''}
+        academic:'', password:'', "_id":'', show:false, Team:'', selectedUser:{_id:'nil'}}
   }
   componentDidMount() {
     axios.post('/userslist', {team:this.state.usr.Team}).then(res => {
@@ -51,12 +51,14 @@ class User extends React.Component {
     axios.post('/upUsr', {state: { name:this.state.name, nameFather:this.state.nameFather, nameMother:this.state.nameMother,
        birthday:this.state.birthday, gender:this.state.gender, curp:this.state.curp, rfc:this.state.rfc, dateHire:this.state.dateHire,
        position:this.state.position, phoneNum:this.state.phoneNum, emergencyNum:this.state.emergencyNum, academic:this.state.academic,
-       password:this.state.password, "_id":this.state._id ? this.state._id : '0' } }).then(res => {
+       password:this.state.password, "_id":this.state._id ? this.state._id : '0',
+       Team: this.state.Team, email:this.state.email} }).then(res => {
       console.log(res)
       Alert.success('Registro actualizado exitosamente.')
       this.setState({
         name:'', nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', rfc:'',
-        dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false
+        dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false,
+        Team:'', email:''
       });
       this.componentDidMount();
       this.setState({
@@ -65,7 +67,7 @@ class User extends React.Component {
     });
   }
   delete = () => {
-    axios.post('/rmUsr', {_id:this.state._idDel}).then( res => {
+    axios.post('/rmUsr', {_id:this.state.selectedUser._id}).then( res => {
       console.log(res)
       Alert.success('Registro eliminado exitosamente.')
       this.setState({
@@ -75,8 +77,21 @@ class User extends React.Component {
       this.componentDidMount();
     } );
   }
-  swap = () =>{
+  swap = (_id) =>{
+    console.log(this.state.selectedUser)
     this.setState({ show: !this.state.show })
+  }
+  showUsr = () =>{
+    this.setState({name:this.state.selectedUser.Name.First,
+      nameFather:this.state.selectedUser.Name.Last,
+      nameMother:this.state.selectedUser.Name.Last2,
+      birthday:new Date(this.state.selectedUser.Birth),
+      gender:this.state.selectedUser.Gender, curp:this.state.selectedUser.Curp,
+      rfc:this.state.selectedUser.RFC, dateHire:this.state.selectedUser.DateH,
+      position:this.state.selectedUser.Pos, phoneNum:this.state.selectedUser.Phone,
+      emergencyNum: this.state.selectedUser.Emergency, academic:this.state.selectedUser.Academic,
+      _id:this.state.selectedUser._id, Team:this.state.selectedUser.team,
+      email:this.state.selectedUser.email, selectedUser:{_id:'nil'} } )
   }
   render() {
     return (
@@ -130,18 +145,37 @@ class User extends React.Component {
           </Box>
           <Box gridArea="main">
           <br />
-            <DataTable value={this.state.usrlist} rowHover={true}>
+            <DataTable value={this.state.usrlist} rowHover={true}
+            selection={this.state.selectedUser}
+            onSelectionChange={e => 
+              this.setState({ selectedUser: this.state.usrlist.find(usr => usr._id === e.value._id ) },
+              ()=>{
+                console.log(this.state.selectedUser);
+                this.showUsr();
+              })
+            } 
+            selectionMode="single">
               <Column field='place' header='Usuario' />
               <Column field='Name.First' header='Nombre' />
               <Column field='Name.Last' header='Apellido Paterno' />
               <Column field='Name.Last2' header='Apellido Materno' />
               <Column field='Pos' header='Puesto' />
               <Column field='Role' header='Rol' />
-              <Column header='Action' body={()=>(
-                <span>  
-                <a onClick={this.showUser}> Edit </a> | {' '}
-                <a onClick={ this.swap }> Delete </a>
-              </span>)
+              <Column field='_id' header='Action' body={(rowData)=>(
+                rowData._id === this.state.selectedUser._id ? 
+                <span>
+                    <Pbutton
+                    label="Borrar"
+                    className="p-button-text p-button-plain"
+                    onClick={ this.swap }/>
+                </span> : 
+                <span>
+                  <Pbutton
+                    label="Editar"
+                    disabled={true}
+                    className="p-button-text p-button-plain"
+                    onClick={this.showUser}/> 
+                </span> )
               }>                
               </Column>
             </DataTable>
@@ -294,6 +328,7 @@ class User extends React.Component {
                   />
                   <DecoratedInput
                     area="Password"
+                    value={this.state.password}
                     onChange={ (e) => {this.handleChange(e, 'password') } }
                     width = "60%"
                     icon = "key"
@@ -312,6 +347,7 @@ class User extends React.Component {
                   />
                   <DecoratedInput
                     area="E-Mail"
+                    value={this.state.email}
                     onChange={ (e) => {this.handleChange(e, 'email') } }
                     width = "60%"
                     icon = "envelope-open-o"
