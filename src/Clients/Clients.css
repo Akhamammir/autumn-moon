@@ -109,3 +109,13 @@
   background: none!important;
   color: #34A835!important;
 }
+.p-button-text{
+  color: inherit!important;
+}
+.usrTblBut{
+  bottom:25%!important;
+  color: #F8F8F8!important;
+}
+.standby{
+  color:#4e9dd4!important;
+}

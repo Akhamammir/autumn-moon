@@ -19,7 +19,7 @@ class User extends React.Component {
     console.log(props)
     this.state = {usr:this.props.location.state, usrlist:[], name:'',
      nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', email:'',
-       rfc:'', dateHire:'', position:'', phoneNum:'', emergencyNum:'', 
+       rfc:'', dateHire:'', position:'', phoneNum:'', emergencyNum:'', emergencyName:'', 
         academic:'', password:'', "_id":'', show:false, Team:'', selectedUser:{_id:'nil'}}
   }
   componentDidMount() {
@@ -52,13 +52,13 @@ class User extends React.Component {
        birthday:this.state.birthday, gender:this.state.gender, curp:this.state.curp, rfc:this.state.rfc, dateHire:this.state.dateHire,
        position:this.state.position, phoneNum:this.state.phoneNum, emergencyNum:this.state.emergencyNum, academic:this.state.academic,
        password:this.state.password, "_id":this.state._id ? this.state._id : '0',
-       Team: this.state.Team, email:this.state.email} }).then(res => {
+       Team: this.state.Team, email:this.state.email, EmergencyNam:this.state.emergencyName} }).then(res => {
       console.log(res)
       Alert.success('Registro actualizado exitosamente.')
       this.setState({
         name:'', nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', rfc:'',
         dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false,
-        Team:'', email:''
+        Team:'', email:'', selectedUser:{_id:'nil'}
       });
       this.componentDidMount();
       this.setState({
@@ -91,7 +91,7 @@ class User extends React.Component {
       position:this.state.selectedUser.Pos, phoneNum:this.state.selectedUser.Phone,
       emergencyNum: this.state.selectedUser.Emergency, academic:this.state.selectedUser.Academic,
       _id:this.state.selectedUser._id, Team:this.state.selectedUser.team,
-      email:this.state.selectedUser.email, selectedUser:{_id:'nil'} } )
+      email:this.state.selectedUser.email } )
   }
   render() {
     return (
@@ -147,6 +147,7 @@ class User extends React.Component {
           <br />
             <DataTable value={this.state.usrlist} rowHover={true}
             selection={this.state.selectedUser}
+            scrollable scrollHeight="300px"
             onSelectionChange={e => 
               this.setState({ selectedUser: this.state.usrlist.find(usr => usr._id === e.value._id ) },
               ()=>{
@@ -304,7 +305,7 @@ class User extends React.Component {
                     area="Numero Tel."
                     value={this.state.phoneNum}
                     onChange={ (e) => {this.handleChange(e, 'phoneNum') } }
-                    width = "60%"
+                    width = "51%"
                     type="number"
                     icon = "mobile"
                   />
@@ -312,7 +313,15 @@ class User extends React.Component {
                     area="Tel. Emer"
                     value={this.state.emergencyNum}
                     onChange={ (e) => {this.handleChange(e, 'emergencyNum') } }
-                    width = "60%"
+                    width = "25%"
+                    type="number"
+                    icon = "phone"
+                  />
+                  <DecoratedInput
+                    area="Contacto. Emer"
+                    value={this.state.emergencyName}
+                    onChange={ (e) => {this.handleChange(e, 'emergencyName') } }
+                    width = "25%"
                     type="number"
                     icon = "phone"
                   />

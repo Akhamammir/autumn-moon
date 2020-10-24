@@ -42,7 +42,7 @@ class ClientReg extends React.Component {
       RNIEUsr: { user: '', pwd: '' },
       RFCUsr: { user: '', pwd: '' },
       Resultado: '',
-      assigned: { _id: "", team: '' },
+      assigned: [],
       branchAdd: ['Roses are red',],
       foreignPartner: ['Roses are red',],
       arrayCon: ['Roses are red',],
@@ -1018,7 +1018,8 @@ class ClientReg extends React.Component {
             })
           }}
           rowClassName={(rowData) => {
-            return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected' : '') : '')
+            //return (rowData ? (rowData._id === this.state.assigned._id ? 'rowSelected' : '') : '')
+            return (rowData ? (this.state.assigned.find(usr => usr._id === rowData._id) !== undefined ? 'rowSelected' : '') : '')
           }}
         >
           <Column width={50} align='center' fixed>
@@ -1050,24 +1051,51 @@ class ClientReg extends React.Component {
             <Cell>
               {(rowData) => {
                 this.showUser = () => {
+                  let _assigned = this.state.assigned;
+                  _assigned.push({
+                    name: rowData.Name.First,
+                    nameFather: rowData.Name.Last,
+                    nameMother: rowData.Name.Last2,
+                    pos: rowData.Pos,
+                    team: rowData.team,
+                    _id: rowData._id,
+                  })
                   this.setState({
-                    assigned: {
-                      name: rowData.Name.First,
-                      nameFather: rowData.Name.Last,
-                      nameMother: rowData.Name.Last2,
-                      pos: rowData.Pos,
-                      team: rowData.Team,
-                      _id: rowData._id,
-                    },
+                    assigned: _assigned,
                   });
                 };
                 this.removeUser = () => {
-                  //
+                  let _assigned = this.state.assigned;
+                  _assigned = _assigned.filter(usr => usr._id !== rowData._id);
+                  this.setState({
+                    assigned:_assigned
+                  })
                 };
                 return (
-                  <span>
-                    <a className='actionLink' onClick={this.showUser}> Seleccionar </a>
-                  </span>
+                  (rowData ?
+                    (this.state.assigned.find(usr => usr._id === rowData._id) !== undefined ?
+                      <span>
+                        <ButtonPrime
+                          label="Borrar"
+                          className="p-button-text p-button-plain usrTblBut"
+                          onClick={this.removeUser}/>
+                      </span> 
+                      :
+                      <span>
+                        <ButtonPrime
+                          label="Seleccionar"
+                          className="p-button-text p-button-plain usrTblBut standby"
+                          onClick={this.showUser}/>
+                      </span>
+                    )
+                    :
+                      <span>
+                        <ButtonPrime
+                          label="Seleccionar"
+                          className="p-button-text p-button-plain usrTblBut standby"
+                          onClick={this.showUser}/>
+                      </span>
+                    )
                 );
               }}
             </Cell>
@@ -1138,9 +1166,7 @@ class ClientReg extends React.Component {
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
             disabled={
-              !(this.state.assigned.pos != null &&
-                // this.state.assigned.team[0].nombre.length != 0 &&
-                this.state.assigned.team != '')
+              (this.state.assigned.length === 0)
             }
             onClick={
 

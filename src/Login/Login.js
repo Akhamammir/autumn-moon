@@ -11,7 +11,7 @@ class Login extends React.Component {
   }
   Login = () => {
     axios.post('/users', { usr: this.state.usr }).then(res => {
-      if (this.state.usr == res.data.User.Usr && this.state.pwd == res.data.User.Pwd) {
+      if (this.state.usr == res.data.User.email && this.state.pwd == res.data.User.Pwd) {
         this.props.history.push("/home/" + res.data.User.Usr, { ...res.data.User })
       } else {
         Alert.error('/users', 3000)
