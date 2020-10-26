@@ -10,13 +10,23 @@ class Login extends React.Component {
     console.log(this.props)
   }
   Login = () => {
-    axios.post('/users', { usr: this.state.usr }).then(res => {
-      if (this.state.usr == res.data.User.email && this.state.pwd == res.data.User.Pwd) {
-        this.props.history.push("/home/" + res.data.User.Usr, { ...res.data.User })
+    axios.post('/users', { usr: this.state.usr, pwd: this.state.pwd }).then(res => {
+      console.log(res.data)
+      if(res.status === 202){
+        this.props.history.push("/home/" + res.data.Usr, { ...res.data.Usr })
       } else {
-        Alert.error('/users', 3000)
+        Alert.error('Datos incorrectos', 3000)
       }
-    })
+      /*if (res.data.User){
+        if (this.state.usr == res.data.User.email && this.state.pwd == res.data.User.Pwd) {
+          this.props.history.push("/home/" + res.data.User.Usr, { ...res.data.User })
+        } else {
+          Alert.error('Datos incorrectos', 3000)
+        }
+      } else {
+        Alert.error('Datos incorrectos', 3000)
+      }*/
+    }).catch(()=>{Alert.error('Datos incorrectos', 3000)})
   }
   render() {
     //<img src={logo} className="App-logo" alt="logo" />

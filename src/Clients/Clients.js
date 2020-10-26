@@ -1272,17 +1272,9 @@ class ClientReg extends React.Component {
         <Box direction='row'>
           <Box>
             <Box direction='row'>
-              <Heading margin="none" level="4">RFC: {this.state.rfc}</Heading>
-            </Box>
-            <Box direction='row'>
               <DecoratedInput
                 area='Usr'
-                value={this.state.RFCUsr.user}
-                onChange={(e) => {
-                  this.setState({ RFCUsr: { user: e, pwd: this.state.RFCUsr.pwd } }, () => {
-                    console.log(this.state);
-                  });
-                }}
+                value={this.state.rfc}
                 width='85%'
                 boxw='65px'
                 textw='medium'
