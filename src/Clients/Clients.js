@@ -65,7 +65,7 @@ class ClientReg extends React.Component {
         {
           Registro: '', _id: this.uuidShort(),
           IDSE: { user: '', pwd: '' },
-          SIPAR: { user: '', pwd: '' },
+          SIPARE: { user: '', pwd: '' },
           INFO: { user: '', pwd: '' },
         },
       ],
@@ -446,7 +446,7 @@ class ClientReg extends React.Component {
     }
 
     this.setState(state, () => {
-      console.log(this.state.Deep)
+      console.log(this.state)
     });
   }
   onHide(name) {
@@ -1379,9 +1379,9 @@ class ClientReg extends React.Component {
                     <Box direction='row'>
                       <DecoratedInput
                         area='SIPARE'
-                        value={this.state.regPaList[index].SIPAR.user}
+                        value={this.state.regPaList[index].SIPARE.user}
                         onChange={(e) => {
-                          this.handleChangeList(e, 'regPaList', index, 'user', 'SIPAR');
+                          this.handleChangeList(e, 'regPaList', index, 'user', 'SIPARE');
                         }}
                         width='300px'
                         boxw='100px'
@@ -1390,9 +1390,9 @@ class ClientReg extends React.Component {
                       />
                       <DecoratedInput
                         area='Contraseña'
-                        value={this.state.regPaList[index].SIPAR.pwd}
+                        value={this.state.regPaList[index].SIPARE.pwd}
                         onChange={(e) => {
-                          this.handleChangeList(e, 'regPaList', index, 'pwd', 'SIPAR');
+                          this.handleChangeList(e, 'regPaList', index, 'pwd', 'SIPARE');
                         }}
                         width='300px'
                         boxw='120px'
@@ -1432,7 +1432,7 @@ class ClientReg extends React.Component {
                       area='Usuario'
                       value={this.state[this.state.currentList][index].user}
                       onChange={(e) => {
-                        this.handleChangeList(e, 'ctaIshList', index, 'user');
+                        this.handleChangeList(e, this.state.currentList, index, 'user');
                       }}
                       width='300px'
                       boxw='100px'
@@ -1443,7 +1443,7 @@ class ClientReg extends React.Component {
                       area='Contraseña'
                       value={this.state[this.state.currentList][index].pwd}
                       onChange={(e) => {
-                        this.handleChangeList(e, 'ctaIshList', index, 'pwd');
+                        this.handleChangeList(e, this.state.currentList, index, 'pwd');
                       }}
                       width='300px'
                       boxw='120px'

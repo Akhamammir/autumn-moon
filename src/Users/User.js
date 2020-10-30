@@ -322,8 +322,7 @@ class User extends React.Component {
                     value={this.state.emergencyName}
                     onChange={ (e) => {this.handleChange(e, 'emergencyName') } }
                     width = "25%"
-                    type="number"
-                    icon = "phone"
+                    icon = "id-mapping"
                   />
                 </Box>
                 <br/>
