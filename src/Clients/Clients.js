@@ -55,6 +55,7 @@ class ClientReg extends React.Component {
       arrayCtaCed: ['Roses are red',], arrayCtaIsh: ['Roses are red',],
       arrayIshUsr: ['Roses are red'], arrayIsnUsr: ['Roses are red'],
       arrayCedUsr: ['Roses are red'], arrayRtpUsr: ['Roses are red'],
+      arrayBuzonT:['Roses are red'],
       regFiscal: [],
       isn: '',
       rtp: '',
@@ -86,6 +87,7 @@ class ClientReg extends React.Component {
       usrIshList: [{ user: '', pwd: '', _id: this.uuidShort() }], usrIsnList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       usrCedList: [{ user: '', pwd: '', _id: this.uuidShort() }], usrRtpList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       fonaList: [{ cta: '', _id: this.uuidShort() }], fonaUsrList: [{ user: '', pwd: '', _id: this.uuidShort() }],
+      buzonT: [{ cta: '', _id: this.uuidShort() }],
       rowSelected: "",
       team: "",
       Nominas: [],
@@ -1269,6 +1271,7 @@ class ClientReg extends React.Component {
           <Text className='GreenLetter'>{this.state.Resultado}</Text>
         </Box>
         <br />
+        <Heading margin="none" level="4" style={{textAlign:'start'}}>RFC:</Heading>
         <Box direction='row'>
           <Box>
             <Box direction='row'>
@@ -1795,7 +1798,53 @@ class ClientReg extends React.Component {
               </Box>
             </Box>
             <Box gridArea='botDer'>
-
+            <List hover className='ListColor'>
+                {this.state.arrayBuzonT.map((item, index) => (
+                  <List.Item key={index} index={index} className='Pad'>
+                    <Box direction='row'>
+                      <DecoratedInput
+                        area='Buzon T.'
+                        value={this.state.buzonT[index].cta}
+                        onChange={(e) => {
+                          this.handleChangeList(e, 'buzonT', index, 'cta');
+                        }}
+                        width='300px'
+                        boxw='100px'
+                        textw='medium'
+                        icon='id-mapping'
+                        tooltip={true}
+                        tooltiptxt="Impuesto Sobre Hospedaje"
+                      />
+                      <IconButton
+                        icon={<Icon icon='close' />}
+                        circle
+                        size='md'
+                        onClick={() => {
+                            this.MetodoPop('arrayBuzonT', 'buzonT', this.state.buzonT[index]._id);
+                        }}
+                      />
+                    </Box>
+                  </List.Item>
+                ))}
+              </List>
+              <br />
+            <Box direction='row' align="stretch" style={{ position: "relative" }}>
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    if(this.state.arrayBuzonT.length >= 5){
+                      Alert.error('Maximo 5 campos', 3000)
+                    }
+                    else {
+                      this.MetodoPush('arrayBuzonT', 'buzonT', {
+                        cta: '', _id: this.uuidShort()
+                      });
+                    }
+                  }}
+                />
+              </Box>
             </Box>
             <Box gridArea='botIz'>
 
