@@ -58,7 +58,7 @@ class User extends React.Component {
       this.setState({
         name:'', nameFather:'', nameMother:'', birthday:'', gender:'', curp:'', rfc:'',
         dateHire:'', position:'', phoneNum:'', emergencyNum:'', academic:'', password:'', "_id":'', show:false,
-        Team:'', email:'', selectedUser:{_id:'nil'}
+        Team:'', email:'', selectedUser:{_id:'nil'}, emergencyName:''
       });
       this.componentDidMount();
       this.setState({
