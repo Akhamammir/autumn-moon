@@ -90,7 +90,7 @@ class ClientReg extends React.Component {
       buzonT: [{ cta: '', _id: this.uuidShort() }],
       rowSelected: "",
       team: "",
-      Nominas: [],
+      assimNomina: [], nomina:[],
       searchT: ''
     };
   }
@@ -244,13 +244,26 @@ class ClientReg extends React.Component {
   metNomina = (nominavalue) => {
     this.setState(
       {
-        Nominas: nominavalue,
+        nomina: nominavalue,
       },
       () => {
         this.setState({
-          Resultado2: this.state.Nominas.join(', '),
+          Resultado2: this.state.nomina.join(', '),
         });
-        console.log(this.state.Nominas);
+        console.log(this.state.nomina);
+      }
+    );
+  };
+  metNomina2 = (nominavalue) => {
+    this.setState(
+      {
+        assimNomina: nominavalue,
+      },
+      () => {
+        this.setState({
+          Resultado3: this.state.assimNomina.join(', '),
+        });
+        console.log(this.state.assimNomina);
       }
     );
   };
@@ -279,6 +292,7 @@ class ClientReg extends React.Component {
     ];
     let datum = props.assim ? nominaAsalariados : nomina;
     let key = props.assim ? 'assimWorkers' : 'workers';
+    let value = props.assim ? 'assimNomina' : 'nomina';
     return (
       <Box>
         <Box direction='row'>
@@ -304,15 +318,15 @@ class ClientReg extends React.Component {
                 Periocidad de nómina
                 </Heading>
               <CheckPicker
-                value={this.state.Nominas}
-                onChange={this.metNomina}
+                value={this.state[value]}
+                onChange={this[props.assim ? 'metNomina2' :'metNomina']}
                 data={datum}
                 style={{ width: 224 }}
               />
             </Box>
             <br />
             <Box direction='row'>
-              <Text className='GreenLetter'>{this.state.Resultado2}</Text>
+              <Text className='GreenLetter'>{this.state[props.assim ? 'Resultado3':'Resultado2']}</Text>
             </Box>
             <br />
             <br />
@@ -1553,8 +1567,6 @@ class ClientReg extends React.Component {
                         boxw='90px'
                         textw='medium'
                         icon='id-mapping'
-                        tooltip={true}
-                        tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1812,7 +1824,7 @@ class ClientReg extends React.Component {
                         textw='medium'
                         icon='id-mapping'
                         tooltip={true}
-                        tooltiptxt="Impuesto Sobre Hospedaje"
+                        tooltiptxt={"Direccion de Buzon Tributario "+ (index+1)}
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
