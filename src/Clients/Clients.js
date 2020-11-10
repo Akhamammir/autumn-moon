@@ -1271,12 +1271,11 @@ class ClientReg extends React.Component {
           <Text className='GreenLetter'>{this.state.Resultado}</Text>
         </Box>
         <br />
-        <Heading margin="none" level="4" style={{textAlign:'start'}}>RFC:</Heading>
         <Box direction='row'>
           <Box>
             <Box direction='row'>
               <DecoratedInput
-                area='Usr'
+                area='RFC'
                 value={this.state.rfc}
                 width='85%'
                 boxw='65px'
