@@ -90,7 +90,7 @@ class User extends React.Component {
       rfc:this.state.selectedUser.RFC, dateHire:this.state.selectedUser.DateH,
       position:this.state.selectedUser.Pos, phoneNum:this.state.selectedUser.Phone,
       emergencyNum: this.state.selectedUser.Emergency, academic:this.state.selectedUser.Academic,
-      _id:this.state.selectedUser._id, Team:this.state.selectedUser.team,
+      _id:this.state.selectedUser._id, Team:this.state.selectedUser.team, emergencyName:this.state.selectedUser.EmergencyNam,
       email:this.state.selectedUser.email } )
   }
   render() {
