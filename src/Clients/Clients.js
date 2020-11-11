@@ -1287,6 +1287,7 @@ class ClientReg extends React.Component {
         <br />
         <Box direction='row'>
           <Box>
+          <Heading margin='small' level={4} style={{textAlign:'start'}}>SAT:</Heading>
             <Box direction='row'>
               <DecoratedInput
                 area='RFC'
