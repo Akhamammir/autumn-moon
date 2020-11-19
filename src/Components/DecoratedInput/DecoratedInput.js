@@ -96,6 +96,7 @@ class DecoratedInput extends React.Component {
             }
             type={this.props.type ? this.props.type : 'text'}
             disabled={this.props.display}
+            readOnly={this.props.role}
           ></TextInput>
         </Box>
       </Box>

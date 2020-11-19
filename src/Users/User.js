@@ -1,5 +1,6 @@
 import React from 'react';
 import './User.css';
+import { RoleMaker } from './../Utils/Roles';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
@@ -33,6 +34,7 @@ class User extends React.Component {
       });
       this.setState({usrlist:users})
       console.log(this.state.usrlist);
+      
 
     });
   }

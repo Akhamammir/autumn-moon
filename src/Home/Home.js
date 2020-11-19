@@ -4,11 +4,15 @@ import Manager from './../Manager/Manager';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import { Grommet, Box, Grid} from 'grommet';
+import axios from 'axios';
 class Home extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props)
     this.state = {usr:this.props.location.state}
+    axios.post('/users/role', {role:this.state.usr.Role}).then( res => {
+      console.log(res.data.Role)
+    });
   }
   render() {
     return (

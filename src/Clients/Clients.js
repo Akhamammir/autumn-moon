@@ -3,6 +3,7 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
+import { RoleMaker } from './../Utils/Roles';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
 import {
   Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
@@ -19,6 +20,7 @@ class ClientReg extends React.Component {
     console.log(props);
     console.log(this.uuidShort())
     this.state = {
+      role: this.props.location.state.Pos,
       triggetCtaIsh: false,
       _id: undefined,
       usr: this.props.location.state,
@@ -95,7 +97,7 @@ class ClientReg extends React.Component {
     };
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log(RoleMaker(this.props.location.state.Pos))
     axios.post('/userslist', { team: this.state.usr.Team }).then((res) => {
 
       //this.setState({clients:res.data.User})
@@ -502,6 +504,7 @@ class ClientReg extends React.Component {
             boxw='90px'
             textw='medium'
             icon='id-mapping'
+            role={ !( RoleMaker(this.state.role) > 0 ) }
           />
           <Toggle
             size='lg'

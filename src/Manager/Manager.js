@@ -21,16 +21,7 @@ class Manager extends React.Component {
     this.state = {usr:this.props, m_clients:[], f_clients:[]}
   }
   componentDidMount() {
-    axios.post('/clients', {team:this.state.usr.Team}).then(res => {
-      console.log(res)
-      //this.setState({clients:res.data.User})
-      let Place = '', moral = [], fisico = [];
-      res.data.Clients.forEach(I=>{
-        I.Type=="Moral" ? moral.push(I) : fisico.push(I)
-      });
-      this.setState({m_clients:moral, f_clients:fisico})
-        console.log(this.state.f_clients);
-    });
+    
   }
   clients = (args) => {
     let label="Loading . . .", arr='f_clients';
