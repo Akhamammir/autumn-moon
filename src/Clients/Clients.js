@@ -528,6 +528,8 @@ class ClientReg extends React.Component {
             boxw='170px'
             textw='medium'
             icon='id-mapping'
+            role={ !( RoleMaker(this.state.role) > 0 ) }
+
           />
         </Box>
         <br />
@@ -542,6 +544,7 @@ class ClientReg extends React.Component {
             onChange={(e) => {
               this.handleChange(e, 'fiscal');
             }}
+            role={ !( RoleMaker(this.state.role) > 0 ) }
           />
         </Box>
         <br />
@@ -556,6 +559,7 @@ class ClientReg extends React.Component {
               width='60%'
               icon='id-card'
               display={this.state.pPhys}
+              role={ !( RoleMaker(this.state.role) > 0 ) }
             />
           ) : (
               <DecoratedInput
@@ -566,6 +570,7 @@ class ClientReg extends React.Component {
                 }}
                 width='60%'
                 icon='peoples-map'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
               />
             )}
           <DecoratedInput
@@ -576,6 +581,7 @@ class ClientReg extends React.Component {
             }}
             width='60%'
             icon='id-card'
+            role={ !( RoleMaker(this.state.role) > 0 ) }
           />
         </Box>
         <br />
@@ -589,6 +595,7 @@ class ClientReg extends React.Component {
             width='60%'
             type='number'
             icon='mobile'
+            role={ !( RoleMaker(this.state.role) > 0 ) }
           />
         </Box>
         <br />
@@ -628,6 +635,7 @@ class ClientReg extends React.Component {
                         boxw='65px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='Calle y N.'
@@ -639,6 +647,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='C.P.'
@@ -650,6 +659,7 @@ class ClientReg extends React.Component {
                         boxw='60px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='Estado'
@@ -661,6 +671,7 @@ class ClientReg extends React.Component {
                         boxw='80px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -735,6 +746,7 @@ class ClientReg extends React.Component {
                             boxw='90px'
                             textw='medium'
                             icon='id-mapping'
+                            role={ !( RoleMaker(this.state.role) > 0 ) }
                           />
                           <DecoratedInput
                             area='RFC'
@@ -746,6 +758,7 @@ class ClientReg extends React.Component {
                             boxw='80px'
                             textw='medium'
                             icon='id-mapping'
+                            role={ !( RoleMaker(this.state.role) > 0 ) }
                           />
                           <IconButton
                             icon={<Icon icon='close' />}
@@ -823,6 +836,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='user-o'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <DecoratedInput
                     area='Email'
@@ -834,6 +848,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='user-o'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <DecoratedInput
                     area='Telefono'
@@ -851,6 +866,7 @@ class ClientReg extends React.Component {
                     textw='medium'
                     icon='mobile'
                     type='number'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <IconButton
                     icon={<Icon icon='close' />}
@@ -904,6 +920,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-mapping'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <DecoratedInput
                     area='Email'
@@ -915,6 +932,7 @@ class ClientReg extends React.Component {
                     width='350px'
                     textw='medium'
                     icon='user-o'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <DecoratedInput
                     area='Telefono'
@@ -927,6 +945,7 @@ class ClientReg extends React.Component {
                     textw='medium'
                     icon='mobile'
                     type='number'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <br />
                   <br />
@@ -942,6 +961,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <DecoratedInput
                     area='Curp'
@@ -953,6 +973,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                   <IconButton
                     icon={<Icon icon='close' />}
@@ -1136,6 +1157,7 @@ class ClientReg extends React.Component {
                 boxw='100px'
                 textw='medium'
                 icon='user-o'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
                 display
               />
 
@@ -1146,6 +1168,7 @@ class ClientReg extends React.Component {
                 boxw='100px'
                 textw='medium'
                 icon='user-o'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
                 display
               />
               <DecoratedInput
@@ -1155,6 +1178,7 @@ class ClientReg extends React.Component {
                 boxw='100px'
                 textw='medium'
                 icon='group'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
                 display
               />
             </Box>
@@ -1299,6 +1323,7 @@ class ClientReg extends React.Component {
                 boxw='65px'
                 textw='medium'
                 icon='id-mapping'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
               />
               <DecoratedInput
                 area='Contraseña'
@@ -1312,6 +1337,7 @@ class ClientReg extends React.Component {
                 boxw='110px'
                 textw='medium'
                 icon='id-mapping'
+                role={ !( RoleMaker(this.state.role) > 0 ) }
               />
             </Box>
           </Box>
@@ -1334,6 +1360,7 @@ class ClientReg extends React.Component {
                     boxw='60px'
                     textw='medium'
                     icon='id-mapping'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />  
                   <DecoratedInput
                     area='Contraseña'
@@ -1347,6 +1374,7 @@ class ClientReg extends React.Component {
                     boxw='95px'
                     textw='medium'
                     icon='id-mapping'
+                    role={ !( RoleMaker(this.state.role) > 0 ) }
                   />
                 </Box>
               </span>
@@ -1382,6 +1410,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1393,6 +1422,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                     </Box>
                     <br />
@@ -1407,6 +1437,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1418,6 +1449,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                     </Box>
                     <br />
@@ -1432,6 +1464,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1443,6 +1476,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                     </Box>
                   </span>
@@ -1458,6 +1492,7 @@ class ClientReg extends React.Component {
                       boxw='100px'
                       textw='medium'
                       icon='id-mapping'
+                      role={ !( RoleMaker(this.state.role) > 0 ) }
                     />
                     <DecoratedInput
                       area='Contraseña'
@@ -1469,6 +1504,7 @@ class ClientReg extends React.Component {
                       boxw='120px'
                       textw='medium'
                       icon='id-mapping'
+                      role={ !( RoleMaker(this.state.role) > 0 ) }
                     />
                     <IconButton
                       icon={<Icon icon='close' />}
@@ -1518,6 +1554,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Registro Patronal"
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1571,6 +1608,7 @@ class ClientReg extends React.Component {
                         boxw='90px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1623,6 +1661,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1673,6 +1712,7 @@ class ClientReg extends React.Component {
                         boxw='90px'
                         textw='medium'
                         icon='id-mapping'
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1725,6 +1765,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1777,6 +1818,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Impuesto Sobre Hospedaje"
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1829,6 +1871,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt={"Direccion de Buzon Tributario "+ (index+1)}
+                        role={ !( RoleMaker(this.state.role) > 0 ) }
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
