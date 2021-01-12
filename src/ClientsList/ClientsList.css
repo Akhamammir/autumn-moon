@@ -39,3 +39,7 @@
 tr.p-highlight-contextmenu{
   background-color: #84C4BF!important;
 }
+.statuscss{
+  background-color: #13F3D8;
+  color: #000000;
+}

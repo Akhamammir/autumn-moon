@@ -7,7 +7,7 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Avatar, Icon, InputGroup, Input } from 'rsuite';
+import { Avatar, Icon, InputGroup, Input, IconButton, Button } from 'rsuite';
 import axios from 'axios';
 
 class ClientsList extends React.Component {
@@ -76,6 +76,49 @@ class ClientsList extends React.Component {
       S.RFC.includes(this.state.searchT) ||
       S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT)))
   }
+  representativeBodyTemplate = (rowData) => {
+    const src = "https://www.primefaces.org/primereact/showcase/showcase/demo/images/avatar/ionibowcher.png";
+
+    return (
+        <React.Fragment>
+            <img alt={rowData.representative} src={src} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="32" style={{verticalAlign: 'middle'}} />
+            <span className="p-column-title">Name</span>
+            <span style={{verticalAlign: 'middle', marginLeft: '.5em'}}>{rowData.representative}</span>
+        </React.Fragment>
+    );
+}
+dateBodyTemplate = (rowData) => {
+  return (
+      <React.Fragment>
+          <span className="p-column-title">{rowData.razon}</span><br/>
+          <span>{new Date().toLocaleString('es-MX', {year: 'numeric', month: 'numeric', day: 'numeric'} )}</span>
+          <span>{rowData.date}</span>
+      </React.Fragment>
+  );
+}
+statusBodyTemplate = () => {
+  return (
+      <React.Fragment>
+          <span >{<Button className='statuscss'>Completada</Button>}</span>
+      </React.Fragment>
+  );
+}
+opccionBodyTeemple=() =>{
+  return(
+    <React.Fragment>
+          <span >{<Icon  icon = 'ellipsis-v' />}</span>
+      </React.Fragment>
+  );
+}
+deadlineBodynose =() =>{
+  return(
+    <React.Fragment>
+      <span className="p-column-title">Dead Line</span><br/>
+      <span >{<Icon  icon = 'bolt' size="lg"/>}</span>
+      <span>{new Date().toLocaleString('es-MX', {year: 'numeric', month: 'numeric', day: 'numeric'} )}</span>
+      </React.Fragment>
+  );
+}
   render() {
     return (
       <Grommet plain className='App'>
@@ -143,11 +186,11 @@ class ClientsList extends React.Component {
               contextMenuSelection={this.state.current}
               onContextMenuSelectionChange={e => this.setState({ current: e.value })}
               onContextMenu={e => this.cm.show(e.originalEvent)}>
-              <Column field='razon' header='Razon Social' />
-              <Column field='cName' header='Nombre Comercial' />
-              <Column field='fiscal' header='Domicilio Fiscal' />
-              <Column field='rfc' header='RFC' />
-              <Column field='phoneNum' header='Teléfono' />
+              <Column field='razon' body={this.dateBodyTemplate} />
+              <Column field='deadline' body={this.deadlineBodynose} />
+              <Column field='Name' body={this.representativeBodyTemplate }/>
+              <Column field='Status' body={this.statusBodyTemplate}/>
+              <Column field='option' body={this.opccionBodyTeemple} />
             </DataTable>
             <br />
             <Grid
