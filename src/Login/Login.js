@@ -17,15 +17,6 @@ class Login extends React.Component {
       } else {
         Alert.error('Datos incorrectos', 3000)
       }
-      /*if (res.data.User){
-        if (this.state.usr == res.data.User.email && this.state.pwd == res.data.User.Pwd) {
-          this.props.history.push("/home/" + res.data.User.Usr, { ...res.data.User })
-        } else {
-          Alert.error('Datos incorrectos', 3000)
-        }
-      } else {
-        Alert.error('Datos incorrectos', 3000)
-      }*/
     }).catch(()=>{Alert.error('Datos incorrectos', 3000)})
   }
   render() {

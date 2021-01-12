@@ -14,8 +14,8 @@ import User from './Users/User';
 import ClientReg from './Clients/Clients';
 import ClientsList from './ClientsList/ClientsList';
 import Auditoria from './Auditoria/Auditoria';
-
-import 'primereact/resources/themes/nova-colored/theme.css';
+import ToDo from './ToDo/ToDo';
+import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
@@ -37,6 +37,8 @@ class Main extends React.Component {
           <Route path="/clients/:Usr" render = {(props) => <ClientsList {...props}/>} >         
           </Route>
           <Route path="/auditoria/:Usr" render = {(props) => <Auditoria {...props}/>} >         
+          </Route>
+          <Route path="/ToDo/:Usr" render = {(props) => <ToDo {...props}/>} >         
           </Route>
         </Switch>
       </Router>

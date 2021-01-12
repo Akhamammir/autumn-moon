@@ -1,0 +1,57 @@
+.clear{
+    background:none;
+    margin-left: 10px;
+    border: 0.5px solid #a9a9a9!important;
+    box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
+}
+.first{
+    margin-left:40px;
+}
+.priorityDisp{
+    box-shadow: none!important;
+    margin-left: .7em;
+    font-weight: 500!important;
+    width: 6em;
+    opacity: 1!important;
+}
+.priori2{
+    background: #ed5151!important;
+}
+.priori1{
+    background: #F4C004!important;
+    color: #454545;
+}
+.statusDisp{
+    box-shadow: none!important;
+    font-weight: 500!important;
+    width: 100%;
+    opacity: 1!important;
+}
+.status2{
+    background: #59cd90!important;
+    color: #454545;
+}
+.status1{
+    background: #F4C004!important;
+    color: #454545;
+}
+.status0{
+    background: #ed5151!important;
+}
+.ghost{
+    width: 100%;
+    border: none!important;
+    font-weight: 600;
+}
+.ghost.edit{
+    color: #454545!important ;
+}
+.withFiles{
+    color: #00AB9B!important ;
+}
+.noFiles{
+    color: #ed5151!important ;
+}
+.tableAdvPer{
+    color: #00AB9B!important ;
+}
