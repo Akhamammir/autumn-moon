@@ -106,7 +106,7 @@ statusBodyTemplate = () => {
 opccionBodyTeemple=() =>{
   return(
     <React.Fragment>
-          <span >{<Icon  icon = 'ellipsis-v' />}</span>
+          <span >{<Icon icon = 'ellipsis-v'/>}</span>
       </React.Fragment>
   );
 }
