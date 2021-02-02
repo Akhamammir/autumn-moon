@@ -7,7 +7,7 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { Grommet, Box, Grid, Heading } from 'grommet';
-import { Avatar, Icon, InputGroup, Input, IconButton, Button } from 'rsuite';
+import { Avatar, Icon, InputGroup, Input, Button, IconButton } from 'rsuite';
 import axios from 'axios';
 
 class ClientsList extends React.Component {
@@ -106,7 +106,7 @@ statusBodyTemplate = () => {
 opccionBodyTeemple=() =>{
   return(
     <React.Fragment>
-          <span >{<Icon  icon = 'ellipsis-v' />}</span>
+          <span >{<Icon icon = 'ellipsis-v'></Icon>}</span>
       </React.Fragment>
   );
 }
@@ -145,38 +145,67 @@ deadlineBodynose =() =>{
           >
             <NavBar usr={this.state.usr} history={this.props.history} />
           </Box>
-          <Box gridArea='main'>
-            <br />
-            <InputGroup
-              style={{
-                width: 270,
-                overflow: 'visible',
-                border: 'none',
-                borderRadius: '90px',
-                backgroundColor: '#00AB9B'
-              }} >
-              <Input
-                style={{ boxShadow: 'none', width: 270, paddingRight: '11px' }}
-                placeholder="Usuario"
-                className="inputLog"
-                value={this.state.searchT}
-                onChange={(e) => {
-                  this.setState({ searchT: e });
-                }}
-              />
-              <InputGroup.Button
-                style={{
-                  paddingRight: '11px',
-                  top: '0.2px',
-                  backgroundColor: '#00AB9B',
-                  color: '#F2F3F4',
-                  borderRadius: '0px 100px 100px 0px',
-                }}
-                onClick={this.filteruser}
-              >
-                <Icon icon="search" />
-              </InputGroup.Button>
-            </InputGroup>
+            <Box gridArea='main'>
+              <br />
+              
+              <Box direction='row'>
+                <Box direction='row' margin='xsmall'>
+                  <Box direction='column' margin='small'>
+                    <Button className='statuscss2'>Pendiente</Button>
+                  </Box>
+                  <Box direction='column' margin='small'>
+                    <Button className='statuscss'>Completada</Button>
+                  </Box>
+                  <Box direction='column' margin='small'>
+                   <Button className='statuscss3'>Incompleta</Button>
+                  </Box>
+                </Box>
+                <Box margin='small'>
+                 <InputGroup
+                  style={{
+                    width: 270,
+                    overflow: 'visible',
+                    border: 'none',
+                    borderRadius: '90px',
+                    backgroundColor: '#00AB9B'
+                  }} >
+                  <Input
+                    style={{ boxShadow: 'none', width: 270, paddingRight: '11px' }}
+                    placeholder="Usuario"
+                    className="inputLog"
+                    value={this.state.searchT}
+                    onChange={(e) => {
+                      this.setState({ searchT: e });
+                    }}
+                  />
+                  <InputGroup.Button
+                    style={{
+                      paddingRight: '11px',
+                      top: '0.2px',
+                      backgroundColor: '#00AB9B',
+                      color: '#F2F3F4',
+                      borderRadius: '0px 100px 100px 0px',
+                    }}
+                    onClick={this.filteruser}
+                  >
+                    <Icon icon="search" />
+                  </InputGroup.Button>
+                </InputGroup>
+              </Box>
+              <Box margin='small'>
+                <IconButton className='statuscss1'   
+                icon={<Icon icon='long-arrow-right' style={{backgroundColor:"#00AB9B"}}/>}
+                placement="right"
+                onClick={()=>{
+                  this.props.history.push(
+                    `/clientreg/${this.state.usr.Usr}`,
+                    { ...this.state.usr })
+                }
+              }
+                >
+                  Agregar nuevo cliente</IconButton>
+              </Box>
+            </Box>
             <br />
             <DataTable value={this.state.clientsList} rowHover selectionMode="single"
               onRowSelect={({ data }) => {
