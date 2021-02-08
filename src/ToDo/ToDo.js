@@ -4,9 +4,11 @@ import NavBar from './../NavBar/NavBar';
 import { Grommet, Box, Grid, Heading, Text } from 'grommet';
 import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
-import { Column as _Column } from 'primereact/column';
+import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
 import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton } from 'rsuite';
+import { Dialog } from 'primereact/dialog';
+import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
 import './ToDo.css';
 export default class ToDo extends Component {
@@ -255,9 +257,36 @@ export default class ToDo extends Component {
           icon={<Icon icon="ellipsis-h" />}
           size="lg"
           circle
+          onClick={() =>
+            this.onClick('displayPosition', 'left', 'arrayRtpUsr', 'usrRtpList')
+          }
         />
       </React.Fragment>
     );
+  }
+  onHide(name) {
+    this.setState({
+      [`${name}`]: false
+    });
+  }
+  onClick(name, position, array, list, deep) {
+    let state = {
+      [`${name}`]: true,
+      currentArray: array,
+      currentList: list,
+      Deep: deep ? deep : false
+    };
+
+    if (position) {
+      state = {
+        ...state,
+        position
+      }
+    }
+
+    this.setState(state, () => {
+      console.log(this.state)
+    });
   }
   render() {
     return (
@@ -287,7 +316,7 @@ export default class ToDo extends Component {
           </Box>
           <Box gridArea='main' style={{ marginLeft: "50px" }}>
             <br />
-            <Box direction="row" width="60%" alignContent="between">
+            <Box direction="row" width="90%" alignContent="between">
               <Heading
                 level='2'
                 margin='none'
@@ -297,9 +326,9 @@ export default class ToDo extends Component {
                 }}
                 className='GreenLetter'
                 textAlign='center'
-              >
-                Pase Usted S.A.P.I
-            </Heading>
+                >
+                  Pase Usted S.A.P.I
+              </Heading>
               <IconButton
                 className="clear first"
                 icon={<Icon icon="upload2" />}
@@ -307,26 +336,51 @@ export default class ToDo extends Component {
                 placement="right"
               >
                 Folder de cliente
-            </IconButton>
+              </IconButton>
               <IconButton
                 className="clear"
                 icon={<Icon icon="upload2" />}
                 size="lg"
                 placement="right"
-              >
-                Folder de cliente
-            </IconButton>
-              <Button
-                appearance="primary"
-                className="first"
-                icon={<Icon icon="upload2" />}
-                size="lg"
-                placement="right"
-              >
-                Folder de cliente
-            </Button>
-            </Box>
-            <br />
+                >
+                  Perfil de cliente
+              </IconButton>
+                <Button
+                  appearance="primary"
+                  className="first2"
+                  size="lg"
+                  placement="right"
+                >
+                  Panel de control
+                </Button>
+              <Box direction='row' className='gruopButt'>
+                <Button
+                  appearance="primary"
+                    className="first2"
+                    size="lg"
+                    placement="right"
+                  >
+                      Estatus:55%
+                </Button>
+                  <Button
+                    appearance="primary"
+                    className="first2"
+                    size="lg"
+                    placement="right"
+                  >
+                    04/02/2021
+                  </Button>
+                  <Button
+                    appearance="primary"
+                    className="first2"
+                    size="lg"
+                    placement="right"
+                  >
+                    02:04:55
+                  </Button>
+                </Box>
+              </Box>
+              <br />
             <Box width="300px">
               <Button
                 appearance="primary"
@@ -335,9 +389,51 @@ export default class ToDo extends Component {
                 size="lg"
                 placement="right"
               >
-                Folder de cliente
+                Agregar nueva tarea
             </Button>
             </Box>
+            <Dialog
+              header="Lista de Cuentas"
+              visible={this.state.displayPosition}
+              position={this.state.position}
+              modal
+              style={{ width: '50vw' }}
+              onHide={() => this.onHide('displayPosition')}
+              dismissableMask={true}
+            >
+                <Grid 
+                rows={['xxsmall', 'xsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
+                columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+                gap='3px'
+                areas={[
+                  { name: 'top', start: [0, 0], end: [0, 0] },
+                  { name: 'line', start: [0,1], end: [3,1] },
+                  { name: 'texline', start: [0,2], end: [2,2] },
+                  { name: 'tableline', start: [0,3], end: [3,3] }
+                ]}>
+                  <Box gridArea='top'>
+                    <Button style={{background:'#EB5757', color:'White'}}>High</Button>
+                  </Box>
+                  <Box gridArea='line' direction='row'>
+                    <Box>
+                      <h5 font-size='16pt'>Catalogo aceptado</h5>
+                    </Box>
+                    <Box>
+                      <Button className='priori1'>Pendiente</Button>
+                    </Box>
+                    <h5 color='#00AB9B'>85%</h5>
+                  </Box>
+                  <Box gridArea='tableline'>
+                    <h5 >Pase Usted S.A.P.I. / Contabilidad electrónica</h5>
+                  </Box>
+                  <Box>
+                    <DataTable>
+                      <_Column><Icon icon='arrow-circle-o-right'></Icon></_Column>
+                      <_Column></_Column>
+                    </DataTable>
+                  </Box>
+                </Grid>
+            </Dialog>
             <br />
             <TreeTable value={this.state.clientsList} >
               <_Column expander field="Name" body={this.nameBodyTemplate} header="Nombre de la Tarea"></_Column>
