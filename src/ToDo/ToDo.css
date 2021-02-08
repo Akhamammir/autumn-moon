@@ -7,6 +7,15 @@
 .first{
     margin-left:40px;
 }
+.first2{
+    margin-left:20px;
+    background: #263D4F !important;
+}
+.gruopButt{
+    position: absolute;
+    right:100pt;
+    top:48pt;
+}
 .priorityDisp{
     box-shadow: none!important;
     margin-left: .7em;
