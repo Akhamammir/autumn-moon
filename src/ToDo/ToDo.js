@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
-import { Grommet, Box, Grid, Heading, Text } from 'grommet';
+import { Grommet, Box, Grid, Heading, Text, Calendar } from 'grommet';
 import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
@@ -288,6 +288,47 @@ export default class ToDo extends Component {
       console.log(this.state)
     });
   }
+  bodyTableone(){
+    return(
+    <React.Fragment>
+      <Box direction="row">
+      <Icon icon='angle-right' size='3x'/> <Heading level='4'>Sub Tarea 1</Heading>
+      </Box>
+    </React.Fragment>
+    )
+  }
+
+  bodyTabletwo=()=>{
+    return(
+      <React.Fragment>
+        <Button style= {{background:'#00AB9B', color:'#000'}}>Completa</Button>
+      </React.Fragment>
+    )
+  }
+  bodytabletree(){
+    return(
+      <React.Fragment><Box direction='row'>
+        <Icon icon='file-o'></Icon>
+        <Heading level='4' color='#00AB9B'
+        >Ver</Heading>
+        </Box>
+      </React.Fragment>
+    )
+  }
+  bodytablefour(){
+    return(
+      <React.Fragment>
+        <Button style={{background:'#EB5757', color:'White'}}>High</Button>
+        <IconButton
+          appearance="ghost"
+          className={"ghost edit"}
+          icon={<Icon icon="ellipsis-h" />}
+          size="lg"
+          circle
+        />
+      </React.Fragment>
+    )
+  }
   render() {
     return (
       <Grommet plain className='App'>
@@ -392,52 +433,10 @@ export default class ToDo extends Component {
                 Agregar nueva tarea
             </Button>
             </Box>
-            <Dialog
-              header="Lista de Cuentas"
-              visible={this.state.displayPosition}
-              position={this.state.position}
-              modal
-              style={{ width: '50vw' }}
-              onHide={() => this.onHide('displayPosition')}
-              dismissableMask={true}
-            >
-                <Grid 
-                rows={['xxsmall', 'xsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
-                columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
-                gap='3px'
-                areas={[
-                  { name: 'top', start: [0, 0], end: [0, 0] },
-                  { name: 'line', start: [0,1], end: [3,1] },
-                  { name: 'texline', start: [0,2], end: [2,2] },
-                  { name: 'tableline', start: [0,3], end: [3,3] }
-                ]}>
-                  <Box gridArea='top'>
-                    <Button style={{background:'#EB5757', color:'White'}}>High</Button>
-                  </Box>
-                  <Box gridArea='line' direction='row'>
-                    <Box>
-                      <h5 font-size='16pt'>Catalogo aceptado</h5>
-                    </Box>
-                    <Box>
-                      <Button className='priori1'>Pendiente</Button>
-                    </Box>
-                    <h5 color='#00AB9B'>85%</h5>
-                  </Box>
-                  <Box gridArea='tableline'>
-                    <h5 >Pase Usted S.A.P.I. / Contabilidad electrónica</h5>
-                  </Box>
-                  <Box>
-                    <DataTable>
-                      <_Column><Icon icon='arrow-circle-o-right'></Icon></_Column>
-                      <_Column></_Column>
-                    </DataTable>
-                  </Box>
-                </Grid>
-            </Dialog>
             <br />
             <TreeTable value={this.state.clientsList} >
               <_Column expander field="Name" body={this.nameBodyTemplate} header="Nombre de la Tarea"></_Column>
-              <_Column field="Advent" body={this.advBodyTemplate} header="% de Avance" headerStyle={{ width: '5%' }}></_Column>
+              <_Column field="Advent" body={this.advBodyTemplate} header="% de Avance" headerStyle={{ width: '6%' }}></_Column>
               <_Column field="Date" body={this.dateBodyTemplate} header="Fecha de Entrega" headerStyle={{ width: '10%' }}></_Column>
               <_Column field="Status" body={this.statusBodyTemplate} header="Status" headerStyle={{ width: '10%' }}></_Column>
               <_Column field="Files" body={this.filesBodyTemplate} header="Archivos Adjuntos" headerStyle={{ width: '10%' }}></_Column>
@@ -468,6 +467,71 @@ export default class ToDo extends Component {
             <br />
           </Box>
         </Grid>
+        <Dialog
+          visible={this.state.displayPosition}
+          position={this.state.position}
+          modal
+          style={{ width: '40vw' }}
+          onHide={() => this.onHide('displayPosition')}
+          dismissableMask={true}
+          >
+            <Grid 
+              rows={['xxsmall', 'xxsmall', 'xxxsmall','xxsmall','xxsamall','xxsmall','xxsmall', 'xxsamall']}
+              columns={['xsmall', 'small', 'xsmall', 'xxxsmall', ]}
+              gap='3px'
+              areas={[
+                { name: 'line1', start: [0, 0], end: [0, 0] },
+                { name: 'line1a', start: [0,1], end: [1,1] },
+                { name: 'line1b', start: [2,1], end: [2,1] },
+                { name: 'line1c', start: [3,1], end: [3,1] },
+                { name: 'line2', start: [0,2], end: [3,2] },
+                { name: 'Line3', start: [0,3], end: [3,3] },
+                { name: 'Line4', start: [0,4], end: [1,4] },
+                { name: 'Line5', start: [0,5], end: [0,5] },
+                { name: 'Line6', start: [0,6], end: [0,6] },
+              ]}>
+                <Box gridArea='line1'>
+                  <Button style={{background:'#EB5757', color:'White'}}>High</Button>
+                </Box>
+                <Box gridArea='line1a' direction='row'>
+                    <h5 font-size='16pt'>Catalogo aceptado</h5>
+                </Box>
+                <Box gridArea='line1b' direction='row'>
+
+                  <Box><Button className='priori1'>Pendiente</Button></Box>
+                </Box>
+                <Box gridArea='line1c'>
+                  <h5 color='#00AB9B'>85%</h5>
+                </Box>
+                <Box gridArea='line2'>
+                  <Heading level='6' alignSelf="start">Pase Usted S.A.P.I. / Contabilidad electrónica</Heading>
+                </Box>
+                <Box gridArea='Line3' >
+                  <DataTable value={this.state.clientsList} >
+                    <Column body={this.bodyTableone} style={{width:'30%'}}/>
+                    <Column body={this.bodyTabletwo} />
+                    <Column body={this.bodytabletree}/>
+                    <Column body={this.bodytablefour}/>
+                  </DataTable>
+                </Box>
+                <Box gridArea='Line4'>
+                <IconButton appearance="primary"
+                    className="first"
+                    icon={<Icon icon="long-arrow-right" style={{background:'#00AB9B'}}/>}
+                    size="lg"
+                    placement="right" >Agregar nueva tarea</IconButton>
+                </Box>
+                <Box gridArea='Line5'>
+                  <Heading level='6'>Fecha de entrega:</Heading>
+                </Box>
+                <Box gridArea='Line6'>
+                  <Calendar 
+                  >12/02/2021
+                  </Calendar>
+                  
+                </Box>
+              </Grid>
+          </Dialog>
       </Grommet>
 
     )
