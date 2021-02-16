@@ -595,7 +595,7 @@ export default class ToDo extends Component {
               <IconButton
                 className="clear first"
                 icon={<Icon icon="upload2" />}
-                size="lg"
+                size="sm"
                 placement="right"
                 onClick={() => this.onClick('Visorde', 'right', 'arrayRtpUsr', 'usrRtpList')}
               >
@@ -604,7 +604,7 @@ export default class ToDo extends Component {
               <IconButton
                 className="clear"
                 icon={<Icon icon="upload2" />}
-                size="lg"
+                size="sm"
                 placement="right"
                 >
                   Perfil de cliente
@@ -612,7 +612,7 @@ export default class ToDo extends Component {
                 <Button
                   appearance="primary"
                   className="first2"
-                  size="lg"
+                  size="sm"
                   placement="right"
                 >
                   Panel de control
@@ -629,7 +629,7 @@ export default class ToDo extends Component {
                 <Button
                   appearance="primary"
                     className="first2"
-                    size="lg"
+                    size="sm"
                     placement="right"
                   >
                       Estatus:55%
@@ -637,7 +637,7 @@ export default class ToDo extends Component {
                   <Button
                     appearance="primary"
                     className="first2"
-                    size="lg"
+                    size="sm"
                     placement="right"
                   >
                     04/02/2021
@@ -645,7 +645,7 @@ export default class ToDo extends Component {
                   <Button
                     appearance="primary"
                     className="first2"
-                    size="lg"
+                    size="sm"
                     placement="right"
                   >
                     02:04:55
@@ -658,9 +658,9 @@ export default class ToDo extends Component {
                 appearance="primary"
                 className="first"
                 icon={<Icon icon="upload2" />}
-                size="lg"
+                size="sm"
                 placement="right"
-                onClick={() => this.onClick('displayadd', 'show', 'arrayRtpUsr', 'usrRtpList')}
+                onClick={() => this.onClick('displayadd', 'right', 'arrayRtpUsr', 'usrRtpList')}
               >
                 Agregar nueva tarea
             </Button>
@@ -827,49 +827,7 @@ export default class ToDo extends Component {
             	   {/*
               termina visor de archivos grid
               */}       
-
-            <Dialog
-              header="Lista de Cuentas"
-              visible={this.state.displayPosition}
-              position={this.state.position}
-              modal
-              style={{ width: '50vw'}}
-              onHide={() => this.onHide('displayPosition')}
-              dismissableMask={true}
-            >
-                <Grid 
-                rows={['xxsmall', 'xsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
-                columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
-                gap='3px'
-                areas={[
-                  { name: 'top', start: [0, 0], end: [0, 0] },
-                  { name: 'line', start: [0,1], end: [3,1] },
-                  { name: 'texline', start: [0,2], end: [2,2] },
-                  { name: 'tableline', start: [0,3], end: [3,3] }
-                ]}>
-                  <Box gridArea='top'>
-                    <Button style={{background:'#EB5757', color:'White'}}>High</Button>
-                  </Box>
-                  <Box gridArea='line' direction='row'>
-                    <Box>
-                      <h5 font-size='16pt'>Catalogo aceptado</h5>
-                    </Box>
-                    <Box>
-                      <Button className='priori1'>Pendiente</Button>
-                    </Box>
-                    <h5 color='#00AB9B'>85%</h5>
-                  </Box>
-                  <Box gridArea='tableline'>
-                    <h5 >Pase Usted S.A.P.I. / Contabilidad electrónica</h5>
-                  </Box>
-                  <Box>
-                    <DataTable>
-                      <_Column><Icon icon='arrow-circle-o-right'></Icon></_Column>
-                      <_Column></_Column>
-                    </DataTable>
-                  </Box>
-                </Grid>
-            </Dialog>
+            
             <br />
             <TreeTable value={this.state.clientsList} >
               <_Column expander field="Name" body={this.nameBodyTemplate} header="Nombre de la Tarea"></_Column>
@@ -962,9 +920,15 @@ export default class ToDo extends Component {
                   <Heading level='6'>Fecha de entrega:</Heading>
                 </Box>
                 <Box gridArea='Line6'>
-                  <Calendar 
-                  >12/02/2021
-                  </Calendar>
+                <DatePicker
+            className="Date" 
+            value={this.props.value}
+            onChange = { (e) => { this.handleChange(e) } }
+            placeholder="10/12/2020"
+            appearance = "subtle" 
+            block = {true}
+            style={{ width: 150, transform: "translate(0%, -7.5%)"}}
+            ></DatePicker> 
                   
                 </Box>
               </Grid>

@@ -1,11 +1,11 @@
 .clear{
     background:none;
-    margin-left: 10px;
+    margin-left: 5px;
     border: 0.5px solid #a9a9a9!important;
     box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
 }
 .first{
-    margin-left:40px;
+    margin-left:20px;
 }
 .first2{
     margin-left:20px;
