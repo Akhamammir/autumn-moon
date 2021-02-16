@@ -15,6 +15,7 @@
     position: absolute;
     right:100pt;
     top:48pt;
+    
 }
 .priorityDisp{
     box-shadow: none!important;
@@ -63,4 +64,32 @@
 }
 .tableAdvPer{
     color: #00AB9B!important ;
+}
+
+.Date{
+    z-index: 100 !important;
+    position:relative;
+    background-color: #263D4F;
+    left: 35px
+    
+}
+.guardar{
+    background-color:#00AB9B;
+    color:white;
+    left:40px;
+}
+.eliminar{
+    background-color: #F3133C;
+    color:white;
+    left:50px;
+}
+.agregar{
+    padding: 0px 0;
+    color:red;
+}
+.p-dialog-mask.p-component-overlay.p-dialog-visible {
+    z-index: 56!important;
+}
+.rs-picker-menu {
+    z-index: 65!important;
 }
