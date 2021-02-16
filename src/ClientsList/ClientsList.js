@@ -2,10 +2,12 @@ import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { ContextMenu } from 'primereact/contextmenu';
+import { Menu } from 'primereact/menu';
 import './ClientsList.css';
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
+import { OverlayPanel } from 'primereact/overlaypanel';
 import { Grommet, Box, Grid, Heading } from 'grommet';
 import { Avatar, Icon, InputGroup, Input, Button, IconButton } from 'rsuite';
 import axios from 'axios';
@@ -103,10 +105,18 @@ statusBodyTemplate = () => {
       </React.Fragment>
   );
 }
-opccionBodyTeemple=() =>{
+opccionBodyTeemple=(rowData) =>{
   return(
     <React.Fragment>
-          <span >{<Icon icon = 'ellipsis-v'></Icon>}</span>
+          
+          <IconButton
+            icon={<Icon icon="more" />}
+            circle size="lg"
+            onClick={e=>{
+              this.state.current = {_id:rowData._id}
+              this.op.toggle(e);
+            }}
+          />
       </React.Fragment>
   );
 }
@@ -124,6 +134,9 @@ deadlineBodynose =() =>{
       <Grommet plain className='App'>
         <UsrBar usr={this.state.usr} />
         <ContextMenu model={this.menuModel} ref={el => this.cm = el} onHide={() => this.setState({ selectedProduct: null })} />
+        <OverlayPanel ref={el => this.op = el} dismissable>
+          <Menu model={this.menuModel} />
+        </OverlayPanel>
         <Grid
           rows={[process.env.REACT_APP_SCREEN_WIDTH]}
           columns={[
@@ -207,14 +220,7 @@ deadlineBodynose =() =>{
               </Box>
             </Box>
             <br />
-            <DataTable value={this.state.clientsList} rowHover selectionMode="single"
-              onRowSelect={({ data }) => {
-                this.setState({ current: data });
-
-              }}
-              contextMenuSelection={this.state.current}
-              onContextMenuSelectionChange={e => this.setState({ current: e.value })}
-              onContextMenu={e => this.cm.show(e.originalEvent)}>
+            <DataTable value={this.state.clientsList}>
               <Column field='razon' body={this.dateBodyTemplate} />
               <Column field='deadline' body={this.deadlineBodynose} />
               <Column field='Name' body={this.representativeBodyTemplate }/>
