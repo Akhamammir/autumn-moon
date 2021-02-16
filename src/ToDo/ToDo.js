@@ -6,12 +6,15 @@ import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
+import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
+const miliPerYear = 31536000000;
 export default class ToDo extends Component {
+  
   toast = {}
   constructor(props) {
     super(props);
@@ -19,10 +22,13 @@ export default class ToDo extends Component {
     this.state = {
       usr: this.props.location.state,
       clientsList: [],
+      dateList:[],
       current: {},
       expandedRows: false
     };
   }
+  
+  
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -41,6 +47,7 @@ export default class ToDo extends Component {
 
     return total;
   }
+  
   priori = (Priority) => {
     return Priority === '0' ? 'Baja' :
       Priority === 1 ? 'Media' :
@@ -72,8 +79,222 @@ export default class ToDo extends Component {
             }
           ]
         }
-      ]
-    });
+      ],
+
+
+      
+      dateList:[
+        {
+          Name: '2020', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+                {
+                  Area:'Contable', Name:'Laboral', key: this.uuidShort(),
+                  children:[
+                    {
+                    Area: 'Contable', Name: 'Documentos.rar', key: this.uuidShort(),
+                      }] 
+                },
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }]
+            },
+            {Name: 'Febrero', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Marzo', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Abril', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Mayo', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Junio', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Julio', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Agosto', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Septiembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Octubre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Noviembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Diciembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]}
+          ]
+        }]
+      });
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
       console.log(res.data);
       //this.setState({ clientsList: res.data.Clients });
@@ -288,6 +509,7 @@ export default class ToDo extends Component {
       console.log(this.state)
     });
   }
+
   bodyTableone(){
     return(
     <React.Fragment>
@@ -375,6 +597,7 @@ export default class ToDo extends Component {
                 icon={<Icon icon="upload2" />}
                 size="lg"
                 placement="right"
+                onClick={() => this.onClick('Visorde', 'right', 'arrayRtpUsr', 'usrRtpList')}
               >
                 Folder de cliente
               </IconButton>
@@ -394,7 +617,15 @@ export default class ToDo extends Component {
                 >
                   Panel de control
                 </Button>
-              <Box direction='row' className='gruopButt'>
+                
+                <Box direction='row' className='gruopButt' style={{top:'55px', right:'15px',color:'blue'}}>               
+                <Box>
+                <Text>
+                {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last + ' /equipo ' + this.state.usr.Team + ' / '+ this.state.usr.Role} 
+                </Text>
+                </Box>
+                </Box>
+              <Box direction='row' className='gruopButt' style={{top:'90px', right:'10px',color:'black'}}> 
                 <Button
                   appearance="primary"
                     className="first2"
@@ -429,10 +660,216 @@ export default class ToDo extends Component {
                 icon={<Icon icon="upload2" />}
                 size="lg"
                 placement="right"
+                onClick={() => this.onClick('displayadd', 'show', 'arrayRtpUsr', 'usrRtpList')}
               >
                 Agregar nueva tarea
             </Button>
             </Box>
+            <Dialog               
+              header="Agregar Nueva Tarea"
+              visible={this.state.displayadd}
+              position={this.state.position}
+              modal
+              style={{ width: '50vw'}}
+              onHide={() => this.onHide('displayadd')}
+              dismissableMask={true}
+            >
+             <Grid
+             
+              rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
+              columns={['small', 'small', 'small']}
+              gap="small"
+              areas={[
+                { name: 'priority', start: [0,0], end: [0,0] },
+                { name: 'name', start: [0, 1], end: [1, 1] },
+                { name: 'selectStat1', start: [2, 1], end: [2, 1] },
+                { name: 'selectCat', start: [0, 2], end: [0, 2] },
+                { name: 'selectClient', start: [1,2], end: [1,2] },
+                { name: 'addSub', start: [0,3], end: [0,3] },
+                { name: 'selectStat2', start: [1,3], end: [1,3] },
+                { name: 'add', start: [2,3], end: [2,3] },
+                { name: 'selectDate1', start: [0,4], end: [0,4] },
+                { name: 'selectDate2', start: [2,4], end: [2,4] },
+                { name: 'saveRemove', start: [2,5], end: [2,5] },
+                
+              ]}
+            >
+              <Box direction='row' gridArea="priority">
+                <p>Prioridad</p>
+              
+              <IconButton style={{ padding: '15px'}}
+              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+              /> 
+              
+              </Box>
+              <Box direction='row' gridArea="name">
+                <h2>Nombre de la Tarea</h2>
+              </Box>
+              <Box direction='row' gridArea="selectStat1">
+                <p>Selecciona estatus</p>
+                <IconButton style={{ padding: '15px'}}
+              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+              /> 
+              </Box>
+              <Box direction='row' gridArea="selectCat">
+              <p>Selecciona categoria</p>
+              <IconButton style={{ padding: '15px'}}
+              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+              /> 
+              </Box>
+              <Box direction='row' gridArea="selectClient">
+              <p>Selecciona Cliente</p>
+              <IconButton style={{ padding: '15px'}}
+              icon={<Icon icon='caret-down' style={{padding:'0px'}}/>}
+              /> 
+              </Box>
+              <Box direction='row'gridArea="addSub">
+              <IconButton
+              icon={<Icon icon='arrow-circle-right'/>}
+              /> 
+              <p direction='row'>Agregar una subtarea</p>
+              </Box>
+              <Box direction='row' gridArea="selectStat2" >
+              <p>Selecciona estatus</p>
+              <IconButton style={{ padding: '15px'}}
+              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+              /> 
+              </Box>
+              <Box direction='row' gridArea="add" className="agregar">
+              <IconButton
+              icon={<Icon icon='file' style={{padding:'0px 0'}} />}
+              /> 
+                <p>Agregar</p>
+              </Box>
+              <Box gridArea="selectDate1">
+              <p>Selecciona una Fecha de inicio:</p>
+              <DatePicker
+            className="Date" 
+            value={this.props.value}
+            onChange = { (e) => { this.handleChange(e) } }
+            placeholder="10/12/2020"
+            appearance = "subtle" 
+            block = {true}
+            style={{ width: 150, transform: "translate(0%, -7.5%)"}}
+            ></DatePicker> 
+
+              </Box>
+              <Box gridArea="selectDate2">
+              <p>Selecciona una Fecha de fin:</p>
+            <DatePicker
+            className="Date"
+            value={this.props.value}
+            onChange = { (e) => { this.handleChange(e) } }
+            placeholder="10/12/2020"
+            appearance = "subtle"
+            block = {true}
+            
+            style={{ width: 150, transform: "translate(0%, -7.5%)"}}
+            ></DatePicker> 
+              
+              </Box>
+              <Box  direction='row' gridArea="saveRemove" >
+              <Box direction='column' margin='xxsmall'>
+                    <Button className='guardar'>Guardar</Button>
+                  </Box>
+                  <Box direction='column' margin='xxsmall'>
+                    <Button className='eliminar'>Eliminar</Button>
+                  </Box>
+              </Box>
+            </Grid>
+            </Dialog>
+              {/*
+              visor de archivos dialog
+              */}
+            <Dialog               
+              header="Visor de Archivos"
+              visible={this.state.Visorde}
+              position={this.state.position}
+              modal
+              style={{ width: '25vw'}}
+              onHide={() => this.onHide('Visorde')}
+              dismissableMask={true}
+            >
+             {/*
+              visor de archivos grid
+              */} 
+              <Grid
+              rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
+              columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+              
+              areas={[
+                  { name: 'top', start: [0, 0], end: [1, 0] },
+                  { name: 'line', start: [0,1], end: [1,1] },
+                  { name: 'map', start: [0,2], end: [2,6] }
+
+    
+                    ]}>
+              <Box direction='row' gridArea="top">
+              <h1>Archivos</h1>
+              <IconButton direction='row' style={{top:'15px',left:'20px', fontSize:'35px'}}
+              icon={<Icon icon='folder-open' style={{padding:'0px 0',fontSize:'30px'}} />}
+              /> 
+              </Box>
+              <Box direction='row' gridArea="line">
+                <p>Pase usted S.A. P.I.</p>
+                </Box>
+                <Box direction='row' gridArea="map">
+                <TreeTable value={this.state.dateList}  >
+                <_Column expander field="Name" body={this.nameBodyTemplate} header={
+                  <Box>
+                    
+                  </Box>
+                } ></_Column>
+                 </TreeTable>
+                </Box>
+              </Grid>
+            </Dialog>
+            	   {/*
+              termina visor de archivos grid
+              */}       
+
+            <Dialog
+              header="Lista de Cuentas"
+              visible={this.state.displayPosition}
+              position={this.state.position}
+              modal
+              style={{ width: '50vw'}}
+              onHide={() => this.onHide('displayPosition')}
+              dismissableMask={true}
+            >
+                <Grid 
+                rows={['xxsmall', 'xsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
+                columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+                gap='3px'
+                areas={[
+                  { name: 'top', start: [0, 0], end: [0, 0] },
+                  { name: 'line', start: [0,1], end: [3,1] },
+                  { name: 'texline', start: [0,2], end: [2,2] },
+                  { name: 'tableline', start: [0,3], end: [3,3] }
+                ]}>
+                  <Box gridArea='top'>
+                    <Button style={{background:'#EB5757', color:'White'}}>High</Button>
+                  </Box>
+                  <Box gridArea='line' direction='row'>
+                    <Box>
+                      <h5 font-size='16pt'>Catalogo aceptado</h5>
+                    </Box>
+                    <Box>
+                      <Button className='priori1'>Pendiente</Button>
+                    </Box>
+                    <h5 color='#00AB9B'>85%</h5>
+                  </Box>
+                  <Box gridArea='tableline'>
+                    <h5 >Pase Usted S.A.P.I. / Contabilidad electrónica</h5>
+                  </Box>
+                  <Box>
+                    <DataTable>
+                      <_Column><Icon icon='arrow-circle-o-right'></Icon></_Column>
+                      <_Column></_Column>
+                    </DataTable>
+                  </Box>
+                </Grid>
+            </Dialog>
             <br />
             <TreeTable value={this.state.clientsList} >
               <_Column expander field="Name" body={this.nameBodyTemplate} header="Nombre de la Tarea"></_Column>
