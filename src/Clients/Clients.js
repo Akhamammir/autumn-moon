@@ -93,7 +93,237 @@ class ClientReg extends React.Component {
       rowSelected: "",
       team: "",
       assimNomina: [], nomina:[],
-      searchT: ''
+      searchT: '',
+      clientsList: [
+        {
+          Name: 'Contable', _id: this.uuidShort(), Date: new Date(), 
+          Status: 1,
+          children: [
+            {
+              Area: 'Contable', Name: 'PreCierre', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {Area: 'Contable', Name: 'PreCierre', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Contable', Name: 'PreCierre', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+              ]
+            }
+          ]
+        }
+      ],
+
+      dateList:[
+        {
+          Name: '2020', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+                {
+                  Area:'Contable', Name:'Laboral', key: this.uuidShort(),
+                  children:[
+                    {
+                    Area: 'Contable', Name: 'Documentos.rar', key: this.uuidShort(),
+                      }] 
+                },
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }]
+            },
+            {Name: 'Febrero', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Marzo', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Abril', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Mayo', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Junio', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Julio', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Agosto', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Septiembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Octubre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Noviembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]},
+              {Name: 'Diciembre', key:this.uuidShort(),
+            children: [
+              {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                children: [
+                  {
+                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
+                  }
+                  ]
+              },{
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                children:[
+                  {
+                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
+                    }]
+                }
+              ]}
+          ]
+        }]
     };
   }
   componentDidMount() {
