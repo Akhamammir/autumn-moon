@@ -93,7 +93,145 @@ class ClientReg extends React.Component {
       rowSelected: "",
       team: "",
       assimNomina: [], nomina:[],
-      searchT: ''
+      searchT: '',
+      clientsList: [
+        {
+          Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(), 
+          Status: 1,
+          children: [
+            {
+              Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {Area: 'Recepción de documentos', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Recepción de documentos', Name: 'Reportes internos-1', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Recepción de documentos', Name: 'Movimientos bancarios', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              ]
+            }
+          ]
+        },
+        {Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Contable Terminada', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Contable Terminada', Name: 'CM-1', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Seguridad Social', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Correo envío Línea de captura', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Comprobante de pago (PDF/JPG)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento IMSS (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento INFONAVIT (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'D y P', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'D y P', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'DIOT/ DPIVA', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'DIOT/ DPIVA', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Estados financieros', Name: 'Junta de resultados', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+          }
+        ]}
+      ],
     };
   }
   componentDidMount() {
