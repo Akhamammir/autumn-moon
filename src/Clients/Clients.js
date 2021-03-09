@@ -3,10 +3,10 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
-import { RoleMker } from './../Utils/Roles';
+import { RoleMaker } from './../Utils/Roles';
 import { Grommet, Box, Grid, Heading, Text, grommet } from 'grommet';
 import {
-  Table, Toggle, Iscon, Button, Modal, IconButton, Alert, Progress, List, Steps,
+  Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
   CheckPicker, Input, InputGroup, Checkbox
 } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
