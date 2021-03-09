@@ -3,14 +3,15 @@ import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
-import { RoleMaker } from './../Utils/Roles';
-import { Grommet, Box, Grid, Heading, Text } from 'grommet';
+import { RoleMker } from './../Utils/Roles';
+import { Grommet, Box, Grid, Heading, Text, grommet } from 'grommet';
 import {
-  Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
-  CheckPicker, Input, InputGroup
+  Table, Toggle, Iscon, Button, Modal, IconButton, Alert, Progress, List, Steps,
+  CheckPicker, Input, InputGroup, Checkbox
 } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
+import { FileUpload } from 'primereact/fileupload';
 import axios from 'axios';
 const { Line } = Progress;
 const { Column, HeaderCell, Cell } = Table;
@@ -580,6 +581,7 @@ class ClientReg extends React.Component {
               {this.state.step === 0 ? <this.StepOne /> : <span></span>}
               {this.state.step === 1 ? <this.StepTwo /> : <span></span>}
               {this.state.step === 2 ? <this.StepTree /> : <span></span>}
+              {this.state.step === 3 ? <this.StepFour /> : <span></span>}
             </Grid>
           </Box>
         </Grid>
@@ -2061,21 +2063,78 @@ class ClientReg extends React.Component {
             onClick={() => this.forwardback()}
           >
             <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
-        </Button>
+          </Button>
           <Button
             style={{
+              position: 'absolute',
+              left: '75vw',
               backgroundColor: "#06554C",
               color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
-            className='leftie'
-            onClick={() => this.Register()}
+            disabled={
+              (this.state.assigned.length === 0)
+            }
+            onClick={
+
+              () => this.forward()
+            }
           >
             Siguiente&nbsp;&nbsp;
-          <Icon icon='hand-o-right' />
+            <Icon icon='hand-o-right' />
           </Button>
+        </Box>
+      </Box>
+    );
+  };
+  StepFour = () => {
+    return (
+      <Box gridArea='info'>
+        <Box direction='row'>
+          <Heading>Recepción de documentos</Heading>
+        </Box>
+        <Box direction='row'>
+        <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Desea que se le envie al correo?
+            </Heading>
+            <Checkbox> Si</Checkbox>
+            <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Estados de cuenta
+            </Heading>
+        </Box>
+        <Box>
+        <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Estados de cuenta
+        </Heading>
+        <FileUpload name="demo" url="./upload"></FileUpload>SGAR 
+        </Box>
+        <Box>
+          <Button
+              style={{
+                backgroundColor: "#06554C",
+                color: '#F5F0F6',
+                width: '120px',
+                fontFamily: "'Manjari', sans-serif",
+                boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+              }}
+              onClick={() => this.forwardback()}
+            >
+              <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
+            </Button>
         </Box>
       </Box>
     );

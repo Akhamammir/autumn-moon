@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
-import { Grommet, Box, Grid, Heading, Text, Calendar } from 'grommet';
+import { Grommet, Box, Grid, Heading, Text, Calendar, Table } from 'grommet';
 import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
@@ -627,13 +627,16 @@ export default class ToDo extends Component {
       console.log(this.state)
     });
   }
-
   bodyTableone(){
     return(
     <React.Fragment>
       <Box direction="row">
-      <Icon icon='angle-right' size='3x'/> <Heading level='4'>Sub Tarea 1</Heading>
-      </Box>
+        <Box>
+          <IconButton icon={<Icon icon='arrow-circle-right'/>} size='3x'/> 
+          </Box><Box margin='10px'>
+          <Header level='4' style={{textAlign:'center', position:'absolute', }}>Sub Tarea</Header>
+          </Box>
+        </Box>
     </React.Fragment>
     )
   }
@@ -641,17 +644,17 @@ export default class ToDo extends Component {
   bodyTabletwo=()=>{
     return(
       <React.Fragment>
-        <Button style= {{background:'#00AB9B', color:'#000'}}>Completa</Button>
+        <Button style= {{background:'#13F3D8', color:'#000'}}>Completa</Button>
       </React.Fragment>
     )
   }
   bodytabletree(){
     return(
       <React.Fragment><Box direction='row'>
-        <Icon icon='file-o'></Icon>
-        <Heading level='4' color='#00AB9B'
-        >Ver</Heading>
-        </Box>
+        <IconButton border-radiuius='50%' icon={<Icon icon='file-o'/>} style={{background:'#07AE4A' }}  circle />
+        <Heading direction='row' margin='10px' level='4' color='#00AB9B'>Ver
+        </Heading>
+      </Box>
       </React.Fragment>
     )
   }
@@ -830,9 +833,9 @@ export default class ToDo extends Component {
               /> 
               </Box>
               <Box direction='row' gridArea="selectCat">
-              <p>Selecciona categoria</p>
-              <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+                <p>Selecciona categoria</p>
+                <IconButton style={{ padding: '15px'}}
+                icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
               /> 
               </Box>
               <Box direction='row' gridArea="selectClient">
@@ -1014,14 +1017,14 @@ export default class ToDo extends Component {
                   <Box><Button className='priori1'>Pendiente</Button></Box>
                 </Box>
                 <Box gridArea='line1c'>
-                  <h5 color='#00AB9B'>85%</h5>
+                  <Heading level='3' style={{color:'#00AB9B'}}>85%</Heading>
                 </Box>
                 <Box gridArea='line2'>
                   <Heading level='6' alignSelf="start">Pase Usted S.A.P.I. / Contabilidad electrónica</Heading>
                 </Box>
                 <Box gridArea='Line3' >
                   <DataTable value={this.state.clientsList} >
-                    <Column body={this.bodyTableone} style={{width:'30%'}}/>
+                    <Column body={this.bodyTableone} />
                     <Column body={this.bodyTabletwo} />
                     <Column body={this.bodytabletree}/>
                     <Column body={this.bodytablefour}/>
@@ -1032,6 +1035,7 @@ export default class ToDo extends Component {
                     className="first"
                     icon={<Icon icon="long-arrow-right" style={{background:'#00AB9B'}}/>}
                     size="lg"
+                    style={{width: '250px'}}
                     placement="right" >Agregar nueva tarea</IconButton>
                 </Box>
                 <Box gridArea='Line5'>
@@ -1046,6 +1050,7 @@ export default class ToDo extends Component {
             appearance = "subtle" 
             block = {true}
             style={{ width: 150, transform: "translate(0%, -7.5%)"}}
+            border-radius='10px'
             ></DatePicker> 
                   
                 </Box>
