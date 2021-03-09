@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
-import { Grommet, Box, Grid, Heading, Text, Calendar } from 'grommet';
+import { Grommet, Box, Grid, Heading, Text, Calendar, Table } from 'grommet';
 import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
@@ -64,25 +64,143 @@ export default class ToDo extends Component {
     this.setState({
       clientsList: [
         {
-          Name: 'Contable', _id: this.uuidShort(), Date: new Date(), 
+          Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(), 
           Status: 1,
           children: [
             {
-              Area: 'Contable', Name: 'PreCierre', Priori: 2, Advent: 30,
+              Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
               Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
               children: [
-                {Area: 'Contable', Name: 'PreCierre', Priori: 1, Advent: 20,
+                {Area: 'Recepción de documentos', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
               Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'Contable', Name: 'PreCierre', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+              {Area: 'Recepción de documentos', Name: 'Reportes internos-1', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Recepción de documentos', Name: 'Movimientos bancarios', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
               ]
             }
           ]
-        }
+        },
+        {Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Contable Terminada', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Contable Terminada', Name: 'CM-1', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Seguridad Social', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Correo envío Línea de captura', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Comprobante de pago (PDF/JPG)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento IMSS (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento INFONAVIT (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'D y P', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'D y P', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'DIOT/ DPIVA', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'DIOT/ DPIVA', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Estados financieros', Name: 'Junta de resultados', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+          }
+        ]}
       ],
 
-
-      
       dateList:[
         {
           Name: '2020', key:this.uuidShort(),
@@ -509,13 +627,16 @@ export default class ToDo extends Component {
       console.log(this.state)
     });
   }
-
   bodyTableone(){
     return(
     <React.Fragment>
       <Box direction="row">
-      <Icon icon='angle-right' size='3x'/> <Heading level='4'>Sub Tarea 1</Heading>
-      </Box>
+        <Box>
+          <IconButton icon={<Icon icon='arrow-circle-right'/>} size='3x'/> 
+          </Box><Box margin='10px'>
+          <Header level='4' style={{textAlign:'center', position:'absolute', }}>Sub Tarea</Header>
+          </Box>
+        </Box>
     </React.Fragment>
     )
   }
@@ -523,17 +644,17 @@ export default class ToDo extends Component {
   bodyTabletwo=()=>{
     return(
       <React.Fragment>
-        <Button style= {{background:'#00AB9B', color:'#000'}}>Completa</Button>
+        <Button style= {{background:'#13F3D8', color:'#000'}}>Completa</Button>
       </React.Fragment>
     )
   }
   bodytabletree(){
     return(
       <React.Fragment><Box direction='row'>
-        <Icon icon='file-o'></Icon>
-        <Heading level='4' color='#00AB9B'
-        >Ver</Heading>
-        </Box>
+        <IconButton border-radiuius='50%' icon={<Icon icon='file-o'/>} style={{background:'#07AE4A' }}  circle />
+        <Heading direction='row' margin='10px' level='4' color='#00AB9B'>Ver
+        </Heading>
+      </Box>
       </React.Fragment>
     )
   }
@@ -712,9 +833,9 @@ export default class ToDo extends Component {
               /> 
               </Box>
               <Box direction='row' gridArea="selectCat">
-              <p>Selecciona categoria</p>
-              <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
+                <p>Selecciona categoria</p>
+                <IconButton style={{ padding: '15px'}}
+                icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
               /> 
               </Box>
               <Box direction='row' gridArea="selectClient">
@@ -896,14 +1017,14 @@ export default class ToDo extends Component {
                   <Box><Button className='priori1'>Pendiente</Button></Box>
                 </Box>
                 <Box gridArea='line1c'>
-                  <h5 color='#00AB9B'>85%</h5>
+                  <Heading level='3' style={{color:'#00AB9B'}}>85%</Heading>
                 </Box>
                 <Box gridArea='line2'>
                   <Heading level='6' alignSelf="start">Pase Usted S.A.P.I. / Contabilidad electrónica</Heading>
                 </Box>
                 <Box gridArea='Line3' >
                   <DataTable value={this.state.clientsList} >
-                    <Column body={this.bodyTableone} style={{width:'30%'}}/>
+                    <Column body={this.bodyTableone} />
                     <Column body={this.bodyTabletwo} />
                     <Column body={this.bodytabletree}/>
                     <Column body={this.bodytablefour}/>
@@ -914,6 +1035,7 @@ export default class ToDo extends Component {
                     className="first"
                     icon={<Icon icon="long-arrow-right" style={{background:'#00AB9B'}}/>}
                     size="lg"
+                    style={{width: '250px'}}
                     placement="right" >Agregar nueva tarea</IconButton>
                 </Box>
                 <Box gridArea='Line5'>
@@ -928,6 +1050,7 @@ export default class ToDo extends Component {
             appearance = "subtle" 
             block = {true}
             style={{ width: 150, transform: "translate(0%, -7.5%)"}}
+            border-radius='10px'
             ></DatePicker> 
                   
                 </Box>

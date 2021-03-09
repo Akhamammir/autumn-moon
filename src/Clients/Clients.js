@@ -4,13 +4,14 @@ import NavBar from './../NavBar/NavBar';
 import './Clients.css';
 import DecoratedInput from './../Components/DecoratedInput/DecoratedInput';
 import { RoleMaker } from './../Utils/Roles';
-import { Grommet, Box, Grid, Heading, Text } from 'grommet';
+import { Grommet, Box, Grid, Heading, Text, grommet } from 'grommet';
 import {
   Table, Toggle, Icon, Button, Modal, IconButton, Alert, Progress, List, Steps,
-  CheckPicker, Input, InputGroup
+  CheckPicker, Input, InputGroup, Checkbox
 } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Button as ButtonPrime } from 'primereact/button';
+import { FileUpload } from 'primereact/fileupload';
 import axios from 'axios';
 const { Line } = Progress;
 const { Column, HeaderCell, Cell } = Table;
@@ -93,7 +94,145 @@ class ClientReg extends React.Component {
       rowSelected: "",
       team: "",
       assimNomina: [], nomina:[],
-      searchT: ''
+      searchT: '',
+      clientsList: [
+        {
+          Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(), 
+          Status: 1,
+          children: [
+            {
+              Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {Area: 'Recepción de documentos', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Recepción de documentos', Name: 'Reportes internos-1', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Recepción de documentos', Name: 'Movimientos bancarios', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              ]
+            }
+          ]
+        },
+        {Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Contable Terminada', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Contable Terminada', Name: 'CM-1', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
+            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Seguridad Social', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Correo envío Línea de captura', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Comprobante de pago (PDF/JPG)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento IMSS (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento INFONAVIT (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
+            ]
+          }
+        ]},
+        {Name: 'D y P', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'D y P', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'D y P', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'DIOT/ DPIVA', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'DIOT/ DPIVA', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            children: [
+              {Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
+              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
+              {Area: 'Estados financieros', Name: 'Junta de resultados', Priori: '0', Advent: 40,
+              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+            ]
+          }
+        ]},
+        {Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(), 
+        Status: 1,
+        children: [
+          {
+            Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
+            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+          }
+        ]}
+      ],
     };
   }
   componentDidMount() {
@@ -442,6 +581,7 @@ class ClientReg extends React.Component {
               {this.state.step === 0 ? <this.StepOne /> : <span></span>}
               {this.state.step === 1 ? <this.StepTwo /> : <span></span>}
               {this.state.step === 2 ? <this.StepTree /> : <span></span>}
+              {this.state.step === 3 ? <this.StepFour /> : <span></span>}
             </Grid>
           </Box>
         </Grid>
@@ -1923,21 +2063,78 @@ class ClientReg extends React.Component {
             onClick={() => this.forwardback()}
           >
             <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
-        </Button>
+          </Button>
           <Button
             style={{
+              position: 'absolute',
+              left: '75vw',
               backgroundColor: "#06554C",
               color: '#F5F0F6',
               width: '120px',
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
-            className='leftie'
-            onClick={() => this.Register()}
+            disabled={
+              (this.state.assigned.length === 0)
+            }
+            onClick={
+
+              () => this.forward()
+            }
           >
             Siguiente&nbsp;&nbsp;
-          <Icon icon='hand-o-right' />
+            <Icon icon='hand-o-right' />
           </Button>
+        </Box>
+      </Box>
+    );
+  };
+  StepFour = () => {
+    return (
+      <Box gridArea='info'>
+        <Box direction='row'>
+          <Heading>Recepción de documentos</Heading>
+        </Box>
+        <Box direction='row'>
+        <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Desea que se le envie al correo?
+            </Heading>
+            <Checkbox> Si</Checkbox>
+            <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Estados de cuenta
+            </Heading>
+        </Box>
+        <Box>
+        <Heading margin='small' level={5} className='GreenLetter'
+              style={{
+                color: '#515253',
+              }}
+            >
+              Estados de cuenta
+        </Heading>
+        <FileUpload name="demo" url="./upload"></FileUpload>SGAR 
+        </Box>
+        <Box>
+          <Button
+              style={{
+                backgroundColor: "#06554C",
+                color: '#F5F0F6',
+                width: '120px',
+                fontFamily: "'Manjari', sans-serif",
+                boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+              }}
+              onClick={() => this.forwardback()}
+            >
+              <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
+            </Button>
         </Box>
       </Box>
     );
