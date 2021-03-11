@@ -65,7 +65,7 @@ export default class ToDo extends Component {
       clientsList: [
         {
           Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(), 
-          Status: 1,
+          Status: 1,  key: this.uuidShort(),
           children: [
             {
               Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
@@ -82,7 +82,7 @@ export default class ToDo extends Component {
           ]
         },
         {Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1,  key: this.uuidShort(),
         children: [
           {
             Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
@@ -96,7 +96,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
@@ -122,7 +122,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
@@ -142,7 +142,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'D y P', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
@@ -164,7 +164,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
@@ -178,7 +178,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
@@ -192,7 +192,7 @@ export default class ToDo extends Component {
           }
         ]},
         {Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
+        Status: 1, key: this.uuidShort(),
         children: [
           {
             Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
@@ -739,10 +739,10 @@ export default class ToDo extends Component {
                   Panel de control
                 </Button>
                 
-                <Box direction='row' className='gruopButt' style={{top:'55px', right:'15px',color:'blue'}}>               
+                <Box direction='row' className='gruopButt' style={{top:'55px', right:'15px',color:'#084D68'}}>               
                 <Box>
                 <Text>
-                {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last + ' /equipo ' + this.state.usr.Team + ' / '+ this.state.usr.Role} 
+                {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last + ' / Equipo ' + this.state.usr.Team + ' / '+ this.state.usr.Role} 
                 </Text>
                 </Box>
                 </Box>
