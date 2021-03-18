@@ -742,7 +742,7 @@ export default class ToDo extends Component {
                 <Box direction='row' className='gruopButt' style={{top:'55px', right:'15px',color:'#084D68'}}>               
                 <Box>
                 <Text>
-                {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last + ' / Equipo ' + this.state.usr.Team + ' / '+ this.state.usr.Role} 
+                {this.state.usr.Name.First + ' ' + this.state.usr.Name.Last + ' / Equipo ' + (this.state.usr.Team ? this.state.usr.Team : this.state.usr.team) + ' / '+ (this.state.usr.Role ? this.state.usr.Role : this.state.usr.role)} 
                 </Text>
                 </Box>
                 </Box>

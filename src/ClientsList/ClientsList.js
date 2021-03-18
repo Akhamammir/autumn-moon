@@ -70,13 +70,15 @@ class ClientsList extends React.Component {
     console.log(this.state.clientsList);
     this.setState({
       //
-      clientsList: this.state.searchT.length === 0 ? this.state.clientsListStore : this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
-        S.RFC.includes(this.state.searchT) ||
-        S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT))
+      clientsList: this.state.searchT.length === 0 ?
+       this.state.clientsListStore : 
+       this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
+        S.rfc.includes(this.state.searchT) ||
+        S.cName.includes(this.state.searchT) || S.razon.includes(this.state.searchT))
     })
     console.log(this.state.clientsListStore.filter(S => S.curp.includes(this.state.searchT) ||
-      S.RFC.includes(this.state.searchT) ||
-      S.cName.includes(this.state.searchT) || S.Razon.includes(this.state.searchT)))
+      S.rfc.includes(this.state.searchT) ||
+      S.cName.includes(this.state.searchT) || S.razon.includes(this.state.searchT)))
   }
   representativeBodyTemplate = (rowData) => {
     const src = "https://www.primefaces.org/primereact/showcase/showcase/demo/images/avatar/ionibowcher.png";
