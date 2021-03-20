@@ -92,7 +92,7 @@ class ClientReg extends React.Component {
       fonaList: [{ cta: '', _id: this.uuidShort() }], fonaUsrList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       buzonT: [{ cta: '', _id: this.uuidShort() }],
       rowSelected: "",
-      team: "",
+      team: "",Team: "",
       assimNomina: [], nomina:[],
       searchT: '',
       clientsList: [
@@ -1151,6 +1151,7 @@ class ClientReg extends React.Component {
           </Heading>
         </Box>
         <br />
+        <Box>
         <InputGroup
           style={{
             width: 270,
@@ -1182,6 +1183,12 @@ class ClientReg extends React.Component {
             <Icon icon="search" />
           </InputGroup.Button>
         </InputGroup>
+        <ButtonPrime className="p-buttonset">
+        <Button label="Save" icon="pi pi-check" />
+          <Button label="Delete" icon="pi pi-trash" />
+          <Button label="Cancel" icon="pi pi-times" />
+        </ButtonPrime>
+        </Box>
         <br />
         <br />
         <Table
