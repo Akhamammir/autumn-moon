@@ -421,6 +421,9 @@ class ClientReg extends React.Component {
       S.Team.includes(this.state.searchT) ||
       S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT)))
   }
+  equipos = (param) => {
+    this.setState({team:param, Team:param})
+  }
   nomBox = (props) => {
     let nomina = [
       { label: 'Semanal', value: 'Semanal', role: 'Master' },
@@ -1151,6 +1154,7 @@ class ClientReg extends React.Component {
           </Heading>
         </Box>
         <br />
+        <Box direction='row'>
         <Box>
         <InputGroup
           style={{
@@ -1183,11 +1187,14 @@ class ClientReg extends React.Component {
             <Icon icon="search" />
           </InputGroup.Button>
         </InputGroup>
-        <ButtonPrime className="p-buttonset">
-        <Button label="Save" icon="pi pi-check" />
-          <Button label="Delete" icon="pi pi-trash" />
-          <Button label="Cancel" icon="pi pi-times" />
-        </ButtonPrime>
+        </Box>
+        <Box className="p-buttonset" direction='row' style={{marginLeft:'1.5em'}} >
+          <ButtonPrime label="Team A"  style={{background:'#00AB9B'}} onClick={() => this.equipos('A')}/>
+          <ButtonPrime label="Team B"  style={{background:'#00AB9B'}} onClick={() => this.equipos('B')}/>
+          <ButtonPrime label="Team C"  style={{background:'#00AB9B'}} onClick={() => this.equipos('C')}/>
+          <ButtonPrime label="Team D"  style={{background:'#00AB9B'}} onClick={() => this.equipos('D')}/>
+          <ButtonPrime label="Team E"  style={{background:'#00AB9B'}} onClick={() => this.equipos('E')}/>
+        </Box>
         </Box>
         <br />
         <br />
