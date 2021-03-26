@@ -92,7 +92,7 @@ class ClientReg extends React.Component {
       fonaList: [{ cta: '', _id: this.uuidShort() }], fonaUsrList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       buzonT: [{ cta: '', _id: this.uuidShort() }],
       rowSelected: "",
-      team: "",
+      team: "",Team: "",
       assimNomina: [], nomina:[],
       searchT: '',
       clientsList: [
@@ -420,6 +420,9 @@ class ClientReg extends React.Component {
     console.log(this.state.usrlistStore.filter(S => S.Name.First.includes(this.state.searchT) ||
       S.Team.includes(this.state.searchT) ||
       S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT)))
+  }
+  equipos = (param) => {
+    this.setState({team:param, Team:param})
   }
   nomBox = (props) => {
     let nomina = [
@@ -1151,6 +1154,8 @@ class ClientReg extends React.Component {
           </Heading>
         </Box>
         <br />
+        <Box direction='row'>
+        <Box>
         <InputGroup
           style={{
             width: 270,
@@ -1182,6 +1187,15 @@ class ClientReg extends React.Component {
             <Icon icon="search" />
           </InputGroup.Button>
         </InputGroup>
+        </Box>
+        <Box className="p-buttonset" direction='row' style={{marginLeft:'1.5em'}} >
+          <ButtonPrime label="Team A"  style={{background:'#00AB9B'}} onClick={() => this.equipos('A')}/>
+          <ButtonPrime label="Team B"  style={{background:'#00AB9B'}} onClick={() => this.equipos('B')}/>
+          <ButtonPrime label="Team C"  style={{background:'#00AB9B'}} onClick={() => this.equipos('C')}/>
+          <ButtonPrime label="Team D"  style={{background:'#00AB9B'}} onClick={() => this.equipos('D')}/>
+          <ButtonPrime label="Team E"  style={{background:'#00AB9B'}} onClick={() => this.equipos('E')}/>
+        </Box>
+        </Box>
         <br />
         <br />
         <Table
