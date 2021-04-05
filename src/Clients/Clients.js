@@ -1194,6 +1194,7 @@ class ClientReg extends React.Component {
           <ButtonPrime label="Team C"  style={{background:'#00AB9B'}} onClick={() => this.equipos('C')}/>
           <ButtonPrime label="Team D"  style={{background:'#00AB9B'}} onClick={() => this.equipos('D')}/>
           <ButtonPrime label="Team E"  style={{background:'#00AB9B'}} onClick={() => this.equipos('E')}/>
+          <ButtonPrime label="Admon"  style={{background:'#00AB9B'}} onClick={() => this.equipos('Admon')}/>
         </Box>
         </Box>
         <br />
@@ -2134,7 +2135,27 @@ class ClientReg extends React.Component {
             >
               Estados de cuenta
         </Heading>
-        <FileUpload name="demo" url="./upload"></FileUpload>SGAR 
+        <Grid
+          rows={['xsmall', 'xsmall', 'xsmall']}
+          columns={['medium', 'medium']}
+          gap="xsmall"
+        >
+        <Box>
+          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Acta Constitutiva
+        </Box>
+        <Box>
+          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>FIEL
+        </Box>
+        <Box>
+          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS
+        </Box>
+        <Box>
+          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS IDSE
+        </Box>
+        <Box>
+          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Identificación
+        </Box>
+        </Grid>
         </Box>
         <Box>
           <Button
