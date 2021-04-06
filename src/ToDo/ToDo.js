@@ -203,215 +203,2779 @@ export default class ToDo extends Component {
 
       dateList:[
         {
+          Name: '2017', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'CONTABLE', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'CONCILIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DEPRECIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DOCS ENTREGA', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'FACTURACIÓN', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PÓLIZAS \nCONTABLES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PRECIERRE', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'FISCAL', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'LABORAL', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'FINANCIEROS', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Febrero', key: this.uuidShort(),
+              children: [
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Marzo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Abril', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Mayo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Junio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Julio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Agosto', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Septiembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Octubre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Noviembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Diciembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Anual', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Papeles de trabajo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+                      
+          ]
+        },
+        {
+          Name: '2018', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'CONTABLE', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'CONCILIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DEPRECIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DOCS ENTREGA', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'FACTURACIÓN', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PÓLIZAS \nCONTABLES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PRECIERRE', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'FISCAL', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'LABORAL', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'FINANCIEROS', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Febrero', key: this.uuidShort(),
+              children: [
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Marzo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Abril', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Mayo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Junio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Julio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Agosto', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Septiembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Octubre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Noviembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Diciembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Anual', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Papeles de trabajo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+                      
+          ]
+        },
+        {
+          Name: '2019', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'CONTABLE', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'CONCILIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DEPRECIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DOCS ENTREGA', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'FACTURACIÓN', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PÓLIZAS \nCONTABLES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PRECIERRE', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'FISCAL', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'LABORAL', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'FINANCIEROS', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Febrero', key: this.uuidShort(),
+              children: [
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Marzo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Abril', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Mayo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Junio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Julio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Agosto', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Septiembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Octubre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Noviembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Diciembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Anual', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Papeles de trabajo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+                      
+          ]
+        },
+        {
           Name: '2020', key:this.uuidShort(),
           children: [
             {
               Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
               children: [
+
                 {
-                  Area:'Contable', Name:'Laboral', key: this.uuidShort(),
+                Area:'Contable', Name:'CONTABLE', key: this.uuidShort(),
                   children:[
                     {
-                    Area: 'Contable', Name: 'Documentos.rar', key: this.uuidShort(),
-                      }] 
+                      Area: 'Contable', Name: 'CONCILIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DEPRECIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DOCS ENTREGA', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'FACTURACIÓN', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PÓLIZAS \nCONTABLES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PRECIERRE', key: this.uuidShort(),
+                    },
+                  ],
                 },
                 {
-                Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }]
+                Area: 'Contable', Name: 'FISCAL', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'LABORAL', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'FINANCIEROS', key: this.uuidShort(),
+                  },
+              ]
+
             },
-            {Name: 'Febrero', key:this.uuidShort(),
-            children: [
-              {
-                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+            {
+              Area: 'Contable', Name: 'Febrero', key: this.uuidShort(),
+              children: [
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Marzo', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Marzo', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Abril', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Abril', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Mayo', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Mayo', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Junio', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Junio', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Julio', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Julio', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Agosto', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Agosto', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Septiembre', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Septiembre', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Octubre', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Octubre', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Noviembre', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Noviembre', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]},
-              {Name: 'Diciembre', key:this.uuidShort(),
-            children: [
-              {
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
                 Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
-                children: [
-                  {
-                    Area:'Contable', Name:'Documentos.rar', key: this.uuidShort(), 
-                  }
-                  ]
-              },{
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Diciembre', key: this.uuidShort(),
+              children: [
+
+                {
                 Area:'Contable', Name:'Contable', key: this.uuidShort(),
-                children:[
-                  {
-                  Area: 'Contable', Name: 'IMSS-enviado.pdf', key: this.uuidShort(),
-                    }]
-                }
-              ]}
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Anual', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Papeles de trabajo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+                      
           ]
-        }]
+        },
+        {
+          Name: '2021', key:this.uuidShort(),
+          children: [
+            {
+              Area: 'Contable', Name: 'Enero', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'CONTABLE', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'CONCILIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DEPRECIACIONES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'DOCS ENTREGA', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'FACTURACIÓN', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PÓLIZAS \nCONTABLES', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'PRECIERRE', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'FISCAL', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'LABORAL', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'FINANCIEROS', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Febrero', key: this.uuidShort(),
+              children: [
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Marzo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Abril', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Mayo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Junio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Julio', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Agosto', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Septiembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Octubre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Noviembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Diciembre', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Anual', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+            {
+              Area: 'Contable', Name: 'Papeles de trabajo', key: this.uuidShort(),
+              children: [
+
+                {
+                Area:'Contable', Name:'Contable', key: this.uuidShort(),
+                  children:[
+                    {
+                      Area: 'Contable', Name: 'Conciliaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Depreciaciones', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Documentación de entrega', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Facturación-XML', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Pólizas Contables', key: this.uuidShort(),
+                    },
+                    {
+                      Area: 'Contable', Name: 'Precierre', key: this.uuidShort(),
+                    },
+                  ],
+                },
+                {
+                Area: 'Contable', Name: 'Fiscal', key: this.uuidShort(),
+                },
+                {
+                Area: 'Contable', Name: 'Laboral', key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable', Name: 'Financieros', key: this.uuidShort(),
+                  },
+              ]
+
+            },
+                      
+          ]
+        },
+        {
+          Name: 'DOCUMENTOS', key:this.uuidShort(),
+        },
+        {
+          Name: 'FIEL', key:this.uuidShort(),
+        },
+        {
+          Name: 'IDSE', key:this.uuidShort(),
+        },
+        {
+          Name: 'RELACIÓN DE ENTREGA', key:this.uuidShort(),
+        },
+        {
+          Name: 'SELLO DIGITAL', key:this.uuidShort(),
+        },
+                {
+          Name: 'TRAMITES-LEGAL', key:this.uuidShort(),
+        },
+      ]
       });
     axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
       console.log(res.data);
@@ -907,7 +3471,7 @@ export default class ToDo extends Component {
               visible={this.state.Visorde}
               position={this.state.position}
               modal
-              style={{ width: '25vw'}}
+              style={{ width: '30vw'}}
               onHide={() => this.onHide('Visorde')}
               dismissableMask={true}
             >
@@ -916,7 +3480,7 @@ export default class ToDo extends Component {
               */} 
               <Grid
               rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xxsmall', 'xxsmall', 'xsmall']}
-              columns={['xsmall', 'xsmall', 'xsmall', 'xsmall']}
+              columns={['30%', '30%', '30%', '10%']}
               
               areas={[
                   { name: 'top', start: [0, 0], end: [1, 0] },
