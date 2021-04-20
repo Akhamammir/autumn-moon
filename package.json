@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@icon-park/react": "^1.3.3",
     "axios": "^0.21.1",
     "grommet": "^2.7.11",
     "grommet-icons": "^4.4.0",

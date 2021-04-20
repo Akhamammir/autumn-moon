@@ -12,6 +12,9 @@ import { Button as ButtonPrime } from 'primereact/button';
 import axios from 'axios';
 import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
+import {ArrowCircleRight, DownOne} from '@icon-park/react';
+import { fileRegular } from "./file-regular.svg";
+
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
   
@@ -3362,8 +3365,8 @@ export default class ToDo extends Component {
              <Grid
              
               rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
-              columns={['small', 'small', 'small']}
-              gap="small"
+              columns={['auto', 'auto', 'auto']}
+              gap="xsmall"
               areas={[
                 { name: 'priority', start: [0,0], end: [0,0] },
                 { name: 'name', start: [0, 1], end: [1, 1] },
@@ -3379,54 +3382,53 @@ export default class ToDo extends Component {
                 
               ]}
             >
-              <Box direction='row' gridArea="priority">
-                <p>Prioridad</p>
-              
-              <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
-              /> 
-              
+              <Box direction='row' gridArea="priority" className="box">
+                <box className="boxText">
+                  <p>Prioridad</p>
+                  </box>
+                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
               </Box>
-              <Box direction='row' gridArea="name">
+
+              <Box direction='row' gridArea="name" className="box">
                 <h2>Nombre de la Tarea</h2>
               </Box>
-              <Box direction='row' gridArea="selectStat1">
-                <p>Selecciona estatus</p>
-                <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
-              /> 
-              </Box>
-              <Box direction='row' gridArea="selectCat">
-                <p>Selecciona categoria</p>
-                <IconButton style={{ padding: '15px'}}
-                icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
-              /> 
-              </Box>
-              <Box direction='row' gridArea="selectClient">
-              <p>Selecciona Cliente</p>
-              <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px'}}/>}
-              /> 
-              </Box>
-              <Box direction='row'gridArea="addSub">
-              <IconButton
-              icon={<Icon icon='arrow-circle-right'/>}
-              /> 
-              <p direction='row'>Agregar una subtarea</p>
-              </Box>
-              <Box direction='row' gridArea="selectStat2" >
+
+              <Box direction='row' gridArea="selectStat1" className="box">
+              <box className="boxText">
               <p>Selecciona estatus</p>
-              <IconButton style={{ padding: '15px'}}
-              icon={<Icon icon='caret-down' style={{padding:'0px 0'}}/>}
-              /> 
+                  </box>
+                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button> 
               </Box>
-              <Box direction='row' gridArea="add" className="agregar">
-              <IconButton
-              icon={<Icon icon='file' style={{padding:'0px 0'}} />}
-              /> 
-                <p>Agregar</p>
+
+              <Box direction='row' gridArea="selectCat" className="box">
+              <box className="boxText">
+              <p>Selecciona categoria</p>
+                  </box>
+                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
               </Box>
-              <Box gridArea="selectDate1">
+
+              <Box direction='row'gridArea="addSub" className="box">
+                <button className="right-arrow-button" type="button"><ArrowCircleRight size={40}/></button>
+                <box className="boxText">
+                  <p direction='row'>Agrega una subtarea</p>
+                </box>
+              </Box>
+
+              <Box direction='row' gridArea="selectStat2" className="box">
+              <box className="boxText">
+              <p>Selecciona estatus</p>
+                </box>
+                <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
+              </Box>
+
+              <Box className="agregar" direction='row' gridArea="add" className="box">
+              <button className="docButton" type="button"></button>
+              <box className="boxText">
+              <p>Agregar</p>
+              </box>
+              </Box>
+
+              <Box gridArea="selectDate1" className="box">
               <p>Selecciona una Fecha de inicio:</p>
               <DatePicker
             className="Date" 
@@ -3437,9 +3439,9 @@ export default class ToDo extends Component {
             block = {true}
             style={{ width: 150, transform: "translate(0%, -7.5%)"}}
             ></DatePicker> 
-
               </Box>
-              <Box gridArea="selectDate2">
+
+              <Box gridArea="selectDate2" className="box">
               <p>Selecciona una Fecha de fin:</p>
             <DatePicker
             className="Date"
@@ -3453,13 +3455,9 @@ export default class ToDo extends Component {
             ></DatePicker> 
               
               </Box>
-              <Box  direction='row' gridArea="saveRemove" >
-              <Box direction='column' margin='xxsmall'>
+              <Box  direction='row' gridArea="saveRemove" className="box">
                     <Button className='guardar'>Guardar</Button>
-                  </Box>
-                  <Box direction='column' margin='xxsmall'>
                     <Button className='eliminar'>Eliminar</Button>
-                  </Box>
               </Box>
             </Grid>
             </Dialog>
