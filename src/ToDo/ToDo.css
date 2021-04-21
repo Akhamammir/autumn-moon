@@ -70,26 +70,96 @@
     z-index: 100 !important;
     position:relative;
     background-color: #263D4F;
-    left: 35px
+    left: 35px;
+    border-radius: 10px;
+    font-family: 'Segoe UI';
+    text-align: justify;
+
     
 }
 .guardar{
     background-color:#00AB9B;
     color:white;
     left:40px;
+    width: 90px;
+    height: 30px;
+    padding-top: 4px;
+    border-radius: 12px;
+    font-family: Calibri;
+    font-size: 16px;
+    margin-right: 10px;
+    
 }
 .eliminar{
     background-color: #F3133C;
     color:white;
-    left:50px;
+    left:40px;
+    width: 90px;
+    height: 30px;
+    padding-top: 4px;
+    border-radius: 12px;
+    font-family: Calibri;
+    font-size: 16px;
+    margin-right: 10px;
 }
 .agregar{
     padding: 0px 0;
     color:red;
+
+}
+.agregar p {
+    color: red;
+
+    font-family: 'Segoe UI';
 }
 .p-dialog-mask.p-component-overlay.p-dialog-visible {
     z-index: 56!important;
 }
 .rs-picker-menu {
     z-index: 65!important;
+}
+
+.right-arrow-button {
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.downOne {
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    
+}
+.box {
+    background-color: transparent;
+
+    align-items: center;
+      
+}
+
+.boxText {
+    background-color: transparent;
+    width: auto;
+    height: 25px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.docButton{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-image: url('./file-regular.svg');
+    background-color: red;
+    background-position: center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    
+
+
 }
