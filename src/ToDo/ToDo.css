@@ -67,36 +67,43 @@
 }
 
 .Date{
-    z-index: 100 !important;
-    position:relative;
     background-color: #263D4F;
-    left: 35px;
     border-radius: 10px;
     font-family: 'Segoe UI';
     text-align: justify;
-}
+    position: relative;
 
+}
+.datebox {
+    width: 230px;
+    padding-top: 10px;
+
+}
 .guardar{
     background-color:#00AB9B;
     color:white;
     left:40px;
-    width: 90px;
-    height: 30px;
+    width: 95px;
+    height: 35px;
     border-radius: 12px;
     font-family: Calibri;
     font-size: 16px;
     margin: 10px;
+    padding: 12px;
+    padding-top: 5px;
     
 }
 .eliminar{
     background-color: #F3133C;
     color:white;
     left:40px;
-    width: 90px;
-    height: 30px;
+    width: 95px;
+    height: 35px;
     border-radius: 12px;
     font-family: Calibri;
     font-size: 16px;
+    padding: 12px;
+    padding-top: 5px;
 }
 .agregar{
     padding: 0px 0;
@@ -133,9 +140,14 @@
 .box {
     background-color: transparent;
     align-items: center;
+
 }
 .box h2 {
     padding-bottom: 5px;
+    padding-left: 13px;
+}
+.box button {
+    padding-left: 12px;
 }
 .boxText {
     background-color: transparent;
@@ -166,9 +178,6 @@
     background-repeat: no-repeat;
     margin-right: 10px;
 }
-.rs-picker-toggle .rs-picker-toggle-placeholder {
-    color: white;
-}
 .rs-picker-toggle-caret {
     color: white;
 }
@@ -177,6 +186,8 @@
 }
 .rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
     color: white;
+    text-align: center;
+    font-size: 18px;
 }
 .p-dialog .p-dialog-header {
     background: rgb(196,196,196) !important;
@@ -189,5 +200,34 @@
     background: linear-gradient(90deg, rgba(196,196,196,1) 2%, rgba(255,255,255,1) 2%) !important;
 }
 .grid {
-    padding: 10px;
+
+}
+.rs-picker-toggle .rs-picker-toggle-placeholder {
+
+    color: gray;
+    font-family: calibri;
+    font-size: 20px;
+}
+.selectpicker {
+    justify-content: left;
+    background-image: url('caret-down-solid.svg');
+    background-position: right;
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+.rs-picker-default .rs-btn, .rs-picker-input .rs-btn, .rs-picker-default .rs-picker-toggle, .rs-picker-input .rs-picker-toggle {
+    background: transparent !important;
+}
+.rs-picker-default:not(.rs-picker-disabled) .rs-btn:hover, .rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle:hover, .rs-picker-default:not(.rs-picker-disabled) .rs-btn.active, .rs-picker-default:not(.rs-picker-disabled) .rs-picker-toggle.active {
+    border-color: transparent;
+}
+.rs-picker-default .rs-picker-toggle, .rs-picker-default .rs-picker-toggle-custom {
+    position: relative;
+    z-index: 5;
+    padding-right: 32px;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    color: #575757;
+    border: 1px solid transparent;
 }

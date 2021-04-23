@@ -13,6 +13,7 @@ import axios from 'axios';
 import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
+import { SelectPicker } from 'rsuite';
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
@@ -3390,10 +3391,12 @@ export default class ToDo extends Component {
               ]}
             >
               <Box direction='row' gridArea="priority" className="box">
-                <Box className="boxText">
-                  <p>Prioridad</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Prioridad"
+              style={{ width: 130 }} 
+              />
               </Box>
 
               <Box direction='row' gridArea="name" className="box">
@@ -3401,17 +3404,21 @@ export default class ToDo extends Component {
               </Box>
 
               <Box direction='row' gridArea="selectStat1" className="box">
-              <Box className="boxText">
-              <p>Selecciona estatus</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button> 
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Estatus"
+              style={{ width: 200 }} 
+              />
               </Box>
 
               <Box direction='row' gridArea="selectCat" className="box">
-              <Box className="boxText">
-              <p>Selecciona categoria</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Categoría"
+              style={{ width: 220 }} 
+              />
               </Box>
 
               <Box direction='row'gridArea="addSub" className="box">
@@ -3422,10 +3429,12 @@ export default class ToDo extends Component {
               </Box>
 
               <Box direction='row' gridArea="selectStat2" className="box">
-              <Box className="boxText">
-              <p>Selecciona estatus</p>
-                </Box>
-                <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Estatus"
+              style={{ width: 200 }} 
+              />
               </Box>
 
               <Box className="agregar" direction='row' gridArea="add" className="box">
@@ -3436,31 +3445,32 @@ export default class ToDo extends Component {
               </Box>
 
               <Box gridArea="selectDate1" className="box">
-              <Box>
+              <Box className="datebox">
               <p>Selecciona una fecha de inicio:</p>
-              </Box>
+              
               <DatePicker 
-              placement="leftStart"
               className="Date" 
               value={this.state.value}
               onChange={this.handleChange}
               appearance = "subtle" 
-              style={{ width: 145, height: 40}}
-              format="DD/MM/YYYY"
+              style={{ width: 240, height: 42}}
+              format="DD / MM / YYYY"
               ></DatePicker> 
+              </Box>
               </Box>
 
               <Box gridArea="selectDate2" className="box">
+              <Box className="datebox">
               <p>Selecciona una fecha de fin:</p>
               <DatePicker
-              placement="leftStart"
               className="Date"
               value={this.state.value}
               onChange={this.handleChange}
               appearance = "subtle"
-              style={{ width: 145, height: 40}}
-              format="DD/MM/YYYY"
+              style={{ width: 240, height: 42}}
+              format="DD / MM / YYYY"
               ></DatePicker> 
+              </Box>
               </Box>
               <Box  direction='row' gridArea="saveRemove" className="box">
                     <button className='guardar'>Guardar</button>
