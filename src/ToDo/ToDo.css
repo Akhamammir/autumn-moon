@@ -163,3 +163,36 @@
 
 
 }
+.editTareaInput{
+    text-align: center;
+    font-size: 1.15rem;
+}
+.editTareaBox {
+    margin-top:1px;
+    width:100%;
+}
+
+.selectLabelBaja{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #00AB9B;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.selectLabelMedia{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #F4C004;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.selectLabelAlta{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #ed5151;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.rs-picker-select-menu-item{
+    padding: 0 !important;
+}
