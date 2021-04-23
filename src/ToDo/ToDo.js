@@ -13,7 +13,6 @@ import axios from 'axios';
 import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
-import { fileRegular } from "./file-regular.svg";
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
@@ -27,10 +26,18 @@ export default class ToDo extends Component {
       clientsList: [],
       dateList:[],
       current: {},
-      expandedRows: false
+      expandedRows: false,
+      value: new Date(),
     };
+    this.handleChange = this.handleChange.bind(this);
   }
-  
+
+  handleChange(value) {
+    this.setState({
+      value
+    });
+    console.log(typeof value, value);
+  }
   
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
@@ -3353,17 +3360,17 @@ export default class ToDo extends Component {
                 Agregar nueva tarea
             </Button>
             </Box>
-            <Dialog               
+            <Dialog            
               header="Agregar Nueva Tarea"
               visible={this.state.displayadd}
               position={this.state.position}
               modal
-              style={{ width: '50vw'}}
+              style={{ width: '55vw'}}
               onHide={() => this.onHide('displayadd')}
               dismissableMask={true}
             >
              <Grid
-             
+              className="grid"
               rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
               columns={['auto', 'auto', 'auto']}
               gap="xsmall"
@@ -3383,9 +3390,9 @@ export default class ToDo extends Component {
               ]}
             >
               <Box direction='row' gridArea="priority" className="box">
-                <box className="boxText">
+                <Box className="boxText">
                   <p>Prioridad</p>
-                  </box>
+                  </Box>
                   <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
               </Box>
 
@@ -3394,70 +3401,70 @@ export default class ToDo extends Component {
               </Box>
 
               <Box direction='row' gridArea="selectStat1" className="box">
-              <box className="boxText">
+              <Box className="boxText">
               <p>Selecciona estatus</p>
-                  </box>
+                  </Box>
                   <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button> 
               </Box>
 
               <Box direction='row' gridArea="selectCat" className="box">
-              <box className="boxText">
+              <Box className="boxText">
               <p>Selecciona categoria</p>
-                  </box>
+                  </Box>
                   <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
               </Box>
 
               <Box direction='row'gridArea="addSub" className="box">
                 <button className="right-arrow-button" type="button"><ArrowCircleRight size={40}/></button>
-                <box className="boxText">
+                <Box className="boxText">
                   <p direction='row'>Agrega una subtarea</p>
-                </box>
+                </Box>
               </Box>
 
               <Box direction='row' gridArea="selectStat2" className="box">
-              <box className="boxText">
+              <Box className="boxText">
               <p>Selecciona estatus</p>
-                </box>
+                </Box>
                 <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter"/></button>
               </Box>
 
               <Box className="agregar" direction='row' gridArea="add" className="box">
               <button className="docButton" type="button"></button>
-              <box className="boxText">
+              <Box className="boxTextagregar">
               <p>Agregar</p>
-              </box>
+              </Box>
               </Box>
 
               <Box gridArea="selectDate1" className="box">
-              <p>Selecciona una Fecha de inicio:</p>
-              <DatePicker
-            className="Date" 
-            value={this.props.value}
-            onChange = { (e) => { this.handleChange(e) } }
-            placeholder="10/12/2020"
-            appearance = "subtle" 
-            block = {true}
-            style={{ width: 150, transform: "translate(0%, -7.5%)"}}
-            ></DatePicker> 
+              <Box>
+              <p>Selecciona una fecha de inicio:</p>
+              </Box>
+              <DatePicker 
+              placement="leftStart"
+              className="Date" 
+              value={this.state.value}
+              onChange={this.handleChange}
+              appearance = "subtle" 
+              style={{ width: 145, height: 40}}
+              format="DD/MM/YYYY"
+              ></DatePicker> 
               </Box>
 
               <Box gridArea="selectDate2" className="box">
-              <p>Selecciona una Fecha de fin:</p>
-            <DatePicker
-            className="Date"
-            value={this.props.value}
-            onChange = { (e) => { this.handleChange(e) } }
-            placeholder="10/12/2020"
-            appearance = "subtle"
-            block = {true}
-            
-            style={{ width: 150, transform: "translate(0%, -7.5%)"}}
-            ></DatePicker> 
-              
+              <p>Selecciona una fecha de fin:</p>
+              <DatePicker
+              placement="leftStart"
+              className="Date"
+              value={this.state.value}
+              onChange={this.handleChange}
+              appearance = "subtle"
+              style={{ width: 145, height: 40}}
+              format="DD/MM/YYYY"
+              ></DatePicker> 
               </Box>
               <Box  direction='row' gridArea="saveRemove" className="box">
-                    <Button className='guardar'>Guardar</Button>
-                    <Button className='eliminar'>Eliminar</Button>
+                    <button className='guardar'>Guardar</button>
+                    <button className='eliminar'>Eliminar</button> 
               </Box>
             </Grid>
             </Dialog>

@@ -74,20 +74,18 @@
     border-radius: 10px;
     font-family: 'Segoe UI';
     text-align: justify;
-
-    
 }
+
 .guardar{
     background-color:#00AB9B;
     color:white;
     left:40px;
     width: 90px;
     height: 30px;
-    padding-top: 4px;
     border-radius: 12px;
     font-family: Calibri;
     font-size: 16px;
-    margin-right: 10px;
+    margin: 10px;
     
 }
 .eliminar{
@@ -96,11 +94,9 @@
     left:40px;
     width: 90px;
     height: 30px;
-    padding-top: 4px;
     border-radius: 12px;
     font-family: Calibri;
     font-size: 16px;
-    margin-right: 10px;
 }
 .agregar{
     padding: 0px 0;
@@ -136,11 +132,11 @@
 }
 .box {
     background-color: transparent;
-
     align-items: center;
-      
 }
-
+.box h2 {
+    padding-bottom: 5px;
+}
 .boxText {
     background-color: transparent;
     width: auto;
@@ -148,18 +144,50 @@
     margin-right: 10px;
     font-size: 20px;
 }
-
+.boxTextagregar {
+    background-color: transparent;
+    width: auto;
+    height: 25px;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #AE0707;
+}
+.boxTextagregar p {
+    font-weight: bold;
+}
 .docButton{
     border-radius: 50%;
     width: 40px;
     height: 40px;
     background-image: url('./file-regular.svg');
-    background-color: red;
+    background-color: #AE0707;
     background-position: center;
     background-size: 16px;
     background-repeat: no-repeat;
     margin-right: 10px;
-    
+}
+.rs-picker-toggle .rs-picker-toggle-placeholder {
+    color: white;
+}
+.rs-picker-toggle-caret {
+    color: white;
+}
+.rs-picker-toggle {
+    background-color: transparent !important;
+}
+.rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
+    color: white;
+}
+.p-dialog .p-dialog-header {
+    background: rgb(196,196,196) !important;
+    background: linear-gradient(90deg, rgba(196,196,196,1) 2%, rgba(255,255,255,1) 2%) !important;
+    padding-left: 26px !important;
+}
 
-
+.p-dialog .p-dialog-content {
+    background: rgb(196,196,196) !important;
+    background: linear-gradient(90deg, rgba(196,196,196,1) 2%, rgba(255,255,255,1) 2%) !important;
+}
+.grid {
+    padding: 10px;
 }
