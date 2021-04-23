@@ -10,7 +10,8 @@ import { SelectPicker, Icon, Button, Input, InputGroup, IconButton, DatePicker, 
 import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './ToDo.css';
-import { ArrowCircleRight, DownOne } from '@icon-park/react';
+import {ArrowCircleRight, DownOne} from '@icon-park/react';
+import { SelectPicker } from 'rsuite';
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
@@ -28,9 +29,16 @@ export default class ToDo extends Component {
       selectedEditRow: [],
       does:'Nothing'
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
-
+  handleChange(value) {
+    this.setState({
+      value
+    });
+    console.log(typeof value, value);
+  }
+  
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -3559,112 +3567,122 @@ export default class ToDo extends Component {
                 Agregar nueva tarea
             </Button>
             </Box>
-            <Dialog
+            <Dialog            
               header="Agregar Nueva Tarea"
               visible={this.state.displayadd}
               position={this.state.position}
               modal
-              style={{ width: '50vw' }}
+              style={{ width: '55vw'}}
               onHide={() => this.onHide('displayadd')}
               dismissableMask={true}
             >
-              <Grid
-                rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
-                columns={['auto', 'auto', 'auto']}
-                gap="xsmall"
-                areas={[
-                  { name: 'priority', start: [0, 0], end: [0, 0] },
-                  { name: 'name', start: [0, 1], end: [1, 1] },
-                  { name: 'selectStat1', start: [2, 1], end: [2, 1] },
-                  { name: 'selectCat', start: [0, 2], end: [0, 2] },
-                  { name: 'selectClient', start: [1, 2], end: [1, 2] },
-                  { name: 'addSub', start: [0, 3], end: [0, 3] },
-                  { name: 'selectStat2', start: [1, 3], end: [1, 3] },
-                  { name: 'add', start: [2, 3], end: [2, 3] },
-                  { name: 'selectDate1', start: [0, 4], end: [0, 4] },
-                  { name: 'selectDate2', start: [2, 4], end: [2, 4] },
-                  { name: 'saveRemove', start: [2, 5], end: [2, 5] },
-
-                ]}
-              >
-                <Box direction='row' gridArea="priority" className="box">
-                  <Box className="boxText">
-                    <p>Prioridad</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter" /></button>
-                </Box>
+             <Grid
+              className="grid"
+              rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
+              columns={['auto', 'auto', 'auto']}
+              gap="xsmall"
+              areas={[
+                { name: 'priority', start: [0,0], end: [0,0] },
+                { name: 'name', start: [0, 1], end: [1, 1] },
+                { name: 'selectStat1', start: [2, 1], end: [2, 1] },
+                { name: 'selectCat', start: [0, 2], end: [0, 2] },
+                { name: 'selectClient', start: [1,2], end: [1,2] },
+                { name: 'addSub', start: [0,3], end: [0,3] },
+                { name: 'selectStat2', start: [1,3], end: [1,3] },
+                { name: 'add', start: [2,3], end: [2,3] },
+                { name: 'selectDate1', start: [0,4], end: [0,4] },
+                { name: 'selectDate2', start: [2,4], end: [2,4] },
+                { name: 'saveRemove', start: [2,5], end: [2,5] },
+                
+              ]}
+            >
+              <Box direction='row' gridArea="priority" className="box">
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Prioridad"
+              style={{ width: 130 }} 
+              />
+              </Box>
 
                 <Box direction='row' gridArea="name" className="box">
                   <h2>Nombre de la Tarea</h2>
                 </Box>
 
-                <Box direction='row' gridArea="selectStat1" className="box">
-                  <Box className="boxText">
-                    <p>Selecciona estatus</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter" /></button>
-                </Box>
+              <Box direction='row' gridArea="selectStat1" className="box">
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Estatus"
+              style={{ width: 200 }} 
+              />
+              </Box>
 
-                <Box direction='row' gridArea="selectCat" className="box">
-                  <Box className="boxText">
-                    <p>Selecciona categoria</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter" /></button>
-                </Box>
+              <Box direction='row' gridArea="selectCat" className="box">
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Categoría"
+              style={{ width: 220 }} 
+              />
+              </Box>
 
-                <Box direction='row' gridArea="addSub" className="box">
-                  <button className="right-arrow-button" type="button"><ArrowCircleRight size={40} /></button>
-                  <Box className="boxText">
-                    <p direction='row'>Agrega una subtarea</p>
-                  </Box>
+              <Box direction='row'gridArea="addSub" className="box">
+                <button className="right-arrow-button" type="button"><ArrowCircleRight size={40}/></button>
+                <Box className="boxText">
+                  <p direction='row'>Agrega una subtarea</p>
                 </Box>
+              </Box>
 
-                <Box direction='row' gridArea="selectStat2" className="box">
-                  <Box className="boxText">
-                    <p>Selecciona estatus</p>
-                  </Box>
-                  <button className="downOne" type="button"><DownOne size={25} theme="filled" strokeLinejoin="miter" /></button>
-                </Box>
+              <Box direction='row' gridArea="selectStat2" className="box">
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Selecciona Estatus"
+              style={{ width: 200 }} 
+              />
+              </Box>
 
-                <Box className="agregar" direction='row' gridArea="add" className="box">
-                  <button className="docButton" type="button"></button>
-                  <Box className="boxText">
-                    <p>Agregar</p>
-                  </Box>
-                </Box>
+              <Box className="agregar" direction='row' gridArea="add" className="box">
+              <button className="docButton" type="button"></button>
+              <Box className="boxTextagregar">
+              <p>Agregar</p>
+              </Box>
+              </Box>
 
-                <Box gridArea="selectDate1" className="box">
-                  <p>Selecciona una Fecha de inicio:</p>
-                  <DatePicker
-                    className="Date"
-                    value={this.props.value}
-                    onChange={(e) => { this.handleChange(e) }}
-                    placeholder="10/12/2020"
-                    appearance="subtle"
-                    block={true}
-                    style={{ width: 150, transform: "translate(0%, -7.5%)" }}
-                  ></DatePicker>
-                </Box>
+              <Box gridArea="selectDate1" className="box">
+              <Box className="datebox">
+              <p>Selecciona una fecha de inicio:</p>
+              
+              <DatePicker 
+              className="Date" 
+              value={this.state.value}
+              onChange={this.handleChange}
+              appearance = "subtle" 
+              style={{ width: 240, height: 42}}
+              format="DD / MM / YYYY"
+              ></DatePicker> 
+              </Box>
+              </Box>
 
-                <Box gridArea="selectDate2" className="box">
-                  <p>Selecciona una Fecha de fin:</p>
-                  <DatePicker
-                    className="Date"
-                    value={this.props.value}
-                    onChange={(e) => { this.handleChange(e) }}
-                    placeholder="10/12/2020"
-                    appearance="subtle"
-                    block={true}
-
-                    style={{ width: 150, transform: "translate(0%, -7.5%)" }}
-                  ></DatePicker>
-
-                </Box>
-                <Box direction='row' gridArea="saveRemove" className="box">
-                  <Button className='guardar'>Guardar</Button>
-                  <Button className='eliminar'>Eliminar</Button>
-                </Box>
-              </Grid>
+              <Box gridArea="selectDate2" className="box">
+              <Box className="datebox">
+              <p>Selecciona una fecha de fin:</p>
+              <DatePicker
+              className="Date"
+              value={this.state.value}
+              onChange={this.handleChange}
+              appearance = "subtle"
+              style={{ width: 240, height: 42}}
+              format="DD / MM / YYYY"
+              ></DatePicker> 
+              </Box>
+              </Box>
+              <Box  direction='row' gridArea="saveRemove" className="box">
+                    <button className='guardar'>Guardar</button>
+                    <button className='eliminar'>Eliminar</button> 
+              </Box>
+            </Grid>
             </Dialog>
             {/*
               visor de archivos dialog
