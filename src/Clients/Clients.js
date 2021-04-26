@@ -2170,6 +2170,20 @@ class ClientReg extends React.Component {
             >
               <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
             </Button>
+            <Button
+            style={{
+              position: 'absolute',
+              left: '75vw',
+              backgroundColor: "#06554C",
+              color: '#F5F0F6',
+              width: '120px',
+              fontFamily: "'Manjari', sans-serif",
+              boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+            }}
+            onClick={ () => this.Register()}>
+            Registrar&nbsp;&nbsp;
+            <Icon icon='check' />
+          </Button>
         </Box>
       </Box>
     );
