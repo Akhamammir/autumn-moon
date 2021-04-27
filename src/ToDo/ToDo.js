@@ -6,16 +6,63 @@ import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { SelectPicker, Icon, Button, Input, InputGroup, IconButton, DatePicker, Header } from 'rsuite';
+import { SelectPicker, Icon, Button, Input, DateRangePicker, IconButton, DatePicker, Header } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './ToDo.css';
-import {ArrowCircleRight, DownOne} from '@icon-park/react';
-import { SelectPicker } from 'rsuite';
+import { ArrowCircleRight } from '@icon-park/react';
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
-
+  data = [
+    {
+      "label": "Baja",
+      "value": "0",
+      "role": "Master"
+    }, {
+      "label": "Media",
+      "value": "1",
+      "role": "Master"
+    }, {
+      "label": "Alta",
+      "value": "2",
+      "role": "Master"
+    }
+  ]
+  statusData = [
+    {
+      "label": "Incompleta",
+      "value": "0",
+      "role": "Master"
+    }, {
+      "label": "Pendiente",
+      "value": "1",
+      "role": "Master"
+    }, {
+      "label": "Completa",
+      "value": "2",
+      "role": "Master"
+    }
+  ]
+  category = [
+    {
+      "label": "Contable",
+      "value": "Contable",
+      "role": "Contabilidad"
+    }, {
+      "label": "Fiscal",
+      "value": "Fiscal",
+      "role": "Master"
+    }, {
+      "label": "Laboral",
+      "value": "Laboral",
+      "role": "Master"
+    }, {
+      "label": "Financiero",
+      "value": "Financiero",
+      "role": "Master"
+    }
+  ]
   toast = {}
   constructor(props) {
     super(props);
@@ -27,18 +74,14 @@ export default class ToDo extends Component {
       current: {},
       expandedRows: false,
       selectedEditRow: [],
-      does:'Nothing'
+      does: 'Nothing',
+      new: {
+        name: '', status: '', priori: '', cat: '', date: ['', ''],
+        subtask: [{ name: '', status: '', _id: this.uuidShort() }]
+      }
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(value) {
-    this.setState({
-      value
-    });
-    console.log(typeof value, value);
-  }
-  
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -78,8 +121,8 @@ export default class ToDo extends Component {
         adv += i.Advent; J++;
       })
     }
-    if (this.state.selectedEditRow.children) return ( Math.trunc( (adv / J) * 100 ) / 100 )
-    else return ( Math.trunc( this.state.selectedEditRow.Advent * 100 ) / 100 )
+    if (this.state.selectedEditRow.children) return (Math.trunc((adv / J) * 100) / 100)
+    else return (Math.trunc(this.state.selectedEditRow.Advent * 100) / 100)
   }
 
   componentDidMount() {
@@ -91,12 +134,12 @@ export default class ToDo extends Component {
           Name: 'Contable', key: this.uuidShort(), children: [
             {
               Name: 'Recepción de documentos', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Contable',
+              Status: 1, key: this.uuidShort(), Area: 'Contable',
               children: [
                 {
                   Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Contable',
+                  domain: 'Contable',
                   children: [
                     {
                       Area: 'Envío de correo', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
@@ -115,12 +158,12 @@ export default class ToDo extends Component {
               ]
             }, {
               Name: 'Contabilidad Terminada', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Contable',
+              Status: 1, key: this.uuidShort(), Area: 'Contable',
               children: [
                 {
                   Area: 'Contabilidad Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Contable',
+                  domain: 'Contable',
                   children: [
                     {
                       Area: 'Conciliación bancaria', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
@@ -135,12 +178,12 @@ export default class ToDo extends Component {
               ]
             }, {
               Name: 'Pre-cierre', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Contable',
+              Status: 1, key: this.uuidShort(), Area: 'Contable',
               children: [
                 {
                   Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
-                  domain:'Contable',
-                  Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),  _id: this.uuidShort(),
+                  domain: 'Contable',
+                  Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
                 }
               ]
             }
@@ -149,41 +192,41 @@ export default class ToDo extends Component {
           Name: 'Fiscal', key: this.uuidShort(), children: [
             {
               Name: 'D y P', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Fiscal',
+              Status: 1, key: this.uuidShort(), Area: 'Fiscal',
               children: [
                 {
                   Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Fiscal',
+                  domain: 'Fiscal',
                   children: [
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Línea de Captura (PDF)', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                   ]
@@ -192,21 +235,21 @@ export default class ToDo extends Component {
             },
             {
               Name: 'DIOT/ DPIVA', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Fiscal',
+              Status: 1, key: this.uuidShort(), Area: 'Fiscal',
               children: [
                 {
                   Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF)', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Fiscal',
+                  domain: 'Fiscal',
                   children: [
                     {
                       Area: 'Acuse de aceptación (PDF)', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'Acuse de aceptación (PDF)', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
-                      domain:'Fiscal',
+                      domain: 'Fiscal',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                   ]
@@ -219,12 +262,12 @@ export default class ToDo extends Component {
 
             {
               Name: 'Impuestos Estatales', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Laboral',
+              Status: 1, key: this.uuidShort(), Area: 'Laboral',
               children: [
                 {
                   Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Laboral',
+                  domain: 'Laboral',
                   children: [
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
@@ -232,37 +275,37 @@ export default class ToDo extends Component {
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     },
                     {
                       Area: 'ISN PT (PDF) (CB)', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
-                      domain:'Laboral',
+                      domain: 'Laboral',
                       Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
                     }
                   ]
@@ -270,13 +313,13 @@ export default class ToDo extends Component {
               ]
             },
             {
-              Name: 'Seguridad Social',  Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Laboral',
+              Name: 'Seguridad Social', Date: new Date(),
+              Status: 1, key: this.uuidShort(), Area: 'Laboral',
               children: [
                 {
                   Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Laboral',
+                  domain: 'Laboral',
                   children: [
                     {
                       Area: 'Conciliación bancaria', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
@@ -307,12 +350,12 @@ export default class ToDo extends Component {
           Name: 'Financiero', key: this.uuidShort(), children: [
             {
               Name: 'Estados Financieros', Date: new Date(),
-              Status: 1, key: this.uuidShort(), Area:'Financiero',
+              Status: 1, key: this.uuidShort(), Area: 'Financiero',
               children: [
                 {
                   Area: 'Estados Financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
                   Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(), _id: this.uuidShort(),
-                  domain:'Financiero',
+                  domain: 'Financiero',
                   children: [
                     {
                       Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
@@ -3309,7 +3352,7 @@ export default class ToDo extends Component {
       [`${name}`]: false
     });
   }
-  
+
   onClick(name, position, array, list, deep) {
     let state = {
       [`${name}`]: true,
@@ -3330,40 +3373,154 @@ export default class ToDo extends Component {
     });
   }
 
-  bodyTableone = (rowData) =>  {
+  newBodyTableone = (rowData) => {
     return (
       <React.Fragment>
         <Box direction="row">
           <Box>
-            <IconButton icon={<Icon icon='arrow-circle-right' />} 
-            size='lg' onClick={()=>{
-              this.state.clientsList.filter(S=>S.Name == this.state.selectedEditRow.domain)[0]
-              .children.filter(S=>S.Name == this.state.selectedEditRow.Area)[0]
-              .children.filter(S=>S.Name == rowData.Area)[0].children.push({
-                Area: rowData.Area, Name: '', Priori: '0', Advent: 0,
-                domain:this.state.selectedEditRow.domain,
-                Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
-              })
-              this.setState({Does:'nothing'})
-            }}/>
+            <button className="right-arrow-button"
+              type="button" onClick={() => {
+                this.state.new.subtask.push({ name: '', status: '', _id: this.uuidShort() });
+                this.setState({ does: 'Nothing' });
+              }}>
+              <ArrowCircleRight size={35} />
+            </button>
+          </Box>
+        </Box>
+      </React.Fragment>
+    )
+  }
+
+  newBodyTabletwo = (rowData) => {
+    return (
+      <React.Fragment>
+        <Box margin='10px' className="editTareaBox">
+          <Box className="boxText" style={{ width: '100%' }}>
+            <Input className="editTareaInput" placeholder="Nombre de Subtarea"
+              value={rowData.Name} onChange={e => {
+                this.state.new.subtask.filter(S => S._id == rowData._id)[0].name = e
+                this.setState({ does: 'Nothing' });
+              }} />
+          </Box>
+        </Box>
+      </React.Fragment>
+    )
+  }
+
+  newBodytabletree(rowData) {
+    let status = [
+      {
+        "label": "Incompleta",
+        "value": "0",
+        "role": "Master"
+      }, {
+        "label": "Pendiente",
+        "value": "1",
+        "role": "Master"
+      }, {
+        "label": "Completa",
+        "value": "2",
+        "role": "Master"
+      }
+    ]
+    return (
+      <React.Fragment><Box direction='row'>
+        <SelectPicker
+          appearance="default"
+          placeholder="Selecciona Estatus"
+          data={status} searchable={false}
+          onChange={e => {
+            this.state.new.subtask.filter(S => S._id == rowData._id)[0].status = e
+            this.setState({ Does: 'nothing' })
+          }}
+          style={{ width: 200, marginTop: '13px' }}
+          renderMenuItem={(label, item) => {
+            return (
+              <div style={{ padding: '10px' }}>
+                {label}
+              </div>
+            );
+          }}
+        />
+      </Box>
+        {/*<button className="docButton" type="button"></button>
+              <Box className="boxTextagregar">
+              <p>Agregar</p>
+              </Box>*/}
+      </React.Fragment>
+    )
+  }
+
+  newBodytablefour = (rowData) => {
+    let data = [
+      {
+        "label": "Baja",
+        "value": "0",
+        "role": "Master"
+      }, {
+        "label": "Media",
+        "value": "1",
+        "role": "Master"
+      }, {
+        "label": "Alta",
+        "value": "2",
+        "role": "Master"
+      }
+    ]
+    return (
+      <React.Fragment>
+        <Box margin='10px' className="editTareaBox">
+          <SelectPicker data={data} style={{ width: 224 }}
+            searchable={false}
+            onChange={e => {
+              //
+            }}
+            renderMenuItem={(label, item) => {
+              return (
+                <div className={'selectLabel' + label}>
+                  {label}
+                </div>
+              );
+            }} />
+        </Box>
+      </React.Fragment>
+    )
+  }
+
+  bodyTableone = (rowData) => {
+    return (
+      <React.Fragment>
+        <Box direction="row">
+          <Box>
+            <IconButton icon={<Icon icon='arrow-circle-right' />}
+              size='lg' onClick={() => {
+                this.state.clientsList.filter(S => S.Name == this.state.selectedEditRow.domain)[0]
+                  .children.filter(S => S.Name == this.state.selectedEditRow.Area)[0]
+                  .children.filter(S => S.Name == rowData.Area)[0].children.push({
+                    Area: rowData.Area, Name: '', Priori: '0', Advent: 0,
+                    domain: this.state.selectedEditRow.domain,
+                    Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                  })
+                this.setState({ Does: 'nothing' })
+              }} />
           </Box>
           <Box margin='10px' className="editTareaBox">
             <Input className="editTareaInput" placeholder="Nombre de Tarea"
-             value={rowData.Name} onChange={e=>{
-               console.log(rowData)
-               rowData.Name = e
-               console.log(
-                 this.state.clientsList.filter(S=>S.Name == this.state.selectedEditRow.domain)[0]
-                 .children.filter(S=>S.Name == this.state.selectedEditRow.Area)[0]
-                 .children.filter(S=>S.Name == rowData.Area)[0]
-                 .children.filter(S=>S.key == rowData.key)[0]
-                 );
-                 this.state.clientsList.filter(S=>S.Name == this.state.selectedEditRow.domain)[0]
-                 .children.filter(S=>S.Name == this.state.selectedEditRow.Area)[0]
-                 .children.filter(S=>S.Name == rowData.Area)[0]
-                 .children.filter(S=>S.key == rowData.key)[0].name = e
-                 this.setState({Does:'nothing'})
-             }}/>
+              value={rowData.Name} onChange={e => {
+                console.log(rowData)
+                rowData.Name = e
+                console.log(
+                  this.state.clientsList.filter(S => S.Name == this.state.selectedEditRow.domain)[0]
+                    .children.filter(S => S.Name == this.state.selectedEditRow.Area)[0]
+                    .children.filter(S => S.Name == rowData.Area)[0]
+                    .children.filter(S => S.key == rowData.key)[0]
+                );
+                this.state.clientsList.filter(S => S.Name == this.state.selectedEditRow.domain)[0]
+                  .children.filter(S => S.Name == this.state.selectedEditRow.Area)[0]
+                  .children.filter(S => S.Name == rowData.Area)[0]
+                  .children.filter(S => S.key == rowData.key)[0].name = e
+                this.setState({ Does: 'nothing' })
+              }} />
             {/*<Header level='4' style={{ textAlign: 'center', position: 'absolute', }}>{rowData.Name}</Header>*/}
           </Box>
         </Box>
@@ -3375,17 +3532,17 @@ export default class ToDo extends Component {
     return (
       <React.Fragment>
         <Box margin='10px' className="editTareaBox">
-        <Button
-          appearance="primary"
-          className={"status" + rowData.Status + " statusDisp"}
-          style={{width:'100%', }}
-          icon={<Icon icon="upload2" />}
-          size="lg"
-          placement="right"
-          disabled={true}
-        >
-          {this.status(rowData.Status)}
-        </Button>
+          <Button
+            appearance="primary"
+            className={"status" + rowData.Status + " statusDisp"}
+            style={{ width: '100%', }}
+            icon={<Icon icon="upload2" />}
+            size="lg"
+            placement="right"
+            disabled={true}
+          >
+            {this.status(rowData.Status)}
+          </Button>
         </Box>
       </React.Fragment>
     )
@@ -3403,16 +3560,16 @@ export default class ToDo extends Component {
   }
 
   bodytablefour = (rowData) => {
-    let data=[
+    let data = [
       {
         "label": "Baja",
         "value": "0",
         "role": "Master"
-      },{
+      }, {
         "label": "Media",
         "value": "1",
         "role": "Master"
-      },{
+      }, {
         "label": "Alta",
         "value": "2",
         "role": "Master"
@@ -3421,7 +3578,7 @@ export default class ToDo extends Component {
     return (
       <React.Fragment>
         <Box margin='10px' className="editTareaBox">
-        {/*<Button
+          {/*<Button
             appearance="primary"
             className={"priori" + rowData.Priori + " priorityDisp"}
             icon={<Icon icon="upload2" />}
@@ -3432,22 +3589,22 @@ export default class ToDo extends Component {
             {this.priori(rowData.Priori)}
           </Button>*/}
           <SelectPicker data={data} style={{ width: 224 }}
-          searchable={false}
-          onChange = {e=>{
-            console.log(e)
-            this.state.clientsList.filter(S=>S.Name == this.state.selectedEditRow.domain)[0]
-                 .children.filter(S=>S.Name == this.state.selectedEditRow.Area)[0]
-                 .children.filter(S=>S.Name == rowData.Area)[0]
-                 .children.filter(S=>S.key == rowData.key)[0].Priori = e
-                 this.setState({Does:'nothing'})
-          }}
-          renderMenuItem={(label, item) => {
-            return (
-              <div className={'selectLabel'+ label}>
-                 {label}
-              </div>
-            );
-          }} />
+            searchable={false}
+            onChange={e => {
+              console.log(e)
+              this.state.clientsList.filter(S => S.Name == this.state.selectedEditRow.domain)[0]
+                .children.filter(S => S.Name == this.state.selectedEditRow.Area)[0]
+                .children.filter(S => S.Name == rowData.Area)[0]
+                .children.filter(S => S.key == rowData.key)[0].Priori = e
+              this.setState({ Does: 'nothing' })
+            }}
+            renderMenuItem={(label, item) => {
+              return (
+                <div className={'selectLabel' + label}>
+                  {label}
+                </div>
+              );
+            }} />
         </Box>
       </React.Fragment>
     )
@@ -3567,122 +3724,146 @@ export default class ToDo extends Component {
                 Agregar nueva tarea
             </Button>
             </Box>
-            <Dialog            
+            {/*DIS ONE*/}
+            <Dialog
               header="Agregar Nueva Tarea"
               visible={this.state.displayadd}
               position={this.state.position}
               modal
-              style={{ width: '55vw'}}
+              style={{ width: '55vw' }}
               onHide={() => this.onHide('displayadd')}
               dismissableMask={true}
             >
-             <Grid
-              className="grid"
-              rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
-              columns={['auto', 'auto', 'auto']}
-              gap="xsmall"
-              areas={[
-                { name: 'priority', start: [0,0], end: [0,0] },
-                { name: 'name', start: [0, 1], end: [1, 1] },
-                { name: 'selectStat1', start: [2, 1], end: [2, 1] },
-                { name: 'selectCat', start: [0, 2], end: [0, 2] },
-                { name: 'selectClient', start: [1,2], end: [1,2] },
-                { name: 'addSub', start: [0,3], end: [0,3] },
-                { name: 'selectStat2', start: [1,3], end: [1,3] },
-                { name: 'add', start: [2,3], end: [2,3] },
-                { name: 'selectDate1', start: [0,4], end: [0,4] },
-                { name: 'selectDate2', start: [2,4], end: [2,4] },
-                { name: 'saveRemove', start: [2,5], end: [2,5] },
-                
-              ]}
-            >
-              <Box direction='row' gridArea="priority" className="box">
-              <SelectPicker 
-              className="selectpicker"      
-              appearance="default"
-              placeholder="Prioridad"
-              style={{ width: 130 }} 
-              />
-              </Box>
+              <Grid
+                className="grid"
+                rows={['xxsmall', 'xxsmall', 'xxsmall', '30vh', 'xsmall', 'xsmall']}
+                columns={['auto', 'auto', 'auto']}
+                gap="xsmall"
+                areas={[
+                  { name: 'priority', start: [0, 0], end: [0, 0] },
+                  { name: 'name', start: [0, 1], end: [1, 1] },
+                  { name: 'selectStat1', start: [2, 1], end: [2, 1] },
+                  { name: 'selectCat', start: [0, 2], end: [0, 2] },
+                  { name: 'selectClient', start: [1, 2], end: [1, 2] },
+                  { name: 'addSub', start: [0, 3], end: [2, 3] },
+                  { name: 'selectDate1', start: [0, 4], end: [0, 4] },
+                  { name: 'selectDate2', start: [1, 4], end: [1, 4] },
+                  { name: 'saveRemove', start: [2, 5], end: [2, 5] },
+
+                ]}
+              >
+                <Box direction='row' gridArea="priority" className="box">
+                  <SelectPicker
+                    appearance="default"
+                    placeholder="Prioridad"
+                    data={this.data} searchable={false}
+                    onChange={e => {
+                      this.state.new.priori = e;
+                      this.setState({ Does: 'nothing' })
+                    }}
+                    style={{ width: 130 }}
+                    renderMenuItem={(label, item) => {
+                      return (
+                        <div className={'selectLabel' + label}>
+                          {label}
+                        </div>
+                      );
+                    }}
+                  />
+                </Box>
 
                 <Box direction='row' gridArea="name" className="box">
-                  <h2>Nombre de la Tarea</h2>
+                  <Input className="editTareaInput" placeholder="Nombre de Tarea"
+                    value={this.state.new.name} onChange={e => {
+                      this.state.new.name = e;
+                      this.setState({ does: 'Nothing' });
+                    }} />
                 </Box>
 
-              <Box direction='row' gridArea="selectStat1" className="box">
-              <SelectPicker 
-              className="selectpicker"      
-              appearance="default"
-              placeholder="Selecciona Estatus"
-              style={{ width: 200 }} 
-              />
-              </Box>
-
-              <Box direction='row' gridArea="selectCat" className="box">
-              <SelectPicker 
-              className="selectpicker"      
-              appearance="default"
-              placeholder="Selecciona Categoría"
-              style={{ width: 220 }} 
-              />
-              </Box>
-
-              <Box direction='row'gridArea="addSub" className="box">
-                <button className="right-arrow-button" type="button"><ArrowCircleRight size={40}/></button>
-                <Box className="boxText">
-                  <p direction='row'>Agrega una subtarea</p>
+                <Box direction='row' gridArea="selectStat1" className="box">
+                  <SelectPicker
+                    appearance="default"
+                    placeholder="Selecciona Estatus"
+                    data={this.statusData} searchable={false}
+                    onChange={e => {
+                      this.state.new.status = e;
+                      this.setState({ Does: 'nothing' })
+                    }}
+                    style={{ width: 200 }}
+                    renderMenuItem={(label, item) => {
+                      return (
+                        <div style={{ padding: '10px' }}>
+                          {label}
+                        </div>
+                      );
+                    }}
+                  />
                 </Box>
-              </Box>
 
-              <Box direction='row' gridArea="selectStat2" className="box">
-              <SelectPicker 
-              className="selectpicker"      
-              appearance="default"
-              placeholder="Selecciona Estatus"
-              style={{ width: 200 }} 
-              />
-              </Box>
+                <Box direction='row' gridArea="selectCat" className="box">
+                  <SelectPicker
+                    appearance="default"
+                    placeholder="Selecciona Categoría"
+                    data={this.category} searchable={false}
+                    onChange={e => {
+                      this.state.new.cat = e;
+                      this.setState({ Does: 'nothing' })
+                    }}
+                    style={{ width: 220 }}
+                    renderMenuItem={(label, item) => {
+                      return (
+                        <div style={{ padding: '10px' }}>
+                          {label}
+                        </div>
+                      );
+                    }}
+                  />
+                </Box>
 
-              <Box className="agregar" direction='row' gridArea="add" className="box">
-              <button className="docButton" type="button"></button>
-              <Box className="boxTextagregar">
-              <p>Agregar</p>
-              </Box>
-              </Box>
+                <Box direction='row' gridArea="addSub" className="box" width='100%'>
+                  <DataTable value={this.state.new.subtask} >
+                    <Column style={{ width: '10%' }} body={this.newBodyTableone} />
+                    <Column body={this.newBodyTabletwo} />
+                    <Column style={{ width: '35%' }} body={this.newBodytabletree} />
+                  </DataTable>
 
-              <Box gridArea="selectDate1" className="box">
-              <Box className="datebox">
-              <p>Selecciona una fecha de inicio:</p>
-              
-              <DatePicker 
-              className="Date" 
-              value={this.state.value}
-              onChange={this.handleChange}
-              appearance = "subtle" 
-              style={{ width: 240, height: 42}}
-              format="DD / MM / YYYY"
-              ></DatePicker> 
-              </Box>
-              </Box>
+                </Box>
 
-              <Box gridArea="selectDate2" className="box">
-              <Box className="datebox">
-              <p>Selecciona una fecha de fin:</p>
-              <DatePicker
-              className="Date"
-              value={this.state.value}
-              onChange={this.handleChange}
-              appearance = "subtle"
-              style={{ width: 240, height: 42}}
-              format="DD / MM / YYYY"
-              ></DatePicker> 
-              </Box>
-              </Box>
-              <Box  direction='row' gridArea="saveRemove" className="box">
-                    <button className='guardar'>Guardar</button>
-                    <button className='eliminar'>Eliminar</button> 
-              </Box>
-            </Grid>
+                {/*<Box gridArea="selectDate1" className="box">
+                  <Box className="datebox">
+                    <p>Selecciona una fecha de inicio :</p>
+
+                    <DatePicker
+                      className="Date"
+                      value={this.state.new.dateStart}
+                      appearance="subtle"
+                      style={{ width: 240, height: 42 }}
+                      format="DD / MM / YYYY"
+                    ></DatePicker>
+                  </Box>
+                </Box>*/}
+
+                <Box gridArea="selectDate2" className="box">
+                  <Box className="datebox">
+                    <p>Selecciona una fecha de fin :</p>
+                    <DateRangePicker
+                      value={this.state.new.Date}
+                      onChange={value => {
+                        this.state.new.Date = value
+                        this.setState({ does:'Nothing' });
+                      }}
+                    />
+                  </Box>
+                </Box>
+                <Box direction='row' gridArea="saveRemove" className="box">
+                  <button className='guardar'
+                   onClick={()=>{
+                     //this.state.clientsList[this.state.new.cat]
+                   }}
+                  >Guardar</button>
+                  <button className='eliminar'>Eliminar</button>
+                </Box>
+              </Grid>
             </Dialog>
             {/*
               visor de archivos dialog
@@ -3791,9 +3972,9 @@ export default class ToDo extends Component {
               <DatePicker
                 className="Date"
                 value={this.state.selectedEditRow.Date}
-                onChange={(e) => { 
-                  this.state.selectedEditRow.Date=e;
-                  this.setState({does:'Nothing'})
+                onChange={(e) => {
+                  this.state.selectedEditRow.Date = e;
+                  this.setState({ does: 'Nothing' })
                 }}
                 placeholder="10/12/2020"
                 appearance="subtle"
@@ -3803,21 +3984,21 @@ export default class ToDo extends Component {
               ></DatePicker>
             </Box>
             <Box gridArea='line1c'>
-              <Heading level='3' style={{ color: '#00AB9B' }}>{ this.calcAdv() + ' %' }</Heading>
+              <Heading level='3' style={{ color: '#00AB9B' }}>{this.calcAdv() + ' %'}</Heading>
             </Box>
             <Box gridArea='line2'>
               <Heading level='6' alignSelf="start">Pase Usted S.A.P.I. / Contabilidad electrónica</Heading>
             </Box>
             <Box gridArea='Line3' >
               <DataTable value={this.state.selectedEditRow.children} >
-                <Column  body={this.bodyTableone} />
-                <Column style={{width:'20%'}}body={this.bodyTabletwo} />
-                <Column style={{width:'15%'}} body={this.bodytabletree} />
-                <Column style={{width:'20%'}} body={this.bodytablefour} />
+                <Column body={this.bodyTableone} />
+                <Column style={{ width: '20%' }} body={this.bodyTabletwo} />
+                <Column style={{ width: '15%' }} body={this.bodytabletree} />
+                <Column style={{ width: '20%' }} body={this.bodytablefour} />
               </DataTable>
             </Box>
             <Box gridArea='Line4'>
-            <Button
+              <Button
                 appearance="primary"
                 className="first"
                 icon={<Icon icon="upload2" />}
