@@ -14,6 +14,9 @@ import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
 import { SelectPicker } from 'rsuite';
+import { IntlProvider } from 'rsuite';
+import esES from 'rsuite/lib/IntlProvider/locales/es_ES';
+
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
@@ -3330,14 +3333,21 @@ export default class ToDo extends Component {
                   >
                       Estatus:55%
                 </Button>
-                  <Button
-                    appearance="primary"
-                    className="first2"
-                    size="sm"
-                    placement="right"
-                  >
-                    04/02/2021
-                  </Button>
+
+                  <IntlProvider locale={esES}>
+                    <DatePicker 
+                      className="topDate"
+                      appearance="primary"
+                      size="sm"
+                      placement="bottomEnd"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                      appearance = "subtle" 
+                      style={{ width: "auto", height: 42}}
+                      format="MM/YYYY"
+                    ></DatePicker>
+                  </IntlProvider>
+
                   <Button
                     appearance="primary"
                     className="first2"
@@ -3447,29 +3457,32 @@ export default class ToDo extends Component {
               <Box gridArea="selectDate1" className="box">
               <Box className="datebox">
               <p>Selecciona una fecha de inicio:</p>
-              
+              <IntlProvider locale={esES}> 
               <DatePicker 
-              className="Date" 
+              className="dateLeft" 
               value={this.state.value}
               onChange={this.handleChange}
               appearance = "subtle" 
               style={{ width: 240, height: 42}}
               format="DD / MM / YYYY"
-              ></DatePicker> 
+              ></DatePicker>
+              </IntlProvider>
               </Box>
               </Box>
 
               <Box gridArea="selectDate2" className="box">
               <Box className="datebox">
               <p>Selecciona una fecha de fin:</p>
+              <IntlProvider locale={esES}> 
               <DatePicker
-              className="Date"
+              className="dateRight"
               value={this.state.value}
               onChange={this.handleChange}
               appearance = "subtle"
               style={{ width: 240, height: 42}}
               format="DD / MM / YYYY"
               ></DatePicker> 
+              </IntlProvider>
               </Box>
               </Box>
               <Box  direction='row' gridArea="saveRemove" className="box">
