@@ -10,7 +10,11 @@ import { SelectPicker, Icon, Button, Input, DateRangePicker, IconButton, DatePic
 import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './ToDo.css';
-import { ArrowCircleRight } from '@icon-park/react';
+import {ArrowCircleRight, DownOne} from '@icon-park/react';
+import { SelectPicker } from 'rsuite';
+import { IntlProvider } from 'rsuite';
+import esES from 'rsuite/lib/IntlProvider/locales/es_ES';
+
 
 const miliPerYear = 31536000000;
 export default class ToDo extends Component {
@@ -3695,19 +3699,34 @@ export default class ToDo extends Component {
                 </Button>
                 <Button
                   appearance="primary"
-                  className="first2"
-                  size="sm"
-                  placement="right"
-                >
-                  04/02/2021
-                  </Button>
-                <Button
-                  appearance="primary"
-                  className="first2"
-                  size="sm"
-                  placement="right"
-                >
-                  02:04:55
+                    className="first2"
+                    size="sm"
+                    placement="right"
+                  >
+                      Estatus:55%
+                </Button>
+
+                  <IntlProvider locale={esES}>
+                    <DatePicker 
+                      className="topDate"
+                      appearance="primary"
+                      size="sm"
+                      placement="bottomEnd"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                      appearance = "subtle" 
+                      style={{ width: "auto", height: 42}}
+                      format="MM/YYYY"
+                    ></DatePicker>
+                  </IntlProvider>
+
+                  <Button
+                    appearance="primary"
+                    className="first2"
+                    size="sm"
+                    placement="right"
+                  >
+                    02:04:55
                   </Button>
               </Box>
             </Box>

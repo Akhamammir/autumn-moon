@@ -7,9 +7,11 @@
 .first{
     margin-left:20px;
 }
-.first2{
+.first2 {
     margin-left:20px;
     background: #263D4F !important;
+    box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
+    border-radius: 7px;
 }
 .gruopButt{
     position: absolute;
@@ -66,8 +68,16 @@
     color: #00AB9B!important ;
 }
 
-.Date{
-    
+.dateLeft{
+    background-color: #263D4F;
+    border-radius: 10px;
+    font-family: 'Segoe UI';
+    text-align: justify;
+    position: relative;
+
+}
+.dateRight{
+    background-color: #263D4F;
     border-radius: 10px;
     font-family: 'Segoe UI';
     text-align: justify;
@@ -182,6 +192,7 @@
 .rs-picker-toggle-caret {
     color: #00AB9B;
 }
+
 .rs-picker-toggle {
     background-color: transparent !important;
 }
@@ -191,7 +202,25 @@
 .rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
     
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
+    padding-top: 4px;
+    background-color: #263D4F;
+    font-family: 'Segoe UI';
+    text-align: justify;
+    position: relative;
+    margin-left:20px;
+    background: #263D4F;
+    box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
+    border-radius: 7px;
+}
+.topDate .rs-picker-toggle-caret {
+    color: white;
+    padding-top: 1px;
+}
+
+.rs-picker-date .rs-picker-toggle.rs-btn-sm .rs-picker-toggle-clean, .rs-picker-daterange .rs-picker-toggle.rs-btn-sm .rs-picker-toggle-clean {
+    right: 28px;
+    padding-top: 3px;
 }
 .p-dialog .p-dialog-header {
     background: rgb(196,196,196) !important;
@@ -237,7 +266,7 @@
     padding: 0 !important;
     color: gray;
     font-family: calibri;
-    font-size: 20px;
+    font-size: 16px;
 }
 .selectpicker {
     justify-content: left;
@@ -245,6 +274,9 @@
     background-position: right;
     background-size: 16px;
     background-repeat: no-repeat;
+}
+.selectpicker .rs-picker-toggle-caret {
+    color: transparent;
 }
 .rs-picker-default .rs-btn, .rs-picker-input .rs-btn, .rs-picker-default .rs-picker-toggle, .rs-picker-input .rs-picker-toggle {
     background: transparent !important;
