@@ -11,9 +11,8 @@ import { Dialog } from 'primereact/dialog';
 import axios from 'axios';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
-import { SelectPicker } from 'rsuite';
 import { IntlProvider } from 'rsuite';
-import esES from 'rsuite/lib/IntlProvider/locales/es_ES';
+import esES from 'rsuite/lib/IntlProvider/locales/';
 
 
 const miliPerYear = 31536000000;
