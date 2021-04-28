@@ -6,19 +6,24 @@ import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header, SelectPicker, IntlProvider, InputPicker } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
-import { Button as ButtonPrime } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 import {SplitButton} from 'primereact/splitbutton';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
-import { SelectPicker } from 'rsuite';
-import { IntlProvider } from 'rsuite';
 import esES from 'rsuite/lib/IntlProvider/locales/es_ES';
 
 
 const miliPerYear = 31536000000;
+const periodicidad = [
+  {label: 'Unica', value: 'UN'},
+  {label: 'Mensual', value: 'MES'},
+  {label: 'Bimestral', value: 'BIM'},
+  {label: 'Semestral', value: 'SEM'},
+  {label: 'Anual', value: 'AN'}
+];
 export default class ToDo extends Component {
   
   toast = {}
@@ -3387,6 +3392,7 @@ export default class ToDo extends Component {
               gap="xsmall"
               areas={[
                 { name: 'priority', start: [0,0], end: [0,0] },
+                { name: 'period', start: [1,0], end: [1,0]},
                 { name: 'name', start: [0, 1], end: [1, 1] },
                 { name: 'selectStat1', start: [2, 1], end: [2, 1] },
                 { name: 'selectCat', start: [0, 2], end: [0, 2] },
@@ -3408,7 +3414,12 @@ export default class ToDo extends Component {
               style={{ width: 130 }} 
               />
               </Box>
-
+              <Box direction='row' gridArea="period" className="inputPickerBox">
+              <InputPicker 
+              placeholder="Periodicidad"
+              className="inputPicker"
+              data={periodicidad} style={{ width: 145 }} />
+              </Box>
               <Box direction='row' gridArea="name" className="box">
                 <h2>Nombre de la Tarea</h2>
               </Box>
