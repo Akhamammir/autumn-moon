@@ -13,6 +13,11 @@ class NavBar extends React.Component {
         this.props.history.push("/"+param+"/"+this.state.usr.Usr, {...this.state.usr})
       }
     }
+    Logout =  () => {
+        this.state.usr.Usr = 0
+        this.props.history.push("/")
+
+    }
     render() {
         return (
             <Sidenav
@@ -67,7 +72,18 @@ class NavBar extends React.Component {
                     <Dropdown.Menu eventKey="4-5" title="Custom Action">
                       <Dropdown.Item eventKey="4-5-1">Action Name</Dropdown.Item>
                       <Dropdown.Item eventKey="4-5-2">Action Params</Dropdown.Item>
+
                     </Dropdown.Menu>
+                  </Dropdown>
+                  <Dropdown
+                    placement="rightStart"
+                    eventKey="5"
+                    title="Logout"
+                    icon={<Icon icon="sign-out" />}
+                  >
+                    <Dropdown.Item eventKey="5" icon={<Icon icon="group" />} onClick={() => this.Logout()} >
+                      Cerrar Sesion
+                    </Dropdown.Item>
                   </Dropdown>
                 </Nav>
               </Sidenav.Body>
