@@ -1209,7 +1209,7 @@ class ClientReg extends React.Component {
             this.state._idDel = data._id;
             this.setState({
               rowSelected: data._id,
-              team: data.Team
+              /*team: data.Team*/
             })
           }}
           rowClassName={(rowData) => {
