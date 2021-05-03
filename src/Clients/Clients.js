@@ -1223,7 +1223,7 @@ class ClientReg extends React.Component {
           </Column>
           <Column flexGrow={2} align='center' fixed>
             <HeaderCell>Nombre</HeaderCell>
-            <Cell dataKey='Name/First' />
+            <Cell dataKey='Name.First' />
           </Column>
           <Column flexGrow={2} fixed>
             <HeaderCell>Apellido Paterno</HeaderCell>

@@ -87,7 +87,7 @@ class ClientsList extends React.Component {
     return (
         <React.Fragment>
             <img alt={rowData.representative} src={src} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="32" style={{verticalAlign: 'middle'}} />
-            <span className="p-column-title"> {rowData.usr.Name.First}</span>
+            <span className="p-column-title"> {rowData.assigned[0].name} {rowData.assigned[0].nameFather} {rowData.assigned[0].nameMother}</span>
             <span style={{verticalAlign: 'middle', marginLeft: '.5em'}}>{rowData.representative}</span>
         </React.Fragment>
     );
@@ -234,12 +234,12 @@ deadlineBodynose =() =>{
             </Box>
             <br />
             <DataTable value={this.state.clientsList}>
-              <Column field='razon' body={this.dateBodyTemplate} />
-              <Column field='deadline' body={this.deadlineBodynose} />
-              <Column field='Name' body={this.representativeBodyTemplate }/>
-              <Column field='option' body={this.progressBodyTemplate} />
-              <Column field='Status' body={this.statusBodyTemplate}/>
-              <Column field='option' body={this.opccionBodyTeemple} />
+              <Column field='razon' body={this.dateBodyTemplate} header='Razon Social'/>
+              <Column field='deadline' body={this.deadlineBodynose} header='Plazo'/>
+              <Column field='Name' body={this.representativeBodyTemplate } header='Nombre'/>
+              <Column field='progress' body={this.progressBodyTemplate} header='Progreso'/>
+              <Column field='Status' body={this.statusBodyTemplate} header='Estado'/>
+              <Column field='option' body={this.opccionBodyTeemple} header='Opciones'/>
             </DataTable>
             <br />
             <Grid
