@@ -12,7 +12,6 @@ import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
-import { IntlProvider } from 'rsuite';
 import esES from 'rsuite/lib/IntlProvider/locales/';
 
 
