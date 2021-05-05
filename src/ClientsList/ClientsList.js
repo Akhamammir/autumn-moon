@@ -11,6 +11,7 @@ import { OverlayPanel } from 'primereact/overlaypanel';
 import { Grommet, Box, Grid, Heading } from 'grommet';
 import { Avatar, Icon, InputGroup, Input, Button, IconButton } from 'rsuite';
 import axios from 'axios';
+import ProgressLine from 'rsuite/lib/Progress/ProgressLine';
 
 class ClientsList extends React.Component {
   constructor(props) {
@@ -86,8 +87,8 @@ class ClientsList extends React.Component {
     return (
         <React.Fragment>
             <img alt={rowData.representative} src={src} onError={(e) => e.target.src='https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} width="32" style={{verticalAlign: 'middle'}} />
-            <span className="p-column-title">Name</span>
-            <span style={{verticalAlign: 'middle', marginLeft: '.5em'}}>{rowData.representative}</span>
+            <span className="p-column-title"> {rowData.assigned[0].name} {rowData.assigned[0].nameFather} {rowData.assigned[0].nameMother}</span>
+            
         </React.Fragment>
     );
 }
@@ -98,6 +99,16 @@ dateBodyTemplate = (rowData) => {
           <span>{new Date().toLocaleString('es-MX', {year: 'numeric', month: 'numeric', day: 'numeric'} )}</span>
           <span>{rowData.date}</span>
       </React.Fragment>
+  );
+}
+progressBodyTemplate = () => {
+  return (
+    <React.Fragment>
+      <span >{<ProgressLine 
+      className="taskprogress"
+      percent='50'
+      />}</span>
+    </React.Fragment>
   );
 }
 statusBodyTemplate = () => {
@@ -223,11 +234,12 @@ deadlineBodynose =() =>{
             </Box>
             <br />
             <DataTable value={this.state.clientsList}>
-              <Column field='razon' body={this.dateBodyTemplate} />
-              <Column field='deadline' body={this.deadlineBodynose} />
-              <Column field='Name' body={this.representativeBodyTemplate }/>
-              <Column field='Status' body={this.statusBodyTemplate}/>
-              <Column field='option' body={this.opccionBodyTeemple} />
+              <Column field='razon' body={this.dateBodyTemplate} header='Razon Social' style={{width:'20%'}}/>
+              <Column field='deadline' body={this.deadlineBodynose} header='Plazo'style={{width:'10%'}}/>
+              <Column field='Name' body={this.representativeBodyTemplate } header='Nombre' style={{width:'30%'}}/>
+              <Column field='progress' body={this.progressBodyTemplate} header='Progreso' style={{width:'20%'}}/>
+              <Column field='Status' body={this.statusBodyTemplate} header='Estado' style={{width:'10%'}}/>
+              <Column field='option' body={this.opccionBodyTeemple} header='Opciones' style={{width:'10%'}}/>
             </DataTable>
             <br />
             <Grid

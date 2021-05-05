@@ -6,8 +6,9 @@ import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { SelectPicker, Icon, Button, Input, DateRangePicker, IconButton, DatePicker, Header } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header, SelectPicker, IntlProvider, InputPicker } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
+import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 import './ToDo.css';
 import {ArrowCircleRight, DownOne} from '@icon-park/react';
@@ -16,6 +17,13 @@ import esES from 'rsuite/lib/IntlProvider/locales/';
 
 
 const miliPerYear = 31536000000;
+const periodicidad = [
+  {label: 'Unica', value: 'UN'},
+  {label: 'Mensual', value: 'MES'},
+  {label: 'Bimestral', value: 'BIM'},
+  {label: 'Semestral', value: 'SEM'},
+  {label: 'Anual', value: 'AN'}
+];
 export default class ToDo extends Component {
   data = [
     {
@@ -3752,43 +3760,44 @@ export default class ToDo extends Component {
               onHide={() => this.onHide('displayadd')}
               dismissableMask={true}
             >
-              <Grid
-                className="grid"
-                rows={['xxsmall', 'xxsmall', 'xxsmall', '30vh', 'xsmall', 'xsmall']}
-                columns={['auto', 'auto', 'auto']}
-                gap="xsmall"
-                areas={[
-                  { name: 'priority', start: [0, 0], end: [0, 0] },
-                  { name: 'name', start: [0, 1], end: [1, 1] },
-                  { name: 'selectStat1', start: [2, 1], end: [2, 1] },
-                  { name: 'selectCat', start: [0, 2], end: [0, 2] },
-                  { name: 'selectClient', start: [1, 2], end: [1, 2] },
-                  { name: 'addSub', start: [0, 3], end: [2, 3] },
-                  { name: 'selectDate1', start: [0, 4], end: [0, 4] },
-                  { name: 'selectDate2', start: [1, 4], end: [1, 4] },
-                  { name: 'saveRemove', start: [2, 5], end: [2, 5] },
-
-                ]}
-              >
-                <Box direction='row' gridArea="priority" className="box">
-                  <SelectPicker
-                    appearance="default"
-                    placeholder="Prioridad"
-                    data={this.data} searchable={false}
-                    onChange={e => {
-                      this.state.new.priori = e;
-                      this.setState({ Does: 'nothing' })
-                    }}
-                    style={{ width: 130 }}
-                    renderMenuItem={(label, item) => {
-                      return (
-                        <div className={'selectLabel' + label}>
-                          {label}
-                        </div>
-                      );
-                    }}
-                  />
-                </Box>
+             <Grid
+              className="grid"
+              rows={['xxsmall', 'xxsmall', 'xxsmall', 'xsmall', 'xsmall', 'xsmall']}
+              columns={['auto', 'auto', 'auto']}
+              gap="xsmall"
+              areas={[
+                { name: 'priority', start: [0,0], end: [0,0] },
+                { name: 'period', start: [1,0], end: [1,0]},
+                { name: 'name', start: [0, 1], end: [1, 1] },
+                { name: 'selectStat1', start: [2, 1], end: [2, 1] },
+                { name: 'selectCat', start: [0, 2], end: [0, 2] },
+                { name: 'selectClient', start: [1,2], end: [1,2] },
+                { name: 'addSub', start: [0,3], end: [0,3] },
+                { name: 'selectStat2', start: [1,3], end: [1,3] },
+                { name: 'add', start: [2,3], end: [2,3] },
+                { name: 'selectDate1', start: [0,4], end: [0,4] },
+                { name: 'selectDate2', start: [2,4], end: [2,4] },
+                { name: 'saveRemove', start: [2,5], end: [2,5] },
+                
+              ]}
+            >
+              <Box direction='row' gridArea="priority" className="box">
+              <SelectPicker 
+              className="selectpicker"      
+              appearance="default"
+              placeholder="Prioridad"
+              style={{ width: 130 }} 
+              />
+              </Box>
+              <Box direction='row' gridArea="period" className="inputPickerBox">
+              <InputPicker 
+              placeholder="Periodicidad"
+              className="inputPicker"
+              data={periodicidad} style={{ width: 145 }} />
+              </Box>
+              <Box direction='row' gridArea="name" className="box">
+                <h2>Nombre de la Tarea</h2>
+              </Box>
 
                 <Box direction='row' gridArea="name" className="box">
                   <Input className="editTareaInput" placeholder="Nombre de Tarea"

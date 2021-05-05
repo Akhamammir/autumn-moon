@@ -151,6 +151,7 @@
 .box {
     background-color: transparent;
     align-items: center;
+    /*outline: thin gray dashed;*/
 
 }
 .box h2 {
@@ -159,6 +160,20 @@
 }
 .box button {
     padding-left: 12px;
+}
+.inputPickerBox {
+    background-color: transparent;
+    align-items: center;
+}
+.inputPickerBox .rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
+    color: blue;
+    text-align: center;
+    font-size: 16px;
+}
+.rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
+    color: white;
+    text-align: center;
+    font-size: 16px;
 }
 .boxText {
     background-color: transparent;
@@ -196,11 +211,11 @@
 .rs-picker-toggle {
     background-color: transparent !important;
 }
+
 .rs-picker-toggle-value{
     color: #00AB9B !important;
 }
 .rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
-    
     text-align: center;
     font-size: 16px;
     padding-top: 4px;
@@ -232,6 +247,8 @@
     background: rgb(196,196,196) !important;
     background: linear-gradient(90deg, #00AB9B  2%, rgba(255,255,255,1) 2%) !important;
 }
+
+
 .editTareaInput{
     text-align: center;
     font-size: 1.15rem;
@@ -278,6 +295,23 @@
 .selectpicker .rs-picker-toggle-caret {
     color: transparent;
 }
+.dropdown {
+    justify-content: left;
+    background-image: url('caret-down-solid.svg');
+    background-position: right;
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+.dropdown .rs-dropdown-toggle-caret {
+    margin-left: 4px;
+    color: transparent;
+}
+.dropdown .rs-btn-subtle {
+    color: rgb(177, 176, 176) !important;
+    font-family: calibri;
+    font-size: 16px;
+}
+
 .rs-picker-default .rs-btn, .rs-picker-input .rs-btn, .rs-picker-default .rs-picker-toggle, .rs-picker-input .rs-picker-toggle {
     background: transparent !important;
 }
@@ -293,4 +327,21 @@
     cursor: pointer;
     color: #00AB9B;
     border: 1px solid transparent;
+}
+.rs-picker-input:not(.rs-picker-disabled) .rs-picker-toggle {
+    padding-bottom: 0px;
+    padding-top: 6px;
+    left: 0px;
+}
+.inputPicker {
+    background-image: url('caret-down-solid.svg');
+    background-position: right;
+    background-size: 16px;
+    background-repeat: no-repeat;
+}
+.inputPicker .rs-picker-toggle-caret {
+    color: transparent;
+}
+.inputPicker, .rs-picker-input {
+    border: transparent !important;
 }

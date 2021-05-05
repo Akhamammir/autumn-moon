@@ -55,3 +55,7 @@ tr.p-highlight-contextmenu{
   background-color: #EFF313;
   color: #000000;
 }
+.taskprogress .rs-progress-line-bg {
+  background-color: #00A898;
+
+}
