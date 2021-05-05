@@ -6,7 +6,7 @@ import { DataTable } from 'primereact/datatable';
 import { TreeTable } from 'primereact/treetable';
 import { Column, Column as _Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
-import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header, SelectPicker, IntlProvider, InputPicker } from 'rsuite';
+import { Avatar, Icon, Button, Modal, Alert, Progress, IconButton, DatePicker, Header, SelectPicker, IntlProvider, InputPicker, DateRangePicker, Input  } from 'rsuite';
 import { Dialog } from 'primereact/dialog';
 import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
