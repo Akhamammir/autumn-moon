@@ -138,6 +138,7 @@
     height: 40px;
     padding: 0;
     margin-right: 20px;
+    vertical-align: -130%;
 }
 
 .downOne {
@@ -203,25 +204,18 @@
     background-repeat: no-repeat;
     margin-right: 10px;
 }
-.rs-picker-date .rs-picker-toggle-clean, .rs-picker-daterange .rs-picker-toggle-clean {
-    right: 38px;
-    padding-top: 6px;
-}
-.dateLeft .rs-picker-toggle-caret {
-    color: white;
-    padding-top: 2px;
-}
-.dateRight .rs-picker-toggle-caret {
-    color: white;
-    padding-top: 2px;
+.rs-picker-toggle-caret {
+    color: #00AB9B;
 }
 
 .rs-picker-toggle {
     background-color: transparent !important;
 }
 
-.topDate {
-    color: white;
+.rs-picker-toggle-value{
+    color: #00AB9B !important;
+}
+.rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value {
     text-align: center;
     font-size: 16px;
     padding-top: 4px;
@@ -245,20 +239,49 @@
 }
 .p-dialog .p-dialog-header {
     background: rgb(196,196,196) !important;
-    background: linear-gradient(90deg, rgba(196,196,196,1) 2%, rgba(255,255,255,1) 2%) !important;
+    background: linear-gradient(90deg, #00AB9B 2%, rgba(255,255,255,1) 2%) !important;
     padding-left: 26px !important;
 }
 
 .p-dialog .p-dialog-content {
     background: rgb(196,196,196) !important;
-    background: linear-gradient(90deg, rgba(196,196,196,1) 2%, rgba(255,255,255,1) 2%) !important;
+    background: linear-gradient(90deg, #00AB9B  2%, rgba(255,255,255,1) 2%) !important;
 }
-.grid {
-    /*outline: thin gray dashed;*/
-}
-.rs-picker-toggle .rs-picker-toggle-placeholder {
 
-    color: rgb(165, 165, 165);
+
+.editTareaInput{
+    text-align: center;
+    font-size: 1.15rem;
+}
+.editTareaBox {
+    margin-top:1px;
+    width:100%;
+}
+
+.selectLabelBaja{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #00AB9B;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.selectLabelMedia{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #F4C004;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.selectLabelAlta{
+    font-family: 'Manjari', sans-serif ;
+    background-color: #ed5151;
+    padding: 10px;
+    font-weight: 400;
+    color: white;
+}
+.rs-picker-select-menu-item{
+    padding: 0 !important;
+    color: gray;
     font-family: calibri;
     font-size: 16px;
 }
@@ -302,7 +325,7 @@
     display: inline-block;
     outline: none;
     cursor: pointer;
-    color: #575757;
+    color: #00AB9B;
     border: 1px solid transparent;
 }
 .rs-picker-input:not(.rs-picker-disabled) .rs-picker-toggle {
