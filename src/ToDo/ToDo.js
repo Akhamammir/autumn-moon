@@ -24,6 +24,9 @@ const periodicidad = [
   {label: 'Semestral', value: 'SEM'},
   {label: 'Anual', value: 'AN'}
 ];
+const clientList = [
+  {label: 'Pase Usted S.A.P.I'}
+];
 export default class ToDo extends Component {
   
   toast = {}
@@ -40,14 +43,13 @@ export default class ToDo extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
   handleChange(value) {
     this.setState({
       value
     });
     console.log(typeof value, value);
   }
-  
+
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -3255,6 +3257,7 @@ export default class ToDo extends Component {
       </React.Fragment>
     )
   }
+
   render() {
     return (
       <Grommet plain className='App'>
@@ -3294,7 +3297,8 @@ export default class ToDo extends Component {
                 className='GreenLetter'
                 textAlign='center'
                 >
-                  Pase Usted S.A.P.I
+              <InputPicker className='inputPickerCliente' data={clientList} placeholder='Seleccione cliente...'/>
+                  
               </Heading>
               <IconButton
                 className="clear first"

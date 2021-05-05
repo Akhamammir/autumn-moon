@@ -78,10 +78,10 @@ class NavBar extends React.Component {
                   <Dropdown
                     placement="rightStart"
                     eventKey="5"
-                    title="Logout"
+                    title="Sign out"
                     icon={<Icon icon="sign-out" />}
                   >
-                    <Dropdown.Item eventKey="5" icon={<Icon icon="group" />} onClick={() => this.Logout()} >
+                    <Dropdown.Item eventKey="5" icon={<Icon icon="user-times" />} onClick={() => this.Logout()} >
                       Cerrar Sesion
                     </Dropdown.Item>
                   </Dropdown>
