@@ -238,11 +238,6 @@
     color: white;
     padding-top: 1px;
 }
-.dateLeft .rs-btn .rs-picker-toggle-value, .dateRight .rs-btn .rs-picker-toggle-value, .topDate .rs-btn .rs-picker-toggle-value {
-    color: white !important;
-    text-align: center;
-    font-size: 16px;
-}
 
 .rs-picker-date .rs-picker-toggle.rs-btn-sm .rs-picker-toggle-clean, .rs-picker-daterange .rs-picker-toggle.rs-btn-sm .rs-picker-toggle-clean {
     right: 28px;
@@ -320,39 +315,10 @@
     background-position: right;
     background-size: 16px;
     background-repeat: no-repeat;
-
 }
 .inputPicker .rs-picker-toggle-caret {
     color: transparent;
 }
 .inputPicker, .rs-picker-input {
     border: transparent !important;
-}
-.inputPickerCliente {
-    /*outline: thin solid rgb(189, 189, 189);*/
-    width: 400px !important;
-    height: 50px;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 11%), 0 2px 2px rgb(0 0 0 / 11%), 0 4px 4px rgb(0 0 0 / 11%), 0 6px 8px rgb(0 0 0 / 11%), 0 8px 16px rgb(0 0 0 / 11%);
-
-}
-.inputPickerCliente .rs-picker-toggle-caret {
-    /*color: transparent;*/
-    padding-top: 5px !important;
-}
-.inputPickerCliente .rs-picker-toggle-clean {
-    /*color: transparent;*/
-    padding-top: 5px !important;
-}
-.inputPickerCliente .rs-picker-toggle .rs-picker-toggle-placeholder {
-    color: #8e8e93;
-    font-family: calibri;
-    font-size: 22px;
-
-}
-.inputPickerCliente .rs-btn .rs-picker-toggle-value {
-    color: #8e8e93 !important;
-    text-align: left;
-    font-size: 24px !important;
-    font-weight: bold;
-    width: max-content !important;
 }
