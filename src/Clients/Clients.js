@@ -58,7 +58,7 @@ class ClientReg extends React.Component {
       arrayCtaCed: ['Roses are red',], arrayCtaIsh: ['Roses are red',],
       arrayIshUsr: ['Roses are red'], arrayIsnUsr: ['Roses are red'],
       arrayCedUsr: ['Roses are red'], arrayRtpUsr: ['Roses are red'],
-      arrayBuzonT:['Roses are red'],
+      arrayBuzonT: ['Roses are red'],
       regFiscal: [],
       isn: '',
       rtp: '',
@@ -92,146 +92,216 @@ class ClientReg extends React.Component {
       fonaList: [{ cta: '', _id: this.uuidShort() }], fonaUsrList: [{ user: '', pwd: '', _id: this.uuidShort() }],
       buzonT: [{ cta: '', _id: this.uuidShort() }],
       rowSelected: "",
-      team: "",Team: "",
-      assimNomina: [], nomina:[],
+      team: "", Team: "",
+      assimNomina: [], nomina: [],
       searchT: '',
       clientsList: [
         {
-          Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(), 
+          Name: 'Recepción de documentos', _id: this.uuidShort(), Date: new Date(),
           Status: 1,
           children: [
             {
               Area: 'Recepción de documentos', Name: 'Envío de correo', Priori: 2, Advent: 30,
               Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
               children: [
-                {Area: 'Recepción de documentos', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'Recepción de documentos', Name: 'Reportes internos-1', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-              {Area: 'Recepción de documentos', Name: 'Movimientos bancarios', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
+                {
+                  Area: 'Recepción de documentos', Name: 'Estados de cuenta', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Recepción de documentos', Name: 'Reportes internos-1', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Recepción de documentos', Name: 'Movimientos bancarios', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
               ]
             }
           ]
         },
-        {Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'Contable Terminada', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
-            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-            {Area: 'Contable Terminada', Name: 'CM-1', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
-            ]
-          }
-        ]},
-        {Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
-            Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            {Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
-            Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
-            ]
-          }
-        ]},
-        {Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'Seguridad Social', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'Seguridad Social', Name: 'Correo envío Línea de captura', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-              {Area: 'Seguridad Social', Name: 'Comprobante de pago (PDF/JPG)', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento IMSS (PDF)', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-              {Area: 'Seguridad Social', Name: 'Opinión de cumplimiento INFONAVIT (PDF)', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),}
-            ]
-          }
-        ]},
-        {Name: 'D y P', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'D y P', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'D y P', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-              {Area: 'D y P', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'D y P', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-              {Area: 'D y P', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'D y P', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            ]
-          }
-        ]},
-        {Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'DIOT/ DPIVA', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'DIOT/ DPIVA', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            ]
-          }
-        ]},
-        {Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-            children: [
-              {Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
-              Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),},
-              {Area: 'Estados financieros', Name: 'Junta de resultados', Priori: '0', Advent: 40,
-              Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),},
-            ]
-          }
-        ]},
-        {Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(), 
-        Status: 1,
-        children: [
-          {
-            Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
-            Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
-          }
-        ]}
+        {
+          Name: 'Contabilidad Terminada', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'Contable Terminada', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'Contable Terminada', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Contable Terminada', Name: 'CM-1', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                }
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'Impuestos Estatales', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'Impuestos Estatales', Name: 'ISN PT (PDF) (CB)', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'ISN Correo envío Línea de captura (CB) ', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'RTP PT (PDF) (CB)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'RTP  Correo envío Línea de captura', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'ISH PT (PDF) (CB)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'ISH  Correo envío Línea de captura ', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Impuestos Estatales', Name: 'RTP Comprobante de pago (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                }
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'Seguridad Social', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'Seguridad Social', Name: 'Conciliación bancaria', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'Seguridad Social', Name: 'Confronta IDSE - SUA- PT', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Seguridad Social', Name: 'Correo envío Línea de captura', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Seguridad Social', Name: 'Comprobante de pago (PDF/JPG)', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Seguridad Social', Name: 'Opinión de cumplimiento IMSS (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Seguridad Social', Name: 'Opinión de cumplimiento INFONAVIT (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                }
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'D y P', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'D y P', Name: 'Línea de Captura (PDF)', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'D y P', Name: 'Papel de trabajo', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'D y P', Name: 'Declaración (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'D y P', Name: 'Informe mensual (PDF)', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'D y P', Name: 'Opinión de cumplimiento (PDF)', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'D y P', Name: 'Correo envío Línea de captura (CB)', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'D y P', Name: 'Comprobante de pago', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'DIOT/ DPIVA', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'DIOT/ DPIVA', Name: 'Acuse de aceptación (PDF) ', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'DIOT/ DPIVA', Name: 'Detalle de declaración (PDF)', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'DIOT/ DPIVA', Name: 'Reporte A-29 /CONTPAQi (PDF) ', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'Estados Financieros', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'Estados financieros', Name: 'Estados financieros', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+              children: [
+                {
+                  Area: 'Estados financieros', Name: 'Informe Ejecutivo', Priori: 1, Advent: 20,
+                  Date: new Date(), Status: 0, Files: [''], key: this.uuidShort(),
+                },
+                {
+                  Area: 'Estados financieros', Name: 'Junta de resultados', Priori: '0', Advent: 40,
+                  Date: new Date(), Status: 2, Files: [''], key: this.uuidShort(),
+                },
+              ]
+            }
+          ]
+        },
+        {
+          Name: 'Pre-cierre', _id: this.uuidShort(), Date: new Date(),
+          Status: 1,
+          children: [
+            {
+              Area: 'Pre-cierre', Name: 'Informe pre-cierre', Priori: 2, Advent: 30,
+              Date: new Date(), Status: 1, Files: [''], key: this.uuidShort(),
+            }
+          ]
+        }
       ],
     };
   }
@@ -282,7 +352,7 @@ class ClientReg extends React.Component {
   };
   handleChangeLimit = (value, field) => {
     console.log(value, field);
-    if( value.length < ( this.state.pPhys ? 13 : 14 ) ){
+    if (value.length < (this.state.pPhys ? 13 : 14)) {
       console.log(value.length)
       this.setState({ [field]: value }, () => {
         console.log(this.state);
@@ -422,7 +492,7 @@ class ClientReg extends React.Component {
       S.Name.Last.includes(this.state.searchT) || S.Name.Last2.includes(this.state.searchT)))
   }
   equipos = (param) => {
-    this.setState({team:param, Team:param})
+    this.setState({ team: param, Team: param })
   }
   nomBox = (props) => {
     let nomina = [
@@ -463,21 +533,21 @@ class ClientReg extends React.Component {
                 </Heading>
               <CheckPicker
                 value={this.state[value]}
-                onChange={this[props.assim ? 'metNomina2' :'metNomina']}
+                onChange={this[props.assim ? 'metNomina2' : 'metNomina']}
                 data={datum}
                 style={{ width: 224 }}
               />
             </Box>
             <br />
             <Box direction='row'>
-              <Text className='GreenLetter'>{this.state[props.assim ? 'Resultado3':'Resultado2']}</Text>
+              <Text className='GreenLetter'>{this.state[props.assim ? 'Resultado3' : 'Resultado2']}</Text>
             </Box>
             <br />
             <br />
           </Box>
         ) : (
-            <span></span>
-          )}
+          <span></span>
+        )}
         <br />
       </Box>
     );
@@ -647,7 +717,7 @@ class ClientReg extends React.Component {
             boxw='90px'
             textw='medium'
             icon='id-mapping'
-            role={ !( RoleMaker(this.state.role) > 0 ) }
+            
           />
           <Toggle
             size='lg'
@@ -671,7 +741,7 @@ class ClientReg extends React.Component {
             boxw='170px'
             textw='medium'
             icon='id-mapping'
-            role={ !( RoleMaker(this.state.role) > 0 ) }
+            
 
           />
         </Box>
@@ -687,7 +757,7 @@ class ClientReg extends React.Component {
             onChange={(e) => {
               this.handleChange(e, 'fiscal');
             }}
-            role={ !( RoleMaker(this.state.role) > 0 ) }
+            
           />
         </Box>
         <br />
@@ -702,20 +772,20 @@ class ClientReg extends React.Component {
               width='60%'
               icon='id-card'
               display={this.state.pPhys}
-              role={ !( RoleMaker(this.state.role) > 0 ) }
+              
             />
           ) : (
-              <DecoratedInput
-                area='RNIE'
-                value={this.state.rine}
-                onChange={(e) => {
-                  this.handleChange(e, 'rine');
-                }}
-                width='60%'
-                icon='peoples-map'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
-              />
-            )}
+            <DecoratedInput
+              area='RNIE'
+              value={this.state.rine}
+              onChange={(e) => {
+                this.handleChange(e, 'rine');
+              }}
+              width='60%'
+              icon='peoples-map'
+              
+            />
+          )}
           <DecoratedInput
             area='RFC'
             value={this.state.rfc}
@@ -724,7 +794,7 @@ class ClientReg extends React.Component {
             }}
             width='60%'
             icon='id-card'
-            role={ !( RoleMaker(this.state.role) > 0 ) }
+            
           />
         </Box>
         <br />
@@ -738,7 +808,7 @@ class ClientReg extends React.Component {
             width='60%'
             type='number'
             icon='mobile'
-            role={ !( RoleMaker(this.state.role) > 0 ) }
+            
           />
         </Box>
         <br />
@@ -778,7 +848,7 @@ class ClientReg extends React.Component {
                         boxw='65px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='Calle y N.'
@@ -790,7 +860,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='C.P.'
@@ -802,7 +872,7 @@ class ClientReg extends React.Component {
                         boxw='60px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='Estado'
@@ -814,7 +884,7 @@ class ClientReg extends React.Component {
                         boxw='80px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -844,95 +914,95 @@ class ClientReg extends React.Component {
               />
             </Box>
           ) : (
-              <span></span>
-            )}
+            <span></span>
+          )}
           <br />
           <br />
         </Box>
         {!this.state.pPhys ? (
           <span></span>
         ) : (
-            <Box>
-              <Box direction='row'>
-                <Heading margin='small' level={5} className='GreenLetter'
-                  style={{
-                    color: '#515253',
-                  }}
-                >
-                  ¿El cliente cuenta con socios extranjeros?
+          <Box>
+            <Box direction='row'>
+              <Heading margin='small' level={5} className='GreenLetter'
+                style={{
+                  color: '#515253',
+                }}
+              >
+                ¿El cliente cuenta con socios extranjeros?
               </Heading>
-                <Toggle
-                  size='lg'
-                  checkedChildren='Si'
-                  unCheckedChildren='No'
-                  className='PushDown'
-                  checked={this.state.extran}
-                  onChange={() => {
-                    this.setState({ extran: !this.state.extran });
+              <Toggle
+                size='lg'
+                checkedChildren='Si'
+                unCheckedChildren='No'
+                className='PushDown'
+                checked={this.state.extran}
+                onChange={() => {
+                  this.setState({ extran: !this.state.extran });
+                }}
+              />
+            </Box>
+            <br />
+            {this.state.extran ?
+              <Box>
+                <List hover className='ListColor'>
+                  {this.state.foreignPartner.map((item, index) => (
+                    <List.Item key={index} index={index} className='Pad'>
+                      <Box direction='row'>
+                        <DecoratedInput
+                          area='Nombre'
+                          value={this.state.foreignList[index].name}
+                          onChange={(e) => {
+                            this.handleChangeList(e, 'foreignList', index, 'name');
+                          }}
+                          width='300px'
+                          boxw='90px'
+                          textw='medium'
+                          icon='id-mapping'
+                          
+                        />
+                        <DecoratedInput
+                          area='RFC'
+                          value={this.state.foreignList[index].rfc}
+                          onChange={(e) => {
+                            this.handleChangeList(e, 'foreignList', index, 'rfc');
+                          }}
+                          width='250px'
+                          boxw='80px'
+                          textw='medium'
+                          icon='id-mapping'
+                          
+                        />
+                        <IconButton
+                          icon={<Icon icon='close' />}
+                          circle
+                          size='md'
+                          onClick={() => {
+                            this.MetodoPop('foreignPartner', 'foreignList', this.state.foreignList[index]._id);
+                          }}
+                        />
+                      </Box>
+                    </List.Item>
+                  ))}
+                </List>
+                <br />
+                <IconButton
+                  icon={<Icon icon='plus' />}
+                  circle
+                  size='md'
+                  onClick={() => {
+                    this.MetodoPush('foreignPartner', 'foreignList', {
+                      name: '',
+                      rfc: '', _id: this.uuidShort()
+                    });
                   }}
                 />
               </Box>
-              <br />
-              {this.state.extran ?
-                <Box>
-                  <List hover className='ListColor'>
-                    {this.state.foreignPartner.map((item, index) => (
-                      <List.Item key={index} index={index} className='Pad'>
-                        <Box direction='row'>
-                          <DecoratedInput
-                            area='Nombre'
-                            value={this.state.foreignList[index].name}
-                            onChange={(e) => {
-                              this.handleChangeList(e, 'foreignList', index, 'name');
-                            }}
-                            width='300px'
-                            boxw='90px'
-                            textw='medium'
-                            icon='id-mapping'
-                            role={ !( RoleMaker(this.state.role) > 0 ) }
-                          />
-                          <DecoratedInput
-                            area='RFC'
-                            value={this.state.foreignList[index].rfc}
-                            onChange={(e) => {
-                              this.handleChangeList(e, 'foreignList', index, 'rfc');
-                            }}
-                            width='250px'
-                            boxw='80px'
-                            textw='medium'
-                            icon='id-mapping'
-                            role={ !( RoleMaker(this.state.role) > 0 ) }
-                          />
-                          <IconButton
-                            icon={<Icon icon='close' />}
-                            circle
-                            size='md'
-                            onClick={() => {
-                              this.MetodoPop('foreignPartner', 'foreignList', this.state.foreignList[index]._id);
-                            }}
-                          />
-                        </Box>
-                      </List.Item>
-                    ))}
-                  </List>
-                  <br />
-                  <IconButton
-                    icon={<Icon icon='plus' />}
-                    circle
-                    size='md'
-                    onClick={() => {
-                      this.MetodoPush('foreignPartner', 'foreignList', {
-                        name: '',
-                        rfc: '', _id: this.uuidShort()
-                      });
-                    }}
-                  />
-                </Box>
-                : <span></span>
-              }
-              <br />
-            </Box>
-          )}
+              : <span></span>
+            }
+            <br />
+          </Box>
+        )}
         <Button
           style={{
             backgroundColor: "#06554C",
@@ -979,7 +1049,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='user-o'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <DecoratedInput
                     area='Email'
@@ -991,7 +1061,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='user-o'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <DecoratedInput
                     area='Telefono'
@@ -1009,7 +1079,7 @@ class ClientReg extends React.Component {
                     textw='medium'
                     icon='mobile'
                     type='number'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <IconButton
                     icon={<Icon icon='close' />}
@@ -1063,7 +1133,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-mapping'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <DecoratedInput
                     area='Email'
@@ -1075,7 +1145,7 @@ class ClientReg extends React.Component {
                     width='350px'
                     textw='medium'
                     icon='user-o'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <DecoratedInput
                     area='Telefono'
@@ -1088,7 +1158,7 @@ class ClientReg extends React.Component {
                     textw='medium'
                     icon='mobile'
                     type='number'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <br />
                   <br />
@@ -1104,7 +1174,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <DecoratedInput
                     area='Curp'
@@ -1116,7 +1186,7 @@ class ClientReg extends React.Component {
                     boxw='100px'
                     textw='medium'
                     icon='id-card'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                   <IconButton
                     icon={<Icon icon='close' />}
@@ -1155,47 +1225,47 @@ class ClientReg extends React.Component {
         </Box>
         <br />
         <Box direction='row'>
-        <Box>
-        <InputGroup
-          style={{
-            width: 270,
-            overflow: 'visible',
-            border: 'none',
-            borderRadius: '90px'
-          }} >
-          <Input
-            style={{ boxShadow: 'none', width: 240, paddingRight: '11px' }}
-            placeholder="Usuario"
-            className="inputLog"
-            value={this.state.searchT}
-            onChange={(e) => {
-              this.setState({ searchT: e });
-            }}
-          />
-          <InputGroup.Button
-            style={{
-              paddingLeft: '25px',
-              paddingRight: '11px',
-              top: '0.2px',
-              backgroundColor: '#00AB9B',
-              color: '#F2F3F4',
-              borderRadius: '0px 100px 100px 0px',
-              right: '20px'
-            }}
-            onClick={this.filteruser}
-          >
-            <Icon icon="search" />
-          </InputGroup.Button>
-        </InputGroup>
-        </Box>
-        <Box className="p-buttonset" direction='row' style={{marginLeft:'1.5em'}} >
-          <ButtonPrime label="Team A"  style={{background:'#00AB9B'}} onClick={() => this.equipos('A')}/>
-          <ButtonPrime label="Team B"  style={{background:'#00AB9B'}} onClick={() => this.equipos('B')}/>
-          <ButtonPrime label="Team C"  style={{background:'#00AB9B'}} onClick={() => this.equipos('C')}/>
-          <ButtonPrime label="Team D"  style={{background:'#00AB9B'}} onClick={() => this.equipos('D')}/>
-          <ButtonPrime label="Team E"  style={{background:'#00AB9B'}} onClick={() => this.equipos('E')}/>
-          <ButtonPrime label="Admon"  style={{background:'#00AB9B'}} onClick={() => this.equipos('Admon')}/>
-        </Box>
+          <Box>
+            <InputGroup
+              style={{
+                width: 270,
+                overflow: 'visible',
+                border: 'none',
+                borderRadius: '90px'
+              }} >
+              <Input
+                style={{ boxShadow: 'none', width: 240, paddingRight: '11px' }}
+                placeholder="Usuario"
+                className="inputLog"
+                value={this.state.searchT}
+                onChange={(e) => {
+                  this.setState({ searchT: e });
+                }}
+              />
+              <InputGroup.Button
+                style={{
+                  paddingLeft: '25px',
+                  paddingRight: '11px',
+                  top: '0.2px',
+                  backgroundColor: '#00AB9B',
+                  color: '#F2F3F4',
+                  borderRadius: '0px 100px 100px 0px',
+                  right: '20px'
+                }}
+                onClick={this.filteruser}
+              >
+                <Icon icon="search" />
+              </InputGroup.Button>
+            </InputGroup>
+          </Box>
+          <Box className="p-buttonset" direction='row' style={{ marginLeft: '1.5em' }} >
+            <ButtonPrime label="Team A" style={{ background: '#00AB9B' }} onClick={() => this.equipos('A')} />
+            <ButtonPrime label="Team B" style={{ background: '#00AB9B' }} onClick={() => this.equipos('B')} />
+            <ButtonPrime label="Team C" style={{ background: '#00AB9B' }} onClick={() => this.equipos('C')} />
+            <ButtonPrime label="Team D" style={{ background: '#00AB9B' }} onClick={() => this.equipos('D')} />
+            <ButtonPrime label="Team E" style={{ background: '#00AB9B' }} onClick={() => this.equipos('E')} />
+            <ButtonPrime label="Admon" style={{ background: '#00AB9B' }} onClick={() => this.equipos('Admon')} />
+          </Box>
         </Box>
         <br />
         <br />
@@ -1223,122 +1293,131 @@ class ClientReg extends React.Component {
           </Column>
           <Column flexGrow={2} align='center' fixed>
             <HeaderCell>Nombre</HeaderCell>
-            <Cell dataKey='Name.First' />
+            <Cell>
+              {rowData => (
+                rowData.Name.First
+              )}</Cell>
           </Column>
           <Column flexGrow={2} fixed>
             <HeaderCell>Apellido Paterno</HeaderCell>
-            <Cell dataKey='Name.Last' />
-          </Column>
-          <Column flexGrow={2}>
-            <HeaderCell>Apellido Materno</HeaderCell>
-            <Cell dataKey='Name.Last2' />
-          </Column>
-          <Column flexGrow={1}>
-            <HeaderCell>Puesto</HeaderCell>
-            <Cell dataKey='Pos' />
-          </Column>
-          <Column flexGrow={1}>
-            <HeaderCell>Rol</HeaderCell>
-            <Cell dataKey='Role' />
-          </Column>
-          <Column flexGrow={2} fixed='right'>
-            <HeaderCell>Action</HeaderCell>
-            <Cell>
-              {(rowData) => {
-                this.showUser = () => {
-                  let _assigned = this.state.assigned;
-                  _assigned.push({
-                    name: rowData.Name.First,
-                    nameFather: rowData.Name.Last,
-                    nameMother: rowData.Name.Last2,
-                    pos: rowData.Pos,
-                    team: rowData.team,
-                    _id: rowData._id,
-                  })
-                  this.setState({
-                    assigned: _assigned,
-                  });
-                };
-                this.removeUser = () => {
-                  let _assigned = this.state.assigned;
-                  _assigned = _assigned.filter(usr => usr._id !== rowData._id);
-                  this.setState({
-                    assigned:_assigned
-                  })
-                };
-                return (
-                  (rowData ?
-                    (this.state.assigned.find(usr => usr._id === rowData._id) !== undefined ?
-                      <span>
-                        <ButtonPrime
-                          label="Borrar"
-                          className="p-button-text p-button-plain usrTblBut"
-                          onClick={this.removeUser}/>
-                      </span> 
-                      :
-                      <span>
-                        <ButtonPrime
-                          label="Seleccionar"
-                          className="p-button-text p-button-plain usrTblBut standby"
-                          onClick={this.showUser}/>
-                      </span>
-                    )
-                    :
-                      <span>
-                        <ButtonPrime
-                          label="Seleccionar"
-                          className="p-button-text p-button-plain usrTblBut standby"
-                          onClick={this.showUser}/>
-                      </span>
-                    )
-                );
-              }}
+            <Cell >
+            {rowData => (
+                rowData.Name.Last
+              )}
             </Cell>
           </Column>
+        <Column flexGrow={2}>
+          <HeaderCell>Apellido Materno</HeaderCell>
+          <Cell >
+            {rowData => (
+                rowData.Name.Last2
+              )}
+            </Cell>
+        </Column>
+        <Column flexGrow={1}>
+          <HeaderCell>Puesto</HeaderCell>
+          <Cell dataKey='Pos' />
+        </Column>
+        <Column flexGrow={2} fixed='right'>
+          <HeaderCell>Action</HeaderCell>
+          <Cell>
+            {(rowData) => {
+              this.showUser = () => {
+                let _assigned = this.state.assigned;
+                _assigned.push({
+                  name: rowData.Name.First,
+                  nameFather: rowData.Name.Last,
+                  nameMother: rowData.Name.Last2,
+                  pos: rowData.Pos,
+                  team: rowData.team,
+                  _id: rowData._id,
+                })
+                this.setState({
+                  assigned: _assigned,
+                });
+              };
+              this.removeUser = () => {
+                let _assigned = this.state.assigned;
+                _assigned = _assigned.filter(usr => usr._id !== rowData._id);
+                this.setState({
+                  assigned: _assigned
+                })
+              };
+              return (
+                (rowData ?
+                  (this.state.assigned.find(usr => usr._id === rowData._id) !== undefined ?
+                    <span>
+                      <ButtonPrime
+                        label="Borrar"
+                        className="p-button-text p-button-plain usrTblBut"
+                        onClick={this.removeUser} />
+                    </span>
+                    :
+                    <span>
+                      <ButtonPrime
+                        label="Seleccionar"
+                        className="p-button-text p-button-plain usrTblBut standby"
+                        onClick={this.showUser} />
+                    </span>
+                  )
+                  :
+                  <span>
+                    <ButtonPrime
+                      label="Seleccionar"
+                      className="p-button-text p-button-plain usrTblBut standby"
+                      onClick={this.showUser} />
+                  </span>
+                )
+              );
+            }}
+          </Cell>
+        </Column>
         </Table>
-        {this.state.assigned._id ? (
-          <>
-            <Box direction='row'>
-              <Heading margin='small' level={5} className='GreenLetter'>
-                Detalles del responsable seleccionado
+        {
+      this.state.assigned._id ? (
+        <>
+          <Box direction='row'>
+            <Heading margin='small' level={5} className='GreenLetter'>
+              Detalles del responsable seleccionado
               </Heading>
-              <br />
-            </Box>
-            <Box direction='row'>
-              <DecoratedInput
-                area='Nombre'
-                value={`${this.state.assigned.name} ${this.state.assigned.nameFather} ${this.state.assigned.nameMother}`}
-                width='380px'
-                boxw='100px'
-                textw='medium'
-                icon='user-o'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
-                display
-              />
+            <br />
+          </Box>
+          <Box direction='row'>
+            <DecoratedInput
+              area='Nombre'
+              value={`${this.state.assigned.name} ${this.state.assigned.nameFather} ${this.state.assigned.nameMother}`}
+              width='380px'
+              boxw='100px'
+              textw='medium'
+              icon='user-o'
 
-              <DecoratedInput
-                area='Puesto'
-                value={this.state.assigned.pos == null ? "NA" : this.state.assigned.pos}
-                width='380px'
-                boxw='100px'
-                textw='medium'
-                icon='user-o'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
-                display
-              />
-              <DecoratedInput
-                area='Equipo'
-                value={this.state.assigned.team == null ? "NA" : this.state.assigned.team}
-                width='250px'
-                boxw='100px'
-                textw='medium'
-                icon='group'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
-                display
-              />
-            </Box>
-          </>
-        ) : null}
+              display
+            />
+
+            <DecoratedInput
+              area='Puesto'
+              value={this.state.assigned.pos == null ? "NA" : this.state.assigned.pos}
+              width='380px'
+              boxw='100px'
+              textw='medium'
+              icon='user-o'
+              
+              display
+            />
+            <DecoratedInput
+              area='Equipo'
+              value={this.state.assigned.team == null ? "NA" : this.state.assigned.team}
+              width='250px'
+              boxw='100px'
+              textw='medium'
+              icon='group'
+              
+              display
+            />
+          </Box>
+        </>
+      ) : null
+    }
         <br />
         <Box direction='row'>
           <Button
@@ -1371,11 +1450,11 @@ class ClientReg extends React.Component {
               () => this.forward()
             }
           >
-            Siguiente&nbsp;&nbsp;
+          Siguiente&nbsp;&nbsp;
             <Icon icon='hand-o-right' />
           </Button>
         </Box>
-      </Box>
+      </Box >
     );
   };
   StepTree = () => {
@@ -1469,7 +1548,7 @@ class ClientReg extends React.Component {
         <br />
         <Box direction='row'>
           <Box>
-          <Heading margin='small' level={4} style={{textAlign:'start'}}>SAT:</Heading>
+            <Heading margin='small' level={4} style={{ textAlign: 'start' }}>SAT:</Heading>
             <Box direction='row'>
               <DecoratedInput
                 area='RFC'
@@ -1478,7 +1557,7 @@ class ClientReg extends React.Component {
                 boxw='65px'
                 textw='medium'
                 icon='id-mapping'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
+                
               />
               <DecoratedInput
                 area='Contraseña'
@@ -1492,7 +1571,7 @@ class ClientReg extends React.Component {
                 boxw='110px'
                 textw='medium'
                 icon='id-mapping'
-                role={ !( RoleMaker(this.state.role) > 0 ) }
+                
               />
             </Box>
           </Box>
@@ -1515,8 +1594,8 @@ class ClientReg extends React.Component {
                     boxw='60px'
                     textw='medium'
                     icon='id-mapping'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
-                  />  
+                    
+                  />
                   <DecoratedInput
                     area='Contraseña'
                     value={this.state.RNIEUsr.pwd}
@@ -1529,7 +1608,7 @@ class ClientReg extends React.Component {
                     boxw='95px'
                     textw='medium'
                     icon='id-mapping'
-                    role={ !( RoleMaker(this.state.role) > 0 ) }
+                    
                   />
                 </Box>
               </span>
@@ -1565,7 +1644,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1577,7 +1656,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                     </Box>
                     <br />
@@ -1592,7 +1671,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1604,7 +1683,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                     </Box>
                     <br />
@@ -1619,7 +1698,7 @@ class ClientReg extends React.Component {
                         boxw='100px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <DecoratedInput
                         area='Contraseña'
@@ -1631,7 +1710,7 @@ class ClientReg extends React.Component {
                         boxw='120px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                     </Box>
                   </span>
@@ -1647,7 +1726,7 @@ class ClientReg extends React.Component {
                       boxw='100px'
                       textw='medium'
                       icon='id-mapping'
-                      role={ !( RoleMaker(this.state.role) > 0 ) }
+                      
                     />
                     <DecoratedInput
                       area='Contraseña'
@@ -1659,7 +1738,7 @@ class ClientReg extends React.Component {
                       boxw='120px'
                       textw='medium'
                       icon='id-mapping'
-                      role={ !( RoleMaker(this.state.role) > 0 ) }
+                      
                     />
                     <IconButton
                       icon={<Icon icon='close' />}
@@ -1709,7 +1788,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Registro Patronal"
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1763,7 +1842,7 @@ class ClientReg extends React.Component {
                         boxw='90px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1816,7 +1895,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Cuenta Estatal Impuesto Sobre Nómina"
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1867,7 +1946,7 @@ class ClientReg extends React.Component {
                         boxw='90px'
                         textw='medium'
                         icon='id-mapping'
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1920,7 +1999,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Cuenta estatal de impuesto a la Remuneración Personal de Trabajo No Subordinado"
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -1973,7 +2052,7 @@ class ClientReg extends React.Component {
                         icon='id-mapping'
                         tooltip={true}
                         tooltiptxt="Impuesto Sobre Hospedaje"
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
@@ -2010,7 +2089,7 @@ class ClientReg extends React.Component {
               </Box>
             </Box>
             <Box gridArea='botDer'>
-            <List hover className='ListColor'>
+              <List hover className='ListColor'>
                 {this.state.arrayBuzonT.map((item, index) => (
                   <List.Item key={index} index={index} className='Pad'>
                     <Box direction='row'>
@@ -2025,15 +2104,15 @@ class ClientReg extends React.Component {
                         textw='medium'
                         icon='id-mapping'
                         tooltip={true}
-                        tooltiptxt={"Direccion de Buzon Tributario "+ (index+1)}
-                        role={ !( RoleMaker(this.state.role) > 0 ) }
+                        tooltiptxt={"Direccion de Buzon Tributario " + (index + 1)}
+                        
                       />
                       <IconButton
                         icon={<Icon icon='close' />}
                         circle
                         size='md'
                         onClick={() => {
-                            this.MetodoPop('arrayBuzonT', 'buzonT', this.state.buzonT[index]._id);
+                          this.MetodoPop('arrayBuzonT', 'buzonT', this.state.buzonT[index]._id);
                         }}
                       />
                     </Box>
@@ -2041,13 +2120,13 @@ class ClientReg extends React.Component {
                 ))}
               </List>
               <br />
-            <Box direction='row' align="stretch" style={{ position: "relative" }}>
+              <Box direction='row' align="stretch" style={{ position: "relative" }}>
                 <IconButton
                   icon={<Icon icon='plus' />}
                   circle
                   size='md'
                   onClick={() => {
-                    if(this.state.arrayBuzonT.length >= 5){
+                    if (this.state.arrayBuzonT.length >= 5) {
                       Alert.error('Maximo 5 campos', 3000)
                     }
                     else {
@@ -2111,66 +2190,66 @@ class ClientReg extends React.Component {
           <Heading>Recepción de documentos</Heading>
         </Box>
         <Box direction='row'>
-        <Heading margin='small' level={5} className='GreenLetter'
-              style={{
-                color: '#515253',
-              }}
-            >
-              Desea que se le envie al correo?
+          <Heading margin='small' level={5} className='GreenLetter'
+            style={{
+              color: '#515253',
+            }}
+          >
+            Desea que se le envie al correo?
             </Heading>
-            <Checkbox> Si</Checkbox>
-            <Heading margin='small' level={5} className='GreenLetter'
-              style={{
-                color: '#515253',
-              }}
-            >
-              Estados de cuenta
+          <Checkbox> Si</Checkbox>
+          <Heading margin='small' level={5} className='GreenLetter'
+            style={{
+              color: '#515253',
+            }}
+          >
+            Estados de cuenta
             </Heading>
         </Box>
         <Box>
-        <Heading margin='small' level={5} className='GreenLetter'
-              style={{
-                color: '#515253',
-              }}
-            >
-              Estados de cuenta
+          <Heading margin='small' level={5} className='GreenLetter'
+            style={{
+              color: '#515253',
+            }}
+          >
+            Estados de cuenta
         </Heading>
-        <Grid
-          rows={['xsmall', 'xsmall', 'xsmall']}
-          columns={['medium', 'medium']}
-          gap="xsmall"
-        >
-        <Box>
-          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Acta Constitutiva
+          <Grid
+            rows={['xsmall', 'xsmall', 'xsmall']}
+            columns={['medium', 'medium']}
+            gap="xsmall"
+          >
+            <Box>
+              <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Acta Constitutiva
         </Box>
-        <Box>
-          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>FIEL
+            <Box>
+              <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>FIEL
         </Box>
-        <Box>
-          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS
+            <Box>
+              <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS
         </Box>
-        <Box>
-          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS IDSE
+            <Box>
+              <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>SELLOS IDSE
         </Box>
-        <Box>
-          <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Identificación
+            <Box>
+              <FileUpload mode="basic" name="demo" url="./upload"></FileUpload>Identificación
         </Box>
-        </Grid>
+          </Grid>
         </Box>
         <Box>
           <Button
-              style={{
-                backgroundColor: "#06554C",
-                color: '#F5F0F6',
-                width: '120px',
-                fontFamily: "'Manjari', sans-serif",
-                boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
-              }}
-              onClick={() => this.forwardback()}
-            >
-              <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
+            style={{
+              backgroundColor: "#06554C",
+              color: '#F5F0F6',
+              width: '120px',
+              fontFamily: "'Manjari', sans-serif",
+              boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
+            }}
+            onClick={() => this.forwardback()}
+          >
+            <Icon icon='hand-o-left' /> Atras&nbsp;&nbsp;
             </Button>
-            <Button
+          <Button
             style={{
               position: 'absolute',
               left: '75vw',
@@ -2180,7 +2259,7 @@ class ClientReg extends React.Component {
               fontFamily: "'Manjari', sans-serif",
               boxShadow: '0px 2px 4px rgba(0,0,0,0.20)',
             }}
-            onClick={ () => this.Register()}>
+            onClick={() => this.Register()}>
             Registrar&nbsp;&nbsp;
             <Icon icon='check' />
           </Button>
