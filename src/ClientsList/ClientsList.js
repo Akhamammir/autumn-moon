@@ -44,7 +44,7 @@ class ClientsList extends React.Component {
     this.setState({ clientsList: [] });
     //Fetching Clients List
     console.log(this.state.usr.Team);
-    axios.post('/clients', { team: this.state.usr.Team }).then((res) => {
+    axios.post('/clients', { team: this.state.usr.team }).then((res) => {
       console.log(res.data);
       this.setState({ clientsList: res.data.Clients, clientsListStore: res.data.Clients });
     });
