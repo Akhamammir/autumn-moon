@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import UsrBar from './../UsrBar/UsrBar';
 import NavBar from './../NavBar/NavBar';
 import { Grommet, Box, Grid, Heading, Text, Calendar, Table } from 'grommet';
@@ -23,6 +23,7 @@ const periodicidad = [
   {label: 'Semestral', value: 'SEM'},
   {label: 'Anual', value: 'AN'}
 ];
+
 export default class ToDo extends Component {
   data = [
     {
@@ -78,6 +79,7 @@ export default class ToDo extends Component {
     super(props);
     console.log(props);
     this.state = {
+      selectedCliente: null,
       usr: this.props.location.state,
       clientsList: [],
       dateList: [],
@@ -90,8 +92,15 @@ export default class ToDo extends Component {
         subtask: [{ name: '', status: '', _id: this.uuidShort() }]
       }
     };
+  this.clientes = [
+    { razon: 'Pase Usted S.A.P.I'},
+    { razon: '...'},
+  ];
+  this.onClienteChange = this.onClienteChange.bind(this);
   }
-
+  onClienteChange(e) {
+    this.setState({ selectedCliente: e.value });
+  }
   uuidShort = () => {
     return (([1e7]) + -1e3 + -4e3).replace(/[018]/g, c =>
       (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -3659,7 +3668,16 @@ export default class ToDo extends Component {
                 className='GreenLetter'
                 textAlign='center'
               >
-                Pase Usted S.A.P.I
+
+              <Dropdown 
+                className="dropRazon"
+                value={this.state.selectedCliente} 
+                options={this.clientes} 
+                onChange={this.onClienteChange} 
+                optionLabel="razon" 
+                placeholder="Razón social..."
+                />
+
               </Heading>
               <IconButton
                 className="clear first"
@@ -3873,6 +3891,8 @@ export default class ToDo extends Component {
                   <Box className="datebox">
                     <p>Selecciona una fecha de fin :</p>
                     <DateRangePicker
+                      className="daterange"
+                      position="left"
                       value={this.state.new.Date}
                       onChange={value => {
                         this.state.new.Date = value
