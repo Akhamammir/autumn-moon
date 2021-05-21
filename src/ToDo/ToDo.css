@@ -12,6 +12,7 @@
     background: #263D4F !important;
     box-shadow: 5px 4px 10px -5px rgba(49,50,51,0.77);
     border-radius: 7px;
+    
 }
 .gruopButt{
     position: absolute;
@@ -362,8 +363,7 @@
     color: white;
 }
 .dropRazon {
-    width: 500px;
-
+    width: 25vw;
 }
 .dropRazon .p-dropdown-label.p-placeholder {
     color: rgb(180, 180, 180) !important;

@@ -3668,7 +3668,8 @@ export default class ToDo extends Component {
                 className='GreenLetter'
                 textAlign='center'
               >
-
+              
+              </Heading>
               <Dropdown 
                 className="dropRazon"
                 value={this.state.selectedCliente} 
@@ -3677,8 +3678,6 @@ export default class ToDo extends Component {
                 optionLabel="razon" 
                 placeholder="Razón social..."
                 />
-
-              </Heading>
               <IconButton
                 className="clear first"
                 icon={<Icon icon="upload2" />}
@@ -3696,6 +3695,7 @@ export default class ToDo extends Component {
               >
                 Perfil de cliente
               </IconButton>
+              <Box>
               <Button
                 appearance="primary"
                 className="first2"
@@ -3703,8 +3703,8 @@ export default class ToDo extends Component {
                 placement="right"
               >
                 Panel de control
-                </Button>
-
+              </Button>
+              </Box>
               <Box direction='row' className='gruopButt' style={{ top: '55px', right: '15px', color: '#084D68' }}>
                 <Box>
                   <Text>
